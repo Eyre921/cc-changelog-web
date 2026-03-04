@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code 全特性速览 — 从用户视角出发</title>
+<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.62，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
+<meta name="keywords" content="Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK">
+<meta property="og:title" content="Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进">
+<meta property="og:description" content="220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a26;--surface3:#222233;
+  --border:#2a2a3d;--text:#e0e0ec;--text2:#9090a8;--text3:#606078;
+  --accent:#c084fc;--accent2:#818cf8;--accent3:#38bdf8;--accent4:#34d399;
+  --accent5:#fb923c;--accent6:#f472b6;--accent7:#facc15;
+  --glow:rgba(192,132,252,.08);--glow2:rgba(129,140,248,.06);
+}
+html{scroll-behavior:smooth;font-size:16px;scroll-padding-top:60px}
+body{background:var(--bg);color:var(--text);font-family:'SF Mono','Cascadia Code','JetBrains Mono',Consolas,'Noto Sans SC',monospace;line-height:1.7;overflow-x:hidden}
+::selection{background:var(--accent);color:var(--bg)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(129,140,248,.12),transparent 70%),radial-gradient(ellipse 40% 30% at 30% 60%,rgba(192,132,252,.08),transparent 60%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border:1px solid var(--border);border-radius:999px;font-size:.75rem;color:var(--accent);background:var(--surface);margin-bottom:2rem;letter-spacing:.05em}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent4);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:1.5rem;background:linear-gradient(135deg,#e0e0ec 0%,#c084fc 50%,#818cf8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.1rem;color:var(--text2);max-width:640px;margin-bottom:2.5rem}
+.hero-meta{display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;font-size:.8rem;color:var(--text3)}
+.hero-meta span{display:flex;align-items:center;gap:.4rem}
+.hero-meta .num{color:var(--accent);font-weight:700;font-size:1rem}
+
+/* Terminal animation */
+.terminal-demo{margin-top:3rem;width:min(680px,90vw);background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:left;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.terminal-bar{display:flex;align-items:center;gap:6px;padding:12px 16px;background:var(--surface2);border-bottom:1px solid var(--border)}
+.terminal-bar .dot{width:10px;height:10px;border-radius:50%}
+.terminal-bar .dot:nth-child(1){background:#ff5f57}
+.terminal-bar .dot:nth-child(2){background:#febc2e}
+.terminal-bar .dot:nth-child(3){background:#28c840}
+.terminal-bar .title{margin-left:auto;font-size:.7rem;color:var(--text3)}
+.terminal-body{padding:1.2rem;font-size:.82rem;min-height:180px}
+.terminal-body .prompt{color:var(--accent4)}
+.terminal-body .cmd{color:var(--text)}
+.terminal-body .output{color:var(--text2);margin:.3rem 0}
+.terminal-body .highlight{color:var(--accent)}
+.typing{border-right:2px solid var(--accent);animation:blink .8s infinite}
+@keyframes blink{0%,100%{border-color:var(--accent)}50%{border-color:transparent}}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.6rem 0}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:1.5rem;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav a{color:var(--text3);text-decoration:none;font-size:.75rem;white-space:nowrap;padding:.3rem .6rem;border-radius:6px;transition:all .2s}
+.nav a:hover,.nav a.active{color:var(--accent);background:var(--glow)}
+.nav-logo{font-weight:800;color:var(--text)!important;font-size:.85rem;margin-right:auto}
+
+/* Sections */
+.section{max-width:1200px;margin:0 auto;padding:5rem 1.5rem}
+.section-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;font-weight:600}
+.section-label .icon{font-size:1rem}
+.section h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.8rem;line-height:1.2}
+.section .subtitle{color:var(--text2);font-size:1rem;max-width:600px;margin-bottom:3rem}
+
+/* Feature cards */
+.grid{display:grid;gap:1.2rem}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:all .3s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,132,252,.08)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .3s}
+.card:hover::before{opacity:1}
+.card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem}
+.card h3{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.card p{font-size:.85rem;color:var(--text2);line-height:1.6}
+.card .tag{display:inline-block;font-size:.65rem;padding:.15rem .5rem;border-radius:4px;margin-top:.8rem;font-weight:600;letter-spacing:.03em}
+
+/* Scenario blocks */
+.scenario{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem;position:relative}
+.scenario-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.2rem}
+.scenario-num{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;flex-shrink:0}
+.scenario h3{font-size:1.1rem;font-weight:700}
+.scenario h3 span{color:var(--text2);font-weight:400;font-size:.85rem;display:block;margin-top:.2rem}
+.scenario-body{padding-left:52px}
+.scenario-body ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.scenario-body li{font-size:.85rem;color:var(--text2);padding-left:1.2rem;position:relative}
+.scenario-body li::before{content:'>';position:absolute;left:0;color:var(--accent);font-weight:700}
+.scenario-cmd{display:inline-block;background:var(--surface2);border:1px solid var(--border);padding:.15rem .5rem;border-radius:4px;font-size:.78rem;color:var(--accent3);font-family:inherit;margin:0 .1rem}
+
+/* Timeline */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:2rem;padding-left:1.5rem}
+.timeline-item::before{content:'';position:absolute;left:-2rem;top:.5rem;width:16px;height:16px;border-radius:50%;border:2px solid var(--accent);background:var(--bg)}
+.timeline-item.major::before{background:var(--accent);box-shadow:0 0 12px rgba(192,132,252,.4)}
+.timeline-date{font-size:.7rem;color:var(--text3);letter-spacing:.05em;margin-bottom:.3rem}
+.timeline-version{font-size:1rem;font-weight:700;margin-bottom:.3rem}
+.timeline-desc{font-size:.82rem;color:var(--text2)}
+
+/* Stats bar */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:3rem 0}
+.stat{text-align:center;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.stat .num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat .label{font-size:.75rem;color:var(--text3);margin-top:.3rem}
+
+/* Color variants */
+.c1{background:rgba(192,132,252,.1);color:var(--accent)}
+.c2{background:rgba(129,140,248,.1);color:var(--accent2)}
+.c3{background:rgba(56,189,248,.1);color:var(--accent3)}
+.c4{background:rgba(52,211,153,.1);color:var(--accent4)}
+.c5{background:rgba(251,146,60,.1);color:var(--accent5)}
+.c6{background:rgba(244,114,182,.1);color:var(--accent6)}
+.c7{background:rgba(250,204,21,.1);color:var(--accent7)}
+
+/* Kbd */
+kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--surface2);border:1px solid var(--border);border-radius:4px;font-family:inherit;color:var(--text);box-shadow:0 1px 0 var(--border)}
+
+/* Footer */
+.footer{text-align:center;padding:4rem 1.5rem;border-top:1px solid var(--border);color:var(--text3);font-size:.8rem}
+.footer a{color:var(--accent);text-decoration:none}
+
+/* Responsive */
+@media(max-width:768px){
+  .section{padding:3rem 1rem}
+  .scenario-body{padding-left:0;margin-top:1rem}
+  .hero h1{font-size:2rem}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+}
+
+/* Animations */
+.fade-in{opacity:0;transform:translateY(20px);transition:all .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* Back to top */
+.back-to-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--bg);border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:all .3s;z-index:99;box-shadow:0 4px 16px rgba(192,132,252,.3)}
+.back-to-top.show{opacity:1;pointer-events:auto}
+.back-to-top:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(192,132,252,.4)}
+
+/* Nav mobile scroll hint */
+.nav-inner::after{content:'';position:sticky;right:0;flex-shrink:0;width:40px;background:linear-gradient(to right,transparent,rgba(10,10,15,.95));pointer-events:none;display:none}
+@media(max-width:900px){.nav-inner::after{display:block}}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  .fade-in{opacity:1;transform:none;transition:none}
+  .typing{animation:none;border-right-color:var(--accent)}
+  .hero-badge .dot{animation:none}
+  .back-to-top{transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span> v0.2.21 — v2.1.62 全版本特性整理</div>
+  <h1>Claude Code<br>全特性速览</h1>
+  <p>从终端到 IDE，从单人编码到多 Agent 协作。<br>以真实使用场景为线索，带你看懂 220+ 个版本背后的每一项能力。</p>
+  <div class="hero-meta">
+    <span><span class="num">220+</span> 个版本</span>
+    <span><span class="num">1000+</span> 项更新</span>
+    <span><span class="num">3</span> 个大版本</span>
+    <span><span class="num">2025.04 — 2026.02</span></span>
+  </div>
+  <div class="terminal-demo">
+    <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">Claude Code — zsh</span></div>
+    <div class="terminal-body">
+      <div><span class="prompt">~ $</span> <span class="cmd">claude</span></div>
+      <div class="output">  Claude Code v2.1.62 (Opus 4.6)</div>
+      <div class="output">  <span class="highlight">1M context</span> | agent teams | auto-memory | fast mode</div>
+      <div class="output">&nbsp;</div>
+      <div><span class="prompt">></span> <span class="cmd typing"> 帮我重构这个模块，用 agent teams 并行分析安全和性能</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">CC</a>
+    <a href="#models">AI 模型</a>
+    <a href="#agents">多 Agent 协作</a>
+    <a href="#sessions">会话管理</a>
+    <a href="#devflow">开发工作流</a>
+    <a href="#mcp">MCP 生态</a>
+    <a href="#terminal">终端体验</a>
+    <a href="#security">安全沙箱</a>
+    <a href="#sdk">SDK & 集成</a>
+    <a href="#performance">性能优化</a>
+    <a href="#platform">跨平台</a>
+    <a href="#vscode">VS Code</a>
+    <a href="#shortcuts">快捷键</a>
+    <a href="#timeline">版本线</a>
+  </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- Section 1: AI Models -->
+<!-- ============================================ -->
+<section class="section" id="models">
+  <div class="section-label"><span class="icon">◆</span> AI 模型与推理</div>
+  <h2>你的 AI 搭档，更强更快</h2>
+  <p class="subtitle">从 Opus 4.6 的深度推理到 Fast Mode 的极速输出，选择最适合当前任务的模型。</p>
+
+  <div class="grid grid-3">
+    <div class="card fade-in">
+      <div class="card-icon c1">◈</div>
+      <h3>Opus 4.6 — 旗舰推理</h3>
+      <p>v2.1.32 正式发布。最深度的推理能力，适合复杂架构决策、大规模重构和深度代码分析。现在支持完整 1M 上下文窗口。</p>
+      <span class="tag c1">v2.1.32</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c2">⚡</div>
+      <h3>Fast Mode — 极速输出</h3>
+      <p>同样的 Opus 4.6 模型，更快的输出速度。用 <span class="scenario-cmd">/fast</span> 一键切换。日常编码、pair programming 的最佳选择。</p>
+      <span class="tag c2">v2.1.36</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c3">✦</div>
+      <h3>Sonnet 4.6 — 均衡之选</h3>
+      <p>v2.1.45 新增支持。现已支持 1M 上下文窗口，替代 Sonnet 4.5 成为 Max 计划的主力编码模型。</p>
+      <span class="tag c3">v2.1.45</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c7">★</div>
+      <h3>Haiku 4.5 — 轻量高效</h3>
+      <p>v2.0.17 加入模型选择器。默认在 plan mode 使用 Sonnet、执行使用 Haiku（SonnetPlan 模式）。Pro 用户可用。驱动 Explore 子 agent 高效搜索代码库。</p>
+      <span class="tag c7">v2.0.17</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c4">◎</div>
+      <h3>1M 上下文窗口</h3>
+      <p>处理超大代码库不再捉襟见肘。Opus 4.6 和 Sonnet 4.6 均支持 100 万 token 上下文。可通过 <span class="scenario-cmd">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 按需关闭。</p>
+      <span class="tag c4">v2.1.50</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c5">☰</div>
+      <h3>/model 即时切换</h3>
+      <p>模型选择器显示人类可读标签，有新版本时提示升级。支持 <kbd>Alt+P</kbd> 在输入时切换模型。Opus Plan Mode 可设置仅在 plan 阶段使用 Opus。</p>
+      <span class="tag c5">v2.1.51</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c6">◇</div>
+      <h3>Extended Thinking</h3>
+      <p>深度思考模式让模型在回答前充分推理。说 "think" 或 "ultrathink" 触发。通过 <span class="scenario-cmd">alwaysThinkingEnabled</span> 设置默认开启。Opus 4.5 默认启用。</p>
+      <span class="tag c6">v0.2.44</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c5">⊞</div>
+      <h3>模型演进历程</h3>
+      <p>v1.0.0 GA 发布 Sonnet 4 + Opus 4 → v1.0.69 升级 Opus 4.1 → v2.0.51 Opus 4.5 → v2.0.58 Pro 用户获得 Opus 4.5 → v2.1.32 Opus 4.6 → v2.1.45 Sonnet 4.6。</p>
+      <span class="tag c5">v1.0.0+</span>
+    </div>
+  </div>
+
+  <div class="scenario fade-in" style="margin-top:2rem">
+    <div class="scenario-header">
+      <div class="scenario-num c1">?</div>
+      <h3>场景：我该选哪个模型？<span>根据任务类型灵活切换</span></h3>
+    </div>
+    <div class="scenario-body">
+      <ul>
+        <li>日常写代码、快速迭代 → <span class="scenario-cmd">/fast</span> 开启 Fast Mode，同模型更快输出</li>
+        <li>复杂架构设计、大规模重构 → Opus 4.6 默认模式，深度推理</li>
+        <li>多 agent 工作流中的 worker → Sonnet 4.6，性价比最优</li>
+        <li>代码库探索、轻量任务 → Haiku 4.5 驱动 Explore 子 agent</li>
+        <li>处理超大仓库（monorepo）→ 1M 上下文窗口，一次看完整个模块</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section 2: Agent Teams -->
+<!-- ============================================ -->
+<section class="section" id="agents">
+  <div class="section-label"><span class="icon">◆</span> 多 Agent 协作</div>
+  <h2>一个人的团队，多个 Agent 并行</h2>
+  <p class="subtitle">Agent Teams 让多个 AI 同时工作：一个分析安全，一个优化性能，一个写测试。</p>
+
+  <div class="grid grid-2">
+    <div class="card fade-in">
+      <div class="card-icon c1">⊞</div>
+      <h3>Agent Teams — 多 Agent 协作</h3>
+      <p>研究预览功能。多个 agent 在 tmux 中并行运行，各自独立完成子任务。设置 <span class="scenario-cmd">CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1</span> 启用。支持 Bedrock/Vertex/Foundry 提供商。</p>
+      <span class="tag c1">v2.1.32</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c2">⊡</div>
+      <h3>后台 Agent</h3>
+      <p><kbd>Ctrl+B</kbd> 将任务放到后台运行，或用 <span class="scenario-cmd">&</span> 前缀从 Web 发送后台任务。完成后收到通知。<kbd>Ctrl+F</kbd> 一键杀死所有后台 agent。长时间 bash 命令自动后台化。</p>
+      <span class="tag c2">v2.0.60</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c3">⊟</div>
+      <h3>Agent 隔离 — Worktree</h3>
+      <p>agent 定义中声明 <span class="scenario-cmd">isolation: worktree</span>，自动在隔离的 git worktree 中运行，互不干扰。<span class="scenario-cmd">--worktree</span> 标志启动隔离会话。支持 WorktreeCreate/WorktreeRemove hook 事件。</p>
+      <span class="tag c3">v2.1.49</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c4">⊠</div>
+      <h3>自定义 Agent</h3>
+      <p>v1.0.60 起可创建自定义子 agent（<span class="scenario-cmd">/agents</span>）。支持 model 字段、memory frontmatter、tools 限制（Task(agent_type) 语法）、permissionMode、disallowedTools。用 <span class="scenario-cmd">claude agents</span> 列出所有配置。</p>
+      <span class="tag c4">v1.0.60</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c5">⊜</div>
+      <h3>Explore 子 Agent</h3>
+      <p>由 Haiku 驱动的代码库探索 agent，高效搜索代码节省上下文。Claude 可动态选择子 agent 使用的模型，也可恢复之前的子 agent 继续工作。</p>
+      <span class="tag c5">v2.0.17</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c6">⊛</div>
+      <h3>Agent 记忆与 Hooks</h3>
+      <p>agent 支持 memory frontmatter（user/project/local scope 持久记忆）。TeammateIdle 和 TaskCompleted hook 事件通知进度。SubagentStart/SubagentStop hook 追踪生命周期。</p>
+      <span class="tag c6">v2.1.33</span>
+    </div>
+  </div>
+
+  <div class="scenario fade-in" style="margin-top:2rem">
+    <div class="scenario-header">
+      <div class="scenario-num c2">!</div>
+      <h3>场景：重构一个大模块<span>让多个 agent 各司其职</span></h3>
+    </div>
+    <div class="scenario-body">
+      <ul>
+        <li>主 agent 制定重构计划，拆分为安全审查、性能分析、类型检查三个子任务</li>
+        <li>三个 teammate agent 在 tmux 中并行工作，各自在独立 worktree 中操作</li>
+        <li>TeammateIdle 和 TaskCompleted hook 自动通知进度</li>
+        <li>teammate 消息使用富 Markdown 格式渲染，结果一目了然</li>
+        <li>用 <kbd>Shift+Down</kbd> 在 teammates 间快速导航</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section 3: Session Management -->
+<!-- ============================================ -->
+<section class="section" id="sessions">
+  <div class="section-label"><span class="icon">◆</span> 会话与记忆</div>
+  <h2>对话不丢失，记忆会延续</h2>
+  <p class="subtitle">自动记忆、会话恢复、分叉、摘要 — 让每次对话都有上下文。</p>
+
+  <div class="grid grid-3">
+    <div class="card fade-in">
+      <div class="card-icon c6">◉</div>
+      <h3>自动记忆 & /memory</h3>
+      <p>Claude 在工作中自动将有用上下文保存到 auto-memory。用 <span class="scenario-cmd">/memory</span> 管理记忆内容。CLAUDE.md 支持 @path/to/file.md 导入其他文件。.claude/rules/ 目录存放项目规则。</p>
+      <span class="tag c6">v2.1.59</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c4">↻</div>
+      <h3>会话恢复 /resume</h3>
+      <p>v0.2.93 引入 <span class="scenario-cmd">--continue</span> 和 <span class="scenario-cmd">--resume</span>。支持按会话 ID、自定义标题、git 分支搜索。初始显示 50 个会话。<span class="scenario-cmd">--from-pr</span> 恢复 PR 关联会话。内存使用减少 68%。</p>
+      <span class="tag c4">v0.2.93</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c3">⑂</div>
+      <h3>会话分叉 /fork & /rewind</h3>
+      <p>从当前对话分叉出新会话，探索不同方向。<span class="scenario-cmd">/rewind</span> 回退对话撤销代码变更。支持自定义会话 ID。分叉后提示如何恢复原始会话。</p>
+      <span class="tag c3">v2.0.0</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c1">⊘</div>
+      <h3>智能压缩 /compact</h3>
+      <p>v0.2.47 引入自动压缩实现无限对话长度。v2.0.64 压缩变为即时。支持包含大量 PDF 的对话。压缩后保留 plan mode 状态和自定义会话标题。</p>
+      <span class="tag c1">v0.2.47</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c5">✂</div>
+      <h3>部分摘要</h3>
+      <p>"Summarize from here" — 在消息选择器中选择起点，只摘要部分对话。不需要压缩整个上下文，精准控制。</p>
+      <span class="tag c5">v2.1.32</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c2">✎</div>
+      <h3>Todo 列表</h3>
+      <p>v0.2.93 引入内置 Todo 列表帮助 Claude 保持任务有序。v2.1.16 升级为完整任务管理系统，支持依赖追踪。<span class="scenario-cmd">/todos</span> 查看当前任务。</p>
+      <span class="tag c2">v0.2.93</span>
+    </div>
+  </div>
+
+  <div class="scenario fade-in" style="margin-top:2rem">
+    <div class="scenario-header">
+      <div class="scenario-num c6">!</div>
+      <h3>场景：跨天持续开发一个功能<span>会话和记忆无缝衔接</span></h3>
+    </div>
+    <div class="scenario-body">
+      <ul>
+        <li>下班前 Claude 自动记住了你的代码风格偏好和项目架构</li>
+        <li>第二天用 <span class="scenario-cmd">claude --resume</span> 恢复昨天的会话，按 git 分支名搜索</li>
+        <li>上下文快满了？<span class="scenario-cmd">/compact</span> 智能压缩，plan mode 和会话标题都保留</li>
+        <li>想试另一个方案？<span class="scenario-cmd">/fork</span> 分叉出去探索，原始对话不受影响</li>
+        <li>PR 创建后会话自动关联，下次用 <span class="scenario-cmd">--from-pr #123</span> 直接恢复</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section 4: Developer Workflow -->
+<!-- ============================================ -->
+<section class="section" id="devflow">
+  <div class="section-label"><span class="icon">◆</span> 开发工作流</div>
+  <h2>从写代码到提 PR，一气呵成</h2>
+  <p class="subtitle">Git 集成、PR 状态追踪、任务管理、PDF 阅读 — 开发全流程覆盖。</p>
+
+  <div class="grid grid-2">
+    <div class="card fade-in">
+      <div class="card-icon c4">⎇</div>
+      <h3>Git & PR 深度集成</h3>
+      <p>prompt footer 实时显示当前分支 PR 状态（approved/changes requested/pending/draft），彩色圆点 + 可点击链接。会话自动关联 PR。Teleport 从 Web 传送会话到本地并自动设置上游分支。</p>
+      <span class="tag c4">v2.1.20</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c1">☑</div>
+      <h3>Plan Mode — 先规划再动手</h3>
+      <p>v0.2.44 引入 thinking mode（说 "think" 或 "ultrathink"）。v2.0.28 引入 Plan 子 agent。VS Code 中 plan 预览自动更新。拒绝 plan 时可提供反馈。<kbd>Shift+Tab</kbd> 快速 auto-accept。</p>
+      <span class="tag c1">v0.2.44</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c3">⊞</div>
+      <h3>Web 搜索 & 网络工具</h3>
+      <p>v0.2.105 引入 Web 搜索。v0.2.70 开放 curl 等网络命令。Claude 可并行执行多个 Web 查询。v0.2.53 新增 URL 抓取工具。搜索结果考虑当天日期。</p>
+      <span class="tag c3">v0.2.53</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c5">⊡</div>
+      <h3>PDF 智能阅读</h3>
+      <p>v1.0.58 首次支持 PDF 阅读。Read 工具支持 <span class="scenario-cmd">pages: "1-5"</span> 参数读取指定页面。大 PDF (>10 页) @ 提及时返回轻量引用。限制 100 页、20MB。</p>
+      <span class="tag c5">v1.0.58</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c2">⊟</div>
+      <h3>LSP 代码智能</h3>
+      <p>v2.0.74 引入 LSP 工具：go-to-definition、find references、hover 文档。TypeScript 和 Python LSP 插件。findReferences 自动排除 gitignored 文件。支持 startupTimeout 配置。</p>
+      <span class="tag c2">v2.0.74</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c6">⊠</div>
+      <h3>SDK & 非交互模式</h3>
+      <p>TypeScript SDK（v1.0.23）和 Python SDK（v1.0.23）。<span class="scenario-cmd">-p</span> 模式支持流式输出（stream-json）。<span class="scenario-cmd">--max-budget-usd</span> 控制预算。支持自定义工具回调。</p>
+      <span class="tag c6">v1.0.23</span>
+    </div>
+  </div>
+
+  <div class="scenario fade-in" style="margin-top:2rem">
+    <div class="scenario-header">
+      <div class="scenario-num c4">!</div>
+      <h3>场景：接手一个陌生项目并提交 PR<span>从阅读文档到代码提交的完整流程</span></h3>
+    </div>
+    <div class="scenario-body">
+      <ul>
+        <li>@ 提及项目的 PDF 设计文档，Claude 智能读取关键页面而非全部加载</li>
+        <li>用 <span class="scenario-cmd">--add-dir</span> 添加多个工作目录，跨项目引用代码</li>
+        <li>用 LSP 工具跳转到关键函数定义，理解代码结构</li>
+        <li>进入 plan mode 先规划实现方案，确认后再动手写代码</li>
+        <li>写完后 prompt footer 实时显示 PR 状态，点击链接直达 GitHub</li>
+        <li><span class="scenario-cmd">/stats</span> 查看使用统计，<span class="scenario-cmd">/usage</span> 查看计划限额</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section 5: MCP Ecosystem -->
+<!-- ============================================ -->
+<section class="section" id="mcp">
+  <div class="section-label"><span class="icon">◆</span> MCP 生态</div>
+  <h2>无限扩展，连接一切</h2>
+  <p class="subtitle">Model Context Protocol 让 Claude Code 连接 Slack、GitHub、数据库等任何外部服务。</p>
+
+  <div class="grid grid-3">
+    <div class="card fade-in">
+      <div class="card-icon c3">⊕</div>
+      <h3>MCP 协议全面支持</h3>
+      <p>v0.2.50 引入 project scope .mcp.json。v1.0.27 支持 Streamable HTTP 和 SSE + OAuth。v2.1.7 自动搜索模式（<span class="scenario-cmd">auto:N</span> 语法）。支持 resource_link、structuredContent、tool annotations。</p>
+      <span class="tag c3">v0.2.50</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c1">⊗</div>
+      <h3>OAuth 认证增强</h3>
+      <p>支持 OAuth Authorization Server 发现、step-up auth、discovery 缓存。预配置 OAuth 凭证（<span class="scenario-cmd">--client-id</span>）。支持 claude.ai MCP connectors。修复多实例 token 刷新竞态。</p>
+      <span class="tag c1">v2.1.59</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c5">⊙</div>
+      <h3>插件系统</h3>
+      <p>v2.0.12 发布插件系统。<span class="scenario-cmd">/plugin install</span> 安装，支持 git 分支/tag 语法。自定义 npm 注册表。插件可提供 commands、agents、hooks、MCP servers、output styles。</p>
+      <span class="tag c5">v2.0.12</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c4">⊜</div>
+      <h3>Skills & 自定义命令</h3>
+      <p>v0.2.31 引入自定义斜杠命令（.claude/commands/）。v2.0.20 引入 Claude Skills。v2.1.3 合并斜杠命令与 skills。支持 SlashCommand 工具让 Claude 调用你的命令。</p>
+      <span class="tag c4">v0.2.31</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c2">⊛</div>
+      <h3>Hooks 系统</h3>
+      <p>v1.0.38 发布 Hooks。PreToolUse / PostToolUse / Stop / SessionStart / SessionEnd / ConfigChange / WorktreeCreate / TeammateIdle / TaskCompleted / PermissionRequest / UserPromptSubmit — 完整生命周期钩子。</p>
+      <span class="tag c2">v1.0.38</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c6">⊚</div>
+      <h3>Remote Control & Teleport</h3>
+      <p><span class="scenario-cmd">claude remote-control</span> 为所有用户启用本地环境服务。Teleport 从 Web 传送会话到本地。Claude in Chrome 集成浏览器控制。v2.1.58 扩展到更多用户。</p>
+      <span class="tag c6">v2.0.72</span>
+    </div>
+  </div>
+
+  <div class="scenario fade-in" style="margin-top:2rem">
+    <div class="scenario-header">
+      <div class="scenario-num c3">!</div>
+      <h3>场景：用 MCP 打通开发全链路<span>Slack 通知 + GitHub PR + 数据库查询</span></h3>
+    </div>
+    <div class="scenario-body">
+      <ul>
+        <li>配置 Slack MCP 服务器，用 --client-id 预配置 OAuth</li>
+        <li>支持 claude.ai MCP connectors 直接在 Claude Code 中使用</li>
+        <li>Claude 写完代码后自动创建 PR，skill 自动发布 PR URL 到 Slack 频道</li>
+        <li>配置了 20 个 MCP 工具？自动搜索模式只在需要时加载，不浪费上下文</li>
+        <li>PostToolUse hook 自动格式化代码、运行 TypeScript 检查</li>
+        <li>ConfigChange hook 审计配置变更，企业安全合规</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section 6: Terminal Experience -->
+<!-- ============================================ -->
+<section class="section" id="terminal">
+  <div class="section-label"><span class="icon">◆</span> 终端体验</div>
+  <h2>终端里的极致体验</h2>
+  <p class="subtitle">主题、语法高亮、CJK 支持、Vim 模式 — 每个细节都打磨到位。</p>
+
+  <div class="grid grid-3">
+    <div class="card fade-in">
+      <div class="card-icon c7">◈</div>
+      <h3>主题与语法高亮</h3>
+      <p><span class="scenario-cmd">/theme</span> 直接打开主题选择器。v2.0.10 重写终端渲染器实现丝滑 UI。diff 在多行构造中正确高亮。v0.2.30 ANSI 颜色主题兼容更多终端。</p>
+      <span class="tag c7">v0.2.30</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c4">⌨</div>
+      <h3>Vim 模式 & 快捷键</h3>
+      <p>v0.2.34 引入 Vim 绑定。支持 c、f/F、t/T 动作。v2.1.18 自定义键盘快捷键（<span class="scenario-cmd">/keybindings</span>）。<kbd>Ctrl+R</kbd> 历史搜索。<kbd>Ctrl+Z</kbd> 挂起（fg 恢复）。</p>
+      <span class="tag c4">v0.2.34</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c1">文</div>
+      <h3>CJK 与国际化</h3>
+      <p>v0.2.68 修复 IME 输入法支持（中日韩）。CJK 宽字符布局正确。日语 IME 全角空格/数字输入。泰语/老挝语元音渲染。非拉丁文字词删除和导航修复。</p>
+      <span class="tag c1">v0.2.68</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c3">@</div>
+      <h3>@ 文件提及 & 图片</h3>
+      <p>v0.2.75 引入 @ 文件提及和图片拖拽/粘贴。支持 MCP 资源 @ 提及。文件夹点击导航。锚点片段（@README.md#installation）。启动时预热索引。</p>
+      <span class="tag c3">v0.2.75</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c5">⊞</div>
+      <h3>终端兼容性</h3>
+      <p>/terminal-setup 支持 Kitty、Alacritty、Zed、Warp、WezTerm、iTerm2、Ghostty。Kitty 键盘协议完整支持。OSC 8 超链接跨行可点击。OSC 9;4 进度条可配置。</p>
+      <span class="tag c5">v1.0.110</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c6">⊡</div>
+      <h3>实时交互</h3>
+      <p>v0.2.108 引入实时 steering（Claude 工作时发消息引导方向）。v0.2.75 消息排队（Enter 排队后续消息）。<span class="scenario-cmd">/copy</span> 交互式选择代码块复制。Prompt suggestions 智能建议。</p>
+      <span class="tag c6">v0.2.108</span>
+    </div>
+  </div>
+
+  <div class="scenario fade-in" style="margin-top:2rem">
+    <div class="scenario-header">
+      <div class="scenario-num c7">!</div>
+      <h3>场景：在终端中高效编码<span>主题、快捷键、输入法一步到位</span></h3>
+    </div>
+    <div class="scenario-body">
+      <ul>
+        <li><span class="scenario-cmd">/theme</span> 选一个顺眼的主题，diff 高亮和语法着色自动适配</li>
+        <li>开启 Vim 模式，用 <kbd>f</kbd>/<kbd>t</kbd> 动作快速跳转，<kbd>Ctrl+R</kbd> 搜索历史命令</li>
+        <li>中文输入法全角空格、日语 IME 都能正常工作，CJK 宽字符布局不错位</li>
+        <li>Claude 正在工作？直接打字发消息引导方向，不用等它停下来</li>
+        <li>代码块太多？<span class="scenario-cmd">/copy</span> 交互式选择要复制的那一段</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section 7: Security -->
+<!-- ============================================ -->
+<section class="section" id="security">
+  <div class="section-label"><span class="icon">◆</span> 安全与沙箱</div>
+  <h2>安全不是事后补救</h2>
+  <p class="subtitle">沙箱隔离、权限分级、命令注入防护 — 每一层都有防线。</p>
+
+  <div class="grid grid-2">
+    <div class="card fade-in">
+      <div class="card-icon c5">⊘</div>
+      <h3>沙箱模式</h3>
+      <p>v2.0.24 发布 Linux & Mac 沙箱模式。阻止写入 .claude/skills 目录。HTTP hooks 通过沙箱网络代理路由，强制域名白名单。heredoc 分隔符解析防止命令注入。</p>
+      <span class="tag c5">v2.0.24</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c1">⊗</div>
+      <h3>权限系统</h3>
+      <p>v0.2.26 引入 /approved-tools。v1.0.72 升级为 /permissions 完整权限管理。支持通配符 <span class="scenario-cmd">mcp__server__*</span>。"always allow" 智能前缀。bash 权限分类器验证匹配描述。</p>
+      <span class="tag c1">v0.2.26</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c6">⊙</div>
+      <h3>安全漏洞修复</h3>
+      <p>修复通配符权限规则匹配 shell 操作符。修复 shell 行续行权限绕过。修复 bash 命令处理中的命令注入。修复 HTTP hooks 环境变量插值。修复 Bash tool 权限检查前缀匹配绕过。</p>
+      <span class="tag c6">v1.0.120+</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c4">⊛</div>
+      <h3>企业安全</h3>
+      <p>v0.2.67 引入共享项目权限规则（.claude/settings.json）。v2.0.68 企业管理设置。ConfigChange hook 审计。管理设置支持 macOS plist 和 Windows Registry。MCP 允许/拒绝列表。</p>
+      <span class="tag c4">v0.2.67</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section: SDK & Integrations -->
+<!-- ============================================ -->
+<section class="section" id="sdk">
+  <div class="section-label"><span class="icon">◆</span> SDK & 集成</div>
+  <h2>不只是 CLI，更是开发平台</h2>
+  <p class="subtitle">SDK、Desktop 应用、OpenTelemetry、Output Styles — Claude Code 是一个完整的开发者平台。</p>
+
+  <div class="grid grid-3">
+    <div class="card fade-in">
+      <div class="card-icon c1">⊞</div>
+      <h3>TypeScript & Python SDK</h3>
+      <p>v1.0.23 发布 TypeScript SDK（<span class="scenario-cmd">@anthropic-ai/claude-code</span>）和 Python SDK（<span class="scenario-cmd">claude-code-sdk</span>）。支持流式输出（stream-json）、自定义工具回调（canUseTool）、请求取消、部分消息流。</p>
+      <span class="tag c1">v1.0.23</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c2">⊡</div>
+      <h3>非交互模式 (-p)</h3>
+      <p><span class="scenario-cmd">-p</span> 模式支持流式 JSON 输出。<span class="scenario-cmd">--max-budget-usd</span> 控制预算。<span class="scenario-cmd">--system-prompt</span> / <span class="scenario-cmd">--system-prompt-file</span> 自定义系统提示。<span class="scenario-cmd">--append-system-prompt</span> 追加提示。子任务消息包含 parent_tool_use_id。</p>
+      <span class="tag c2">v0.2.66</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c3">⊟</div>
+      <h3>Claude Code Desktop</h3>
+      <p>v2.0.51 推出 Claude Code for Desktop（<span class="scenario-cmd">claude.com/download</span>）。独立桌面应用，无需终端即可使用。Claude in Chrome 集成浏览器控制。</p>
+      <span class="tag c3">v2.0.51</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c4">⊠</div>
+      <h3>OpenTelemetry 可观测性</h3>
+      <p>OTel 日志支持 session ID、terminal.type、language 属性。mTLS 支持 HTTP 导出器。Active Time 指标。speed 属性追踪 fast mode。tool_decision 事件。<span class="scenario-cmd">ANTHROPIC_LOG=debug</span> 调试日志。</p>
+      <span class="tag c4">v1.0.39</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c5">⊜</div>
+      <h3>Output Styles</h3>
+      <p>v1.0.81 发布输出样式系统，内置 "Explanatory" 和 "Learning" 教育风格。支持自定义样式、插件分享样式。<span class="scenario-cmd">keep-coding-instructions</span> frontmatter 选项。</p>
+      <span class="tag c5">v1.0.81</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c6">⊛</div>
+      <h3>Bedrock / Vertex / Foundry</h3>
+      <p>支持 AWS Bedrock、Google Vertex AI、Microsoft Foundry 三大云提供商。自定义模型别名（<span class="scenario-cmd">ANTHROPIC_DEFAULT_SONNET_MODEL</span>）。全局端点。awsAuthRefresh 认证刷新。结构化输出。</p>
+      <span class="tag c6">v2.0.45</span>
+    </div>
+  </div>
+
+  <div class="scenario fade-in" style="margin-top:2rem">
+    <div class="scenario-header">
+      <div class="scenario-num c1">!</div>
+      <h3>场景：构建自动化 CI/CD 流水线<span>用 SDK 将 Claude Code 集成到工作流</span></h3>
+    </div>
+    <div class="scenario-body">
+      <ul>
+        <li>Python SDK 调用 Claude Code 自动审查 PR 代码，<span class="scenario-cmd">--max-budget-usd</span> 控制每次审查成本</li>
+        <li><span class="scenario-cmd">-p --output-format=stream-json</span> 流式输出集成到 CI 日志</li>
+        <li>OTel 指标导出到 Grafana 监控 Claude 使用情况和响应时间</li>
+        <li>Bedrock 提供商部署在企业 AWS 环境中，awsAuthRefresh 自动刷新凭证</li>
+        <li>自定义 Output Style 确保代码审查输出格式统一</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section 8: Performance -->
+<!-- ============================================ -->
+<section class="section" id="performance">
+  <div class="section-label"><span class="icon">◆</span> 性能优化</div>
+  <h2>更快启动，更少内存</h2>
+  <p class="subtitle">从启动到长会话，每个环节都在持续优化。</p>
+
+  <div class="stats fade-in">
+    <div class="stat"><div class="num">68%</div><div class="label">--resume 内存减少</div></div>
+    <div class="stat"><div class="num">500ms</div><div class="label">启动时间缩短</div></div>
+    <div class="stat"><div class="num">10+</div><div class="label">内存泄漏修复</div></div>
+    <div class="stat"><div class="num">50K</div><div class="label">工具结果磁盘持久化阈值</div></div>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="card fade-in">
+      <div class="card-icon c4">↑</div>
+      <h3>启动优化</h3>
+      <p>延迟 SessionStart hook 执行（-500ms）。headless 模式延迟 Yoga WASM 和 UI 导入。缓存 MCP auth 失败避免重复连接。批量 MCP 工具 token 计数为单个 API 调用。</p>
+      <span class="tag c4">v2.1.47+</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c3">↓</div>
+      <h3>内存优化</h3>
+      <p>修复 10+ 个内存泄漏：tree-sitter 解析树、LSP 诊断数据、TaskOutput、CircularBuffer、ChildProcess 引用、Yoga WASM 线性内存、文件历史快照。多 agent 会话中释放已完成子 agent 任务状态。长会话不再无限增长。</p>
+      <span class="tag c3">v2.1.59</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c5">⊡</div>
+      <h3>渲染优化</h3>
+      <p>React Compiler 提升 UI 渲染性能。优化屏幕数据布局。减少终端渲染内存分配开销。@ 文件提及预热索引 + 会话缓存 + 后台刷新。</p>
+      <span class="tag c5">v2.1.15</span>
+    </div>
+  </div>
+
+  <div class="scenario fade-in" style="margin-top:2rem">
+    <div class="scenario-header">
+      <div class="scenario-num c4">!</div>
+      <h3>场景：8 小时长会话不卡顿<span>内存和性能持续优化的成果</span></h3>
+    </div>
+    <div class="scenario-body">
+      <ul>
+        <li>长会话中 compaction 后自动清除内部缓存，agent 任务完成后修剪消息历史</li>
+        <li>大工具输出（>50K 字符）自动持久化到磁盘，不占用上下文窗口</li>
+        <li>tree-sitter 解析器定期重置防止 WASM 内存无限增长</li>
+        <li>shell 命令大输出不再导致 RSS 无限增长</li>
+        <li>打字响应始终流畅，终端渲染开销持续降低</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section 9: Cross-Platform -->
+<!-- ============================================ -->
+<section class="section" id="platform">
+  <div class="section-label"><span class="icon">◆</span> 跨平台支持</div>
+  <h2>Windows、macOS、Linux 全覆盖</h2>
+  <p class="subtitle">从 Windows ARM64 到 RHEL 8，从 WSL2 到 NFS 文件系统。</p>
+
+  <div class="grid grid-3">
+    <div class="card fade-in">
+      <div class="card-icon c3">⊞</div>
+      <h3>Windows</h3>
+      <p>v1.0.51 首次支持原生 Windows（需 Git for Windows）。ARM64 原生二进制。winget 安装。修复 \r\n 渲染、BashTool EINVAL、进程生成崩溃、CWD 临时文件累积、驱动器字母大小写问题。Hooks 使用 Git Bash 执行。</p>
+      <span class="tag c3">v1.0.51</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c2">⊡</div>
+      <h3>macOS</h3>
+      <p>修复沙箱写临时文件权限。修复只读 git 命令触发 FSEvents 循环。Option-as-Meta 终端特定说明。代码签名警告修复。</p>
+      <span class="tag c2">v2.1.45</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c5">⊟</div>
+      <h3>Linux</h3>
+      <p>修复 glibc < 2.30 系统（RHEL 8）原生模块加载。修复 WebAssembly 解释器崩溃。NFS/FUSE 文件系统上 agent 正确加载。无 AVX 指令处理器支持。Alpine/musl 发行版支持。Wayland 图片粘贴。</p>
+      <span class="tag c5">v1.0.73</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c6">⊠</div>
+      <h3>WSL2</h3>
+      <p>修复 Windows 以 BMP 格式复制图片时粘贴不工作。SSH 粘贴图片时建议使用 scp。</p>
+      <span class="tag c6">v2.1.47</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c1">⊜</div>
+      <h3>Shell 兼容</h3>
+      <p>支持 bash、zsh。MSYS2/Cygwin shell 输出正确处理。.bashrc 文件兼容。双下划线前缀 shell 函数跨会话保留。沙箱中 zsh heredoc 正常工作。</p>
+      <span class="tag c1">v2.1.47</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c4">⊛</div>
+      <h3>安装方式</h3>
+      <p>npm（已弃用，建议迁移）、winget、<span class="scenario-cmd">claude install</span> 原生安装。<span class="scenario-cmd">/doctor</span> 显示更新频道和可用版本。mise/asdf 管理的安装正确识别。支持 Bedrock、Vertex、Foundry 多种 API 提供商。</p>
+      <span class="tag c4">v2.1.15</span>
+    </div>
+  </div>
+
+  <div class="scenario fade-in" style="margin-top:2rem">
+    <div class="scenario-header">
+      <div class="scenario-num c3">!</div>
+      <h3>场景：团队成员用不同系统<span>Windows + macOS + Linux 统一体验</span></h3>
+    </div>
+    <div class="scenario-body">
+      <ul>
+        <li>Windows 同事用 <span class="scenario-cmd">winget install Anthropic.ClaudeCode</span> 一键安装，ARM64 原生支持</li>
+        <li>macOS 同事直接 <span class="scenario-cmd">claude install</span>，沙箱模式自动适配临时目录</li>
+        <li>Linux 服务器上 RHEL 8（glibc < 2.30）也能正常运行，Alpine/musl 同样支持</li>
+        <li>WSL2 用户粘贴图片、shell 函数跨会话保留都已修复</li>
+        <li><span class="scenario-cmd">/doctor</span> 一键诊断安装问题，mise/asdf 管理的安装也能正确识别</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section 10: VS Code -->
+<!-- ============================================ -->
+<section class="section" id="vscode">
+  <div class="section-label"><span class="icon">◆</span> VS Code 集成</div>
+  <h2>IDE 里的 Claude</h2>
+  <p class="subtitle">不只是终端工具，VS Code 扩展让 Claude 融入你的 IDE 工作流。</p>
+
+  <div class="grid grid-2">
+    <div class="card fade-in">
+      <div class="card-icon c2">⊞</div>
+      <h3>原生 VS Code 扩展</h3>
+      <p>v2.0.0 发布全新原生 VS Code 扩展。支持 secondary sidebar（VS Code 1.97+）。流式消息实时显示。拖拽文件/文件夹到聊天。代码块复制按钮。</p>
+      <span class="tag c2">v2.0.0</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c1">⊡</div>
+      <h3>远程会话 & 插件管理</h3>
+      <p>OAuth 用户可浏览和恢复 claude.ai 远程会话。会话选择器显示 git 分支和消息计数。直接管理插件。权限目标选择跨会话持久化。</p>
+      <span class="tag c1">v2.1.33</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c4">⊟</div>
+      <h3>Plan 预览 & Diff</h3>
+      <p>Claude 迭代时 plan 预览自动更新。仅在 plan 准备好审查时启用评论。拒绝时保持预览打开。代码块复制按钮。Diff tab 支持。</p>
+      <span class="tag c4">v2.1.47</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c5">⊠</div>
+      <h3>Python 环境 & 配置</h3>
+      <p>自动激活 Python 虚拟环境。<span class="scenario-cmd">claudeCode.usePythonEnvironment</span> 设置。支持 chat.fontSize/fontFamily 自定义。respectGitIgnore 配置。初始权限模式设置。</p>
+      <span class="tag c5">v2.1.21</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c3">⊜</div>
+      <h3>会话管理</h3>
+      <p>会话 fork 和 rewind 功能。/usage 和 /extra-usage 命令。多行输入（Shift+Enter）。Claude in Chrome 集成。标签图标徽章显示待处理权限和未读完成。</p>
+      <span class="tag c3">v2.0.0</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c6">⊛</div>
+      <h3>稳定性修复</h3>
+      <p>修复 Windows 上扩展崩溃、终端 scroll-to-top 回归、重复会话、OAuth token 过期 401 错误、侧边栏视图容器启动竞态条件、Windows ARM64 兼容等问题。</p>
+      <span class="tag c6">v2.1.52</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section 11: Keyboard Shortcuts -->
+<!-- ============================================ -->
+<section class="section" id="shortcuts">
+  <div class="section-label"><span class="icon">◆</span> 快捷键与命令</div>
+  <h2>键盘流的效率工具</h2>
+  <p class="subtitle">每个操作都有快捷键，每个功能都有斜杠命令。</p>
+
+  <div class="grid grid-2">
+    <div class="card fade-in" style="padding:0;overflow:hidden">
+      <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border)">
+        <h3>快捷键速查</h3>
+      </div>
+      <div style="padding:1rem 1.5rem;font-size:.82rem;display:grid;grid-template-columns:auto 1fr;gap:.4rem 1.5rem;align-items:center">
+        <kbd>Ctrl+B</kbd><span style="color:var(--text2)">将当前任务放到后台</span>
+        <kbd>Ctrl+F</kbd><span style="color:var(--text2)">杀死所有后台 agent</span>
+        <kbd>Ctrl+G</kbd><span style="color:var(--text2)">打开外部编辑器</span>
+        <kbd>Ctrl+R</kbd><span style="color:var(--text2)">搜索命令历史</span>
+        <kbd>Ctrl+S</kbd><span style="color:var(--text2)">Prompt stash（暂存输入）</span>
+        <kbd>Ctrl+Y</kbd><span style="color:var(--text2)">Yank（粘贴 kill ring）</span>
+        <kbd>Ctrl+Z</kbd><span style="color:var(--text2)">挂起（fg 恢复）</span>
+        <kbd>Alt+P</kbd><span style="color:var(--text2)">输入时切换模型</span>
+        <kbd>Alt+T</kbd><span style="color:var(--text2)">切换 thinking 模式</span>
+        <kbd>Shift+Down</kbd><span style="color:var(--text2)">在 teammates 间导航</span>
+        <kbd>Shift+Tab</kbd><span style="color:var(--text2)">切换 auto-accept / 模式切换</span>
+        <kbd>Tab</kbd><span style="color:var(--text2)">文件名补全 / Bash 历史补全</span>
+        <kbd>ESC</kbd><span style="color:var(--text2)">取消主线程（后台 agent 继续）</span>
+        <kbd>Enter</kbd><span style="color:var(--text2)">发送 / 排队后续消息</span>
+      </div>
+    </div>
+    <div class="card fade-in" style="padding:0;overflow:hidden">
+      <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border)">
+        <h3>斜杠命令速查</h3>
+      </div>
+      <div style="padding:1rem 1.5rem;font-size:.82rem;display:grid;grid-template-columns:auto 1fr;gap:.4rem 1.5rem;align-items:center">
+        <span class="scenario-cmd">/model</span><span style="color:var(--text2)">切换 AI 模型（即时生效）</span>
+        <span class="scenario-cmd">/fast</span><span style="color:var(--text2)">切换 Fast Mode</span>
+        <span class="scenario-cmd">/compact</span><span style="color:var(--text2)">压缩上下文</span>
+        <span class="scenario-cmd">/copy</span><span style="color:var(--text2)">交互式选择代码块复制</span>
+        <span class="scenario-cmd">/memory</span><span style="color:var(--text2)">管理 auto-memory</span>
+        <span class="scenario-cmd">/resume</span><span style="color:var(--text2)">恢复历史会话</span>
+        <span class="scenario-cmd">/fork</span><span style="color:var(--text2)">分叉当前会话</span>
+        <span class="scenario-cmd">/rewind</span><span style="color:var(--text2)">回退对话撤销变更</span>
+        <span class="scenario-cmd">/rename</span><span style="color:var(--text2)">重命名会话（无参数自动生成）</span>
+        <span class="scenario-cmd">/permissions</span><span style="color:var(--text2)">管理工具权限规则</span>
+        <span class="scenario-cmd">/theme</span><span style="color:var(--text2)">打开主题选择器</span>
+        <span class="scenario-cmd">/config</span><span style="color:var(--text2)">配置（支持搜索过滤）</span>
+        <span class="scenario-cmd">/keybindings</span><span style="color:var(--text2)">自定义键盘快捷键</span>
+        <span class="scenario-cmd">/context</span><span style="color:var(--text2)">查看上下文使用情况</span>
+        <span class="scenario-cmd">/debug</span><span style="color:var(--text2)">排查当前会话问题</span>
+        <span class="scenario-cmd">/doctor</span><span style="color:var(--text2)">诊断安装和配置</span>
+        <span class="scenario-cmd">/export</span><span style="color:var(--text2)">导出对话用于分享</span>
+        <span class="scenario-cmd">/stats</span><span style="color:var(--text2)">使用统计（支持日期范围）</span>
+        <span class="scenario-cmd">/usage</span><span style="color:var(--text2)">查看计划使用限额</span>
+        <span class="scenario-cmd">/mcp</span><span style="color:var(--text2)">管理 MCP 服务器</span>
+        <span class="scenario-cmd">/plugin</span><span style="color:var(--text2)">管理插件</span>
+        <span class="scenario-cmd">/agents</span><span style="color:var(--text2)">管理自定义 Agent</span>
+        <span class="scenario-cmd">/add-dir</span><span style="color:var(--text2)">添加额外工作目录</span>
+        <span class="scenario-cmd">/output-style</span><span style="color:var(--text2)">切换输出样式</span>
+        <span class="scenario-cmd">/todos</span><span style="color:var(--text2)">查看当前任务列表</span>
+        <span class="scenario-cmd">/skills</span><span style="color:var(--text2)">管理 Skills</span>
+        <span class="scenario-cmd">/clear</span><span style="color:var(--text2)">清空当前会话</span>
+        <span class="scenario-cmd">/terminal-setup</span><span style="color:var(--text2)">终端兼容性设置</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-3 fade-in" style="margin-top:1.2rem">
+    <div class="card">
+      <div class="card-icon c4">⊞</div>
+      <h3>CLI 子命令</h3>
+      <p><span class="scenario-cmd">claude auth login/status/logout</span> 认证管理。<span class="scenario-cmd">claude agents</span> 列出 agent。<span class="scenario-cmd">claude remote-control</span> 远程控制。<span class="scenario-cmd">claude doctor</span> 诊断。<span class="scenario-cmd">claude mcp add/list/get/serve</span> MCP 管理。<span class="scenario-cmd">claude plugin install/validate/browse</span> 插件管理。<span class="scenario-cmd">claude install</span> 原生安装。<span class="scenario-cmd">claude --teleport</span> 从 Web 传送。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon c5">⊡</div>
+      <h3>环境变量</h3>
+      <p><span class="scenario-cmd">CLAUDE_CODE_SIMPLE</span> 极简模式。<span class="scenario-cmd">CLAUDE_CODE_TMPDIR</span> 自定义临时目录。<span class="scenario-cmd">CLAUDE_CODE_SHELL</span> 覆盖 shell 检测。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> 禁用后台任务。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 禁用 1M 上下文。<span class="scenario-cmd">BASH_DEFAULT_TIMEOUT_MS</span> bash 超时。<span class="scenario-cmd">ANTHROPIC_LOG=debug</span> 调试日志。<span class="scenario-cmd">CLAUDE_CODE_EXIT_AFTER_STOP_DELAY</span> SDK 自动退出。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon c6">⊟</div>
+      <h3>自定义命令 & 配置</h3>
+      <p>在 .claude/commands/ 中创建 markdown 文件定义自定义命令。支持 $ARGUMENTS 参数。<span class="scenario-cmd">/keybindings</span> 自定义键盘快捷键。<span class="scenario-cmd">/statusline</span> 自定义状态行。settings.json 变更即时生效无需重启。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Section 12: Timeline -->
+<!-- ============================================ -->
+<section class="section" id="timeline">
+  <div class="section-label"><span class="icon">◆</span> 版本时间线</div>
+  <h2>从 v0.2 到 v2.1，完整演进</h2>
+  <p class="subtitle">关键里程碑一览。</p>
+
+  <div class="timeline fade-in">
+    <div class="timeline-item major">
+      <div class="timeline-date">2025-04 — 05</div>
+      <div class="timeline-version">v0.2.21 — v0.2.54</div>
+      <div class="timeline-desc">早期基础功能：fuzzy 命令匹配、Vim 绑定、自定义斜杠命令、MCP project scope、自动压缩、thinking mode、@ 文件提及、图片粘贴、MCP SSE、Web 搜索。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2025-05 — 06</div>
+      <div class="timeline-version">v0.2.55 — v0.2.108</div>
+      <div class="timeline-desc">实时 steering、消息排队、网络工具（curl）、Claude Max 订阅支持、--continue/--resume 会话恢复、Todo 列表、Web 搜索。</div>
+    </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2025-07</div>
+      <div class="timeline-version">v1.0.0</div>
+      <div class="timeline-desc" style="color:var(--accent)">Claude Code GA 正式发布！Sonnet 4 + Opus 4 模型。原生 VS Code 扩展。/rewind、/usage、Ctrl+R 历史搜索。SDK 升级为 Claude Agent SDK。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2025-07 — 09</div>
+      <div class="timeline-version">v1.0.1 — v1.0.73</div>
+      <div class="timeline-desc">TypeScript/Python SDK。Hooks 系统发布。自定义 Agent。/permissions 权限管理。后台命令（Ctrl+B）。Opus Plan Mode。MCP 多配置文件。Alpine/musl 支持。</div>
+    </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2025-09 — 10</div>
+      <div class="timeline-version">v1.0.77 — v1.0.126</div>
+      <div class="timeline-desc">Output styles。PDF 阅读。/context 命令。/memory 编辑。Bedrock mTLS。Opus 4.1 升级。Ctrl+R 历史搜索增强。</div>
+    </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2025-11</div>
+      <div class="timeline-version">v2.0.0</div>
+      <div class="timeline-desc" style="color:var(--accent)">2.0 大版本！全新原生 VS Code 扩展。全新 UI。/rewind 回退对话。/usage 查看限额。Tab 切换 thinking。子 agent 动态添加。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2025-11 — 12</div>
+      <div class="timeline-version">v2.0.1 — v2.0.51</div>
+      <div class="timeline-desc">Opus 4.5 发布！Claude Code Desktop。Plan Mode 增强。Foundry 支持。PermissionRequest hook。后台 agent。自定义 agent 配置。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2025-12</div>
+      <div class="timeline-version">v2.0.52 — v2.0.74</div>
+      <div class="timeline-desc">Pro 用户获得 Opus 4.5。插件系统发布。Claude in Chrome。LSP 代码智能。终端渲染器重写。Haiku 4.5 + Explore 子 agent。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-01-07 — 01-09</div>
+      <div class="timeline-version">v2.1.0 — v2.1.3</div>
+      <div class="timeline-desc">进入 2.1 时代。Skill 热重载。斜杠命令与 skills 合并。权限规则检测。winget 安装支持。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-01-14 — 01-16</div>
+      <div class="timeline-version">v2.1.7 — v2.1.16</div>
+      <div class="timeline-desc">MCP 工具搜索自动模式。Hooks 增强。Bash 历史补全。任务管理系统。自定义键盘快捷键。React Compiler 渲染优化。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-01-27 — 01-31</div>
+      <div class="timeline-version">v2.1.20 — v2.1.30</div>
+      <div class="timeline-desc">PR 状态指示器。PDF 分页读取。/debug 命令。--from-pr 会话关联。--resume 内存减少 68%。</div>
+    </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-02-04 — 02-05</div>
+      <div class="timeline-version">v2.1.31 — v2.1.32</div>
+      <div class="timeline-desc" style="color:var(--accent)">Opus 4.6 正式发布！Agent Teams 研究预览。自动记忆功能。部分对话摘要。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-02-06 — 02-07</div>
+      <div class="timeline-version">v2.1.33 — v2.1.37</div>
+      <div class="timeline-desc">Agent Teams 完善（teammate 消息、memory、hooks）。Fast Mode 支持 Opus 4.6。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-02-10 — 02-13</div>
+      <div class="timeline-version">v2.1.38 — v2.1.42</div>
+      <div class="timeline-desc">终端渲染性能优化。Windows ARM64 原生支持。claude auth 子命令。heredoc 命令注入防护。</div>
+    </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-02-17 — 02-20</div>
+      <div class="timeline-version">v2.1.45 — v2.1.50</div>
+      <div class="timeline-desc">Sonnet 4.6 上线。Agent worktree 隔离。10+ 内存泄漏修复。CJK 布局修复。60+ 项 bug 修复（v2.1.47 史上最大更新）。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-02-24 — 02-25</div>
+      <div class="timeline-version">v2.1.51 — v2.1.56</div>
+      <div class="timeline-desc">Remote Control 子命令。自定义 npm 注册表。HTTP hooks 沙箱路由。Windows 稳定性修复。</div>
+    </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-02-26</div>
+      <div class="timeline-version">v2.1.58 — v2.1.62</div>
+      <div class="timeline-desc">Remote Control 扩展到更多用户。auto-memory 升级支持 /memory 管理。新增 /copy 交互式代码块选择。复合命令智能权限前缀。多实例并发安全修复。Windows 配置文件并发写入修复。</div>
+    </div>
+  </div>
+</section>
+
+<!-- Back to top -->
+<button class="back-to-top" onclick="window.scrollTo({top:0})" aria-label="回到顶部" title="回到顶部">↑</button>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>数据来源：<a href="https://github.com/anthropics/claude-code/releases" target="_blank">GitHub Releases</a> · <a href="https://code.claude.com/docs" target="_blank">官方文档</a> · <a href="https://claude.com/download" target="_blank">下载 Claude Code</a></p>
+  <p style="margin-top:.5rem">整理时间：2026-02-27 · 版本范围：v0.2.21 ~ v2.1.62 · 共 220+ 个版本 · 1000+ 项更新</p>
+  <p style="margin-top:1rem;color:var(--text3)">Built with Claude Code · <a href="#" style="color:var(--text3)">回到顶部 ↑</a></p>
+</footer>
+
+<!-- Scroll animations & interactions -->
+<script>
+// Fade-in observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Nav active state
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 100;
+    if (scrollY >= top) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
+});
+
+// Back to top button
+const backBtn = document.querySelector('.back-to-top');
+window.addEventListener('scroll', () => {
+  backBtn.classList.toggle('show', scrollY > 600);
+}, { passive: true });
+
+// Terminal typing animation
+(function() {
+  const typingEl = document.querySelector('.typing');
+  if (!typingEl || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const fullText = typingEl.textContent;
+  typingEl.textContent = '';
+  let i = 0;
+  function startTyping() {
+    if (i < fullText.length) {
+      typingEl.textContent += fullText.charAt(i);
+      i++;
+      setTimeout(startTyping, 60 + Math.random() * 40);
+    }
+  }
+  // Start after a short delay for dramatic effect
+  const heroObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      setTimeout(startTyping, 800);
+      heroObserver.disconnect();
+    }
+  });
+  heroObserver.observe(typingEl);
+})();
+</script>
+
+</body>
+</html>
