@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Code 全特性速览 — 从用户视角出发</title>
-<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.62，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
+<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.66，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
 <meta name="keywords" content="Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK">
 <meta property="og:title" content="Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进">
 <meta property="og:description" content="220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。">
@@ -162,7 +162,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-badge"><span class="dot"></span> v0.2.21 — v2.1.62 全版本特性整理</div>
+  <div class="hero-badge"><span class="dot"></span> v0.2.21 — v2.1.66 全版本特性整理</div>
   <h1>Claude Code<br>全特性速览</h1>
   <p>从终端到 IDE，从单人编码到多 Agent 协作。<br>以真实使用场景为线索，带你看懂 220+ 个版本背后的每一项能力。</p>
   <div class="hero-meta">
@@ -175,7 +175,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
     <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">Claude Code — zsh</span></div>
     <div class="terminal-body">
       <div><span class="prompt">~ $</span> <span class="cmd">claude</span></div>
-      <div class="output">  Claude Code v2.1.62 (Opus 4.6)</div>
+      <div class="output">  Claude Code v2.1.66 (Opus 4.6)</div>
       <div class="output">  <span class="highlight">1M context</span> | agent teams | auto-memory | fast mode</div>
       <div class="output">&nbsp;</div>
       <div><span class="prompt">></span> <span class="cmd typing"> 帮我重构这个模块，用 agent teams 并行分析安全和性能</span></div>
@@ -355,7 +355,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
     <div class="card fade-in">
       <div class="card-icon c6">◉</div>
       <h3>自动记忆 & /memory</h3>
-      <p>Claude 在工作中自动将有用上下文保存到 auto-memory。用 <span class="scenario-cmd">/memory</span> 管理记忆内容。CLAUDE.md 支持 @path/to/file.md 导入其他文件。.claude/rules/ 目录存放项目规则。</p>
+      <p>Claude 在工作中自动将有用上下文保存到 auto-memory。用 <span class="scenario-cmd">/memory</span> 管理记忆内容。CLAUDE.md 支持 @path/to/file.md 导入其他文件。.claude/rules/ 目录存放项目规则。v2.1.63 起 project configs 和 auto memory 跨 git worktrees 共享。</p>
       <span class="tag c6">v2.1.59</span>
     </div>
     <div class="card fade-in">
@@ -490,7 +490,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
     <div class="card fade-in">
       <div class="card-icon c1">⊗</div>
       <h3>OAuth 认证增强</h3>
-      <p>支持 OAuth Authorization Server 发现、step-up auth、discovery 缓存。预配置 OAuth 凭证（<span class="scenario-cmd">--client-id</span>）。支持 claude.ai MCP connectors。修复多实例 token 刷新竞态。</p>
+      <p>支持 OAuth Authorization Server 发现、step-up auth、discovery 缓存。预配置 OAuth 凭证（<span class="scenario-cmd">--client-id</span>）。支持 claude.ai MCP connectors。修复多实例 token 刷新竞态。v2.1.63 新增手动 URL 粘贴回退，localhost 重定向失败时可手动粘贴回调 URL。</p>
       <span class="tag c1">v2.1.59</span>
     </div>
     <div class="card fade-in">
@@ -502,13 +502,13 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
     <div class="card fade-in">
       <div class="card-icon c4">⊜</div>
       <h3>Skills & 自定义命令</h3>
-      <p>v0.2.31 引入自定义斜杠命令（.claude/commands/）。v2.0.20 引入 Claude Skills。v2.1.3 合并斜杠命令与 skills。支持 SlashCommand 工具让 Claude 调用你的命令。</p>
+      <p>v0.2.31 引入自定义斜杠命令（.claude/commands/）。v2.0.20 引入 Claude Skills。v2.1.3 合并斜杠命令与 skills。支持 SlashCommand 工具让 Claude 调用你的命令。v2.1.63 新增 <span class="scenario-cmd">/simplify</span> 和 <span class="scenario-cmd">/batch</span> 内置命令。</p>
       <span class="tag c4">v0.2.31</span>
     </div>
     <div class="card fade-in">
       <div class="card-icon c2">⊛</div>
       <h3>Hooks 系统</h3>
-      <p>v1.0.38 发布 Hooks。PreToolUse / PostToolUse / Stop / SessionStart / SessionEnd / ConfigChange / WorktreeCreate / TeammateIdle / TaskCompleted / PermissionRequest / UserPromptSubmit — 完整生命周期钩子。</p>
+      <p>v1.0.38 发布 Hooks。PreToolUse / PostToolUse / Stop / SessionStart / SessionEnd / ConfigChange / WorktreeCreate / TeammateIdle / TaskCompleted / PermissionRequest / UserPromptSubmit — 完整生命周期钩子。v2.1.63 新增 HTTP hooks，支持 POST JSON 到 URL 接收响应。</p>
       <span class="tag c2">v1.0.38</span>
     </div>
     <div class="card fade-in">
@@ -579,7 +579,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
     <div class="card fade-in">
       <div class="card-icon c6">⊡</div>
       <h3>实时交互</h3>
-      <p>v0.2.108 引入实时 steering（Claude 工作时发消息引导方向）。v0.2.75 消息排队（Enter 排队后续消息）。<span class="scenario-cmd">/copy</span> 交互式选择代码块复制。Prompt suggestions 智能建议。</p>
+      <p>v0.2.108 引入实时 steering（Claude 工作时发消息引导方向）。v0.2.75 消息排队（Enter 排队后续消息）。<span class="scenario-cmd">/copy</span> 交互式选择代码块复制，v2.1.63 新增"始终复制完整响应"选项。Prompt suggestions 智能建议。</p>
       <span class="tag c6">v0.2.108</span>
     </div>
   </div>
@@ -905,6 +905,8 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
         <span class="scenario-cmd">/fast</span><span style="color:var(--text2)">切换 Fast Mode</span>
         <span class="scenario-cmd">/compact</span><span style="color:var(--text2)">压缩上下文</span>
         <span class="scenario-cmd">/copy</span><span style="color:var(--text2)">交互式选择代码块复制</span>
+        <span class="scenario-cmd">/simplify</span><span style="color:var(--text2)">简化和优化代码</span>
+        <span class="scenario-cmd">/batch</span><span style="color:var(--text2)">批量处理任务</span>
         <span class="scenario-cmd">/memory</span><span style="color:var(--text2)">管理 auto-memory</span>
         <span class="scenario-cmd">/resume</span><span style="color:var(--text2)">恢复历史会话</span>
         <span class="scenario-cmd">/fork</span><span style="color:var(--text2)">分叉当前会话</span>
@@ -1043,8 +1045,8 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
     </div>
     <div class="timeline-item major">
       <div class="timeline-date">2026-02-26</div>
-      <div class="timeline-version">v2.1.58 — v2.1.62</div>
-      <div class="timeline-desc">Remote Control 扩展到更多用户。auto-memory 升级支持 /memory 管理。新增 /copy 交互式代码块选择。复合命令智能权限前缀。多实例并发安全修复。Windows 配置文件并发写入修复。</div>
+      <div class="timeline-version">v2.1.58 — v2.1.66</div>
+      <div class="timeline-desc">Remote Control 扩展到更多用户。auto-memory 升级支持 /memory 管理。新增 /copy 交互式代码块选择。复合命令智能权限前缀。多实例并发安全修复。Windows 配置文件并发写入修复。新增 /simplify 和 /batch 命令。HTTP hooks 支持 POST JSON。Project configs 和 auto memory 跨 git worktrees 共享。MCP OAuth 手动 URL 粘贴回退。大量内存泄漏修复。VSCode 会话重命名和删除。</div>
     </div>
   </div>
 </section>
@@ -1055,7 +1057,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
 <!-- Footer -->
 <footer class="footer">
   <p>数据来源：<a href="https://github.com/anthropics/claude-code/releases" target="_blank">GitHub Releases</a> · <a href="https://code.claude.com/docs" target="_blank">官方文档</a> · <a href="https://claude.com/download" target="_blank">下载 Claude Code</a></p>
-  <p style="margin-top:.5rem">整理时间：2026-02-27 · 版本范围：v0.2.21 ~ v2.1.62 · 共 220+ 个版本 · 1000+ 项更新</p>
+  <p style="margin-top:.5rem">整理时间：2026-03-05 · 版本范围：v0.2.21 ~ v2.1.66 · 共 220+ 个版本 · 1000+ 项更新</p>
   <p style="margin-top:1rem;color:var(--text3)">Built with Claude Code · <a href="#" style="color:var(--text3)">回到顶部 ↑</a></p>
 </footer>
 
