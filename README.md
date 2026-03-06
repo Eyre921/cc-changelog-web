@@ -2,6 +2,8 @@
 
 > 从用户视角出发，带你看懂 Claude Code 的每一项能力。
 
+> [在线预览](https://cclog.vibevibe.cn/)
+
 一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.68** 共 **220+ 个版本**、**1000+ 项更新**的完整功能演进。
 
 🔗 **数据来源**：[GitHub Releases](https://github.com/anthropics/claude-code/releases) · [官方文档](https://code.claude.com/docs) · [下载 Claude Code](https://claude.com/download)
