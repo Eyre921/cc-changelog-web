@@ -4,7 +4,7 @@
 
 > [在线预览](https://cclog.vibevibe.cn/)
 
-一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.70** 共 **220+ 个版本**、**1000+ 项更新**的完整功能演进。
+一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.71** 共 **220+ 个版本**、**1000+ 项更新**的完整功能演进。
 
 🔗 **数据来源**：[GitHub Releases](https://github.com/anthropics/claude-code/releases) · [官方文档](https://code.claude.com/docs) · [下载 Claude Code](https://claude.com/download)
 
@@ -89,14 +89,14 @@ cc-changelog-web/
 | 3 | 会话与上下文管理 | 自动记忆、会话分叉/恢复、PR 关联 |
 | 4 | 开发工作流 | Git/PR 集成、Plan Mode、Web 搜索、PDF 阅读、LSP |
 | 5 | MCP 生态与扩展 | OAuth、插件、Skills、Hooks、远程控制 |
-| 6 | 终端体验 | 主题、Vim 模式、CJK 支持、快捷键 |
+| 6 | 终端体验 | 主题、Vim 模式、CJK 支持、快捷键、/loop 定时循环 |
 | 7 | 安全与信任 | 沙箱环境、权限控制 |
 | 8 | SDK 与集成 | TypeScript/Python SDK、插件、自定义工具 |
 | 9 | 性能与效率 | 渲染优化 74%、内存泄漏修复、启动性能优化 |
 | 10 | 跨平台 | macOS、Linux、Windows、WSL2 |
 | 11 | VS Code 集成 | 扩展功能、Spark 图标、Plan Markdown 视图、MCP 管理 |
 | 12 | 快捷键与命令 | 快捷键速查、斜杠命令、CLI 子命令、环境变量、自定义配置 |
-| 13 | 版本时间线 | v0.2.21 ~ v2.1.70 完整历程 |
+| 13 | 版本时间线 | v0.2.21 ~ v2.1.71 完整历程 |
 
 ## 🤝 贡献
 
@@ -104,6 +104,6 @@ cc-changelog-web/
 
 ## 📝 说明
 
-- 整理时间：2026-03-06
-- 版本范围：v0.2.21 ~ v2.1.70
+- 整理时间：2026-03-07
+- 版本范围：v0.2.21 ~ v2.1.71
 - 本站使用 Claude Code 构建

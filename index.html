@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Code 全特性速览 — 从用户视角出发</title>
-<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.70，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
+<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.71，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
 <meta name="keywords" content="Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK">
 <meta property="og:title" content="Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进">
 <meta property="og:description" content="220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。">
@@ -162,7 +162,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-badge"><span class="dot"></span> v0.2.21 — v2.1.70 全版本特性整理</div>
+  <div class="hero-badge"><span class="dot"></span> v0.2.21 — v2.1.71 全版本特性整理</div>
   <h1>Claude Code<br>全特性速览</h1>
   <p>从终端到 IDE，从单人编码到多 Agent 协作。<br>以真实使用场景为线索，带你看懂 220+ 个版本背后的每一项能力。</p>
   <div class="hero-meta">
@@ -175,8 +175,8 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
     <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">Claude Code — zsh</span></div>
     <div class="terminal-body">
       <div><span class="prompt">~ $</span> <span class="cmd">claude</span></div>
-      <div class="output">  Claude Code v2.1.70 (Opus 4.6)</div>
-      <div class="output">  <span class="highlight">1M context</span> | agent teams | auto-memory | fast mode | voice | effort control</div>
+      <div class="output">  Claude Code v2.1.71 (Opus 4.6)</div>
+      <div class="output">  <span class="highlight">1M context</span> | agent teams | auto-memory | fast mode | voice | /loop | effort control</div>
       <div class="output">&nbsp;</div>
       <div><span class="prompt">></span> <span class="cmd typing"> 帮我重构这个模块，用 agent teams 并行分析安全和性能</span></div>
     </div>
@@ -210,50 +210,50 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
 <section class="section" id="recent">
   <div class="section-label"><span class="icon">🔥</span> 最近更新亮点</div>
   <h2>最近版本的新特性</h2>
-  <p class="subtitle">v2.1.58 — v2.1.70：VS Code 全面升级、渲染性能飙升、compaction 智能缓存，Claude Code 持续进化。</p>
+  <p class="subtitle">v2.1.58 — v2.1.71：/loop 定时循环命令、语音按键可绑定、启动冻结修复、VS Code 全面升级，Claude Code 持续进化。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in" style="border-color:var(--accent);box-shadow:0 4px 20px rgba(192,132,252,.12)">
-      <div class="card-icon c2">✨</div>
-      <h3>VS Code: Spark 图标 & 会话列表</h3>
-      <p>VS Code 活动栏新增 spark 图标，列出所有 Claude Code 会话，会话以完整编辑器标签页打开，告别终端窗口来回切换。</p>
-      <span class="tag c2">v2.1.70 NEW</span>
+      <div class="card-icon c2">🔄</div>
+      <h3>/loop 定时循环命令</h3>
+      <p>全新 <span class="scenario-cmd">/loop</span> 命令，在会话内按固定间隔重复运行 prompt 或斜杠命令。例如 <span class="scenario-cmd">/loop 5m check the deploy</span>，配合 cron 调度工具实现周期性任务。</p>
+      <span class="tag c2">v2.1.71 NEW</span>
     </div>
     <div class="card fade-in" style="border-color:var(--accent);box-shadow:0 4px 20px rgba(192,132,252,.12)">
-      <div class="card-icon c4">📝</div>
-      <h3>VS Code: Plan Markdown 全文视图</h3>
-      <p>Plan 在 VS Code 中以完整 Markdown 文档形式展示，支持添加评论为 Claude 提供反馈。审查和迭代 plan 更直观。</p>
-      <span class="tag c4">v2.1.70 NEW</span>
+      <div class="card-icon c4">🎤</div>
+      <h3>语音按键可自定义绑定</h3>
+      <p>新增 <span class="scenario-cmd">voice:pushToTalk</span> 键绑定，在 keybindings.json 中设置语音激活键（默认 Space），modifier+letter 组合如 meta+k 不影响打字。</p>
+      <span class="tag c4">v2.1.71 NEW</span>
     </div>
     <div class="card fade-in" style="border-color:var(--accent);box-shadow:0 4px 20px rgba(192,132,252,.12)">
-      <div class="card-icon c3">🔌</div>
-      <h3>VS Code: 原生 MCP 管理对话框</h3>
-      <p>在 VS Code 聊天面板中使用 <span class="scenario-cmd">/mcp</span> 即可启用/禁用 MCP 服务器、重新连接、管理 OAuth 认证，无需切换到终端。</p>
-      <span class="tag c3">v2.1.70 NEW</span>
+      <div class="card-icon c3">🚀</div>
+      <h3>启动冻结修复三连</h3>
+      <p>修复语音模式启用时 5–8 秒启动冻结（CoreAudio 阻塞主线程）、多 claude.ai proxy 同时刷新 OAuth token 导致的 UI 冻结、长时间运行会话中的 stdin 按键冻结。</p>
+      <span class="tag c3">v2.1.71 NEW</span>
     </div>
     <div class="card fade-in" style="border-color:var(--accent);box-shadow:0 4px 20px rgba(192,132,252,.12)">
-      <div class="card-icon c5">⚡</div>
-      <h3>渲染性能：re-render 减少 74%</h3>
-      <p>prompt 输入 re-render 减少约 74%。spinner 动画循环隔离降低渲染和 CPU 开销。无自定义 CA 证书用户启动内存减少约 426KB。</p>
-      <span class="tag c5">v2.1.70 NEW</span>
+      <div class="card-icon c5">🔌</div>
+      <h3>插件 & MCP 连接器修复</h3>
+      <p>修复多实例运行时插件安装丢失。修复 claude.ai 连接器 OAuth token 刷新后断连。改进 <span class="scenario-cmd">/plugin uninstall</span> 使用 local settings，不影响团队成员。插件 MCP 服务器去重。</p>
+      <span class="tag c5">v2.1.71 NEW</span>
     </div>
     <div class="card fade-in" style="border-color:var(--accent);box-shadow:0 4px 20px rgba(192,132,252,.12)">
-      <div class="card-icon c1">🗜</div>
-      <h3>Compaction 保留图片缓存</h3>
-      <p>改进 compaction：在摘要请求中保留图片，允许 prompt cache 复用，使压缩更快更省钱。<span class="scenario-cmd">/rename</span> 在 Claude 处理中也能使用，不再排队等待。</p>
-      <span class="tag c1">v2.1.70 NEW</span>
+      <div class="card-icon c1">⚡</div>
+      <h3>启动与重连性能提升</h3>
+      <p>延迟原生图片处理器加载优化启动时间。笔记本唤醒后 bridge 重连从最长 10 分钟缩短到数秒。<span class="scenario-cmd">/debug</span> 支持会话内切换调试日志。</p>
+      <span class="tag c1">v2.1.71 NEW</span>
     </div>
     <div class="card fade-in" style="border-color:var(--accent);box-shadow:0 4px 20px rgba(192,132,252,.12)">
-      <div class="card-icon c6">📋</div>
-      <h3>Remote Control 负载降低 300×</h3>
-      <p>Remote Control <span class="scenario-cmd">/poll</span> 频率从 1–2 秒降至每 10 分钟一次（连接状态下），服务器负载降低约 300 倍。断线重连不受影响。</p>
-      <span class="tag c6">v2.1.70 NEW</span>
+      <div class="card-icon c6">🐛</div>
+      <h3>v2.1.71 关键修复精选</h3>
+      <p>修复 <span class="scenario-cmd">/fork</span> 会话共享 plan 文件相互覆盖。修复 Read 工具图片处理失败后将超大图片塞入上下文。修复 heredoc 提交信息的误报权限提示。修复 <span class="scenario-cmd">--print</span> 配置 team agents 时永久挂起。</p>
+      <span class="tag c6">v2.1.71 NEW</span>
     </div>
     <div class="card fade-in" style="border-color:var(--accent2);box-shadow:0 4px 20px rgba(129,140,248,.1)">
-      <div class="card-icon c7">🎙</div>
-      <h3>Voice 语音输入 — 20 种语言</h3>
-      <p>长按空格键开始语音输入。v2.1.69 新增俄语、波兰语、土耳其语等 10 种语言，累计 20 种。v2.1.70 修复 Windows 原生二进制语音模式和按住说话激活问题。</p>
-      <span class="tag c7">v2.1.69 — v2.1.70</span>
+      <div class="card-icon c7">✨</div>
+      <h3>VS Code: Spark 图标 & MCP 管理</h3>
+      <p>VS Code 活动栏新增 spark 图标列出所有会话。Plan Markdown 全文视图支持评论。原生 MCP 服务器管理对话框。prompt re-render 减少 74%。compaction 保留图片复用缓存。</p>
+      <span class="tag c7">v2.1.70</span>
     </div>
     <div class="card fade-in" style="border-color:var(--accent2);box-shadow:0 4px 20px rgba(129,140,248,.1)">
       <div class="card-icon c2">📡</div>
@@ -264,7 +264,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
     <div class="card fade-in">
       <div class="card-icon c4">🪝</div>
       <h3>InstructionsLoaded Hook & 热重载</h3>
-      <p><span class="scenario-cmd">InstructionsLoaded</span> hook 在 CLAUDE.md 加载时触发。<span class="scenario-cmd">/reload-plugins</span> 热重载无需重启。hook 事件支持 <span class="scenario-cmd">agent_id</span>/<span class="scenario-cmd">agent_type</span> 字段。</p>
+      <p><span class="scenario-cmd">InstructionsLoaded</span> hook 在 CLAUDE.md 加载时触发。<span class="scenario-cmd">/reload-plugins</span> 热重载无需重启。hook 事件支持 <span class="scenario-cmd">agent_id</span>/<span class="scenario-cmd">agent_type</span> 字段。Voice STT 扩展到 20 种语言。</p>
       <span class="tag c4">v2.1.69</span>
     </div>
     <div class="card fade-in">
@@ -670,8 +670,8 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
     <div class="card fade-in">
       <div class="card-icon c2">🎙</div>
       <h3>Voice 语音输入</h3>
-      <p>长按空格键开始语音输入。v2.1.69 支持 20 种语言（英语、中文、日语、韩语、法语、德语、西班牙语、葡萄牙语、意大利语、印地语、俄语、波兰语、土耳其语、荷兰语、乌克兰语、希腊语、捷克语、丹麦语、瑞典语、挪威语）。v2.1.70 修复 Windows 原生二进制语音加载失败、push-to-talk 首次激活问题，改进静音错误提示。</p>
-      <span class="tag c2">v2.1.69</span>
+      <p>长按空格键开始语音输入（v2.1.71 支持 <span class="scenario-cmd">voice:pushToTalk</span> 自定义按键绑定）。v2.1.69 支持 20 种语言。v2.1.71 修复语音模式导致的 5–8 秒启动冻结（CoreAudio 阻塞主线程）。</p>
+      <span class="tag c2">v2.1.69 — v2.1.71</span>
     </div>
   </div>
 
@@ -812,7 +812,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
     <div class="card fade-in">
       <div class="card-icon c4">↑</div>
       <h3>启动优化</h3>
-      <p>延迟 SessionStart hook 执行（-500ms）。headless 模式延迟 Yoga WASM 和 UI 导入。缓存 MCP auth 失败避免重复连接。批量 MCP 工具 token 计数为单个 API 调用。v2.1.69 优化 macOS 启动（消除冗余设置文件重载和不必要的 keychain 查找）、改进 --worktree 启动（消除 git 子进程）、并行化 MCP -p 启动。v2.1.70 无自定义 CA 证书用户启动内存减少约 426KB。延迟 Yoga WASM 预加载减少约 16MB 基础内存。</p>
+      <p>延迟 SessionStart hook 执行（-500ms）。headless 模式延迟 Yoga WASM 和 UI 导入。缓存 MCP auth 失败避免重复连接。v2.1.70 延迟 Yoga WASM 预加载减少约 16MB 基础内存。v2.1.71 延迟原生图片处理器加载至首次使用、修复语音模式 CoreAudio 5–8 秒阻塞、修复多 proxy 同时刷新 OAuth 导致的 UI 冻结。</p>
       <span class="tag c4">v2.1.47+</span>
     </div>
     <div class="card fade-in">
@@ -1002,6 +1002,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
       <div style="padding:1rem 1.5rem;font-size:.82rem;display:grid;grid-template-columns:auto 1fr;gap:.4rem 1.5rem;align-items:center">
         <span class="scenario-cmd">/model</span><span style="color:var(--text2)">切换 AI 模型（即时生效）</span>
         <span class="scenario-cmd">/fast</span><span style="color:var(--text2)">切换 Fast Mode</span>
+        <span class="scenario-cmd">/loop</span><span style="color:var(--text2)">定时循环运行命令（如 /loop 5m check deploy）</span>
         <span class="scenario-cmd">/compact</span><span style="color:var(--text2)">压缩上下文</span>
         <span class="scenario-cmd">/copy</span><span style="color:var(--text2)">交互式选择代码块复制</span>
         <span class="scenario-cmd">/memory</span><span style="color:var(--text2)">管理 auto-memory</span>
@@ -1162,7 +1163,12 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
     <div class="timeline-item major">
       <div class="timeline-date">2026-03</div>
       <div class="timeline-version">v2.1.70</div>
-      <div class="timeline-desc" style="color:var(--accent)">VS Code 大升级：spark 图标会话列表、Plan Markdown 全文视图支持评论、原生 MCP 服务器管理对话框。prompt re-render 减少 74%。compaction 保留图片实现 prompt cache 复用。Remote Control /poll 负载降低 300 倍。/rename 处理中可用。/color 支持重置。修复第三方网关 API 400 错误、Windows/WSL 剪贴板 CJK/emoji 损坏、慢速 SSH 回车问题等。</div>
+      <div class="timeline-desc">VS Code 大升级：spark 图标会话列表、Plan Markdown 全文视图支持评论、原生 MCP 服务器管理对话框。prompt re-render 减少 74%。compaction 保留图片实现 prompt cache 复用。Remote Control /poll 负载降低 300 倍。/rename 处理中可用。/color 支持重置。修复第三方网关 API 400 错误、Windows/WSL 剪贴板 CJK/emoji 损坏、慢速 SSH 回车问题等。</div>
+    </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-03</div>
+      <div class="timeline-version">v2.1.71</div>
+      <div class="timeline-desc" style="color:var(--accent)">新增 /loop 定时循环命令和 cron 调度工具。voice:pushToTalk 键绑定可自定义。修复语音模式 5–8 秒启动冻结、多 proxy OAuth 刷新 UI 冻结、长会话 stdin 冻结。修复 /fork 共享 plan 文件覆盖。改进插件去重和 uninstall 行为。bridge 重连从 10 分钟缩至数秒。/debug 支持中途切换。</div>
     </div>
   </div>
 </section>
@@ -1173,7 +1179,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
 <!-- Footer -->
 <footer class="footer">
   <p>数据来源：<a href="https://github.com/anthropics/claude-code/releases" target="_blank">GitHub Releases</a> · <a href="https://code.claude.com/docs" target="_blank">官方文档</a> · <a href="https://claude.com/download" target="_blank">下载 Claude Code</a></p>
-  <p style="margin-top:.5rem">整理时间：2026-03-06 · 版本范围：v0.2.21 ~ v2.1.70 · 共 220+ 个版本 · 1000+ 项更新</p>
+  <p style="margin-top:.5rem">整理时间：2026-03-07 · 版本范围：v0.2.21 ~ v2.1.71 · 共 220+ 个版本 · 1000+ 项更新</p>
   <p style="margin-top:1rem;color:var(--text3)">Built with Claude Code · <a href="#" style="color:var(--text3)">回到顶部 ↑</a></p>
 </footer>
 
