@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Claude Code Feature Overview — A User's Perspective",
+    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.71, 220+ versions and 1000+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
+    "keywords": "Claude Code, Anthropic, AI Programming, Agent, MCP, CLI, VS Code, SDK",
+    "ogTitle": "Claude Code Feature Overview — Complete Evolution from v0.2 to v2.1",
+    "ogDescription": "220+ versions, 1000+ updates. From terminal to IDE, from solo coding to multi-Agent collaboration — discover every capability of Claude Code."
+  },
+  "hero": {
+    "badge": "v0.2.21 — v2.1.71 Full Version Feature Summary",
+    "title": "Claude Code<br>Feature Overview",
+    "subtitle": "From terminal to IDE, from solo coding to multi-Agent collaboration.<br>Explore every capability across 220+ versions through real-world use cases.",
+    "versions": " versions",
+    "updates": " updates",
+    "majors": " major releases",
+    "terminalTitle": "Claude Code — zsh",
+    "terminalPrompt": "~ $",
+    "terminalCmd": "claude",
+    "terminalOutput1": "  Claude Code v2.1.71 (Opus 4.6)",
+    "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control",
+    "terminalTyping": " Refactor this module, use agent teams to analyze security and performance in parallel"
+  },
+  "nav": {
+    "recent": "Recent",
+    "models": "AI Models",
+    "agents": "Multi-Agent",
+    "sessions": "Sessions",
+    "devflow": "Dev Workflow",
+    "mcp": "MCP",
+    "terminal": "Terminal",
+    "security": "Security",
+    "sdk": "SDK",
+    "performance": "Performance",
+    "platform": "Cross-Platform",
+    "vscode": "VS Code",
+    "shortcuts": "Shortcuts",
+    "timeline": "Timeline"
+  },
+  "sections": {
+    "recent": {
+      "label": "🔥 Recent Highlights",
+      "title": "Latest Features",
+      "subtitle": "v2.1.58 — v2.1.71: /loop scheduled commands, customizable voice keys, startup freeze fixes, VS Code major upgrades — Claude Code keeps evolving."
+    },
+    "models": {
+      "label": "◆ AI Models & Reasoning",
+      "title": "Your AI Partner, Stronger & Faster",
+      "subtitle": "From Opus 4.6 deep reasoning to Fast Mode instant output — choose the right model for the task."
+    },
+    "agents": {
+      "label": "◆ Multi-Agent Collaboration",
+      "title": "A One-Person Team, Multiple Agents in Parallel",
+      "subtitle": "Agent Teams let multiple AIs work simultaneously: one analyzes security, one optimizes performance, one writes tests."
+    },
+    "sessions": {
+      "label": "◆ Sessions & Memory",
+      "title": "Conversations Persist, Memory Carries On",
+      "subtitle": "Auto-memory, session resume, fork, summary — every conversation has context."
+    },
+    "devflow": {
+      "label": "◆ Developer Workflow",
+      "title": "From Code to PR, All in One Flow",
+      "subtitle": "Git integration, PR status tracking, task management, PDF reading — full development lifecycle coverage."
+    },
+    "mcp": {
+      "label": "◆ MCP Ecosystem",
+      "title": "Infinite Extensions, Connect Everything",
+      "subtitle": "Model Context Protocol connects Claude Code to Slack, GitHub, databases, and any external service."
+    },
+    "terminal": {
+      "label": "◆ Terminal Experience",
+      "title": "The Ultimate Terminal Experience",
+      "subtitle": "Themes, syntax highlighting, CJK support, Vim mode — every detail polished."
+    },
+    "security": {
+      "label": "◆ Security & Sandbox",
+      "title": "Security by Design",
+      "subtitle": "Sandbox isolation, tiered permissions, command injection protection — defense at every layer."
+    },
+    "sdk": {
+      "label": "◆ SDK & Integrations",
+      "title": "More Than a CLI, It's a Dev Platform",
+      "subtitle": "SDK, Desktop app, OpenTelemetry, Output Styles — Claude Code is a complete developer platform."
+    },
+    "performance": {
+      "label": "◆ Performance",
+      "title": "Faster Startup, Less Memory",
+      "subtitle": "From startup to long sessions, every aspect is continuously optimized."
+    },
+    "platform": {
+      "label": "◆ Cross-Platform",
+      "title": "Windows, macOS, Linux — All Covered",
+      "subtitle": "From Windows ARM64 to RHEL 8, from WSL2 to NFS filesystems."
+    },
+    "vscode": {
+      "label": "◆ VS Code Integration",
+      "title": "Claude in Your IDE",
+      "subtitle": "Not just a terminal tool — the VS Code extension brings Claude into your IDE workflow."
+    },
+    "shortcuts": {
+      "label": "◆ Shortcuts & Commands",
+      "title": "Power Tools for Keyboard Warriors",
+      "subtitle": "Every action has a shortcut, every feature has a slash command."
+    },
+    "timeline": {
+      "label": "◆ Version Timeline",
+      "title": "From v0.2 to v2.1, Complete Evolution",
+      "subtitle": "Key milestones at a glance."
+    }
+  },
+  "stats": {
+    "rerender": "prompt re-render reduction",
+    "rcLoad": "Remote Control load reduction",
+    "memLeaks": "memory leak fixes",
+    "wasmSave": "deferred WASM preload savings",
+    "diskThreshold": "tool result disk persist threshold"
+  },
+  "shortcuts_section": {
+    "keyboardTitle": "Keyboard Shortcuts",
+    "slashTitle": "Slash Commands",
+    "cliTitle": "CLI Subcommands",
+    "envTitle": "Environment Variables",
+    "customTitle": "Custom Commands & Config"
+  },
+  "footer": {
+    "sources": "Data sources: ",
+    "githubReleases": "GitHub Releases",
+    "officialDocs": "Official Docs",
+    "download": "Download Claude Code",
+    "timestamp": "Updated: 2026-03-08",
+    "versionRange": "Version range: v0.2.21 ~ v2.1.71",
+    "totalVersions": "220+ versions",
+    "totalUpdates": "1000+ updates",
+    "builtWith": "Built with Claude Code",
+    "backToTop": "Back to top ↑"
+  },
+  "controls": {
+    "backToTop": "Back to top",
+    "lightMode": "☀️",
+    "darkMode": "🌙"
+  }
+}
