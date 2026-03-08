@@ -60,6 +60,9 @@ const App = (() => {
     window.addEventListener('scroll', () => {
       backBtn.classList.toggle('show', scrollY > 600);
     }, { passive: true });
+    backBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0 });
+    });
   }
 
   // ---- Terminal typing animation ----

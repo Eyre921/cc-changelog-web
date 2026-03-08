@@ -241,6 +241,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
 /* ---- Footer ---- */
 .footer{text-align:center;padding:4rem 1.5rem;border-top:1px solid var(--border);color:var(--text3);font-size:.8rem}
 .footer a{color:var(--accent1);text-decoration:none}
+.footer-cta{color:var(--accent1);font-weight:600}
 
 /* ---- Responsive ---- */
 @media(max-width:768px){
