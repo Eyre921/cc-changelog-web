@@ -17,6 +17,10 @@ const App = (() => {
     if (btn) {
       btn.textContent = theme === 'dark' ? '☀️' : '🌙';
     }
+    const floatingBtn = document.querySelector('.floating-theme');
+    if (floatingBtn) {
+      floatingBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
   }
 
   function toggleTheme() {
@@ -104,8 +108,33 @@ const App = (() => {
   // ---- Theme toggle button ----
   function initThemeToggle() {
     const btn = document.querySelector('.theme-toggle');
+    if (btn) btn.addEventListener('click', toggleTheme);
+    const floatingBtn = document.querySelector('.floating-theme');
+    if (floatingBtn) floatingBtn.addEventListener('click', toggleTheme);
+  }
+
+  // ---- Floating language toggle ----
+  function initFloatingLang() {
+    const btn = document.querySelector('.floating-lang');
     if (!btn) return;
-    btn.addEventListener('click', toggleTheme);
+    function updateLabel() {
+      const lang = I18n.getLang();
+      btn.textContent = lang === 'zh-CN' ? '中/EN' : 'EN/中';
+    }
+    updateLabel();
+    btn.addEventListener('click', () => {
+      const next = I18n.getLang() === 'zh-CN' ? 'en' : 'zh-CN';
+      I18n.setLanguage(next);
+    });
+    I18n.onChange(updateLabel);
+  }
+
+  // ---- Sync floating theme icon ----
+  function syncFloatingTheme() {
+    const floatingBtn = document.querySelector('.floating-theme');
+    if (!floatingBtn) return;
+    const theme = document.documentElement.getAttribute('data-theme') || 'light';
+    floatingBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
   }
 
   // ---- Init ----
@@ -123,6 +152,8 @@ const App = (() => {
     initTypingAnimation();
     initLangSelector();
     initThemeToggle();
+    initFloatingLang();
+    syncFloatingTheme();
   }
 
   return { init, toggleTheme, applyTheme };

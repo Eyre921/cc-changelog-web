@@ -261,6 +261,18 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
 .back-to-top.show{opacity:1;pointer-events:auto}
 .back-to-top:hover{transform:translateY(-3px);box-shadow:0 6px 24px var(--back-to-top-shadow)}
 
+/* ---- Floating side controls ---- */
+.floating-controls{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.6rem;z-index:100}
+.floating-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--text);cursor:pointer;font-size:.7rem;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 2px 12px var(--card-hover-shadow);font-family:inherit;line-height:1}
+.floating-btn:hover{border-color:var(--accent1);color:var(--accent1);transform:scale(1.1);box-shadow:0 4px 20px var(--card-hover-shadow)}
+.floating-theme{font-size:1.1rem}
+.floating-lang{font-size:.6rem;font-weight:700;letter-spacing:-.02em}
+@media(max-width:768px){
+  .floating-controls{right:.6rem;gap:.4rem}
+  .floating-btn{width:36px;height:36px}
+  .floating-lang{font-size:.55rem}
+}
+
 /* ---- Nav mobile scroll hint ---- */
 .nav-inner::after{content:'';position:sticky;right:0;flex-shrink:0;width:40px;background:linear-gradient(to right,transparent,var(--background));pointer-events:none;display:none}
 @media(max-width:900px){.nav-inner::after{display:block}}

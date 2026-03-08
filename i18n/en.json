@@ -9,7 +9,7 @@
   "hero": {
     "badge": "v0.2.21 — v2.1.71 Full Version Feature Summary",
     "title": "Claude Code<br>Feature Overview",
-    "subtitle": "From terminal to IDE, from solo coding to multi-Agent collaboration.<br>Explore every capability across 220+ versions through real-world use cases.",
+    "subtitle": "From terminal to IDE, from solo coding to a team of Agents doing the heavy lifting.<br>220+ version iterations, 1000+ updates — each feature comes with real-world scenarios so you can hit the ground running.",
     "versions": " versions",
     "updates": " updates",
     "majors": " major releases",
@@ -18,7 +18,7 @@
     "terminalCmd": "claude",
     "terminalOutput1": "  Claude Code v2.1.71 (Opus 4.6)",
     "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control",
-    "terminalTyping": " Refactor this module, use agent teams to analyze security and performance in parallel",
+    "terminalTyping": " Refactor this module with 3 agents: one for security, one for perf, one for tests",
     "advancedCta": "🚀 Explore Advanced Claude Code Usage →"
   },
   "nav": {
@@ -41,72 +41,72 @@
     "recent": {
       "label": "🔥 Recent Highlights",
       "title": "Latest Features",
-      "subtitle": "v2.1.58 — v2.1.71: /loop scheduled commands, customizable voice keys, startup freeze fixes, VS Code major upgrades — Claude Code keeps evolving."
+      "subtitle": "v2.1.58 — v2.1.71: /loop for scheduled monitoring, customizable voice keys, triple startup freeze fixes, VS Code major upgrades — every release solves real pain points."
     },
     "models": {
       "label": "◆ AI Models & Reasoning",
-      "title": "Your AI Partner, Stronger & Faster",
-      "subtitle": "From Opus 4.6 deep reasoning to Fast Mode instant output — choose the right model for the task."
+      "title": "Pick Your Model Like a Tool: Heavy Hammer for Hard Jobs, Swift Blade for Quick Ones",
+      "subtitle": "Opus 4.6 deep reasoning for complex architecture, Fast Mode for instant daily coding, /model to switch — no overthinking needed."
     },
     "agents": {
       "label": "◆ Multi-Agent Collaboration",
-      "title": "A One-Person Team, Multiple Agents in Parallel",
-      "subtitle": "Agent Teams let multiple AIs work simultaneously: one analyzes security, one optimizes performance, one writes tests."
+      "title": "A One-Person Team, N Agents Doing the Work",
+      "subtitle": "Say 'refactor this module' and three Agents split up: security audit, perf optimization, test writing — you just grab a coffee and wait for the report."
     },
     "sessions": {
       "label": "◆ Sessions & Memory",
-      "title": "Conversations Persist, Memory Carries On",
-      "subtitle": "Auto-memory, session resume, fork, summary — every conversation has context."
+      "title": "Close Your Laptop — Claude Remembers Your Code Tomorrow",
+      "subtitle": "Auto-memory saves project preferences, --resume picks up yesterday's conversation, /fork explores alternatives — context never gets lost."
     },
     "devflow": {
       "label": "◆ Developer Workflow",
-      "title": "From Code to PR, All in One Flow",
-      "subtitle": "Git integration, PR status tracking, task management, PDF reading — full development lifecycle coverage."
+      "title": "From git clone to PR merged — Claude Handles Everything in Between",
+      "subtitle": "Read docs, search code, write logic, run tests, submit PR — no window-switching needed, Claude runs the whole pipeline."
     },
     "mcp": {
       "label": "◆ MCP Ecosystem",
-      "title": "Infinite Extensions, Connect Everything",
-      "subtitle": "Model Context Protocol connects Claude Code to Slack, GitHub, databases, and any external service."
+      "title": "MCP Connects Everything: Slack to Database, Full Pipeline",
+      "subtitle": "Plugins, Skills, Hooks, OAuth — Claude Code isn't an island, it's the hub of your dev toolchain."
     },
     "terminal": {
       "label": "◆ Terminal Experience",
-      "title": "The Ultimate Terminal Experience",
-      "subtitle": "Themes, syntax highlighting, CJK support, Vim mode — every detail polished."
+      "title": "Terminal Experience Maxed Out: Vim, CJK Input, 20-Language Voice",
+      "subtitle": "CJK wide chars align properly, IME full-width spaces work, Vim keybindings feel silky — every terminal user pain point is addressed."
     },
     "security": {
       "label": "◆ Security & Sandbox",
-      "title": "Security by Design",
-      "subtitle": "Sandbox isolation, tiered permissions, command injection protection — defense at every layer."
+      "title": "Security Through Layers: Sandbox + Permissions + Injection Protection",
+      "subtitle": "Worried about AI writing code? Sandbox isolates execution, permissions control every action, enterprise compliance out of the box."
     },
     "sdk": {
       "label": "◆ SDK & Integrations",
-      "title": "More Than a CLI, It's a Dev Platform",
-      "subtitle": "SDK, Desktop app, OpenTelemetry, Output Styles — Claude Code is a complete developer platform."
+      "title": "More Than a CLI — A Complete AI Development Platform",
+      "subtitle": "TypeScript/Python SDK for CI/CD, Desktop app out of the box, OTel for full observability — integrate however you want."
     },
     "performance": {
       "label": "◆ Performance",
-      "title": "Faster Startup, Less Memory",
-      "subtitle": "From startup to long sessions, every aspect is continuously optimized."
+      "title": "Instant Startup, No Lag in Long Sessions — Performance Matters",
+      "subtitle": "30+ memory leaks fixed, rendering overhead cut by 74%, 8-hour sessions still silky smooth."
     },
     "platform": {
       "label": "◆ Cross-Platform",
-      "title": "Windows, macOS, Linux — All Covered",
-      "subtitle": "From Windows ARM64 to RHEL 8, from WSL2 to NFS filesystems."
+      "title": "Windows, macOS, Linux — Runs on Whatever You Use",
+      "subtitle": "ARM64 native, RHEL 8 compatible, WSL2 image paste fixed — unified experience across different team setups."
     },
     "vscode": {
       "label": "◆ VS Code Integration",
-      "title": "Claude in Your IDE",
-      "subtitle": "Not just a terminal tool — the VS Code extension brings Claude into your IDE workflow."
+      "title": "Don't Want to Open a Terminal? Use Claude Right in VS Code",
+      "subtitle": "Spark icon for session management, Plan view with comments, one-click MCP server management — everything in your IDE."
     },
     "shortcuts": {
       "label": "◆ Shortcuts & Commands",
-      "title": "Power Tools for Keyboard Warriors",
-      "subtitle": "Every action has a shortcut, every feature has a slash command."
+      "title": "The Efficiency Ceiling for Keyboard Warriors",
+      "subtitle": "Ctrl+B for background tasks, /loop for scheduled checks, Tab for file completion — hands stay on keyboard, productivity maxed out."
     },
     "timeline": {
       "label": "◆ Version Timeline",
-      "title": "From v0.2 to v2.1, Complete Evolution",
-      "subtitle": "Key milestones at a glance."
+      "title": "From v0.2 to v2.1 — One Year's Work That Others Take Three",
+      "subtitle": "220+ versions, from 'it works' to 'it's great' to 'can't live without it' — the complete evolution story."
     }
   },
   "stats": {
