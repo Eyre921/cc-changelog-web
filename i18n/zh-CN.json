@@ -18,7 +18,8 @@
     "terminalCmd": "claude",
     "terminalOutput1": "  Claude Code v2.1.71 (Opus 4.6)",
     "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control",
-    "terminalTyping": " 帮我重构这个模块，用 agent teams 并行分析安全和性能"
+    "terminalTyping": " 帮我重构这个模块，用 agent teams 并行分析安全和性能",
+    "advancedCta": "🚀 探索 Claude Code 进阶用法 →"
   },
   "nav": {
     "recent": "最近更新",
@@ -132,7 +133,8 @@
     "totalVersions": "共 220+ 个版本",
     "totalUpdates": "1000+ 项更新",
     "builtWith": "Built with Claude Code",
-    "backToTop": "回到顶部 ↑"
+    "backToTop": "回到顶部 ↑",
+    "advancedGuide": "🚀 探索更多 Claude Code 进阶用法 →"
   },
   "controls": {
     "backToTop": "回到顶部",

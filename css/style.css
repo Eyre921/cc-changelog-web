@@ -132,6 +132,11 @@ body{background:var(--background);color:var(--text);font-family:'SF Mono','Casca
 .hero-meta span{display:flex;align-items:center;gap:.4rem}
 .hero-meta .num{color:var(--accent1);font-weight:700;font-size:1rem}
 
+/* ---- Hero CTA ---- */
+.hero-cta{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;padding:.6rem 1.5rem;background:var(--accent1);color:#fff;text-decoration:none;border-radius:8px;font-size:.9rem;font-weight:600;transition:all .3s;letter-spacing:.02em}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(139,115,85,.3)}
+[data-theme="dark"] .hero-cta:hover{box-shadow:0 6px 20px rgba(196,168,124,.3)}
+
 /* ---- Terminal animation ---- */
 .terminal-demo{margin-top:3rem;width:min(680px,90vw);background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:left;box-shadow:0 20px 60px rgba(0,0,0,.08)}
 [data-theme="dark"] .terminal-demo{box-shadow:0 20px 60px rgba(0,0,0,.4)}
