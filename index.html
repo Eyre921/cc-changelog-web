@@ -23,7 +23,7 @@
 <section class="hero">
   <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.71 全版本特性整理</span></div>
   <h1 data-i18n="hero.title">Claude Code<br>全特性速览</h1>
-  <p data-i18n="hero.subtitle">从终端到 IDE，从单人编码到多 Agent 协作。<br>以真实使用场景为线索，带你看懂 220+ 个版本背后的每一项能力。</p>
+  <p data-i18n="hero.subtitle">从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>220+ 个版本迭代、1000+ 项更新，每一项能力都配有真实场景，看完就能上手。</p>
   <div class="hero-meta">
     <span><span class="num">220+</span> <span data-i18n="hero.versions">个版本</span></span>
     <span><span class="num">1000+</span> <span data-i18n="hero.updates">项更新</span></span>
@@ -38,7 +38,7 @@
       <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.71 (Opus 4.6)</div>
       <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control</span></div>
       <div class="output">&nbsp;</div>
-      <div><span class="prompt">></span> <span class="cmd typing" data-i18n="hero.terminalTyping"> 帮我重构这个模块，用 agent teams 并行分析安全和性能</span></div>
+      <div><span class="prompt">></span> <span class="cmd typing" data-i18n="hero.terminalTyping"> 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试</span></div>
     </div>
   </div>
 </section>
@@ -77,13 +77,13 @@
 <section class="section" id="recent">
   <div class="section-label"><span data-i18n="sections.recent.label">🔥 最近更新亮点</span></div>
   <h2 data-i18n="sections.recent.title">最近版本的新特性</h2>
-  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.71：/loop 定时循环命令、语音按键可绑定、启动冻结修复、VS Code 全面升级，Claude Code 持续进化。</p>
+  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.71：/loop 让 Claude 帮你定时巡检，语音按键可自定义，启动冻结三连修复，VS Code 全面升级——每个版本都在解决真实痛点。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in card-highlight">
       <div class="card-icon c2">🔄</div>
-      <h3>/loop 定时循环命令</h3>
-      <p>全新 <span class="scenario-cmd">/loop</span> 命令，在会话内按固定间隔重复运行 prompt 或斜杠命令。例如 <span class="scenario-cmd">/loop 5m check the deploy</span>，配合 cron 调度工具实现周期性任务。</p>
+      <h3>/loop 定时循环——Claude 帮你盯着</h3>
+      <p>全新 <span class="scenario-cmd">/loop</span> 命令，让 Claude 按固定间隔重复运行任务。比如 <span class="scenario-cmd">/loop 5m check the deploy</span> 每 5 分钟检查一次部署状态。发完就去忙别的，有问题 Claude 会叫你——再也不用自己写 cron 了。</p>
       <span class="tag c2">v2.1.71 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
@@ -94,8 +94,8 @@
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c3">🚀</div>
-      <h3>启动冻结修复三连</h3>
-      <p>修复语音模式启用时 5–8 秒启动冻结（CoreAudio 阻塞主线程）、多 claude.ai proxy 同时刷新 OAuth token 导致的 UI 冻结、长时间运行会话中的 stdin 按键冻结。</p>
+      <h3>启动冻结修复三连——"卡住了"成为历史</h3>
+      <p>修复语音模式 5–8 秒启动冻结（CoreAudio 在系统唤醒后阻塞主线程）、多 claude.ai proxy 同时刷新 OAuth token 导致的 UI 卡死、长时间运行会话中按键突然没反应的 stdin 冻结。三个痛点一次全解决。</p>
       <span class="tag c3">v2.1.71 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
@@ -118,8 +118,8 @@
     </div>
     <div class="card fade-in card-highlight-secondary">
       <div class="card-icon c7">✨</div>
-      <h3>VS Code: Spark 图标 & MCP 管理</h3>
-      <p>VS Code 活动栏新增 spark 图标列出所有会话。Plan Markdown 全文视图支持评论。原生 MCP 服务器管理对话框。prompt re-render 减少 74%。compaction 保留图片复用缓存。</p>
+      <h3>VS Code: 全面升级，在 IDE 里就够用了</h3>
+      <p>活动栏新增 spark 图标，所有会话一目了然。Plan 预览支持 Markdown 全文视图和评论。原生 MCP 服务器管理对话框，不用切到终端配置。prompt re-render 减少 74%。compaction 保留图片复用缓存——更快更省。</p>
       <span class="tag c7">v2.1.70</span>
     </div>
     <div class="card fade-in card-highlight-secondary">
@@ -161,14 +161,14 @@
 <!-- ============================================ -->
 <section class="section" id="models">
   <div class="section-label"><span data-i18n="sections.models.label">◆ AI 模型与推理</span></div>
-  <h2 data-i18n="sections.models.title">你的 AI 搭档，更强更快</h2>
-  <p class="subtitle" data-i18n="sections.models.subtitle">从 Opus 4.6 的深度推理到 Fast Mode 的极速输出，选择最适合当前任务的模型。</p>
+  <h2 data-i18n="sections.models.title">选模型就像选工具：重活用重锤，快活用飞刀</h2>
+  <p class="subtitle" data-i18n="sections.models.subtitle">Opus 4.6 深度推理搞定复杂架构，Fast Mode 秒级响应日常编码，/model 一键切换，不用纠结。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in">
       <div class="card-icon c1">◈</div>
       <h3>Opus 4.6 — 旗舰推理</h3>
-      <p>v2.1.32 正式发布。最深度的推理能力，适合复杂架构决策、大规模重构和深度代码分析。现在支持完整 1M 上下文窗口。v2.1.68 起 Max/Team 订阅默认使用 medium effort，可随时通过 <span class="scenario-cmd">/model</span> 调整。v2.1.69 在 logo 和 spinner 中显示当前 effort 级别。</p>
+      <p>v2.1.32 正式发布，Claude Code 的"最强大脑"。适合复杂架构决策、大规模重构和深度代码分析。完整 1M 上下文窗口，整个 monorepo 模块一次看完。v2.1.68 起 Max/Team 默认 medium effort——大多数任务够用，遇到硬骨头随时 <span class="scenario-cmd">/model</span> 拉满。</p>
       <span class="tag c1">v2.1.32</span>
     </div>
     <div class="card fade-in">
@@ -222,11 +222,11 @@
     </div>
     <div class="scenario-body">
       <ul>
-        <li>日常写代码、快速迭代 → <span class="scenario-cmd">/fast</span> 开启 Fast Mode，同模型更快输出</li>
-        <li>复杂架构设计、大规模重构 → Opus 4.6 默认模式，深度推理</li>
-        <li>多 agent 工作流中的 worker → Sonnet 4.6，性价比最优</li>
-        <li>代码库探索、轻量任务 → Haiku 4.5 驱动 Explore 子 agent</li>
-        <li>处理超大仓库（monorepo）→ 1M 上下文窗口，一次看完整个模块</li>
+        <li>刚接手一个 monorepo，不确定这段代码啥意思？Opus 4.6 + 1M 上下文，整个模块一次看完，给你讲得明明白白</li>
+        <li>日常写业务逻辑，等不了深度推理？<span class="scenario-cmd">/fast</span> 一键切换 Fast Mode，同模型、更快出活</li>
+        <li>多 agent 工作流里的 worker 节点，不需要旗舰模型？Sonnet 4.6 性价比拉满</li>
+        <li>"这个函数在哪定义的？"——Haiku 4.5 驱动的 Explore 子 agent 帮你翻遍代码库，秒级响应</li>
+        <li>说 "ultrathink" 触发高 effort 深度推理，logo 和 spinner 实时显示当前推理级别，一眼就知道模型在"用力想"还是"快速答"</li>
       </ul>
     </div>
   </div>
@@ -237,20 +237,20 @@
 <!-- ============================================ -->
 <section class="section" id="agents">
   <div class="section-label"><span data-i18n="sections.agents.label">◆ 多 Agent 协作</span></div>
-  <h2 data-i18n="sections.agents.title">一个人的团队，多个 Agent 并行</h2>
-  <p class="subtitle" data-i18n="sections.agents.subtitle">Agent Teams 让多个 AI 同时工作：一个分析安全，一个优化性能，一个写测试。</p>
+  <h2 data-i18n="sections.agents.title">一个人的团队，N 个 Agent 帮你干活</h2>
+  <p class="subtitle" data-i18n="sections.agents.subtitle">你说一句"重构这个模块"，三个 Agent 分头行动：查安全、优性能、补测试——你只需要喝杯咖啡等汇报。</p>
 
   <div class="grid grid-2">
     <div class="card fade-in">
       <div class="card-icon c1">⊞</div>
-      <h3>Agent Teams — 多 Agent 协作</h3>
-      <p>研究预览功能。多个 agent 在 tmux 中并行运行，各自独立完成子任务。设置 <span class="scenario-cmd">CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1</span> 启用。支持 Bedrock/Vertex/Foundry 提供商。</p>
+      <h3>Agent Teams — 多 Agent 并行</h3>
+      <p>研究预览功能。一句话拆成多个子任务，多个 agent 在 tmux 中并行运行，各自独立完成。设置 <span class="scenario-cmd">CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1</span> 启用。相当于给你配了一支 AI 小分队，你只管指挥。</p>
       <span class="tag c1">v2.1.32</span>
     </div>
     <div class="card fade-in">
       <div class="card-icon c2">⊡</div>
-      <h3>后台 Agent</h3>
-      <p><kbd>Ctrl+B</kbd> 将任务放到后台运行，或用 <span class="scenario-cmd">&</span> 前缀从 Web 发送后台任务。完成后收到通知。<kbd>Ctrl+F</kbd> 一键杀死所有后台 agent。长时间 bash 命令自动后台化。</p>
+      <h3>后台 Agent — 扔任务不用等</h3>
+      <p><kbd>Ctrl+B</kbd> 将任务丢到后台跑，继续干别的活。完成后收到通知。<kbd>Ctrl+F</kbd> 一键杀死所有后台 agent。长时间 bash 命令自动后台化——再也不用盯着进度条发呆了。</p>
       <span class="tag c2">v2.0.60</span>
     </div>
     <div class="card fade-in">
@@ -286,11 +286,11 @@
     </div>
     <div class="scenario-body">
       <ul>
-        <li>主 agent 制定重构计划，拆分为安全审查、性能分析、类型检查三个子任务</li>
-        <li>三个 teammate agent 在 tmux 中并行工作，各自在独立 worktree 中操作</li>
-        <li>TeammateIdle 和 TaskCompleted hook 自动通知进度</li>
-        <li>teammate 消息使用富 Markdown 格式渲染，结果一目了然</li>
-        <li>用 <kbd>Shift+Down</kbd> 在 teammates 间快速导航</li>
+        <li>你说"帮我重构 auth 模块"，主 agent 自动拆解：安全审查、性能分析、单测补全三件套</li>
+        <li>三个 teammate 在 tmux 里各占一格，各自在独立 worktree 里干活，互不踩脚</li>
+        <li>干完了？TeammateIdle hook 自动通知你"安全审查 agent 已完成"，结果用富 Markdown 渲染，一目了然</li>
+        <li>想看看某个 agent 在干嘛？<kbd>Shift+Down</kbd> 一键跳到它的面板</li>
+        <li>长期合作的 agent 还能用 memory frontmatter 持久记忆你的偏好，下次调用直接上手</li>
       </ul>
     </div>
   </div>
@@ -302,14 +302,14 @@
 <!-- ============================================ -->
 <section class="section" id="sessions">
   <div class="section-label"><span data-i18n="sections.sessions.label">◆ 会话与记忆</span></div>
-  <h2 data-i18n="sections.sessions.title">对话不丢失，记忆会延续</h2>
-  <p class="subtitle" data-i18n="sections.sessions.subtitle">自动记忆、会话恢复、分叉、摘要 — 让每次对话都有上下文。</p>
+  <h2 data-i18n="sections.sessions.title">下班关机，明天 Claude 还记得你的代码</h2>
+  <p class="subtitle" data-i18n="sections.sessions.subtitle">auto-memory 自动记住项目偏好，--resume 秒回昨天的对话，/fork 分叉探索不同方案——上下文永远不丢。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in">
       <div class="card-icon c6">◉</div>
       <h3>自动记忆 & /memory</h3>
-      <p>Claude 在工作中自动将有用上下文保存到 auto-memory。用 <span class="scenario-cmd">/memory</span> 管理记忆内容。CLAUDE.md 支持 @path/to/file.md 导入其他文件。.claude/rules/ 目录存放项目规则。v2.1.63 起项目配置与 auto-memory 在同一仓库的 git worktree 间共享。v2.1.69 新增 <span class="scenario-cmd">includeGitInstructions</span> 设置控制是否包含内置 Git 提交/PR 工作流指令。</p>
+      <p>Claude 在工作中自动记住项目规范、代码风格、架构偏好——下次打开不用从头解释。用 <span class="scenario-cmd">/memory</span> 管理记忆内容。.claude/rules/ 存放项目规则。v2.1.63 起 auto-memory 跨 git worktree 共享，同一仓库的不同分支都能受益。</p>
       <span class="tag c6">v2.1.59</span>
     </div>
     <div class="card fade-in">
@@ -326,8 +326,8 @@
     </div>
     <div class="card fade-in">
       <div class="card-icon c1">⊘</div>
-      <h3>智能压缩 /compact</h3>
-      <p>v0.2.47 引入自动压缩实现无限对话长度。v2.0.64 压缩变为即时。支持包含大量 PDF 的对话。压缩后保留 plan mode 状态和自定义会话标题。v2.1.70 改进：摘要请求中保留图片，允许 prompt cache 复用，压缩更快更省钱。</p>
+      <h3>智能压缩 /compact — 聊再久也不怕</h3>
+      <p>v0.2.47 引入自动压缩，理论上可以无限对话。v2.0.64 压缩变为即时，体感零延迟。支持 PDF 大量对话。压缩后 plan mode 状态和自定义标题不丢。v2.1.70 改进：摘要请求中保留图片，prompt cache 可复用，又快又省钱。</p>
       <span class="tag c1">v0.2.47</span>
     </div>
     <div class="card fade-in">
@@ -347,15 +347,15 @@
   <div class="scenario fade-in" style="margin-top:2rem">
     <div class="scenario-header">
       <div class="scenario-num c6">!</div>
-      <h3>场景：跨天持续开发一个功能<span>会话和记忆无缝衔接</span></h3>
+      <h3>场景：周一接着周五的活<span>会话和记忆无缝衔接，上下文一点没丢</span></h3>
     </div>
     <div class="scenario-body">
       <ul>
-        <li>下班前 Claude 自动记住了你的代码风格偏好和项目架构</li>
-        <li>第二天用 <span class="scenario-cmd">claude --resume</span> 恢复昨天的会话，按 git 分支名搜索</li>
-        <li>上下文快满了？<span class="scenario-cmd">/compact</span> 智能压缩，plan mode 和会话标题都保留</li>
-        <li>想试另一个方案？<span class="scenario-cmd">/fork</span> 分叉出去探索，原始对话不受影响</li>
-        <li>PR 创建后会话自动关联，下次用 <span class="scenario-cmd">--from-pr #123</span> 直接恢复</li>
+        <li>周五下班前敲了半天代码，Claude 已经自动记住了你的命名风格、项目架构、甚至你偏好的错误处理方式</li>
+        <li>周一早上 <span class="scenario-cmd">claude --resume</span>，按分支名一搜就找到上次的会话，输入框里还残留着你周五最后一条消息</li>
+        <li>聊了一小时上下文快满了？<span class="scenario-cmd">/compact</span> 智能压缩，plan mode 状态、会话标题统统保留，图片也不丢</li>
+        <li>想试另一种实现思路？<span class="scenario-cmd">/fork</span> 分叉出去探索，原始对话安安稳稳不受影响</li>
+        <li>PR 合并了？下次用 <span class="scenario-cmd">--from-pr #123</span> 直接恢复相关上下文，不用从头解释项目背景</li>
       </ul>
     </div>
   </div>
@@ -366,8 +366,8 @@
 <!-- ============================================ -->
 <section class="section" id="devflow">
   <div class="section-label"><span data-i18n="sections.devflow.label">◆ 开发工作流</span></div>
-  <h2 data-i18n="sections.devflow.title">从写代码到提 PR，一气呵成</h2>
-  <p class="subtitle" data-i18n="sections.devflow.subtitle">Git 集成、PR 状态追踪、任务管理、PDF 阅读 — 开发全流程覆盖。</p>
+  <h2 data-i18n="sections.devflow.title">从 git clone 到 PR merged，中间全是 Claude</h2>
+  <p class="subtitle" data-i18n="sections.devflow.subtitle">读文档、查代码、写逻辑、跑测试、提 PR——一套流程下来不用切窗口，Claude 帮你一把梭。</p>
 
   <div class="grid grid-2">
     <div class="card fade-in">
@@ -378,8 +378,8 @@
     </div>
     <div class="card fade-in">
       <div class="card-icon c1">☑</div>
-      <h3>Plan Mode — 先规划再动手</h3>
-      <p>v0.2.44 引入 thinking mode（说 "think" 或 "ultrathink"）。v2.0.28 引入 Plan 子 agent。VS Code 中 plan 预览自动更新。拒绝 plan 时可提供反馈。<kbd>Shift+Tab</kbd> 快速 auto-accept。</p>
+      <h3>Plan Mode — 先想清楚再动手</h3>
+      <p>v0.2.44 引入 thinking mode（说 "think" 启动思考，"ultrathink" 深度推理）。v2.0.28 引入 Plan 子 agent。VS Code 中 plan 预览自动更新，可以添加评论反馈。<kbd>Shift+Tab</kbd> 快速切换 auto-accept，该放手让 Claude 干的时候就放手。</p>
       <span class="tag c1">v0.2.44</span>
     </div>
     <div class="card fade-in">
@@ -411,16 +411,15 @@
   <div class="scenario fade-in" style="margin-top:2rem">
     <div class="scenario-header">
       <div class="scenario-num c4">!</div>
-      <h3>场景：接手一个陌生项目并提交 PR<span>从阅读文档到代码提交的完整流程</span></h3>
+      <h3>场景：新人入职第一天，接手陌生项目并提 PR<span>从懵圈到提交，全程有 Claude 带路</span></h3>
     </div>
     <div class="scenario-body">
       <ul>
-        <li>@ 提及项目的 PDF 设计文档，Claude 智能读取关键页面而非全部加载</li>
-        <li>用 <span class="scenario-cmd">--add-dir</span> 添加多个工作目录，跨项目引用代码</li>
-        <li>用 LSP 工具跳转到关键函数定义，理解代码结构</li>
-        <li>进入 plan mode 先规划实现方案，确认后再动手写代码</li>
-        <li>写完后 prompt footer 实时显示 PR 状态，点击链接直达 GitHub</li>
-        <li><span class="scenario-cmd">/stats</span> 查看使用统计，<span class="scenario-cmd">/usage</span> 查看计划限额</li>
+        <li>项目有份 30 页的架构设计 PDF？@ 提及一下，Claude 智能读取关键章节，不会把 30 页全塞进上下文</li>
+        <li>代码散落在多个仓库？<span class="scenario-cmd">--add-dir</span> 添加其他目录，跨项目引用代码不用手动复制粘贴</li>
+        <li>"这个 util 函数到底干嘛的？"——LSP 工具一键跳到定义，hover 看文档，比翻源码快 10 倍</li>
+        <li>先进 plan mode 聊清楚实现方案，确认后 Claude 直接动手写，你只需要 review</li>
+        <li>写完了 prompt footer 实时显示 PR 状态：pending → approved → merged，点击链接直达 GitHub</li>
       </ul>
     </div>
   </div>
@@ -432,8 +431,8 @@
 <!-- ============================================ -->
 <section class="section" id="mcp">
   <div class="section-label"><span data-i18n="sections.mcp.label">◆ MCP 生态</span></div>
-  <h2 data-i18n="sections.mcp.title">无限扩展，连接一切</h2>
-  <p class="subtitle" data-i18n="sections.mcp.subtitle">Model Context Protocol 让 Claude Code 连接 Slack、GitHub、数据库等任何外部服务。</p>
+  <h2 data-i18n="sections.mcp.title">MCP 打通一切，Slack 到数据库全链路</h2>
+  <p class="subtitle" data-i18n="sections.mcp.subtitle">插件、Skills、Hooks、OAuth——Claude Code 不是孤岛，而是你开发工具链的中枢。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in">
@@ -477,16 +476,15 @@
   <div class="scenario fade-in" style="margin-top:2rem">
     <div class="scenario-header">
       <div class="scenario-num c3">!</div>
-      <h3>场景：用 MCP 打通开发全链路<span>Slack 通知 + GitHub PR + 数据库查询</span></h3>
+      <h3>场景：用 MCP 打通团队工具链<span>代码写完自动通知 Slack、自动发 PR、自动查数据库</span></h3>
     </div>
     <div class="scenario-body">
       <ul>
-        <li>配置 Slack MCP 服务器，用 --client-id 预配置 OAuth</li>
-        <li>支持 claude.ai MCP connectors 直接在 Claude Code 中使用</li>
-        <li>Claude 写完代码后自动创建 PR，skill 自动发布 PR URL 到 Slack 频道</li>
-        <li>配置了 20 个 MCP 工具？自动搜索模式只在需要时加载，不浪费上下文</li>
-        <li>PostToolUse hook 自动格式化代码、运行 TypeScript 检查</li>
-        <li>ConfigChange hook 审计配置变更，企业安全合规</li>
+        <li>配置 Slack MCP 服务器，Claude 写完代码后自动发消息到频道："PR #456 已创建，请 review"</li>
+        <li>数据库 MCP 连接器配好后，可以直接问 Claude"线上有多少活跃用户？"，它帮你写 SQL 查完返回结果</li>
+        <li>配置了 20 个 MCP 工具太多了？自动搜索模式只在需要时加载，不浪费宝贵的上下文窗口</li>
+        <li>PostToolUse hook 自动格式化代码、跑 lint 检查，ConfigChange hook 审计每次配置变更，企业合规无痛落地</li>
+        <li>MCP 工具返回了 PDF 或 Excel？自动保存到磁盘，不再往对话里倒 base64 乱码</li>
       </ul>
     </div>
   </div>
@@ -497,8 +495,8 @@
 <!-- ============================================ -->
 <section class="section" id="terminal">
   <div class="section-label"><span data-i18n="sections.terminal.label">◆ 终端体验</span></div>
-  <h2 data-i18n="sections.terminal.title">终端里的极致体验</h2>
-  <p class="subtitle" data-i18n="sections.terminal.subtitle">主题、语法高亮、CJK 支持、Vim 模式 — 每个细节都打磨到位。</p>
+  <h2 data-i18n="sections.terminal.title">终端体验拉满：Vim 党、中文输入法、20 种语言语音</h2>
+  <p class="subtitle" data-i18n="sections.terminal.subtitle">CJK 宽字符不错位、输入法全角空格没 bug、Vim 快捷键丝滑——终端用户的每个痛点都被照顾到了。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in">
@@ -540,23 +538,30 @@
     <div class="card fade-in">
       <div class="card-icon c2">🎙</div>
       <h3>Voice 语音输入</h3>
-      <p>长按空格键开始语音输入（v2.1.71 支持 <span class="scenario-cmd">voice:pushToTalk</span> 自定义按键绑定）。v2.1.69 支持 20 种语言。v2.1.71 修复语音模式导致的 5–8 秒启动冻结（CoreAudio 阻塞主线程）。</p>
+      <p>长按空格键开始语音输入（v2.1.71 支持 <span class="scenario-cmd">voice:pushToTalk</span> 自定义按键绑定）。v2.1.69 支持 20 种语言（含中文）。v2.1.71 修复语音模式导致的 5–8 秒启动冻结（CoreAudio 阻塞主线程）。不想打字的时候，说话就行。</p>
       <span class="tag c2">v2.1.69 — v2.1.71</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c4">✅</div>
+      <h3>Bash 命令自动放行</h3>
+      <p>常用工具命令（<span class="scenario-cmd">fmt</span>、<span class="scenario-cmd">seq</span>、<span class="scenario-cmd">printf</span>、<span class="scenario-cmd">test</span>、<span class="scenario-cmd">expr</span> 等）已加入 auto-approval 白名单，不再每次都弹权限确认——日常操作更顺畅，减少打断。</p>
+      <span class="tag c4">v2.1.71 NEW</span>
     </div>
   </div>
 
   <div class="scenario fade-in" style="margin-top:2rem">
     <div class="scenario-header">
       <div class="scenario-num c7">!</div>
-      <h3>场景：在终端中高效编码<span>主题、快捷键、输入法一步到位</span></h3>
+      <h3>场景：SSH 远程到服务器上写代码<span>中文输入法、主题、快捷键一步到位</span></h3>
     </div>
     <div class="scenario-body">
       <ul>
-        <li><span class="scenario-cmd">/theme</span> 选一个顺眼的主题，diff 高亮和语法着色自动适配</li>
-        <li>开启 Vim 模式，用 <kbd>f</kbd>/<kbd>t</kbd> 动作快速跳转，<kbd>Ctrl+R</kbd> 搜索历史命令</li>
-        <li>中文输入法全角空格、日语 IME 都能正常工作，CJK 宽字符布局不错位</li>
-        <li>Claude 正在工作？直接打字发消息引导方向，不用等它停下来</li>
-        <li>代码块太多？<span class="scenario-cmd">/copy</span> 交互式选择要复制的那一段</li>
+        <li>SSH 到远程服务器，<span class="scenario-cmd">/theme</span> 选一个顺眼的暗色主题，diff 高亮和语法着色自动适配</li>
+        <li>开启 Vim 模式，<kbd>f</kbd>/<kbd>t</kbd> 快速跳转、<kbd>Ctrl+R</kbd> 搜历史命令——手指不离主键盘区</li>
+        <li>切到搜狗输入法打中文注释？全角空格、宽字符布局都对齐，不会错位</li>
+        <li>Claude 正在跑一个长任务？不用干等——直接打字发消息引导方向，实时 steering 即时生效</li>
+        <li>回复里代码块太多？<span class="scenario-cmd">/copy</span> 弹出交互选择器，点一下就复制你要的那段</li>
+        <li>长按空格键启动语音输入（支持 20 种语言），不想打字的时候说话也行</li>
       </ul>
     </div>
   </div>
@@ -567,14 +572,14 @@
 <!-- ============================================ -->
 <section class="section" id="security">
   <div class="section-label"><span data-i18n="sections.security.label">◆ 安全与沙箱</span></div>
-  <h2 data-i18n="sections.security.title">安全不是事后补救</h2>
-  <p class="subtitle" data-i18n="sections.security.subtitle">沙箱隔离、权限分级、命令注入防护 — 每一层都有防线。</p>
+  <h2 data-i18n="sections.security.title">安全不靠喊口号，沙箱 + 权限 + 注入防护层层兜底</h2>
+  <p class="subtitle" data-i18n="sections.security.subtitle">AI 写代码你不放心？沙箱隔离执行环境，权限系统管控每一步操作，企业级合规开箱即用。</p>
 
   <div class="grid grid-2">
     <div class="card fade-in">
       <div class="card-icon c5">⊘</div>
-      <h3>沙箱模式</h3>
-      <p>v2.0.24 发布 Linux & Mac 沙箱模式。阻止写入 .claude/skills 目录。HTTP hooks 通过沙箱网络代理路由，强制域名白名单。heredoc 分隔符解析防止命令注入。v2.1.69 新增 <span class="scenario-cmd">sandbox.enableWeakerNetworkIsolation</span>（macOS）允许 Go 程序（gh、gcloud、terraform）在自定义 MITM 代理下验证 TLS 证书。</p>
+      <h3>沙箱模式 — AI 写代码，但跑在笼子里</h3>
+      <p>v2.0.24 发布 Linux & Mac 沙箱模式。阻止写入 .claude/skills 目录。HTTP hooks 强制走域名白名单。heredoc 解析防命令注入。v2.1.69 新增 <span class="scenario-cmd">sandbox.enableWeakerNetworkIsolation</span>（macOS），让 gh、gcloud 等 Go 程序在代理环境下正常验证 TLS——安全和可用性两手抓。</p>
       <span class="tag c5">v2.0.24</span>
     </div>
     <div class="card fade-in">
@@ -604,8 +609,8 @@
 <!-- ============================================ -->
 <section class="section" id="sdk">
   <div class="section-label"><span data-i18n="sections.sdk.label">◆ SDK & 集成</span></div>
-  <h2 data-i18n="sections.sdk.title">不只是 CLI，更是开发平台</h2>
-  <p class="subtitle" data-i18n="sections.sdk.subtitle">SDK、Desktop 应用、OpenTelemetry、Output Styles — Claude Code 是一个完整的开发者平台。</p>
+  <h2 data-i18n="sections.sdk.title">不只是命令行工具，而是一个完整的 AI 开发平台</h2>
+  <p class="subtitle" data-i18n="sections.sdk.subtitle">TypeScript/Python SDK 嵌入 CI/CD，Desktop 应用开箱即用，OTel 可观测性全链路追踪——怎么集成都行。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in">
@@ -622,8 +627,8 @@
     </div>
     <div class="card fade-in">
       <div class="card-icon c3">⊟</div>
-      <h3>Claude Code Desktop</h3>
-      <p>v2.0.51 推出 Claude Code for Desktop（<span class="scenario-cmd">claude.com/download</span>）。独立桌面应用，无需终端即可使用。v2.1.69 新增 macOS 和 Windows 首次启动提示建议使用 Claude Code Desktop。Claude in Chrome 集成浏览器控制。</p>
+      <h3>Claude Code Desktop — 下载就能用</h3>
+      <p>v2.0.51 推出 Claude Code for Desktop（<span class="scenario-cmd">claude.com/download</span>）。独立桌面应用，不熟悉终端也能上手。v2.1.69 macOS 和 Windows 首次启动会提示试试 Desktop 版。Claude in Chrome 还能集成浏览器控制——不想装 IDE 也行。</p>
       <span class="tag c3">v2.0.51</span>
     </div>
     <div class="card fade-in">
@@ -649,15 +654,15 @@
   <div class="scenario fade-in" style="margin-top:2rem">
     <div class="scenario-header">
       <div class="scenario-num c1">!</div>
-      <h3>场景：构建自动化 CI/CD 流水线<span>用 SDK 将 Claude Code 集成到工作流</span></h3>
+      <h3>场景：把 Claude Code 集成进公司的发布流水线<span>SDK + OTel + Bedrock，企业级玩法</span></h3>
     </div>
     <div class="scenario-body">
       <ul>
-        <li>Python SDK 调用 Claude Code 自动审查 PR 代码，<span class="scenario-cmd">--max-budget-usd</span> 控制每次审查成本</li>
-        <li><span class="scenario-cmd">-p --output-format=stream-json</span> 流式输出集成到 CI 日志</li>
-        <li>OTel 指标导出到 Grafana 监控 Claude 使用情况和响应时间</li>
-        <li>Bedrock 提供商部署在企业 AWS 环境中，awsAuthRefresh 自动刷新凭证</li>
-        <li>自定义 Output Style 确保代码审查输出格式统一</li>
+        <li>Python SDK 调用 Claude Code 自动审查每个 PR，<span class="scenario-cmd">--max-budget-usd 0.5</span> 控制单次审查成本不超标</li>
+        <li>CI 流水线里 <span class="scenario-cmd">-p --output-format=stream-json</span> 流式输出，审查过程实时写进 CI 日志</li>
+        <li>OTel 指标导出到 Grafana，一眼看清 Claude 的调用量、响应时间、token 消耗趋势</li>
+        <li>部署在公司 AWS 环境？Bedrock 提供商 + awsAuthRefresh 自动刷新凭证，安全合规两不误</li>
+        <li>自定义 Output Style 统一输出格式，不管谁触发的审查，输出风格一模一样</li>
       </ul>
     </div>
   </div>
@@ -668,8 +673,8 @@
 <!-- ============================================ -->
 <section class="section" id="performance">
   <div class="section-label"><span data-i18n="sections.performance.label">◆ 性能优化</span></div>
-  <h2 data-i18n="sections.performance.title">更快启动，更少内存</h2>
-  <p class="subtitle" data-i18n="sections.performance.subtitle">从启动到长会话，每个环节都在持续优化。</p>
+  <h2 data-i18n="sections.performance.title">启动秒开，长会话不卡——性能是硬道理</h2>
+  <p class="subtitle" data-i18n="sections.performance.subtitle">30+ 个内存泄漏修了个遍，渲染开销砍了 74%，8 小时长会话依然丝滑。</p>
 
   <div class="stats fade-in">
     <div class="stat"><div class="num">74%</div><div class="label" data-i18n="stats.rerender">prompt re-render 减少</div></div>
@@ -703,15 +708,15 @@
   <div class="scenario fade-in" style="margin-top:2rem">
     <div class="scenario-header">
       <div class="scenario-num c4">!</div>
-      <h3>场景：8 小时长会话不卡顿<span>内存和性能持续优化的成果</span></h3>
+      <h3>场景：8 小时马拉松 coding session<span>从早到晚不重启，依然丝滑</span></h3>
     </div>
     <div class="scenario-body">
       <ul>
-        <li>长会话中 compaction 后自动清除内部缓存，agent 任务完成后修剪消息历史</li>
-        <li>大工具输出（>50K 字符）自动持久化到磁盘，不占用上下文窗口</li>
-        <li>tree-sitter 解析器定期重置防止 WASM 内存无限增长</li>
-        <li>shell 命令大输出不再导致 RSS 无限增长</li>
-        <li>打字响应始终流畅，终端渲染开销持续降低</li>
+        <li>上午开始的会话，下午还在继续——compaction 后自动清除内部缓存，agent 任务完成后自动修剪消息历史</li>
+        <li>某个工具返回了 80K 字符的日志？自动持久化到磁盘，不占你宝贵的上下文窗口</li>
+        <li>tree-sitter 解析器定期重置防止 WASM 内存泄漏，React Compiler 优化 UI 渲染——长时间跑也不卡</li>
+        <li>shell 命令跑出了大输出？RSS 不会因此无限增长，内存管控到位</li>
+        <li>打字响应始终流畅——spinner 动画已隔离成独立循环，不拖累主线程渲染</li>
       </ul>
     </div>
   </div>
@@ -722,8 +727,8 @@
 <!-- ============================================ -->
 <section class="section" id="platform">
   <div class="section-label"><span data-i18n="sections.platform.label">◆ 跨平台支持</span></div>
-  <h2 data-i18n="sections.platform.title">Windows、macOS、Linux 全覆盖</h2>
-  <p class="subtitle" data-i18n="sections.platform.subtitle">从 Windows ARM64 到 RHEL 8，从 WSL2 到 NFS 文件系统。</p>
+  <h2 data-i18n="sections.platform.title">Windows、macOS、Linux——你用啥系统都能跑</h2>
+  <p class="subtitle" data-i18n="sections.platform.subtitle">ARM64 原生支持、RHEL 8 兼容、WSL2 粘贴图片修复——团队成员用不同系统也能统一体验。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in">
@@ -767,15 +772,15 @@
   <div class="scenario fade-in" style="margin-top:2rem">
     <div class="scenario-header">
       <div class="scenario-num c3">!</div>
-      <h3>场景：团队成员用不同系统<span>Windows + macOS + Linux 统一体验</span></h3>
+      <h3>场景：团队五个人，三个操作系统<span>Windows + macOS + Linux 统一体验</span></h3>
     </div>
     <div class="scenario-body">
       <ul>
-        <li>Windows 同事用 <span class="scenario-cmd">winget install Anthropic.ClaudeCode</span> 一键安装，ARM64 原生支持</li>
-        <li>macOS 同事直接 <span class="scenario-cmd">claude install</span>，沙箱模式自动适配临时目录</li>
-        <li>Linux 服务器上 RHEL 8（glibc < 2.30）也能正常运行，Alpine/musl 同样支持</li>
-        <li>WSL2 用户粘贴图片、shell 函数跨会话保留都已修复</li>
-        <li><span class="scenario-cmd">/doctor</span> 一键诊断安装问题，mise/asdf 管理的安装也能正确识别</li>
+        <li>Windows 同事用 <span class="scenario-cmd">winget install Anthropic.ClaudeCode</span> 一键安装，Surface Pro ARM64 也能跑</li>
+        <li>macOS 同事 <span class="scenario-cmd">claude install</span> 搞定，沙箱模式自动适配临时目录，不用额外配置</li>
+        <li>运维同事在 RHEL 8 服务器上跑（glibc < 2.30）？没问题，Alpine/musl 也支持</li>
+        <li>WSL2 用户从 Windows 复制图片粘贴到终端？BMP 格式兼容已修复，直接能贴</li>
+        <li>大家 <span class="scenario-cmd">/doctor</span> 一键自检，mise/asdf 管理的安装也能正确识别，不用手动排查路径问题</li>
       </ul>
     </div>
   </div>
@@ -786,14 +791,14 @@
 <!-- ============================================ -->
 <section class="section" id="vscode">
   <div class="section-label"><span data-i18n="sections.vscode.label">◆ VS Code 集成</span></div>
-  <h2 data-i18n="sections.vscode.title">IDE 里的 Claude</h2>
-  <p class="subtitle" data-i18n="sections.vscode.subtitle">不只是终端工具，VS Code 扩展让 Claude 融入你的 IDE 工作流。</p>
+  <h2 data-i18n="sections.vscode.title">不想开终端？VS Code 里直接用</h2>
+  <p class="subtitle" data-i18n="sections.vscode.subtitle">Spark 图标管理会话、Plan 视图支持评论、MCP 服务器一键管理——在 IDE 里就能完成所有操作。</p>
 
   <div class="grid grid-2">
     <div class="card fade-in">
       <div class="card-icon c2">⊞</div>
-      <h3>原生 VS Code 扩展</h3>
-      <p>v2.0.0 发布全新原生 VS Code 扩展。支持 secondary sidebar（VS Code 1.97+）。流式消息实时显示。拖拽文件/文件夹到聊天。代码块复制按钮。v2.1.70 新增 spark 图标在活动栏列出所有会话，会话以完整编辑器标签页打开。</p>
+      <h3>原生 VS Code 扩展 — 不开终端也能用 Claude</h3>
+      <p>v2.0.0 发布全新原生 VS Code 扩展。支持 secondary sidebar（VS Code 1.97+）。流式消息实时显示。拖拽文件/文件夹到聊天窗口直接引用。v2.1.70 新增 spark 图标在活动栏列出所有会话，会话以完整编辑器标签页打开——操作体验向原生 IDE 功能看齐。</p>
       <span class="tag c2">v2.0.0</span>
     </div>
     <div class="card fade-in">
@@ -840,8 +845,8 @@
 <!-- ============================================ -->
 <section class="section" id="shortcuts">
   <div class="section-label"><span data-i18n="sections.shortcuts.label">◆ 快捷键与命令</span></div>
-  <h2 data-i18n="sections.shortcuts.title">键盘流的效率工具</h2>
-  <p class="subtitle" data-i18n="sections.shortcuts.subtitle">每个操作都有快捷键，每个功能都有斜杠命令。</p>
+  <h2 data-i18n="sections.shortcuts.title">键盘流玩家的效率天花板</h2>
+  <p class="subtitle" data-i18n="sections.shortcuts.subtitle">Ctrl+B 后台跑任务、/loop 定时巡检、Tab 补全文件名——手不离键盘，效率拉满。</p>
 
   <div class="grid grid-2">
     <div class="card fade-in" style="padding:0;overflow:hidden">
@@ -937,8 +942,8 @@
 <!-- ============================================ -->
 <section class="section" id="timeline">
   <div class="section-label"><span data-i18n="sections.timeline.label">◆ 版本时间线</span></div>
-  <h2 data-i18n="sections.timeline.title">从 v0.2 到 v2.1，完整演进</h2>
-  <p class="subtitle" data-i18n="sections.timeline.subtitle">关键里程碑一览。</p>
+  <h2 data-i18n="sections.timeline.title">从 v0.2 到 v2.1——一年干了别人三年的活</h2>
+  <p class="subtitle" data-i18n="sections.timeline.subtitle">220+ 个版本，从"能用"到"好用"到"离不开"的完整进化史。</p>
 
   <div class="timeline fade-in">
     <div class="timeline-item major">
