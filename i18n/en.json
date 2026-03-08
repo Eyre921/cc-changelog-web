@@ -18,7 +18,8 @@
     "terminalCmd": "claude",
     "terminalOutput1": "  Claude Code v2.1.71 (Opus 4.6)",
     "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control",
-    "terminalTyping": " Refactor this module, use agent teams to analyze security and performance in parallel"
+    "terminalTyping": " Refactor this module, use agent teams to analyze security and performance in parallel",
+    "advancedCta": "🚀 Explore Advanced Claude Code Usage →"
   },
   "nav": {
     "recent": "Recent",
@@ -132,7 +133,8 @@
     "totalVersions": "220+ versions",
     "totalUpdates": "1000+ updates",
     "builtWith": "Built with Claude Code",
-    "backToTop": "Back to top ↑"
+    "backToTop": "Back to top ↑",
+    "advancedGuide": "🚀 Explore More Advanced Claude Code Usage →"
   },
   "controls": {
     "backToTop": "Back to top",

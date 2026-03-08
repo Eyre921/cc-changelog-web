@@ -2,7 +2,7 @@
 
 > 从用户视角出发，带你看懂 Claude Code 的每一项能力。
 
-> [在线预览](https://cclog.vibevibe.cn/)
+> [在线预览](https://cclog.vibevibe.cn/) · [进阶用法](https://www.vibevibe.cn/Advanced/)
 
 一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.71** 共 **220+ 个版本**、**1000+ 项更新**的完整功能演进。
 
@@ -18,7 +18,8 @@
 - **终端打字动画** — Hero 区域模拟终端输入效果
 - **滚动淡入动画** — 基于 Intersection Observer 的滚动渐显效果
 - **导航高亮** — 粘性导航栏随滚动自动高亮当前章节
-- **暗色主题** — 开发者友好的暗色 UI，紫色渐变点缀
+- **暗色主题** — 开发者友好的暗色 UI，暖色调点缀，导航栏支持亮暗主题切换按钮
+- **中英文切换** — 导航栏支持中文/英文语言切换按钮
 - **响应式设计** — 适配桌面端与移动端
 - **无障碍支持** — 尊重 `prefers-reduced-motion`，使用语义化 HTML
 - **零依赖** — 纯 HTML + CSS + JavaScript，无需构建工具
@@ -76,8 +77,16 @@ npx serve .
 
 ```
 cc-changelog-web/
-├── index.html   # 完整的单文件应用（HTML + CSS + JS）
-└── README.md    # 项目说明
+├── index.html       # 主 HTML 文件
+├── css/
+│   └── style.css    # 样式文件（亮/暗主题）
+├── js/
+│   ├── app.js       # 应用逻辑（主题切换、动画、导航）
+│   └── i18n.js      # 国际化模块
+├── i18n/
+│   ├── zh-CN.json   # 中文翻译
+│   └── en.json      # 英文翻译
+└── README.md        # 项目说明
 ```
 
 ## 📊 内容板块
