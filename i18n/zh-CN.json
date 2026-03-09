@@ -140,5 +140,695 @@
     "backToTop": "回到顶部",
     "lightMode": "☀️",
     "darkMode": "🌙"
+  },
+  "cards": {
+    "recent": {
+      "0": {
+        "title": "/loop 定时循环——Claude 帮你盯着",
+        "desc": "全新 <span class=\"scenario-cmd\">/loop</span> 命令，让 Claude 按固定间隔重复运行任务。比如 <span class=\"scenario-cmd\">/loop 5m check the deploy</span> 每 5 分钟检查一次部署状态。发完就去忙别的，有问题 Claude 会叫你——再也不用自己写 cron 了。",
+        "tag": "v2.1.71 NEW"
+      },
+      "1": {
+        "title": "语音按键可自定义绑定",
+        "desc": "新增 <span class=\"scenario-cmd\">voice:pushToTalk</span> 键绑定，在 keybindings.json 中设置语音激活键（默认 Space），modifier+letter 组合如 meta+k 不影响打字。",
+        "tag": "v2.1.71 NEW"
+      },
+      "2": {
+        "title": "启动冻结修复三连——\"卡住了\"成为历史",
+        "desc": "修复语音模式 5–8 秒启动冻结（CoreAudio 在系统唤醒后阻塞主线程）、多 claude.ai proxy 同时刷新 OAuth token 导致的 UI 卡死、长时间运行会话中按键突然没反应的 stdin 冻结。三个痛点一次全解决。",
+        "tag": "v2.1.71 NEW"
+      },
+      "3": {
+        "title": "插件 & MCP 连接器修复",
+        "desc": "修复多实例运行时插件安装丢失。修复 claude.ai 连接器 OAuth token 刷新后断连。改进 <span class=\"scenario-cmd\">/plugin uninstall</span> 使用 local settings，不影响团队成员。插件 MCP 服务器去重。",
+        "tag": "v2.1.71 NEW"
+      },
+      "4": {
+        "title": "启动与重连性能提升",
+        "desc": "延迟原生图片处理器加载优化启动时间。笔记本唤醒后 bridge 重连从最长 10 分钟缩短到数秒。<span class=\"scenario-cmd\">/debug</span> 支持会话内切换调试日志。",
+        "tag": "v2.1.71 NEW"
+      },
+      "5": {
+        "title": "v2.1.71 关键修复精选",
+        "desc": "修复 <span class=\"scenario-cmd\">/fork</span> 会话共享 plan 文件相互覆盖。修复 Read 工具图片处理失败后将超大图片塞入上下文。修复 heredoc 提交信息的误报权限提示。修复 <span class=\"scenario-cmd\">--print</span> 配置 team agents 时永久挂起。",
+        "tag": "v2.1.71 NEW"
+      },
+      "6": {
+        "title": "VS Code: 全面升级，在 IDE 里就够用了",
+        "desc": "活动栏新增 spark 图标，所有会话一目了然。Plan 预览支持 Markdown 全文视图和评论。原生 MCP 服务器管理对话框，不用切到终端配置。prompt re-render 减少 74%。compaction 保留图片复用缓存——更快更省。",
+        "tag": "v2.1.70"
+      },
+      "7": {
+        "title": "/claude-api Skill & Effort 可视化",
+        "desc": "全新内置 <span class=\"scenario-cmd\">/claude-api</span> skill 构建 API 应用。logo 和 spinner 显示 effort 级别。Opus 4.6 默认 medium effort，\"ultrathink\" 启用高 effort。",
+        "tag": "v2.1.68 — v2.1.69"
+      },
+      "8": {
+        "title": "InstructionsLoaded Hook & 热重载",
+        "desc": "<span class=\"scenario-cmd\">InstructionsLoaded</span> hook 在 CLAUDE.md 加载时触发。<span class=\"scenario-cmd\">/reload-plugins</span> 热重载无需重启。hook 事件支持 <span class=\"scenario-cmd\">agent_id</span>/<span class=\"scenario-cmd\">agent_type</span> 字段。Voice STT 扩展到 20 种语言。",
+        "tag": "v2.1.69"
+      },
+      "9": {
+        "title": "HTTP Hooks & /simplify & /batch",
+        "desc": "v2.1.63 新增 HTTP hooks，POST JSON 到 URL 并接收响应。新增 <span class=\"scenario-cmd\">/simplify</span>（简化代码）和 <span class=\"scenario-cmd\">/batch</span>（批量处理）内置 skill。项目配置和 auto-memory 跨 git worktree 共享。",
+        "tag": "v2.1.63"
+      },
+      "10": {
+        "title": "Remote Control & /copy 交互复制",
+        "desc": "v2.1.58 Remote Control 扩展到更多用户。v2.1.69 支持自定义名称。<span class=\"scenario-cmd\">/copy</span> 交互式选择代码块，\"Always copy full response\" 一键复制。auto-memory 自动保存有用上下文。",
+        "tag": "v2.1.58 — v2.1.69"
+      },
+      "11": {
+        "title": "v2.1.70 关键修复精选",
+        "desc": "修复 <span class=\"scenario-cmd\">ANTHROPIC_BASE_URL</span> 搭配第三方网关 API 400 错误。修复 Windows/WSL 剪贴板损坏 CJK/emoji 文本。修复慢速 SSH 下 Enter 插入换行。修复 <span class=\"scenario-cmd\">/color</span> 命令无法重置回默认色。",
+        "tag": "v2.1.70"
+      }
+    },
+    "models": {
+      "0": {
+        "title": "Opus 4.6 — 旗舰推理",
+        "desc": "v2.1.32 正式发布，Claude Code 的\"最强大脑\"。适合复杂架构决策、大规模重构和深度代码分析。完整 1M 上下文窗口，整个 monorepo 模块一次看完。v2.1.68 起 Max/Team 默认 medium effort——大多数任务够用，遇到硬骨头随时 <span class=\"scenario-cmd\">/model</span> 拉满。",
+        "tag": "v2.1.32"
+      },
+      "1": {
+        "title": "Fast Mode — 极速输出",
+        "desc": "同样的 Opus 4.6 模型，更快的输出速度。用 <span class=\"scenario-cmd\">/fast</span> 一键切换。日常编码、pair programming 的最佳选择。",
+        "tag": "v2.1.36"
+      },
+      "2": {
+        "title": "Sonnet 4.6 — 均衡之选",
+        "desc": "v2.1.45 新增支持。现已支持 1M 上下文窗口，替代 Sonnet 4.5 成为 Max 计划的主力编码模型。v2.1.69 起 Pro/Max/Team Premium 的 Sonnet 4.5 用户自动迁移到 Sonnet 4.6。",
+        "tag": "v2.1.45"
+      },
+      "3": {
+        "title": "Haiku 4.5 — 轻量高效",
+        "desc": "v2.0.17 加入模型选择器。默认在 plan mode 使用 Sonnet、执行使用 Haiku（SonnetPlan 模式）。Pro 用户可用。驱动 Explore 子 agent 高效搜索代码库。",
+        "tag": "v2.0.17"
+      },
+      "4": {
+        "title": "1M 上下文窗口",
+        "desc": "处理超大代码库不再捉襟见肘。Opus 4.6 和 Sonnet 4.6 均支持 100 万 token 上下文。可通过 <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 按需关闭。",
+        "tag": "v2.1.50"
+      },
+      "5": {
+        "title": "/model 即时切换",
+        "desc": "模型选择器显示人类可读标签，有新版本时提示升级。v2.1.63 起在斜杠命令菜单中显示当前活跃模型。支持 <kbd>Alt+P</kbd> 在输入时切换模型。Opus Plan Mode 可设置仅在 plan 阶段使用 Opus。",
+        "tag": "v2.1.51"
+      },
+      "6": {
+        "title": "Extended Thinking & Effort Control",
+        "desc": "深度思考模式让模型在回答前充分推理。说 \"think\" 或 \"ultrathink\" 触发（v2.1.68 重新引入 ultrathink 关键词启用高 effort）。通过 <span class=\"scenario-cmd\">alwaysThinkingEnabled</span> 设置默认开启。v2.1.69 在 logo 和 spinner 中实时显示 effort 级别（如 \"with low effort\"），让你随时了解当前推理深度。",
+        "tag": "v0.2.44"
+      },
+      "7": {
+        "title": "模型演进历程",
+        "desc": "v1.0.0 GA 发布 Sonnet 4 + Opus 4 → v1.0.69 升级 Opus 4.1 → v2.0.51 Opus 4.5 → v2.0.58 Pro 用户获得 Opus 4.5 → v2.1.32 Opus 4.6 → v2.1.45 Sonnet 4.6 → v2.1.68 移除 Opus 4/4.1 → v2.1.69 Sonnet 4.5 自动迁移到 4.6。",
+        "tag": "v1.0.0+"
+      }
+    },
+    "agents": {
+      "0": {
+        "title": "Agent Teams — 多 Agent 并行",
+        "desc": "研究预览功能。一句话拆成多个子任务，多个 agent 在 tmux 中并行运行，各自独立完成。设置 <span class=\"scenario-cmd\">CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1</span> 启用。相当于给你配了一支 AI 小分队，你只管指挥。",
+        "tag": "v2.1.32"
+      },
+      "1": {
+        "title": "后台 Agent — 扔任务不用等",
+        "desc": "<kbd>Ctrl+B</kbd> 将任务丢到后台跑，继续干别的活。完成后收到通知。<kbd>Ctrl+F</kbd> 一键杀死所有后台 agent。长时间 bash 命令自动后台化——再也不用盯着进度条发呆了。",
+        "tag": "v2.0.60"
+      },
+      "2": {
+        "title": "Agent 隔离 — Worktree",
+        "desc": "agent 定义中声明 <span class=\"scenario-cmd\">isolation: worktree</span>，自动在隔离的 git worktree 中运行，互不干扰。<span class=\"scenario-cmd\">--worktree</span> 标志启动隔离会话。支持 WorktreeCreate/WorktreeRemove hook 事件。v2.1.69 status line hook 命令新增 <span class=\"scenario-cmd\">worktree</span> 字段（name、path、branch 和原始仓库目录）。",
+        "tag": "v2.1.49"
+      },
+      "3": {
+        "title": "自定义 Agent",
+        "desc": "v1.0.60 起可创建自定义子 agent（<span class=\"scenario-cmd\">/agents</span>）。支持 model 字段、memory frontmatter、tools 限制（Task(agent_type) 语法）、permissionMode、disallowedTools。用 <span class=\"scenario-cmd\">claude agents</span> 列出所有配置。",
+        "tag": "v1.0.60"
+      },
+      "4": {
+        "title": "Explore 子 Agent",
+        "desc": "由 Haiku 驱动的代码库探索 agent，高效搜索代码节省上下文。Claude 可动态选择子 agent 使用的模型，也可恢复之前的子 agent 继续工作。",
+        "tag": "v2.0.17"
+      },
+      "5": {
+        "title": "Agent 记忆与 Hooks",
+        "desc": "agent 支持 memory frontmatter（user/project/local scope 持久记忆）。TeammateIdle 和 TaskCompleted hook 事件通知进度。SubagentStart/SubagentStop hook 追踪生命周期。v2.1.69 hook 事件新增 <span class=\"scenario-cmd\">agent_id</span>（子 agent）和 <span class=\"scenario-cmd\">agent_type</span> 字段。使用 <span class=\"scenario-cmd\">--agent</span> 时 terminal title 显示 agent 名称。",
+        "tag": "v2.1.33"
+      }
+    },
+    "sessions": {
+      "0": {
+        "title": "自动记忆 & /memory",
+        "desc": "Claude 在工作中自动记住项目规范、代码风格、架构偏好——下次打开不用从头解释。用 <span class=\"scenario-cmd\">/memory</span> 管理记忆内容。.claude/rules/ 存放项目规则。v2.1.63 起 auto-memory 跨 git worktree 共享，同一仓库的不同分支都能受益。",
+        "tag": "v2.1.59"
+      },
+      "1": {
+        "title": "会话恢复 /resume",
+        "desc": "v0.2.93 引入 <span class=\"scenario-cmd\">--continue</span> 和 <span class=\"scenario-cmd\">--resume</span>。支持按会话 ID、自定义标题、git 分支搜索。初始显示 50 个会话。<span class=\"scenario-cmd\">--from-pr</span> 恢复 PR 关联会话。内存使用减少 68%。v2.1.69 <span class=\"scenario-cmd\">/resume</span> 选择器显示最近的 prompt（而非第一条），解决部分标题显示为 \"(session)\" 的问题。",
+        "tag": "v0.2.93"
+      },
+      "2": {
+        "title": "会话分叉 /fork & /rewind",
+        "desc": "从当前对话分叉出新会话，探索不同方向。<span class=\"scenario-cmd\">/rewind</span> 回退对话撤销代码变更。支持自定义会话 ID。分叉后提示如何恢复原始会话。",
+        "tag": "v2.0.0"
+      },
+      "3": {
+        "title": "智能压缩 /compact — 聊再久也不怕",
+        "desc": "v0.2.47 引入自动压缩，理论上可以无限对话。v2.0.64 压缩变为即时，体感零延迟。支持 PDF 大量对话。压缩后 plan mode 状态和自定义标题不丢。v2.1.70 改进：摘要请求中保留图片，prompt cache 可复用，又快又省钱。",
+        "tag": "v0.2.47"
+      },
+      "4": {
+        "title": "部分摘要",
+        "desc": "\"Summarize from here\" — 在消息选择器中选择起点，只摘要部分对话。不需要压缩整个上下文，精准控制。",
+        "tag": "v2.1.32"
+      },
+      "5": {
+        "title": "Todo 列表",
+        "desc": "v0.2.93 引入内置 Todo 列表帮助 Claude 保持任务有序。v2.1.16 升级为完整任务管理系统，支持依赖追踪。<span class=\"scenario-cmd\">/todos</span> 查看当前任务。",
+        "tag": "v0.2.93"
+      }
+    },
+    "devflow": {
+      "0": {
+        "title": "Git & PR 深度集成",
+        "desc": "prompt footer 实时显示当前分支 PR 状态（approved/changes requested/pending/draft），彩色圆点 + 可点击链接。会话自动关联 PR。Teleport 从 Web 传送会话到本地并自动设置上游分支。",
+        "tag": "v2.1.20"
+      },
+      "1": {
+        "title": "Plan Mode — 先想清楚再动手",
+        "desc": "v0.2.44 引入 thinking mode（说 \"think\" 启动思考，\"ultrathink\" 深度推理）。v2.0.28 引入 Plan 子 agent。VS Code 中 plan 预览自动更新，可以添加评论反馈。<kbd>Shift+Tab</kbd> 快速切换 auto-accept，该放手让 Claude 干的时候就放手。",
+        "tag": "v0.2.44"
+      },
+      "2": {
+        "title": "Web 搜索 & 网络工具",
+        "desc": "v0.2.105 引入 Web 搜索。v0.2.70 开放 curl 等网络命令。Claude 可并行执行多个 Web 查询。v0.2.53 新增 URL 抓取工具。搜索结果考虑当天日期。",
+        "tag": "v0.2.53"
+      },
+      "3": {
+        "title": "PDF 智能阅读",
+        "desc": "v1.0.58 首次支持 PDF 阅读。Read 工具支持 <span class=\"scenario-cmd\">pages: \"1-5\"</span> 参数读取指定页面。大 PDF (>10 页) @ 提及时返回轻量引用。限制 100 页、20MB。",
+        "tag": "v1.0.58"
+      },
+      "4": {
+        "title": "LSP 代码智能",
+        "desc": "v2.0.74 引入 LSP 工具：go-to-definition、find references、hover 文档。TypeScript 和 Python LSP 插件。findReferences 自动排除 gitignored 文件。支持 startupTimeout 配置。",
+        "tag": "v2.0.74"
+      },
+      "5": {
+        "title": "SDK & 非交互模式",
+        "desc": "TypeScript SDK（v1.0.23）和 Python SDK（v1.0.23）。<span class=\"scenario-cmd\">-p</span> 模式支持流式输出（stream-json）。<span class=\"scenario-cmd\">--max-budget-usd</span> 控制预算。支持自定义工具回调。",
+        "tag": "v1.0.23"
+      }
+    },
+    "mcp": {
+      "0": {
+        "title": "MCP 协议全面支持",
+        "desc": "v0.2.50 引入 project scope .mcp.json。v1.0.27 支持 Streamable HTTP 和 SSE + OAuth。v2.1.7 自动搜索模式（<span class=\"scenario-cmd\">auto:N</span> 语法）。支持 resource_link、structuredContent、tool annotations。v2.1.69 MCP 工具返回 PDF/Office/音频等二进制内容时自动保存到磁盘，不再倒入 base64。",
+        "tag": "v0.2.50"
+      },
+      "1": {
+        "title": "OAuth 认证增强",
+        "desc": "支持 OAuth Authorization Server 发现、step-up auth、discovery 缓存。预配置 OAuth 凭证（<span class=\"scenario-cmd\">--client-id</span>）。支持 claude.ai MCP connectors（可通过 <span class=\"scenario-cmd\">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> 关闭）。修复多实例 token 刷新竞态。v2.1.63 新增手动 URL 粘贴回退，localhost 重定向失败时可手动完成认证。v2.1.69 新增 <span class=\"scenario-cmd\">oauth.authServerMetadataUrl</span> 配置自定义 OAuth 元数据发现 URL。",
+        "tag": "v2.1.59"
+      },
+      "2": {
+        "title": "插件系统",
+        "desc": "v2.0.12 发布插件系统。<span class=\"scenario-cmd\">/plugin install</span> 安装，支持 git 分支/tag 语法。自定义 npm 注册表。插件可提供 commands、agents、hooks、MCP servers、output styles。v2.1.69 新增 <span class=\"scenario-cmd\">/reload-plugins</span> 热重载、<span class=\"scenario-cmd\">git-subdir</span> 插件源类型、<span class=\"scenario-cmd\">pluginTrustMessage</span> 企业信任消息。",
+        "tag": "v2.0.12"
+      },
+      "3": {
+        "title": "Skills & 自定义命令",
+        "desc": "v0.2.31 引入自定义斜杠命令（.claude/commands/）。v2.0.20 引入 Claude Skills。v2.1.3 合并斜杠命令与 skills。支持 SlashCommand 工具让 Claude 调用你的命令。v2.1.69 新增 <span class=\"scenario-cmd\">${CLAUDE_SKILL_DIR}</span> 变量引用 skill 自身目录，以及 <span class=\"scenario-cmd\">/claude-api</span> 内置 skill。",
+        "tag": "v0.2.31"
+      },
+      "4": {
+        "title": "Hooks 系统",
+        "desc": "v1.0.38 发布 Hooks。PreToolUse / PostToolUse / Stop / SessionStart / SessionEnd / ConfigChange / WorktreeCreate / TeammateIdle / TaskCompleted / PermissionRequest / UserPromptSubmit / InstructionsLoaded / Setup — 完整生命周期钩子。v2.1.63 新增 HTTP hooks，支持 POST JSON 到 URL 并接收 JSON 响应。v2.1.69 新增 InstructionsLoaded hook 和 hook 事件中的 <span class=\"scenario-cmd\">agent_id</span>/<span class=\"scenario-cmd\">agent_type</span> 字段。",
+        "tag": "v1.0.38"
+      },
+      "5": {
+        "title": "Remote Control & Teleport",
+        "desc": "<span class=\"scenario-cmd\">claude remote-control</span> 为所有用户启用本地环境服务。v2.1.69 支持可选名称参数（<span class=\"scenario-cmd\">/remote-control My Project</span> 或 <span class=\"scenario-cmd\">--name \"My Project\"</span>）在 claude.ai/code 中显示自定义标题。Teleport 从 Web 传送会话到本地。Claude in Chrome 集成浏览器控制。",
+        "tag": "v2.0.72"
+      }
+    },
+    "terminal": {
+      "0": {
+        "title": "主题与语法高亮",
+        "desc": "<span class=\"scenario-cmd\">/theme</span> 直接打开主题选择器。v2.0.10 重写终端渲染器实现丝滑 UI。diff 在多行构造中正确高亮。v0.2.30 ANSI 颜色主题兼容更多终端。",
+        "tag": "v0.2.30"
+      },
+      "1": {
+        "title": "Vim 模式 & 快捷键",
+        "desc": "v0.2.34 引入 Vim 绑定。支持 c、f/F、t/T 动作。v2.1.18 自定义键盘快捷键（<span class=\"scenario-cmd\">/keybindings</span>）。<kbd>Ctrl+R</kbd> 历史搜索。<kbd>Ctrl+Z</kbd> 挂起（fg 恢复）。",
+        "tag": "v0.2.34"
+      },
+      "2": {
+        "title": "CJK 与国际化",
+        "desc": "v0.2.68 修复 IME 输入法支持（中日韩）。CJK 宽字符布局正确。日语 IME 全角空格/数字输入。泰语/老挝语元音渲染。非拉丁文字词删除和导航修复。v2.1.70 修复 Windows/WSL 剪贴板损坏 CJK 和 emoji 文本，改用 PowerShell <span class=\"scenario-cmd\">Set-Clipboard</span>。",
+        "tag": "v0.2.68"
+      },
+      "3": {
+        "title": "@ 文件提及 & 图片",
+        "desc": "v0.2.75 引入 @ 文件提及和图片拖拽/粘贴。支持 MCP 资源 @ 提及。文件夹点击导航。锚点片段（@README.md#installation）。启动时预热索引。",
+        "tag": "v0.2.75"
+      },
+      "4": {
+        "title": "终端兼容性",
+        "desc": "/terminal-setup 支持 Kitty、Alacritty、Zed、Warp、WezTerm、iTerm2、Ghostty。Kitty 键盘协议完整支持。OSC 8 超链接跨行可点击。OSC 9;4 进度条可配置。v2.1.69 新增小键盘数字支持。v2.1.70 修复慢速 SSH 连接下 Enter 插入换行而非提交的问题，修复 Ghostty SSH 下 Shift+Enter 异常。",
+        "tag": "v1.0.110"
+      },
+      "5": {
+        "title": "实时交互",
+        "desc": "v0.2.108 引入实时 steering（Claude 工作时发消息引导方向）。v0.2.75 消息排队（Enter 排队后续消息）。<span class=\"scenario-cmd\">/copy</span> 交互式选择代码块复制，支持 \"Always copy full response\" 选项一键复制完整回复。Prompt suggestions 智能建议。",
+        "tag": "v0.2.108"
+      },
+      "6": {
+        "title": "Voice 语音输入",
+        "desc": "长按空格键开始语音输入（v2.1.71 支持 <span class=\"scenario-cmd\">voice:pushToTalk</span> 自定义按键绑定）。v2.1.69 支持 20 种语言（含中文）。v2.1.71 修复语音模式导致的 5–8 秒启动冻结（CoreAudio 阻塞主线程）。不想打字的时候，说话就行。",
+        "tag": "v2.1.69 — v2.1.71"
+      },
+      "7": {
+        "title": "Bash 命令自动放行",
+        "desc": "常用工具命令（<span class=\"scenario-cmd\">fmt</span>、<span class=\"scenario-cmd\">seq</span>、<span class=\"scenario-cmd\">printf</span>、<span class=\"scenario-cmd\">test</span>、<span class=\"scenario-cmd\">expr</span> 等）已加入 auto-approval 白名单，不再每次都弹权限确认——日常操作更顺畅，减少打断。",
+        "tag": "v2.1.71 NEW"
+      }
+    },
+    "security": {
+      "0": {
+        "title": "沙箱模式 — AI 写代码，但跑在笼子里",
+        "desc": "v2.0.24 发布 Linux & Mac 沙箱模式。阻止写入 .claude/skills 目录。HTTP hooks 强制走域名白名单。heredoc 解析防命令注入。v2.1.69 新增 <span class=\"scenario-cmd\">sandbox.enableWeakerNetworkIsolation</span>（macOS），让 gh、gcloud 等 Go 程序在代理环境下正常验证 TLS——安全和可用性两手抓。",
+        "tag": "v2.0.24"
+      },
+      "1": {
+        "title": "权限系统",
+        "desc": "v0.2.26 引入 /approved-tools。v1.0.72 升级为 /permissions 完整权限管理。支持通配符 <span class=\"scenario-cmd\">mcp__server__*</span>。\"always allow\" 智能前缀。bash 权限分类器验证匹配描述。",
+        "tag": "v0.2.26"
+      },
+      "2": {
+        "title": "安全漏洞修复",
+        "desc": "修复通配符权限规则匹配 shell 操作符。修复 shell 行续行权限绕过。修复 bash 命令处理中的命令注入。修复 HTTP hooks 环境变量插值。修复 Bash tool 权限检查前缀匹配绕过。",
+        "tag": "v1.0.120+"
+      },
+      "3": {
+        "title": "企业安全",
+        "desc": "v0.2.67 引入共享项目权限规则（.claude/settings.json）。v2.0.68 企业管理设置。ConfigChange hook 审计。管理设置支持 macOS plist 和 Windows Registry。MCP 允许/拒绝列表。v2.1.69 新增 <span class=\"scenario-cmd\">pluginTrustMessage</span> 管理设置、<span class=\"scenario-cmd\">pathPattern</span> 正则匹配文件/目录 marketplace 来源、Team 计划 OAuth 用户获得策略限制。",
+        "tag": "v0.2.67"
+      }
+    },
+    "sdk": {
+      "0": {
+        "title": "TypeScript & Python SDK",
+        "desc": "v1.0.23 发布 TypeScript SDK（<span class=\"scenario-cmd\">@anthropic-ai/claude-code</span>）和 Python SDK（<span class=\"scenario-cmd\">claude-code-sdk</span>）。支持流式输出（stream-json）、自定义工具回调（canUseTool）、请求取消、部分消息流。",
+        "tag": "v1.0.23"
+      },
+      "1": {
+        "title": "非交互模式 (-p)",
+        "desc": "<span class=\"scenario-cmd\">-p</span> 模式支持流式 JSON 输出。<span class=\"scenario-cmd\">--max-budget-usd</span> 控制预算。<span class=\"scenario-cmd\">--system-prompt</span> / <span class=\"scenario-cmd\">--system-prompt-file</span> 自定义系统提示（支持交互模式和 print 模式）。<span class=\"scenario-cmd\">--append-system-prompt</span> 追加提示。子任务消息包含 parent_tool_use_id。v2.1.69 改进文档明确说明 <span class=\"scenario-cmd\">--append-system-prompt-file</span> 和 <span class=\"scenario-cmd\">--system-prompt-file</span> 同时适用于交互模式。",
+        "tag": "v0.2.66"
+      },
+      "2": {
+        "title": "Claude Code Desktop — 下载就能用",
+        "desc": "v2.0.51 推出 Claude Code for Desktop（<span class=\"scenario-cmd\">claude.com/download</span>）。独立桌面应用，不熟悉终端也能上手。v2.1.69 macOS 和 Windows 首次启动会提示试试 Desktop 版。Claude in Chrome 还能集成浏览器控制——不想装 IDE 也行。",
+        "tag": "v2.0.51"
+      },
+      "3": {
+        "title": "OpenTelemetry 可观测性",
+        "desc": "OTel 日志支持 session ID、terminal.type、language 属性。mTLS 支持 HTTP 导出器。Active Time 指标。speed 属性追踪 fast mode。tool_decision 事件。<span class=\"scenario-cmd\">ANTHROPIC_LOG=debug</span> 调试日志。",
+        "tag": "v1.0.39"
+      },
+      "4": {
+        "title": "Output Styles",
+        "desc": "v1.0.81 发布输出样式系统，内置 \"Explanatory\" 和 \"Learning\" 教育风格。支持自定义样式、插件分享样式。<span class=\"scenario-cmd\">keep-coding-instructions</span> frontmatter 选项。",
+        "tag": "v1.0.81"
+      },
+      "5": {
+        "title": "Bedrock / Vertex / Foundry",
+        "desc": "支持 AWS Bedrock、Google Vertex AI、Microsoft Foundry 三大云提供商。自定义模型别名（<span class=\"scenario-cmd\">ANTHROPIC_DEFAULT_SONNET_MODEL</span>）。全局端点。awsAuthRefresh 认证刷新。结构化输出。",
+        "tag": "v2.0.45"
+      }
+    },
+    "performance": {
+      "0": {
+        "title": "启动优化",
+        "desc": "延迟 SessionStart hook 执行（-500ms）。headless 模式延迟 Yoga WASM 和 UI 导入。缓存 MCP auth 失败避免重复连接。v2.1.70 延迟 Yoga WASM 预加载减少约 16MB 基础内存。v2.1.71 延迟原生图片处理器加载至首次使用、修复语音模式 CoreAudio 5–8 秒阻塞、修复多 proxy 同时刷新 OAuth 导致的 UI 冻结。",
+        "tag": "v2.1.47+"
+      },
+      "1": {
+        "title": "内存优化",
+        "desc": "修复 30+ 个内存泄漏：tree-sitter 解析树、LSP 诊断数据、TaskOutput、CircularBuffer、ChildProcess 引用、Yoga WASM 线性内存、文件历史快照、MCP server fetch 缓存、git root 检测缓存、JSON 解析缓存、WebSocket listener、IDE host IP 检测缓存、bridge polling loop listener、React Compiler memoCache、REPL render scopes 等。v2.1.70 改进 compaction 保留图片实现 prompt cache 复用，600 tokens/resume 减少（skill listing 不再在 --resume 时重复注入）。",
+        "tag": "v2.1.63"
+      },
+      "2": {
+        "title": "渲染优化",
+        "desc": "React Compiler 提升 UI 渲染性能（v2.1.69 在原生二进制中进一步优化）。v2.1.70 prompt 输入 re-render 减少约 74%，spinner 动画循环隔离降低渲染和 CPU 开销。修复 macOS OAuth MCP 服务器导致的 UI 帧丢失。Remote Control /poll 频率降至每 10 分钟一次（连接时），服务器负载降低约 300 倍。",
+        "tag": "v2.1.15"
+      }
+    },
+    "platform": {
+      "0": {
+        "title": "Windows",
+        "desc": "v1.0.51 首次支持原生 Windows（需 Git for Windows）。ARM64 原生二进制。winget 安装。修复 \\r\\n 渲染、BashTool EINVAL、进程生成崩溃、CWD 临时文件累积、驱动器字母大小写问题。Hooks 使用 Git Bash 执行。v2.1.70 修复剪贴板损坏 CJK/emoji 文本（改用 PowerShell Set-Clipboard）、修复 VS Code 集成终端启动时多余窗口。",
+        "tag": "v1.0.51"
+      },
+      "1": {
+        "title": "macOS",
+        "desc": "修复沙箱写临时文件权限。修复只读 git 命令触发 FSEvents 循环。Option-as-Meta 终端特定说明。代码签名警告修复。",
+        "tag": "v2.1.45"
+      },
+      "2": {
+        "title": "Linux",
+        "desc": "修复 glibc < 2.30 系统（RHEL 8）原生模块加载。修复 WebAssembly 解释器崩溃。NFS/FUSE 文件系统上 agent 正确加载。无 AVX 指令处理器支持。Alpine/musl 发行版支持。Wayland 图片粘贴。",
+        "tag": "v1.0.73"
+      },
+      "3": {
+        "title": "WSL2",
+        "desc": "修复 Windows 以 BMP 格式复制图片时粘贴不工作。SSH 粘贴图片时建议使用 scp。",
+        "tag": "v2.1.47"
+      },
+      "4": {
+        "title": "Shell 兼容",
+        "desc": "支持 bash、zsh。MSYS2/Cygwin shell 输出正确处理。.bashrc 文件兼容。双下划线前缀 shell 函数跨会话保留。沙箱中 zsh heredoc 正常工作。",
+        "tag": "v2.1.47"
+      },
+      "5": {
+        "title": "安装方式",
+        "desc": "npm（已弃用，建议迁移）、winget、<span class=\"scenario-cmd\">claude install</span> 原生安装。<span class=\"scenario-cmd\">/doctor</span> 显示更新频道和可用版本。mise/asdf 管理的安装正确识别。支持 Bedrock、Vertex、Foundry 多种 API 提供商。",
+        "tag": "v2.1.15"
+      }
+    },
+    "vscode": {
+      "0": {
+        "title": "原生 VS Code 扩展 — 不开终端也能用 Claude",
+        "desc": "v2.0.0 发布全新原生 VS Code 扩展。支持 secondary sidebar（VS Code 1.97+）。流式消息实时显示。拖拽文件/文件夹到聊天窗口直接引用。v2.1.70 新增 spark 图标在活动栏列出所有会话，会话以完整编辑器标签页打开——操作体验向原生 IDE 功能看齐。",
+        "tag": "v2.0.0"
+      },
+      "1": {
+        "title": "远程会话 & 插件管理",
+        "desc": "OAuth 用户可浏览和恢复 claude.ai 远程会话。会话选择器显示 git 分支和消息计数。直接管理插件。权限目标选择跨会话持久化。",
+        "tag": "v2.1.33"
+      },
+      "2": {
+        "title": "Plan 预览 & Markdown 全文视图",
+        "desc": "Claude 迭代时 plan 预览自动更新。v2.1.70 新增完整 Markdown 文档视图，支持添加评论提供反馈。仅在 plan 准备好审查时启用评论。拒绝时保持预览打开。代码块复制按钮。Diff tab 支持。",
+        "tag": "v2.1.47"
+      },
+      "3": {
+        "title": "原生 MCP 服务器管理",
+        "desc": "v2.1.70 新增原生 MCP 服务器管理对话框。在聊天面板中使用 <span class=\"scenario-cmd\">/mcp</span> 即可启用/禁用服务器、重新连接、管理 OAuth 认证，无需切换到终端。",
+        "tag": "v2.1.70 NEW"
+      },
+      "4": {
+        "title": "Python 环境 & 配置",
+        "desc": "自动激活 Python 虚拟环境。<span class=\"scenario-cmd\">claudeCode.usePythonEnvironment</span> 设置。支持 chat.fontSize/fontFamily 自定义。respectGitIgnore 配置。初始权限模式设置。",
+        "tag": "v2.1.21"
+      },
+      "5": {
+        "title": "会话管理",
+        "desc": "会话 fork 和 rewind 功能。/usage 和 /extra-usage 命令。多行输入（Shift+Enter）。Claude in Chrome 集成。标签图标徽章显示待处理权限和未读完成。v2.1.63 新增会话重命名和删除操作。v2.1.69 compaction 显示为可折叠的 \"Compacted chat\" 卡片，权限模式选择器尊重 <span class=\"scenario-cmd\">disableBypassPermissionsMode</span> 设置。",
+        "tag": "v2.0.0"
+      },
+      "6": {
+        "title": "稳定性修复",
+        "desc": "修复 Windows 上扩展崩溃、终端 scroll-to-top 回归、重复会话、OAuth token 过期 401 错误、侧边栏视图容器启动竞态条件、Windows ARM64 兼容等问题。v2.1.70 修复 RTL 文本（阿拉伯语、希伯来语、波斯语）在聊天面板中反向渲染的回归问题。",
+        "tag": "v2.1.52"
+      }
+    },
+    "shortcuts": {},
+    "timeline": {},
+    "shortcuts_cards": {
+      "0": {
+        "desc": "<span class=\"scenario-cmd\">claude auth login/status/logout</span> 认证管理。<span class=\"scenario-cmd\">claude agents</span> 列出 agent。<span class=\"scenario-cmd\">claude remote-control</span> 远程控制。<span class=\"scenario-cmd\">claude doctor</span> 诊断。<span class=\"scenario-cmd\">claude mcp add/list/get/serve</span> MCP 管理。<span class=\"scenario-cmd\">claude plugin install/validate/browse</span> 插件管理。<span class=\"scenario-cmd\">claude install</span> 原生安装。<span class=\"scenario-cmd\">claude --teleport</span> 从 Web 传送。"
+      },
+      "1": {
+        "desc": "<span class=\"scenario-cmd\">CLAUDE_CODE_SIMPLE</span> 极简模式。<span class=\"scenario-cmd\">CLAUDE_CODE_TMPDIR</span> 自定义临时目录。<span class=\"scenario-cmd\">CLAUDE_CODE_SHELL</span> 覆盖 shell 检测。<span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> 禁用后台任务。<span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 禁用 1M 上下文。<span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS</span> 移除内置 Git 指令。<span class=\"scenario-cmd\">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> 关闭 claude.ai MCP 服务器。<span class=\"scenario-cmd\">CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS</span> 插件 git 超时。<span class=\"scenario-cmd\">CLAUDE_CODE_ACCOUNT_UUID</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_USER_EMAIL</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_ORGANIZATION_UUID</span> SDK 账户信息。<span class=\"scenario-cmd\">BASH_DEFAULT_TIMEOUT_MS</span> bash 超时。<span class=\"scenario-cmd\">ANTHROPIC_LOG=debug</span> 调试日志。"
+      },
+      "2": {
+        "desc": "在 .claude/commands/ 中创建 markdown 文件定义自定义命令。支持 $ARGUMENTS 参数。<span class=\"scenario-cmd\">/keybindings</span> 自定义键盘快捷键。<span class=\"scenario-cmd\">/statusline</span> 自定义状态行。settings.json 变更即时生效无需重启。"
+      }
+    }
+  },
+  "scenarios": {
+    "models": {
+      "title": "场景：我该选哪个模型？",
+      "subtitle": "根据任务类型灵活切换",
+      "items": {
+        "0": "刚接手一个 monorepo，不确定这段代码啥意思？Opus 4.6 + 1M 上下文，整个模块一次看完，给你讲得明明白白",
+        "1": "日常写业务逻辑，等不了深度推理？<span class=\"scenario-cmd\">/fast</span> 一键切换 Fast Mode，同模型、更快出活",
+        "2": "多 agent 工作流里的 worker 节点，不需要旗舰模型？Sonnet 4.6 性价比拉满",
+        "3": "\"这个函数在哪定义的？\"——Haiku 4.5 驱动的 Explore 子 agent 帮你翻遍代码库，秒级响应",
+        "4": "说 \"ultrathink\" 触发高 effort 深度推理，logo 和 spinner 实时显示当前推理级别，一眼就知道模型在\"用力想\"还是\"快速答\""
+      }
+    },
+    "agents": {
+      "title": "场景：重构一个大模块",
+      "subtitle": "让多个 agent 各司其职",
+      "items": {
+        "0": "你说\"帮我重构 auth 模块\"，主 agent 自动拆解：安全审查、性能分析、单测补全三件套",
+        "1": "三个 teammate 在 tmux 里各占一格，各自在独立 worktree 里干活，互不踩脚",
+        "2": "干完了？TeammateIdle hook 自动通知你\"安全审查 agent 已完成\"，结果用富 Markdown 渲染，一目了然",
+        "3": "想看看某个 agent 在干嘛？<kbd>Shift+Down</kbd> 一键跳到它的面板",
+        "4": "长期合作的 agent 还能用 memory frontmatter 持久记忆你的偏好，下次调用直接上手"
+      }
+    },
+    "sessions": {
+      "title": "场景：周一接着周五的活",
+      "subtitle": "会话和记忆无缝衔接，上下文一点没丢",
+      "items": {
+        "0": "周五下班前敲了半天代码，Claude 已经自动记住了你的命名风格、项目架构、甚至你偏好的错误处理方式",
+        "1": "周一早上 <span class=\"scenario-cmd\">claude --resume</span>，按分支名一搜就找到上次的会话，输入框里还残留着你周五最后一条消息",
+        "2": "聊了一小时上下文快满了？<span class=\"scenario-cmd\">/compact</span> 智能压缩，plan mode 状态、会话标题统统保留，图片也不丢",
+        "3": "想试另一种实现思路？<span class=\"scenario-cmd\">/fork</span> 分叉出去探索，原始对话安安稳稳不受影响",
+        "4": "PR 合并了？下次用 <span class=\"scenario-cmd\">--from-pr #123</span> 直接恢复相关上下文，不用从头解释项目背景"
+      }
+    },
+    "devflow": {
+      "title": "场景：新人入职第一天，接手陌生项目并提 PR",
+      "subtitle": "从懵圈到提交，全程有 Claude 带路",
+      "items": {
+        "0": "项目有份 30 页的架构设计 PDF？@ 提及一下，Claude 智能读取关键章节，不会把 30 页全塞进上下文",
+        "1": "代码散落在多个仓库？<span class=\"scenario-cmd\">--add-dir</span> 添加其他目录，跨项目引用代码不用手动复制粘贴",
+        "2": "\"这个 util 函数到底干嘛的？\"——LSP 工具一键跳到定义，hover 看文档，比翻源码快 10 倍",
+        "3": "先进 plan mode 聊清楚实现方案，确认后 Claude 直接动手写，你只需要 review",
+        "4": "写完了 prompt footer 实时显示 PR 状态：pending → approved → merged，点击链接直达 GitHub"
+      }
+    },
+    "mcp": {
+      "title": "场景：用 MCP 打通团队工具链",
+      "subtitle": "代码写完自动通知 Slack、自动发 PR、自动查数据库",
+      "items": {
+        "0": "配置 Slack MCP 服务器，Claude 写完代码后自动发消息到频道：\"PR #456 已创建，请 review\"",
+        "1": "数据库 MCP 连接器配好后，可以直接问 Claude\"线上有多少活跃用户？\"，它帮你写 SQL 查完返回结果",
+        "2": "配置了 20 个 MCP 工具太多了？自动搜索模式只在需要时加载，不浪费宝贵的上下文窗口",
+        "3": "PostToolUse hook 自动格式化代码、跑 lint 检查，ConfigChange hook 审计每次配置变更，企业合规无痛落地",
+        "4": "MCP 工具返回了 PDF 或 Excel？自动保存到磁盘，不再往对话里倒 base64 乱码"
+      }
+    },
+    "terminal": {
+      "title": "场景：SSH 远程到服务器上写代码",
+      "subtitle": "中文输入法、主题、快捷键一步到位",
+      "items": {
+        "0": "SSH 到远程服务器，<span class=\"scenario-cmd\">/theme</span> 选一个顺眼的暗色主题，diff 高亮和语法着色自动适配",
+        "1": "开启 Vim 模式，<kbd>f</kbd>/<kbd>t</kbd> 快速跳转、<kbd>Ctrl+R</kbd> 搜历史命令——手指不离主键盘区",
+        "2": "切到搜狗输入法打中文注释？全角空格、宽字符布局都对齐，不会错位",
+        "3": "Claude 正在跑一个长任务？不用干等——直接打字发消息引导方向，实时 steering 即时生效",
+        "4": "回复里代码块太多？<span class=\"scenario-cmd\">/copy</span> 弹出交互选择器，点一下就复制你要的那段",
+        "5": "长按空格键启动语音输入（支持 20 种语言），不想打字的时候说话也行"
+      }
+    },
+    "sdk": {
+      "title": "场景：把 Claude Code 集成进公司的发布流水线",
+      "subtitle": "SDK + OTel + Bedrock，企业级玩法",
+      "items": {
+        "0": "Python SDK 调用 Claude Code 自动审查每个 PR，<span class=\"scenario-cmd\">--max-budget-usd 0.5</span> 控制单次审查成本不超标",
+        "1": "CI 流水线里 <span class=\"scenario-cmd\">-p --output-format=stream-json</span> 流式输出，审查过程实时写进 CI 日志",
+        "2": "OTel 指标导出到 Grafana，一眼看清 Claude 的调用量、响应时间、token 消耗趋势",
+        "3": "部署在公司 AWS 环境？Bedrock 提供商 + awsAuthRefresh 自动刷新凭证，安全合规两不误",
+        "4": "自定义 Output Style 统一输出格式，不管谁触发的审查，输出风格一模一样"
+      }
+    },
+    "performance": {
+      "title": "场景：8 小时马拉松 coding session",
+      "subtitle": "从早到晚不重启，依然丝滑",
+      "items": {
+        "0": "上午开始的会话，下午还在继续——compaction 后自动清除内部缓存，agent 任务完成后自动修剪消息历史",
+        "1": "某个工具返回了 80K 字符的日志？自动持久化到磁盘，不占你宝贵的上下文窗口",
+        "2": "tree-sitter 解析器定期重置防止 WASM 内存泄漏，React Compiler 优化 UI 渲染——长时间跑也不卡",
+        "3": "shell 命令跑出了大输出？RSS 不会因此无限增长，内存管控到位",
+        "4": "打字响应始终流畅——spinner 动画已隔离成独立循环，不拖累主线程渲染"
+      }
+    },
+    "platform": {
+      "title": "场景：团队五个人，三个操作系统",
+      "subtitle": "Windows + macOS + Linux 统一体验",
+      "items": {
+        "0": "Windows 同事用 <span class=\"scenario-cmd\">winget install Anthropic.ClaudeCode</span> 一键安装，Surface Pro ARM64 也能跑",
+        "1": "macOS 同事 <span class=\"scenario-cmd\">claude install</span> 搞定，沙箱模式自动适配临时目录，不用额外配置",
+        "2": "运维同事在 RHEL 8 服务器上跑（glibc < 2.30）？没问题，Alpine/musl 也支持",
+        "3": "WSL2 用户从 Windows 复制图片粘贴到终端？BMP 格式兼容已修复，直接能贴",
+        "4": "大家 <span class=\"scenario-cmd\">/doctor</span> 一键自检，mise/asdf 管理的安装也能正确识别，不用手动排查路径问题"
+      }
+    }
+  },
+  "keyboard_descs": {
+    "0": "将当前任务放到后台",
+    "1": "杀死所有后台 agent",
+    "2": "打开外部编辑器",
+    "3": "搜索命令历史",
+    "4": "Prompt stash（暂存输入）",
+    "5": "退出 bash 模式 / 清除输入行",
+    "6": "Yank（粘贴 kill ring）",
+    "7": "挂起（fg 恢复）",
+    "8": "输入时切换模型",
+    "9": "切换 thinking 模式",
+    "10": "在 teammates 间导航",
+    "11": "切换 auto-accept / 模式切换",
+    "12": "文件名补全 / Bash 历史补全",
+    "13": "取消主线程（后台 agent 继续）",
+    "14": "发送 / 排队后续消息"
+  },
+  "slash_descs": {
+    "0": "切换 AI 模型（即时生效）",
+    "1": "切换 Fast Mode",
+    "2": "定时循环运行命令（如 /loop 5m check deploy）",
+    "3": "压缩上下文",
+    "4": "交互式选择代码块复制",
+    "5": "管理 auto-memory",
+    "6": "恢复历史会话",
+    "7": "分叉当前会话",
+    "8": "回退对话撤销变更",
+    "9": "重命名会话（Claude 处理中也可用）",
+    "10": "管理工具权限规则",
+    "11": "打开主题选择器",
+    "12": "配置（支持搜索过滤）",
+    "13": "自定义键盘快捷键",
+    "14": "查看上下文使用情况",
+    "15": "排查当前会话问题",
+    "16": "诊断安装和配置",
+    "17": "导出对话用于分享",
+    "18": "使用统计（支持日期范围）",
+    "19": "查看计划使用限额",
+    "20": "管理 MCP 服务器",
+    "21": "管理插件",
+    "22": "管理自定义 Agent",
+    "23": "添加额外工作目录",
+    "24": "切换输出样式",
+    "25": "查看当前任务列表",
+    "26": "管理 Skills",
+    "27": "清空当前会话",
+    "28": "简化代码（内置 skill）",
+    "29": "批量处理任务（内置 skill）",
+    "30": "构建 Claude API 应用（内置 skill）",
+    "31": "热重载插件更改",
+    "32": "管理沙箱模式",
+    "33": "语音输入",
+    "34": "查看会话开销",
+    "35": "终端兼容性设置",
+    "36": "设置会话颜色（使用 default 或 reset 重置）",
+    "37": "安全审查"
+  },
+  "timeline_entries": {
+    "0": {
+      "date": "2025-04 — 05",
+      "version": "v0.2.21 — v0.2.54",
+      "desc": "早期基础功能：fuzzy 命令匹配、Vim 绑定、自定义斜杠命令、MCP project scope、自动压缩、thinking mode、@ 文件提及、图片粘贴、MCP SSE、Web 搜索。"
+    },
+    "1": {
+      "date": "2025-05 — 06",
+      "version": "v0.2.55 — v0.2.108",
+      "desc": "实时 steering、消息排队、网络工具（curl）、Claude Max 订阅支持、--continue/--resume 会话恢复、Todo 列表、Web 搜索。"
+    },
+    "2": {
+      "date": "2025-07",
+      "version": "v1.0.0",
+      "desc": "Claude Code GA 正式发布！Sonnet 4 + Opus 4 模型。原生 VS Code 扩展。/rewind、/usage、Ctrl+R 历史搜索。SDK 升级为 Claude Agent SDK。"
+    },
+    "3": {
+      "date": "2025-07 — 09",
+      "version": "v1.0.1 — v1.0.73",
+      "desc": "TypeScript/Python SDK。Hooks 系统发布。自定义 Agent。/permissions 权限管理。后台命令（Ctrl+B）。Opus Plan Mode。MCP 多配置文件。Alpine/musl 支持。"
+    },
+    "4": {
+      "date": "2025-09 — 10",
+      "version": "v1.0.77 — v1.0.126",
+      "desc": "Output styles。PDF 阅读。/context 命令。/memory 编辑。Bedrock mTLS。Opus 4.1 升级。Ctrl+R 历史搜索增强。"
+    },
+    "5": {
+      "date": "2025-11",
+      "version": "v2.0.0",
+      "desc": "2.0 大版本！全新原生 VS Code 扩展。全新 UI。/rewind 回退对话。/usage 查看限额。Tab 切换 thinking。子 agent 动态添加。"
+    },
+    "6": {
+      "date": "2025-11 — 12",
+      "version": "v2.0.1 — v2.0.51",
+      "desc": "Opus 4.5 发布！Claude Code Desktop。Plan Mode 增强。Foundry 支持。PermissionRequest hook。后台 agent。自定义 agent 配置。"
+    },
+    "7": {
+      "date": "2025-12",
+      "version": "v2.0.52 — v2.0.74",
+      "desc": "Pro 用户获得 Opus 4.5。插件系统发布。Claude in Chrome。LSP 代码智能。终端渲染器重写。Haiku 4.5 + Explore 子 agent。"
+    },
+    "8": {
+      "date": "2026-01-07 — 01-09",
+      "version": "v2.1.0 — v2.1.3",
+      "desc": "进入 2.1 时代。Skill 热重载。斜杠命令与 skills 合并。权限规则检测。winget 安装支持。"
+    },
+    "9": {
+      "date": "2026-01-14 — 01-16",
+      "version": "v2.1.7 — v2.1.16",
+      "desc": "MCP 工具搜索自动模式。Hooks 增强。Bash 历史补全。任务管理系统。自定义键盘快捷键。React Compiler 渲染优化。"
+    },
+    "10": {
+      "date": "2026-01-27 — 01-31",
+      "version": "v2.1.20 — v2.1.30",
+      "desc": "PR 状态指示器。PDF 分页读取。/debug 命令。--from-pr 会话关联。--resume 内存减少 68%。"
+    },
+    "11": {
+      "date": "2026-02-04 — 02-05",
+      "version": "v2.1.31 — v2.1.32",
+      "desc": "Opus 4.6 正式发布！Agent Teams 研究预览。自动记忆功能。部分对话摘要。"
+    },
+    "12": {
+      "date": "2026-02-06 — 02-07",
+      "version": "v2.1.33 — v2.1.37",
+      "desc": "Agent Teams 完善（teammate 消息、memory、hooks）。Fast Mode 支持 Opus 4.6。"
+    },
+    "13": {
+      "date": "2026-02-10 — 02-13",
+      "version": "v2.1.38 — v2.1.42",
+      "desc": "终端渲染性能优化。Windows ARM64 原生支持。claude auth 子命令。heredoc 命令注入防护。"
+    },
+    "14": {
+      "date": "2026-02-17 — 02-20",
+      "version": "v2.1.45 — v2.1.50",
+      "desc": "Sonnet 4.6 上线。Agent worktree 隔离。10+ 内存泄漏修复。CJK 布局修复。60+ 项 bug 修复（v2.1.47 史上最大更新）。"
+    },
+    "15": {
+      "date": "2026-02-24 — 02-25",
+      "version": "v2.1.51 — v2.1.56",
+      "desc": "Remote Control 子命令。自定义 npm 注册表。HTTP hooks 沙箱路由。Windows 稳定性修复。"
+    },
+    "16": {
+      "date": "2026-02-26",
+      "version": "v2.1.58 — v2.1.62",
+      "desc": "Remote Control 扩展到更多用户。auto-memory 升级支持 /memory 管理。新增 /copy 交互式代码块选择。复合命令智能权限前缀。多实例并发安全修复。Windows 配置文件并发写入修复。"
+    },
+    "17": {
+      "date": "2026-03",
+      "version": "v2.1.63 — v2.1.69",
+      "desc": "Opus 4.6 默认 medium effort（Max/Team 订阅）。重新引入 ultrathink 关键词。移除 Opus 4/4.1，Sonnet 4.5 自动迁移到 4.6。新增 /claude-api skill。Voice STT 扩展到 20 种语言。新增 /simplify 和 /batch 内置 skill。HTTP hooks（POST JSON）。/reload-plugins 热重载。InstructionsLoaded hook。MCP 二进制内容自动保存。项目配置和 auto-memory 跨 git worktree 共享。大量内存泄漏修复和性能优化。"
+    },
+    "18": {
+      "date": "2026-03",
+      "version": "v2.1.70",
+      "desc": "VS Code 大升级：spark 图标会话列表、Plan Markdown 全文视图支持评论、原生 MCP 服务器管理对话框。prompt re-render 减少 74%。compaction 保留图片实现 prompt cache 复用。Remote Control /poll 负载降低 300 倍。/rename 处理中可用。/color 支持重置。修复第三方网关 API 400 错误、Windows/WSL 剪贴板 CJK/emoji 损坏、慢速 SSH 回车问题等。"
+    },
+    "19": {
+      "date": "2026-03",
+      "version": "v2.1.71",
+      "desc": "新增 /loop 定时循环命令和 cron 调度工具。voice:pushToTalk 键绑定可自定义。修复语音模式 5–8 秒启动冻结、多 proxy OAuth 刷新 UI 冻结、长会话 stdin 冻结。修复 /fork 共享 plan 文件覆盖。改进插件去重和 uninstall 行为。bridge 重连从 10 分钟缩至数秒。/debug 支持中途切换。"
+    }
   }
 }
