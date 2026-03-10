@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Claude Code Feature Overview — A User's Perspective",
-    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.71, 220+ versions and 1000+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
+    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.72, 220+ versions and 1000+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
     "keywords": "Claude Code, Anthropic, AI Programming, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code Feature Overview — Complete Evolution from v0.2 to v2.1",
     "ogDescription": "220+ versions, 1000+ updates. From terminal to IDE, from solo coding to multi-Agent collaboration — discover every capability of Claude Code."
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.71 Full Version Feature Summary",
+    "badge": "v0.2.21 — v2.1.72 Full Version Feature Summary",
     "title": "Claude Code<br>Feature Overview",
     "subtitle": "From terminal to IDE, from solo coding to a team of Agents doing the heavy lifting.<br>220+ version iterations, 1000+ updates — each feature comes with real-world scenarios so you can hit the ground running.",
     "versions": " versions",
@@ -16,7 +16,7 @@
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.71 (Opus 4.6)",
+    "terminalOutput1": "  Claude Code v2.1.72 (Opus 4.6)",
     "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control",
     "terminalTyping": " Refactor this module with 3 agents: one for security, one for perf, one for tests",
     "advancedCta": "🚀 Explore Advanced Claude Code Usage →"
@@ -41,7 +41,7 @@
     "recent": {
       "label": "🔥 Recent Highlights",
       "title": "Latest Features",
-      "subtitle": "v2.1.58 — v2.1.71: /loop for scheduled monitoring, customizable voice keys, triple startup freeze fixes, VS Code major upgrades — every release solves real pain points."
+      "subtitle": "v2.1.58 — v2.1.72: /plan jumps straight into planning, /copy can write directly to files, effort control is easier to read, and tool-search/worktree flows keep getting smoother."
     },
     "models": {
       "label": "◆ AI Models & Reasoning",
@@ -101,7 +101,7 @@
     "shortcuts": {
       "label": "◆ Shortcuts & Commands",
       "title": "The Efficiency Ceiling for Keyboard Warriors",
-      "subtitle": "Ctrl+B for background tasks, /loop for scheduled checks, Tab for file completion — hands stay on keyboard, productivity maxed out."
+      "subtitle": "Ctrl+B for background tasks, /plan to kick off planning, /loop for scheduled checks, /effort to tune reasoning — hands stay on keyboard, productivity maxed out."
     },
     "timeline": {
       "label": "◆ Version Timeline",
@@ -128,8 +128,8 @@
     "githubReleases": "GitHub Releases",
     "officialDocs": "Official Docs",
     "download": "Download Claude Code",
-    "timestamp": "Updated: 2026-03-08",
-    "versionRange": "Version range: v0.2.21 ~ v2.1.71",
+    "timestamp": "Updated: 2026-03-10",
+    "versionRange": "Version range: v0.2.21 ~ v2.1.72",
     "totalVersions": "220+ versions",
     "totalUpdates": "1000+ updates",
     "builtWith": "Built with Claude Code",
@@ -144,34 +144,34 @@
   "cards": {
     "recent": {
       "0": {
-        "title": "/loop Scheduled Loop — Claude Watches for You",
-        "desc": "Brand new <span class=\"scenario-cmd\">/loop</span> command lets Claude repeat tasks at fixed intervals. E.g., <span class=\"scenario-cmd\">/loop 5m check the deploy</span> checks deployment status every 5 minutes. Fire and forget — Claude will alert you if something goes wrong. No more writing cron jobs yourself.",
-        "tag": "v2.1.71 NEW"
+        "title": "/plan Starts in One Line — Capture the Idea While It's Hot",
+        "desc": "v2.1.72 adds an optional description argument to <span class=\"scenario-cmd\">/plan</span>. You can now type <span class=\"scenario-cmd\">/plan fix the auth bug</span> and Claude jumps straight into plan mode with a concrete task. One less round trip while the idea is still fresh.",
+        "tag": "v2.1.72 NEW"
       },
       "1": {
-        "title": "Customizable Voice Key Bindings",
-        "desc": "New <span class=\"scenario-cmd\">voice:pushToTalk</span> key binding — set the voice activation key in keybindings.json (default Space). Modifier+letter combos like meta+k don't interfere with typing.",
-        "tag": "v2.1.71 NEW"
+        "title": "/copy Gets a Write Mode — Perfect Over SSH",
+        "desc": "The <span class=\"scenario-cmd\">/copy</span> picker now supports the <span class=\"scenario-cmd\">w</span> key to write the focused selection directly to a file, bypassing the clipboard. On remote boxes, inside tmux, or anywhere clipboard integration is flaky, this feels instantly more usable.",
+        "tag": "v2.1.72 NEW"
       },
       "2": {
-        "title": "Triple Startup Freeze Fix — \"Stuck\" Is Now History",
-        "desc": "Fixed voice mode 5–8 second startup freeze (CoreAudio blocking main thread after system wake), UI freeze from multiple claude.ai proxies refreshing OAuth tokens simultaneously, and stdin freeze causing unresponsive keys during long-running sessions. Three pain points resolved at once.",
-        "tag": "v2.1.71 NEW"
+        "title": "Effort Levels Get Simpler — ○ ◐ ● at a Glance",
+        "desc": "Effort is now simplified to low / medium / high, shown as <span class=\"scenario-cmd\">○ ◐ ●</span>, with <span class=\"scenario-cmd\">/effort auto</span> to reset. Instead of guessing whether Claude is thinking hard or staying lightweight, you can tell at a glance.",
+        "tag": "v2.1.72 NEW"
       },
       "3": {
-        "title": "Plugin & MCP Connector Fixes",
-        "desc": "Fixed plugin installation loss when running multiple instances. Fixed claude.ai connector disconnecting after OAuth token refresh. Improved <span class=\"scenario-cmd\">/plugin uninstall</span> to use local settings without affecting team members. Plugin MCP server deduplication.",
-        "tag": "v2.1.71 NEW"
+        "title": "Worktree In, Worktree Out — Multi-branch Experiments Feel Cleaner",
+        "desc": "New <span class=\"scenario-cmd\">ExitWorktree</span> pairs with <span class=\"scenario-cmd\">EnterWorktree</span>, making isolated worktree sessions easier to leave cleanly. When agents spin off into side branches, cleanup now feels like part of the workflow instead of an afterthought.",
+        "tag": "v2.1.72 NEW"
       },
       "4": {
-        "title": "Startup & Reconnection Performance",
-        "desc": "Deferred native image processor loading to optimize startup time. Bridge reconnection after laptop wake reduced from up to 10 minutes to seconds. <span class=\"scenario-cmd\">/debug</span> supports toggling debug logs mid-session.",
-        "tag": "v2.1.71 NEW"
+        "title": "Config & Voice Feel More Natural",
+        "desc": "<span class=\"scenario-cmd\">/config</span> now uses Escape to cancel, Enter to save and close, and Space to toggle settings. Voice transcription also got better with repo names and dev terms like regex, OAuth, and JSON. Small interaction papercuts, gone.",
+        "tag": "v2.1.72 NEW"
       },
       "5": {
-        "title": "v2.1.71 Key Fixes Highlights",
-        "desc": "Fixed <span class=\"scenario-cmd\">/fork</span> sessions sharing plan files and overwriting each other. Fixed Read tool stuffing oversized images into context after image processing failure. Fixed false positive permission prompts for heredoc commit messages. Fixed <span class=\"scenario-cmd\">--print</span> hanging permanently when configuring team agents.",
-        "tag": "v2.1.71 NEW"
+        "title": "v2.1.72 Stability Fixes Highlights",
+        "desc": "Fixes include tool search still working with <span class=\"scenario-cmd\">ANTHROPIC_BASE_URL</span> when <span class=\"scenario-cmd\">ENABLE_TOOL_SEARCH</span> is set, slower exits around background tasks, agent progress stuck on Initializing, <span class=\"scenario-cmd\">/clear</span> killing background tasks, and several permission rule edge cases. Less flash, more day-to-day polish.",
+        "tag": "v2.1.72 NEW"
       },
       "6": {
         "title": "VS Code: Major Upgrade — Your IDE Is All You Need",
@@ -237,7 +237,7 @@
       },
       "6": {
         "title": "Extended Thinking & Effort Control",
-        "desc": "Deep thinking mode lets the model reason thoroughly before responding. Triggered by saying \"think\" or \"ultrathink\" (v2.1.68 reintroduced the ultrathink keyword for high effort). Set default via <span class=\"scenario-cmd\">alwaysThinkingEnabled</span>. v2.1.69 displays effort level in real-time on the logo and spinner (e.g., \"with low effort\"), so you always know the current reasoning depth.",
+        "desc": "Deep thinking mode lets the model reason thoroughly before responding. Triggered by saying \"think\" or \"ultrathink\" (v2.1.68 reintroduced the ultrathink keyword for high effort). Set the default via <span class=\"scenario-cmd\">alwaysThinkingEnabled</span>. In v2.1.72, effort is simplified to low / medium / high, shown as <span class=\"scenario-cmd\">○ ◐ ●</span>, with <span class=\"scenario-cmd\">/effort auto</span> to jump back to the default.",
         "tag": "v0.2.44"
       },
       "7": {
@@ -318,7 +318,7 @@
       },
       "1": {
         "title": "Plan Mode — Think Before You Act",
-        "desc": "Thinking mode introduced in v0.2.44 (say \"think\" to start thinking, \"ultrathink\" for deep reasoning). Plan sub-agent introduced in v2.0.28. In VS Code, plan preview auto-updates with the ability to add comment feedback. <kbd>Shift+Tab</kbd> quickly toggles auto-accept — let Claude handle things when it's time to let go.",
+        "desc": "Thinking mode arrived in v0.2.44 (say \"think\" to start thinking, \"ultrathink\" for deeper reasoning). The Plan sub-agent landed in v2.0.28. In v2.1.72, <span class=\"scenario-cmd\">/plan</span> can take the task description directly — for example <span class=\"scenario-cmd\">/plan fix the auth bug</span> — so planning starts the moment the idea lands. In VS Code, plan preview auto-updates and supports comment feedback. <kbd>Shift+Tab</kbd> quickly toggles auto-accept when it is time to let Claude run with it.",
         "tag": "v0.2.44"
       },
       "2": {
@@ -345,7 +345,7 @@
     "mcp": {
       "0": {
         "title": "Full MCP Protocol Support",
-        "desc": "Project scope .mcp.json introduced in v0.2.50. Streamable HTTP and SSE + OAuth supported in v1.0.27. Auto-search mode (<span class=\"scenario-cmd\">auto:N</span> syntax) in v2.1.7. Supports resource_link, structuredContent, tool annotations. v2.1.69: MCP tools returning binary content (PDF/Office/audio) are automatically saved to disk instead of dumping base64.",
+        "desc": "Project scope .mcp.json arrived in v0.2.50. Streamable HTTP and SSE + OAuth landed in v1.0.27. Auto-search mode (<span class=\"scenario-cmd\">auto:N</span> syntax) shipped in v2.1.7. Claude Code supports resource_link, structuredContent, and tool annotations. In v2.1.69, MCP tools returning binary content (PDF/Office/audio) started saving files to disk instead of dumping base64. In v2.1.72, tool search was fixed to keep working with <span class=\"scenario-cmd\">ANTHROPIC_BASE_URL</span> as long as <span class=\"scenario-cmd\">ENABLE_TOOL_SEARCH</span> is set.",
         "tag": "v0.2.50"
       },
       "1": {
@@ -402,13 +402,13 @@
       },
       "5": {
         "title": "Real-Time Interaction",
-        "desc": "Real-time steering introduced in v0.2.108 (send messages to guide Claude while it's working). Message queuing in v0.2.75 (press Enter to queue follow-up messages). <span class=\"scenario-cmd\">/copy</span> interactively selects code blocks for copying, with an \"Always copy full response\" option for one-click full response copying. Prompt suggestions for smart recommendations.",
+        "desc": "Real-time steering arrived in v0.2.108 so you can guide Claude while it is working. Message queuing landed in v0.2.75 so Enter can line up follow-up prompts. <span class=\"scenario-cmd\">/copy</span> interactively selects code blocks, and from v2.1.72 you can press <span class=\"scenario-cmd\">w</span> to write the focused selection straight to a file — especially handy over SSH or inside tmux. Prompt suggestions keep the next move obvious.",
         "tag": "v0.2.108"
       },
       "6": {
         "title": "Voice Input",
-        "desc": "Hold spacebar to start voice input (v2.1.71 supports <span class=\"scenario-cmd\">voice:pushToTalk</span> custom key binding). v2.1.69 supports 20 languages (including Chinese). v2.1.71 fixes voice mode causing 5–8 second startup freeze (CoreAudio blocking main thread). When you don't feel like typing, just talk.",
-        "tag": "v2.1.69 — v2.1.71"
+        "desc": "Hold spacebar to start voice input (v2.1.71 added the <span class=\"scenario-cmd\">voice:pushToTalk</span> custom key binding). v2.1.69 supports 20 languages, including Chinese. v2.1.71 fixed the 5–8 second startup freeze caused by voice mode. v2.1.72 further improves transcription accuracy for repo names and dev terms like regex, OAuth, and JSON. When you do not feel like typing, just talk.",
+        "tag": "v2.1.69 — v2.1.72"
       },
       "7": {
         "title": "Bash Command Auto-Approval",
@@ -579,7 +579,7 @@
         "1": "Writing daily business logic and can't wait for deep reasoning? <span class=\"scenario-cmd\">/fast</span> to switch to Fast Mode — same model, faster results",
         "2": "Worker nodes in a multi-agent workflow that don't need a flagship model? Sonnet 4.6 delivers the best value",
         "3": "\"Where is this function defined?\" — The Haiku 4.5-powered Explore sub-agent searches your entire codebase in seconds",
-        "4": "Say \"ultrathink\" to trigger high-effort deep reasoning. The logo and spinner show the current reasoning level in real-time — see at a glance whether the model is \"thinking hard\" or \"answering fast\""
+        "4": "Say \"ultrathink\" to trigger high-effort reasoning; in v2.1.72, effort became a simple <span class=\"scenario-cmd\">○ ◐ ●</span> scale, so with <span class=\"scenario-cmd\">/effort</span> you can instantly tell whether Claude is staying light or thinking hard"
       }
     },
     "agents": {
@@ -611,7 +611,7 @@
         "0": "The project has a 30-page architecture PDF? Just @-mention it — Claude smartly reads the key sections without stuffing all 30 pages into context",
         "1": "Code scattered across multiple repos? <span class=\"scenario-cmd\">--add-dir</span> adds other directories — cross-project code references without manual copy-paste",
         "2": "\"What does this util function actually do?\" — LSP tools jump to definition with one click, hover for docs — 10x faster than digging through source",
-        "3": "Start in plan mode to discuss the implementation approach. Once confirmed, Claude writes the code — you just review",
+        "3": "Start in plan mode to talk through the approach — or jump straight in with <span class=\"scenario-cmd\">/plan fix the auth bug</span>. Once the plan looks good, Claude writes the code and you just review",
         "4": "Done writing? The prompt footer shows PR status in real-time: pending → approved → merged, with clickable links to GitHub"
       }
     },
@@ -634,8 +634,8 @@
         "1": "Enable Vim mode — <kbd>f</kbd>/<kbd>t</kbd> for quick jumps, <kbd>Ctrl+R</kbd> for history search — fingers never leave the home row",
         "2": "Switch to a CJK input method for Chinese comments? Full-width spaces and wide character layouts all align correctly",
         "3": "Claude is running a long task? No need to wait — type a message to steer its direction, with real-time steering taking effect instantly",
-        "4": "Too many code blocks in the response? <span class=\"scenario-cmd\">/copy</span> pops up an interactive selector — one click to copy the block you need",
-        "5": "Hold spacebar for voice input (supports 20 languages) — when you don't feel like typing, just talk"
+        "4": "Too many code blocks in the response? <span class=\"scenario-cmd\">/copy</span> opens an interactive selector, and over SSH/tmux you can hit <span class=\"scenario-cmd\">w</span> to write the focused block straight to a file without touching the clipboard",
+        "5": "Hold spacebar for voice input (20 languages supported), and repo names plus terms like OAuth and JSON now transcribe more accurately when you would rather speak than type"
       }
     },
     "sdk": {
@@ -693,41 +693,43 @@
     "0": "Switch AI model (takes effect immediately)",
     "1": "Toggle Fast Mode",
     "2": "Run commands on a timed loop (e.g., /loop 5m check deploy)",
-    "3": "Compact context",
-    "4": "Interactively select and copy code blocks",
-    "5": "Manage auto-memory",
-    "6": "Resume a previous session",
-    "7": "Fork current session",
-    "8": "Rewind conversation and undo changes",
-    "9": "Rename session (works while Claude is processing)",
-    "10": "Manage tool permission rules",
-    "11": "Open theme picker",
-    "12": "Configuration (supports search filtering)",
-    "13": "Custom keyboard shortcuts",
-    "14": "View context usage",
-    "15": "Debug current session issues",
-    "16": "Diagnose installation and configuration",
-    "17": "Export conversation for sharing",
-    "18": "Usage statistics (supports date range)",
-    "19": "View plan usage limits",
-    "20": "Manage MCP servers",
-    "21": "Manage plugins",
-    "22": "Manage custom agents",
-    "23": "Add extra working directories",
-    "24": "Switch output style",
-    "25": "View current task list",
-    "26": "Manage Skills",
-    "27": "Clear current session",
-    "28": "Simplify code (built-in skill)",
-    "29": "Batch process tasks (built-in skill)",
-    "30": "Build Claude API applications (built-in skill)",
-    "31": "Hot reload plugin changes",
-    "32": "Manage sandbox mode",
-    "33": "Voice input",
-    "34": "View session costs",
-    "35": "Terminal compatibility settings",
-    "36": "Set session color (use default or reset to restore)",
-    "37": "Security review"
+    "3": "Enter plan mode (supports passing the task description directly)",
+    "4": "Tune reasoning effort (use /effort auto to reset)",
+    "5": "Compact context",
+    "6": "Interactively select and copy code blocks (supports w to write directly to a file)",
+    "7": "Manage auto-memory",
+    "8": "Resume a previous session",
+    "9": "Fork current session",
+    "10": "Rewind conversation and undo changes",
+    "11": "Rename session (works while Claude is processing)",
+    "12": "Manage tool permission rules",
+    "13": "Open theme picker",
+    "14": "Configuration (Esc cancels, Enter saves, Space toggles)",
+    "15": "Custom keyboard shortcuts",
+    "16": "View context usage",
+    "17": "Debug current session issues",
+    "18": "Diagnose installation and configuration",
+    "19": "Export conversation for sharing",
+    "20": "Usage statistics (supports date range)",
+    "21": "View plan usage limits",
+    "22": "Manage MCP servers",
+    "23": "Manage plugins",
+    "24": "Manage custom agents",
+    "25": "Add extra working directories",
+    "26": "Switch output style",
+    "27": "View current task list",
+    "28": "Manage Skills",
+    "29": "Clear current session",
+    "30": "Simplify code (built-in skill)",
+    "31": "Batch process tasks (built-in skill)",
+    "32": "Build Claude API applications (built-in skill)",
+    "33": "Hot reload plugin changes",
+    "34": "Manage sandbox mode",
+    "35": "Voice input",
+    "36": "View session costs",
+    "37": "Terminal compatibility settings",
+    "38": "Set session color (use default or reset to restore)",
+    "39": "Security review"
   },
   "timeline_entries": {
     "0": {
@@ -827,8 +829,8 @@
     },
     "19": {
       "date": "2026-03",
-      "version": "v2.1.71",
-      "desc": "New /loop timed loop command and cron scheduling tool. voice:pushToTalk key binding customizable. Fixed voice mode 5–8 second startup freeze, multi-proxy OAuth refresh UI freeze, and long-session stdin freeze. Fixed /fork shared plan file overwrite. Improved plugin deduplication and uninstall behavior. Bridge reconnection reduced from 10 minutes to seconds. /debug supports mid-session toggling."
+      "version": "v2.1.71 — v2.1.72",
+      "desc": "v2.1.71 added /loop and cron scheduling tools; v2.1.72 followed with /plan taking a task description, /copy supporting w to write directly to files, effort simplified to ○ ◐ ●, ExitWorktree closing the loop on isolated sessions, and tool search restored for ANTHROPIC_BASE_URL setups. Add a big batch of exit, permissions, background-task, and voice fixes, and the whole workflow feels more polished."
     }
   }
 }

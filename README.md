@@ -4,7 +4,7 @@
 
 > [在线预览](https://cclog.vibevibe.cn/) · [进阶用法](https://www.vibevibe.cn/Advanced/)
 
-一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.71** 共 **220+ 个版本**、**1000+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
+一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.72** 共 **220+ 个版本**、**1000+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
 
 🔗 **数据来源**：[GitHub Releases](https://github.com/anthropics/claude-code/releases) · [官方文档](https://code.claude.com/docs) · [下载 Claude Code](https://claude.com/download)
 
@@ -23,6 +23,12 @@
 - **响应式设计** — 适配桌面端与移动端
 - **无障碍支持** — 尊重 `prefers-reduced-motion`，使用语义化 HTML
 - **零依赖** — 纯 HTML + CSS + JavaScript，无需构建工具
+
+## 🔄 本次同步结论（v2.1.72）
+
+- **暂时不需要新增模块** —— 现有 13 大板块已经能完整承接最新更新，`/plan`、`/copy`、`/effort`、worktree、tool search 等能力都能自然归入现有板块
+- **重点补强 4 个现有板块** —— 开发工作流、MCP 生态、终端体验、快捷键与命令，确保最新版本能力不“掉队”
+- **文案继续往“更生动、更场景化、更像中国开发者聊天”靠拢** —— 少写发布说明腔，多写“SSH 党狂喜”“想到就开工”“一眼看懂档位”这类社区常用表达
 
 ## 🛠 技术栈
 
@@ -96,16 +102,16 @@ cc-changelog-web/
 | 1 | AI 模型与选择 | Opus 4.6、Fast Mode、Sonnet 4.6、Haiku 4.5、100 万上下文 |
 | 2 | 多 Agent 协作 | Agent 团队、后台 Agent、多任务并行、Worktree 隔离 |
 | 3 | 会话与上下文管理 | 自动记忆、会话分叉/恢复、PR 关联、智能压缩 |
-| 4 | 开发工作流 | Git/PR 集成、Plan Mode、Web 搜索、PDF 阅读、LSP |
-| 5 | MCP 生态与扩展 | OAuth、插件、Skills、Hooks、远程控制、二进制内容处理 |
-| 6 | 终端体验 | 主题、Vim 模式、CJK 支持、快捷键、/loop 定时循环、语音输入、Bash 命令自动放行 |
+| 4 | 开发工作流 | Git/PR 集成、Plan Mode、`/plan` 直接起手、Web 搜索、PDF 阅读、LSP |
+| 5 | MCP 生态与扩展 | OAuth、插件、Skills、Hooks、远程控制、二进制内容处理、tool search 补强 |
+| 6 | 终端体验 | 主题、Vim 模式、CJK 支持、快捷键、`/copy` 直写文件、语音输入、Bash 命令自动放行 |
 | 7 | 安全与信任 | 沙箱环境、权限控制、企业合规 |
 | 8 | SDK 与集成 | TypeScript/Python SDK、Desktop 应用、OTel 可观测性 |
 | 9 | 性能与效率 | 渲染优化 74%、30+ 内存泄漏修复、启动冻结修复 |
 | 10 | 跨平台 | macOS、Linux、Windows、WSL2、ARM64 |
 | 11 | VS Code 集成 | Spark 图标、Plan Markdown 视图、MCP 管理对话框 |
-| 12 | 快捷键与命令 | 快捷键速查、斜杠命令、CLI 子命令、环境变量、自定义配置 |
-| 13 | 版本时间线 | v0.2.21 ~ v2.1.71 完整历程 |
+| 12 | 快捷键与命令 | 快捷键速查、斜杠命令、`/effort`、CLI 子命令、环境变量、自定义配置 |
+| 13 | 版本时间线 | v0.2.21 ~ v2.1.72 完整历程 |
 
 ## 🎨 内容风格
 
@@ -122,6 +128,6 @@ cc-changelog-web/
 
 ## 📝 说明
 
-- 整理时间：2026-03-08
-- 版本范围：v0.2.21 ~ v2.1.71
+- 整理时间：2026-03-10
+- 版本范围：v0.2.21 ~ v2.1.72
 - 本站使用 Claude Code 构建

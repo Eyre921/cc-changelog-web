@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Code 全特性速览 — 从用户视角出发</title>
-<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.71，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
+<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.72，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
 <meta name="keywords" content="Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK">
 <meta property="og:title" content="Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进">
 <meta property="og:description" content="220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。">
@@ -21,7 +21,7 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.71 全版本特性整理</span></div>
+  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.72 全版本特性整理</span></div>
   <h1 data-i18n="hero.title">Claude Code<br>全特性速览</h1>
   <p data-i18n="hero.subtitle">从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>220+ 个版本迭代、1000+ 项更新，每一项能力都配有真实场景，看完就能上手。</p>
   <div class="hero-meta">
@@ -35,7 +35,7 @@
     <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title" data-i18n="hero.terminalTitle">Claude Code — zsh</span></div>
     <div class="terminal-body">
       <div><span class="prompt">~ $</span> <span class="cmd">claude</span></div>
-      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.71 (Opus 4.6)</div>
+      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.72 (Opus 4.6)</div>
       <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control</span></div>
       <div class="output">&nbsp;</div>
       <div><span class="prompt">></span> <span class="cmd typing" data-i18n="hero.terminalTyping"> 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试</span></div>
@@ -77,44 +77,44 @@
 <section class="section" id="recent">
   <div class="section-label"><span data-i18n="sections.recent.label">🔥 最近更新亮点</span></div>
   <h2 data-i18n="sections.recent.title">最近版本的新特性</h2>
-  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.71：/loop 让 Claude 帮你定时巡检，语音按键可自定义，启动冻结三连修复，VS Code 全面升级——每个版本都在解决真实痛点。</p>
+  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.72：/plan 一句话起手、/copy 可直接落盘、effort 档位更直觉、tool search/worktree 继续补齐——最新一版更像给重度开发者打磨手感。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in card-highlight">
       <div class="card-icon c2">🔄</div>
-      <h3>/loop 定时循环——Claude 帮你盯着</h3>
-      <p>全新 <span class="scenario-cmd">/loop</span> 命令，让 Claude 按固定间隔重复运行任务。比如 <span class="scenario-cmd">/loop 5m check the deploy</span> 每 5 分钟检查一次部署状态。发完就去忙别的，有问题 Claude 会叫你——再也不用自己写 cron 了。</p>
-      <span class="tag c2">v2.1.71 NEW</span>
+      <h3>/plan 一句话起手——想法刚冒头就能开工</h3>
+      <p>v2.1.72 给 <span class="scenario-cmd">/plan</span> 加了可选描述参数。现在你可以直接来一句 <span class="scenario-cmd">/plan 修 auth bug</span>，Claude 立刻进入 plan mode 开始拆方案。少一次来回确认，灵感还热乎的时候就把活铺开。</p>
+      <span class="tag c2">v2.1.72 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c4">🎤</div>
-      <h3>语音按键可自定义绑定</h3>
-      <p>新增 <span class="scenario-cmd">voice:pushToTalk</span> 键绑定，在 keybindings.json 中设置语音激活键（默认 Space），modifier+letter 组合如 meta+k 不影响打字。</p>
-      <span class="tag c4">v2.1.71 NEW</span>
+      <h3>/copy 新增 w 落盘——SSH 党狂喜</h3>
+      <p>在 <span class="scenario-cmd">/copy</span> 交互选择器里新增 <span class="scenario-cmd">w</span> 键，聚焦的代码块可直接写入文件，绕过剪贴板。远程连服务器、没有系统剪贴板、tmux 里来回切窗口？这下真能一把梭。</p>
+      <span class="tag c4">v2.1.72 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c3">🚀</div>
-      <h3>启动冻结修复三连——"卡住了"成为历史</h3>
-      <p>修复语音模式 5–8 秒启动冻结（CoreAudio 在系统唤醒后阻塞主线程）、多 claude.ai proxy 同时刷新 OAuth token 导致的 UI 卡死、长时间运行会话中按键突然没反应的 stdin 冻结。三个痛点一次全解决。</p>
-      <span class="tag c3">v2.1.71 NEW</span>
+      <h3>Effort 档位瘦身——○ ◐ ● 一眼看懂</h3>
+      <p>effort 级别收敛为 low / medium / high，界面改成 <span class="scenario-cmd">○ ◐ ●</span> 三档显示，还支持 <span class="scenario-cmd">/effort auto</span> 回到默认。以前要琢磨当前是不是开太猛，现在看一眼就知道 Claude 在「随手答」还是「认真想」。</p>
+      <span class="tag c3">v2.1.72 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c5">🔌</div>
-      <h3>插件 & MCP 连接器修复</h3>
-      <p>修复多实例运行时插件安装丢失。修复 claude.ai 连接器 OAuth token 刷新后断连。改进 <span class="scenario-cmd">/plugin uninstall</span> 使用 local settings，不影响团队成员。插件 MCP 服务器去重。</p>
-      <span class="tag c5">v2.1.71 NEW</span>
+      <h3>Worktree 进出成闭环——分身干活也能优雅收队</h3>
+      <p>新增 <span class="scenario-cmd">ExitWorktree</span> 工具，和 <span class="scenario-cmd">EnterWorktree</span> 成对出现。做多分支实验、让 agent 去隔离环境里试错时，不再是「进去容易出来难」，收尾也干净。</p>
+      <span class="tag c5">v2.1.72 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c1">⚡</div>
-      <h3>启动与重连性能提升</h3>
-      <p>延迟原生图片处理器加载优化启动时间。笔记本唤醒后 bridge 重连从最长 10 分钟缩短到数秒。<span class="scenario-cmd">/debug</span> 支持会话内切换调试日志。</p>
-      <span class="tag c1">v2.1.71 NEW</span>
+      <h3>配置/语音都更懂你——少踩交互小坑</h3>
+      <p><span class="scenario-cmd">/config</span> 现在 Esc 取消、Enter 保存并关闭、Space 切换设置；语音转写对 repo 名、regex、OAuth、JSON 这些开发者黑话也更准。那些「本来能做成、却老被 UI 绊一下」的小刺，这版拔掉不少。</p>
+      <span class="tag c1">v2.1.72 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c6">🐛</div>
-      <h3>v2.1.71 关键修复精选</h3>
-      <p>修复 <span class="scenario-cmd">/fork</span> 会话共享 plan 文件相互覆盖。修复 Read 工具图片处理失败后将超大图片塞入上下文。修复 heredoc 提交信息的误报权限提示。修复 <span class="scenario-cmd">--print</span> 配置 team agents 时永久挂起。</p>
-      <span class="tag c6">v2.1.71 NEW</span>
+      <h3>v2.1.72 稳定性修复精选</h3>
+      <p>修复 tool search 在 <span class="scenario-cmd">ANTHROPIC_BASE_URL</span> 场景下失效、后台任务导致退出变慢、Agent 进度卡在 Initializing、<span class="scenario-cmd">/clear</span> 误杀后台任务、权限规则匹配不准等问题。不是花活堆料，而是把重度使用时最烦人的毛刺继续磨平。</p>
+      <span class="tag c6">v2.1.72 NEW</span>
     </div>
     <div class="card fade-in card-highlight-secondary">
       <div class="card-icon c7">✨</div>
@@ -204,7 +204,7 @@
     <div class="card fade-in">
       <div class="card-icon c6">◇</div>
       <h3>Extended Thinking & Effort Control</h3>
-      <p>深度思考模式让模型在回答前充分推理。说 "think" 或 "ultrathink" 触发（v2.1.68 重新引入 ultrathink 关键词启用高 effort）。通过 <span class="scenario-cmd">alwaysThinkingEnabled</span> 设置默认开启。v2.1.69 在 logo 和 spinner 中实时显示 effort 级别（如 "with low effort"），让你随时了解当前推理深度。</p>
+      <p>深度思考模式让模型在回答前充分推理。说 "think" 或 "ultrathink" 触发（v2.1.68 重新引入 ultrathink 关键词启用高 effort）。通过 <span class="scenario-cmd">alwaysThinkingEnabled</span> 设置默认开启。v2.1.72 起 effort 档位简化为 low / medium / high，并用 <span class="scenario-cmd">○ ◐ ●</span> 显示，还可用 <span class="scenario-cmd">/effort auto</span> 一键回默认。</p>
       <span class="tag c6">v0.2.44</span>
     </div>
     <div class="card fade-in">
@@ -226,7 +226,7 @@
         <li>日常写业务逻辑，等不了深度推理？<span class="scenario-cmd">/fast</span> 一键切换 Fast Mode，同模型、更快出活</li>
         <li>多 agent 工作流里的 worker 节点，不需要旗舰模型？Sonnet 4.6 性价比拉满</li>
         <li>"这个函数在哪定义的？"——Haiku 4.5 驱动的 Explore 子 agent 帮你翻遍代码库，秒级响应</li>
-        <li>说 "ultrathink" 触发高 effort 深度推理，logo 和 spinner 实时显示当前推理级别，一眼就知道模型在"用力想"还是"快速答"</li>
+        <li>说 "ultrathink" 触发高 effort 深度推理；v2.1.72 把 effort 简化成 <span class="scenario-cmd">○ ◐ ●</span> 三档，配合 <span class="scenario-cmd">/effort</span> 一眼就知道现在是"先快答"还是"认真想"</li>
       </ul>
     </div>
   </div>
@@ -379,7 +379,7 @@
     <div class="card fade-in">
       <div class="card-icon c1">☑</div>
       <h3>Plan Mode — 先想清楚再动手</h3>
-      <p>v0.2.44 引入 thinking mode（说 "think" 启动思考，"ultrathink" 深度推理）。v2.0.28 引入 Plan 子 agent。VS Code 中 plan 预览自动更新，可以添加评论反馈。<kbd>Shift+Tab</kbd> 快速切换 auto-accept，该放手让 Claude 干的时候就放手。</p>
+      <p>v0.2.44 引入 thinking mode（说"think"启动思考，"ultrathink"深度推理）。v2.0.28 引入 Plan 子 agent。v2.1.72 起 <span class="scenario-cmd">/plan</span> 支持直接带描述参数，比如 <span class="scenario-cmd">/plan 修 auth bug</span>，想到啥就能立刻起草方案。VS Code 中 plan 预览自动更新，可以添加评论反馈。<kbd>Shift+Tab</kbd> 快速切换 auto-accept，该放手让 Claude 干的时候就放手。</p>
       <span class="tag c1">v0.2.44</span>
     </div>
     <div class="card fade-in">
@@ -418,7 +418,7 @@
         <li>项目有份 30 页的架构设计 PDF？@ 提及一下，Claude 智能读取关键章节，不会把 30 页全塞进上下文</li>
         <li>代码散落在多个仓库？<span class="scenario-cmd">--add-dir</span> 添加其他目录，跨项目引用代码不用手动复制粘贴</li>
         <li>"这个 util 函数到底干嘛的？"——LSP 工具一键跳到定义，hover 看文档，比翻源码快 10 倍</li>
-        <li>先进 plan mode 聊清楚实现方案，确认后 Claude 直接动手写，你只需要 review</li>
+        <li>先进 plan mode 把方案聊清楚，或者直接来一句 <span class="scenario-cmd">/plan 修 auth bug</span> 一步起手；确认后 Claude 直接动手写，你只需要 review</li>
         <li>写完了 prompt footer 实时显示 PR 状态：pending → approved → merged，点击链接直达 GitHub</li>
       </ul>
     </div>
@@ -438,7 +438,7 @@
     <div class="card fade-in">
       <div class="card-icon c3">⊕</div>
       <h3>MCP 协议全面支持</h3>
-      <p>v0.2.50 引入 project scope .mcp.json。v1.0.27 支持 Streamable HTTP 和 SSE + OAuth。v2.1.7 自动搜索模式（<span class="scenario-cmd">auto:N</span> 语法）。支持 resource_link、structuredContent、tool annotations。v2.1.69 MCP 工具返回 PDF/Office/音频等二进制内容时自动保存到磁盘，不再倒入 base64。</p>
+      <p>v0.2.50 引入 project scope .mcp.json。v1.0.27 支持 Streamable HTTP 和 SSE + OAuth。v2.1.7 自动搜索模式（<span class="scenario-cmd">auto:N</span> 语法）。支持 resource_link、structuredContent、tool annotations。v2.1.69 MCP 工具返回 PDF/Office/音频等二进制内容时自动保存到磁盘，不再倒入 base64。v2.1.72 修复在设置 <span class="scenario-cmd">ANTHROPIC_BASE_URL</span> 时，只要开启 <span class="scenario-cmd">ENABLE_TOOL_SEARCH</span> 仍可正常启用工具搜索。</p>
       <span class="tag c3">v0.2.50</span>
     </div>
     <div class="card fade-in">
@@ -532,14 +532,14 @@
     <div class="card fade-in">
       <div class="card-icon c6">⊡</div>
       <h3>实时交互</h3>
-      <p>v0.2.108 引入实时 steering（Claude 工作时发消息引导方向）。v0.2.75 消息排队（Enter 排队后续消息）。<span class="scenario-cmd">/copy</span> 交互式选择代码块复制，支持 "Always copy full response" 选项一键复制完整回复。Prompt suggestions 智能建议。</p>
+      <p>v0.2.108 引入实时 steering（Claude 工作时发消息引导方向）。v0.2.75 消息排队（Enter 排队后续消息）。<span class="scenario-cmd">/copy</span> 交互式选择代码块复制，v2.1.72 起支持按 <span class="scenario-cmd">w</span> 直接把聚焦代码块写入文件；远程 SSH、tmux、多层跳板场景下尤其省事。Prompt suggestions 智能建议。</p>
       <span class="tag c6">v0.2.108</span>
     </div>
     <div class="card fade-in">
       <div class="card-icon c2">🎙</div>
       <h3>Voice 语音输入</h3>
-      <p>长按空格键开始语音输入（v2.1.71 支持 <span class="scenario-cmd">voice:pushToTalk</span> 自定义按键绑定）。v2.1.69 支持 20 种语言（含中文）。v2.1.71 修复语音模式导致的 5–8 秒启动冻结（CoreAudio 阻塞主线程）。不想打字的时候，说话就行。</p>
-      <span class="tag c2">v2.1.69 — v2.1.71</span>
+      <p>长按空格键开始语音输入（v2.1.71 支持 <span class="scenario-cmd">voice:pushToTalk</span> 自定义按键绑定）。v2.1.69 支持 20 种语言（含中文）。v2.1.71 修复语音模式导致的 5–8 秒启动冻结（CoreAudio 阻塞主线程）。v2.1.72 进一步提升 repo 名、regex、OAuth、JSON 等开发者术语的转写准确率。不想打字的时候，说话就行。</p>
+      <span class="tag c2">v2.1.69 — v2.1.72</span>
     </div>
     <div class="card fade-in">
       <div class="card-icon c4">✅</div>
@@ -560,8 +560,8 @@
         <li>开启 Vim 模式，<kbd>f</kbd>/<kbd>t</kbd> 快速跳转、<kbd>Ctrl+R</kbd> 搜历史命令——手指不离主键盘区</li>
         <li>切到搜狗输入法打中文注释？全角空格、宽字符布局都对齐，不会错位</li>
         <li>Claude 正在跑一个长任务？不用干等——直接打字发消息引导方向，实时 steering 即时生效</li>
-        <li>回复里代码块太多？<span class="scenario-cmd">/copy</span> 弹出交互选择器，点一下就复制你要的那段</li>
-        <li>长按空格键启动语音输入（支持 20 种语言），不想打字的时候说话也行</li>
+        <li>回复里代码块太多？<span class="scenario-cmd">/copy</span> 弹出交互选择器；在 SSH/tmux 里还能直接按 <span class="scenario-cmd">w</span> 落盘，不走剪贴板也照样丝滑</li>
+        <li>长按空格键启动语音输入（支持 20 种语言），repo 名、OAuth、JSON 这些词现在识别更准，不想打字的时候说话也行</li>
       </ul>
     </div>
   </div>
@@ -846,7 +846,7 @@
 <section class="section" id="shortcuts">
   <div class="section-label"><span data-i18n="sections.shortcuts.label">◆ 快捷键与命令</span></div>
   <h2 data-i18n="sections.shortcuts.title">键盘流玩家的效率天花板</h2>
-  <p class="subtitle" data-i18n="sections.shortcuts.subtitle">Ctrl+B 后台跑任务、/loop 定时巡检、Tab 补全文件名——手不离键盘，效率拉满。</p>
+  <p class="subtitle" data-i18n="sections.shortcuts.subtitle">Ctrl+B 后台跑任务、/plan 一句话起手、/loop 定时巡检、/effort 控制推理力度——手不离键盘，效率拉满。</p>
 
   <div class="grid grid-2">
     <div class="card fade-in" style="padding:0;overflow:hidden">
@@ -879,8 +879,10 @@
         <span class="scenario-cmd">/model</span><span style="color:var(--text2)">切换 AI 模型（即时生效）</span>
         <span class="scenario-cmd">/fast</span><span style="color:var(--text2)">切换 Fast Mode</span>
         <span class="scenario-cmd">/loop</span><span style="color:var(--text2)">定时循环运行命令（如 /loop 5m check deploy）</span>
+        <span class="scenario-cmd">/plan</span><span style="color:var(--text2)">进入计划模式（支持直接带任务描述）</span>
+        <span class="scenario-cmd">/effort</span><span style="color:var(--text2)">切换推理力度（支持 /effort auto 恢复默认）</span>
         <span class="scenario-cmd">/compact</span><span style="color:var(--text2)">压缩上下文</span>
-        <span class="scenario-cmd">/copy</span><span style="color:var(--text2)">交互式选择代码块复制</span>
+        <span class="scenario-cmd">/copy</span><span style="color:var(--text2)">交互式选择代码块复制（支持 w 直接写文件）</span>
         <span class="scenario-cmd">/memory</span><span style="color:var(--text2)">管理 auto-memory</span>
         <span class="scenario-cmd">/resume</span><span style="color:var(--text2)">恢复历史会话</span>
         <span class="scenario-cmd">/fork</span><span style="color:var(--text2)">分叉当前会话</span>
@@ -888,7 +890,7 @@
         <span class="scenario-cmd">/rename</span><span style="color:var(--text2)">重命名会话（Claude 处理中也可用）</span>
         <span class="scenario-cmd">/permissions</span><span style="color:var(--text2)">管理工具权限规则</span>
         <span class="scenario-cmd">/theme</span><span style="color:var(--text2)">打开主题选择器</span>
-        <span class="scenario-cmd">/config</span><span style="color:var(--text2)">配置（支持搜索过滤）</span>
+        <span class="scenario-cmd">/config</span><span style="color:var(--text2)">配置（Esc 取消、Enter 保存、Space 切换）</span>
         <span class="scenario-cmd">/keybindings</span><span style="color:var(--text2)">自定义键盘快捷键</span>
         <span class="scenario-cmd">/context</span><span style="color:var(--text2)">查看上下文使用情况</span>
         <span class="scenario-cmd">/debug</span><span style="color:var(--text2)">排查当前会话问题</span>
@@ -1043,8 +1045,8 @@
     </div>
     <div class="timeline-item major">
       <div class="timeline-date">2026-03</div>
-      <div class="timeline-version">v2.1.71</div>
-      <div class="timeline-desc" style="color:var(--accent1)">新增 /loop 定时循环命令和 cron 调度工具。voice:pushToTalk 键绑定可自定义。修复语音模式 5–8 秒启动冻结、多 proxy OAuth 刷新 UI 冻结、长会话 stdin 冻结。修复 /fork 共享 plan 文件覆盖。改进插件去重和 uninstall 行为。bridge 重连从 10 分钟缩至数秒。/debug 支持中途切换。</div>
+      <div class="timeline-version">v2.1.71 — v2.1.72</div>
+      <div class="timeline-desc" style="color:var(--accent1)">新增 /loop 定时循环命令和 cron 调度工具；v2.1.72 又补上 /plan 可直接带描述、/copy 支持按 w 直接写文件、effort 简化为 ○ ◐ ●、ExitWorktree 收尾闭环、tool search 在 ANTHROPIC_BASE_URL 场景下恢复可用。再加上一批退出、权限、后台任务与语音体验修复，整套工作流更顺手。</div>
     </div>
   </div>
 </section>
@@ -1061,7 +1063,7 @@
 <!-- Footer -->
 <footer class="footer">
   <p><span data-i18n="footer.sources">数据来源：</span><a href="https://github.com/anthropics/claude-code/releases" target="_blank" data-i18n="footer.githubReleases">GitHub Releases</a> · <a href="https://code.claude.com/docs" target="_blank" data-i18n="footer.officialDocs">官方文档</a> · <a href="https://claude.com/download" target="_blank" data-i18n="footer.download">下载 Claude Code</a></p>
-  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-03-08</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.71</span> · <span data-i18n="footer.totalVersions">共 220+ 个版本</span> · <span data-i18n="footer.totalUpdates">1000+ 项更新</span></p>
+  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-03-10</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.72</span> · <span data-i18n="footer.totalVersions">共 220+ 个版本</span> · <span data-i18n="footer.totalUpdates">1000+ 项更新</span></p>
   <p style="margin-top:.8rem"><a href="https://www.vibevibe.cn/Advanced/" target="_blank" class="footer-cta" data-i18n="footer.advancedGuide">🚀 探索更多 Claude Code 进阶用法 →</a></p>
   <p style="margin-top:1rem;color:var(--text3)"><span data-i18n="footer.builtWith">Built with Claude Code</span> · <a href="#" style="color:var(--text3)" data-i18n="footer.backToTop">回到顶部 ↑</a></p>
 </footer>
