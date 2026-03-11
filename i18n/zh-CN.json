@@ -111,10 +111,10 @@
   },
   "stats": {
     "rerender": "prompt re-render 减少",
-    "rcLoad": "Remote Control 负载降低",
     "memLeaks": "内存泄漏修复",
-    "wasmSave": "延迟 WASM 预加载节省",
-    "diskThreshold": "工具结果磁盘持久化阈值"
+    "diskThreshold": "工具结果磁盘持久化阈值",
+    "cacheBoost": "prompt cache 成本降低",
+    "bundleReduce": "包体积减少"
   },
   "shortcuts_section": {
     "keyboardTitle": "快捷键速查",
@@ -128,7 +128,7 @@
     "githubReleases": "GitHub Releases",
     "officialDocs": "官方文档",
     "download": "下载 Claude Code",
-    "timestamp": "整理时间：2026-03-10",
+    "timestamp": "整理时间：2026-03-11",
     "versionRange": "版本范围：v0.2.21 ~ v2.1.72",
     "totalVersions": "共 220+ 个版本",
     "totalUpdates": "1000+ 项更新",
@@ -269,7 +269,7 @@
       },
       "4": {
         "title": "Explore 子 Agent",
-        "desc": "由 Haiku 驱动的代码库探索 agent，高效搜索代码节省上下文。Claude 可动态选择子 agent 使用的模型，也可恢复之前的子 agent 继续工作。",
+        "desc": "由 Haiku 驱动的代码库探索 agent，高效搜索代码节省上下文。Claude 可动态选择子 agent 使用的模型，也可恢复之前的子 agent 继续工作。v2.1.72 恢复 Agent 工具的 <span class=\"scenario-cmd\">model</span> 参数，每次调用可单独指定模型；同时 team agents 自动继承 leader 的模型——团队作战不用挨个配。",
         "tag": "v2.0.17"
       },
       "5": {
@@ -355,7 +355,7 @@
       },
       "2": {
         "title": "插件系统",
-        "desc": "v2.0.12 发布插件系统。<span class=\"scenario-cmd\">/plugin install</span> 安装，支持 git 分支/tag 语法。自定义 npm 注册表。插件可提供 commands、agents、hooks、MCP servers、output styles。v2.1.69 新增 <span class=\"scenario-cmd\">/reload-plugins</span> 热重载、<span class=\"scenario-cmd\">git-subdir</span> 插件源类型、<span class=\"scenario-cmd\">pluginTrustMessage</span> 企业信任消息。",
+        "desc": "v2.0.12 发布插件系统。<span class=\"scenario-cmd\">/plugin install</span> 安装，支持 git 分支/tag 语法。自定义 npm 注册表。插件可提供 commands、agents、hooks、MCP servers、output styles。v2.1.69 新增 <span class=\"scenario-cmd\">/reload-plugins</span> 热重载、<span class=\"scenario-cmd\">git-subdir</span> 插件源类型、<span class=\"scenario-cmd\">pluginTrustMessage</span> 企业信任消息。v2.1.72 支持不带 <span class=\"scenario-cmd\">.git</span> 后缀的 marketplace git URL（兼容 Azure DevOps、AWS CodeCommit），并修复 Windows OneDrive、marketplace scope 冲突等多项插件安装问题。",
         "tag": "v2.0.12"
       },
       "3": {
@@ -411,15 +411,15 @@
         "tag": "v2.1.69 — v2.1.72"
       },
       "7": {
-        "title": "Bash 命令自动放行",
-        "desc": "常用工具命令（<span class=\"scenario-cmd\">fmt</span>、<span class=\"scenario-cmd\">seq</span>、<span class=\"scenario-cmd\">printf</span>、<span class=\"scenario-cmd\">test</span>、<span class=\"scenario-cmd\">expr</span> 等）已加入 auto-approval 白名单，不再每次都弹权限确认——日常操作更顺畅，减少打断。",
-        "tag": "v2.1.71 NEW"
+        "title": "Bash 命令自动放行——越来越多命令「免签」",
+        "desc": "v2.1.71 把 <span class=\"scenario-cmd\">fmt</span>、<span class=\"scenario-cmd\">seq</span>、<span class=\"scenario-cmd\">printf</span>、<span class=\"scenario-cmd\">test</span>、<span class=\"scenario-cmd\">expr</span> 等加入白名单；v2.1.72 继续扩容，<span class=\"scenario-cmd\">lsof</span>、<span class=\"scenario-cmd\">pgrep</span>、<span class=\"scenario-cmd\">tput</span>、<span class=\"scenario-cmd\">ss</span>、<span class=\"scenario-cmd\">fd</span>、<span class=\"scenario-cmd\">fdfind</span> 也「免签」了。查端口、找进程、搜文件这些高频只读操作不再弹确认，日常开发体感更丝滑。",
+        "tag": "v2.1.71 — v2.1.72"
       }
     },
     "security": {
       "0": {
         "title": "沙箱模式 — AI 写代码，但跑在笼子里",
-        "desc": "v2.0.24 发布 Linux & Mac 沙箱模式。阻止写入 .claude/skills 目录。HTTP hooks 强制走域名白名单。heredoc 解析防命令注入。v2.1.69 新增 <span class=\"scenario-cmd\">sandbox.enableWeakerNetworkIsolation</span>（macOS），让 gh、gcloud 等 Go 程序在代理环境下正常验证 TLS——安全和可用性两手抓。",
+        "desc": "v2.0.24 发布 Linux & Mac 沙箱模式。阻止写入 .claude/skills 目录。HTTP hooks 强制走域名白名单。heredoc 解析防命令注入。v2.1.69 新增 <span class=\"scenario-cmd\">sandbox.enableWeakerNetworkIsolation</span>（macOS），让 gh、gcloud 等 Go 程序在代理环境下正常验证 TLS——安全和可用性两手抓。v2.1.72 起 CLAUDE.md 中的 HTML 注释（<span class=\"scenario-cmd\">&lt;!-- ... --&gt;</span>）在自动注入时对 Claude 隐藏，用 Read 工具手动读取时仍可见——方便你在项目规则里写「人看 Claude 不看」的备注。",
         "tag": "v2.0.24"
       },
       "1": {
@@ -472,8 +472,8 @@
     },
     "performance": {
       "0": {
-        "title": "启动优化",
-        "desc": "延迟 SessionStart hook 执行（-500ms）。headless 模式延迟 Yoga WASM 和 UI 导入。缓存 MCP auth 失败避免重复连接。v2.1.70 延迟 Yoga WASM 预加载减少约 16MB 基础内存。v2.1.71 延迟原生图片处理器加载至首次使用、修复语音模式 CoreAudio 5–8 秒阻塞、修复多 proxy 同时刷新 OAuth 导致的 UI 冻结。",
+        "title": "启动优化 & Token 省钱",
+        "desc": "延迟 SessionStart hook 执行（-500ms）。headless 模式延迟 Yoga WASM 和 UI 导入。缓存 MCP auth 失败避免重复连接。v2.1.70 延迟 Yoga WASM 预加载减少约 16MB 基础内存。v2.1.71 延迟原生图片处理器加载至首次使用、修复语音模式 CoreAudio 5–8 秒阻塞、修复多 proxy 同时刷新 OAuth 导致的 UI 冻结。v2.1.72 修复 SDK <span class=\"scenario-cmd\">query()</span> 调用中的 prompt cache 失效，输入 token 成本最多降低 <strong>12 倍</strong>；bash 命令解析切换到原生模块，初始化更快且不再有内存泄漏；包体积减少约 510KB。",
         "tag": "v2.1.47+"
       },
       "1": {
@@ -551,9 +551,9 @@
         "tag": "v2.0.0"
       },
       "6": {
-        "title": "稳定性修复",
-        "desc": "修复 Windows 上扩展崩溃、终端 scroll-to-top 回归、重复会话、OAuth token 过期 401 错误、侧边栏视图容器启动竞态条件、Windows ARM64 兼容等问题。v2.1.70 修复 RTL 文本（阿拉伯语、希伯来语、波斯语）在聊天面板中反向渲染的回归问题。",
-        "tag": "v2.1.52"
+        "title": "稳定性修复 & v2.1.72 增强",
+        "desc": "修复 Windows 上扩展崩溃、终端 scroll-to-top 回归、重复会话、OAuth token 过期 401 错误、侧边栏视图容器启动竞态条件、Windows ARM64 兼容等问题。v2.1.70 修复 RTL 文本（阿拉伯语、希伯来语、波斯语）在聊天面板中反向渲染的回归问题。v2.1.72 新增输入框边框 effort 级别指示器（一眼看出当前推理档位）、新增 <span class=\"scenario-cmd\">vscode://anthropic.claude-code/open</span> URI handler（支持 <span class=\"scenario-cmd\">prompt</span> 和 <span class=\"scenario-cmd\">session</span> 参数，方便脚本/自动化一键呼起 Claude Code 标签页）。",
+        "tag": "v2.1.52 — v2.1.72"
       }
     },
     "shortcuts": {},
@@ -563,7 +563,7 @@
         "desc": "<span class=\"scenario-cmd\">claude auth login/status/logout</span> 认证管理。<span class=\"scenario-cmd\">claude agents</span> 列出 agent。<span class=\"scenario-cmd\">claude remote-control</span> 远程控制。<span class=\"scenario-cmd\">claude doctor</span> 诊断。<span class=\"scenario-cmd\">claude mcp add/list/get/serve</span> MCP 管理。<span class=\"scenario-cmd\">claude plugin install/validate/browse</span> 插件管理。<span class=\"scenario-cmd\">claude install</span> 原生安装。<span class=\"scenario-cmd\">claude --teleport</span> 从 Web 传送。"
       },
       "1": {
-        "desc": "<span class=\"scenario-cmd\">CLAUDE_CODE_SIMPLE</span> 极简模式。<span class=\"scenario-cmd\">CLAUDE_CODE_TMPDIR</span> 自定义临时目录。<span class=\"scenario-cmd\">CLAUDE_CODE_SHELL</span> 覆盖 shell 检测。<span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> 禁用后台任务。<span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 禁用 1M 上下文。<span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS</span> 移除内置 Git 指令。<span class=\"scenario-cmd\">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> 关闭 claude.ai MCP 服务器。<span class=\"scenario-cmd\">CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS</span> 插件 git 超时。<span class=\"scenario-cmd\">CLAUDE_CODE_ACCOUNT_UUID</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_USER_EMAIL</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_ORGANIZATION_UUID</span> SDK 账户信息。<span class=\"scenario-cmd\">BASH_DEFAULT_TIMEOUT_MS</span> bash 超时。<span class=\"scenario-cmd\">ANTHROPIC_LOG=debug</span> 调试日志。"
+        "desc": "<span class=\"scenario-cmd\">CLAUDE_CODE_SIMPLE</span> 极简模式。<span class=\"scenario-cmd\">CLAUDE_CODE_TMPDIR</span> 自定义临时目录。<span class=\"scenario-cmd\">CLAUDE_CODE_SHELL</span> 覆盖 shell 检测。<span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> 禁用后台任务。<span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 禁用 1M 上下文。<span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS</span> 移除内置 Git 指令。<span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_CRON</span> 立即停止会话中的定时 cron 任务。<span class=\"scenario-cmd\">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> 关闭 claude.ai MCP 服务器。<span class=\"scenario-cmd\">CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS</span> 插件 git 超时。<span class=\"scenario-cmd\">CLAUDE_CODE_ACCOUNT_UUID</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_USER_EMAIL</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_ORGANIZATION_UUID</span> SDK 账户信息。<span class=\"scenario-cmd\">BASH_DEFAULT_TIMEOUT_MS</span> bash 超时。<span class=\"scenario-cmd\">ANTHROPIC_LOG=debug</span> 调试日志。"
       },
       "2": {
         "desc": "在 .claude/commands/ 中创建 markdown 文件定义自定义命令。支持 $ARGUMENTS 参数。<span class=\"scenario-cmd\">/keybindings</span> 自定义键盘快捷键。<span class=\"scenario-cmd\">/statusline</span> 自定义状态行。settings.json 变更即时生效无需重启。"
@@ -656,8 +656,8 @@
         "0": "上午开始的会话，下午还在继续——compaction 后自动清除内部缓存，agent 任务完成后自动修剪消息历史",
         "1": "某个工具返回了 80K 字符的日志？自动持久化到磁盘，不占你宝贵的上下文窗口",
         "2": "tree-sitter 解析器定期重置防止 WASM 内存泄漏，React Compiler 优化 UI 渲染——长时间跑也不卡",
-        "3": "shell 命令跑出了大输出？RSS 不会因此无限增长，内存管控到位",
-        "4": "打字响应始终流畅——spinner 动画已隔离成独立循环，不拖累主线程渲染"
+        "3": "SDK 调用跑批量审查？prompt cache 修复后输入 token 成本最多降低 12 倍——同样的活，钱花得更少",
+        "4": "打字响应始终流畅——spinner 动画已隔离成独立循环，不拖累主线程渲染；bash 解析切原生模块更快更稳"
       }
     },
     "platform": {

@@ -111,10 +111,10 @@
   },
   "stats": {
     "rerender": "prompt re-render reduction",
-    "rcLoad": "Remote Control load reduction",
     "memLeaks": "memory leak fixes",
-    "wasmSave": "deferred WASM preload savings",
-    "diskThreshold": "tool result disk persist threshold"
+    "diskThreshold": "tool result disk persist threshold",
+    "cacheBoost": "prompt cache cost reduction",
+    "bundleReduce": "bundle size reduction"
   },
   "shortcuts_section": {
     "keyboardTitle": "Keyboard Shortcuts",
@@ -128,7 +128,7 @@
     "githubReleases": "GitHub Releases",
     "officialDocs": "Official Docs",
     "download": "Download Claude Code",
-    "timestamp": "Updated: 2026-03-10",
+    "timestamp": "Updated: 2026-03-11",
     "versionRange": "Version range: v0.2.21 ~ v2.1.72",
     "totalVersions": "220+ versions",
     "totalUpdates": "1000+ updates",
@@ -269,7 +269,7 @@
       },
       "4": {
         "title": "Explore Sub-Agent",
-        "desc": "A Haiku-powered codebase exploration agent that efficiently searches code to save context. Claude can dynamically select the model for sub-agents and resume previously started sub-agents.",
+        "desc": "A Haiku-powered codebase exploration agent that efficiently searches code to save context. Claude can dynamically select the model for sub-agents and resume previously started sub-agents. v2.1.72 restores the Agent tool <span class=\"scenario-cmd\">model</span> parameter for per-invocation model overrides; team agents now automatically inherit the leader's model — no need to configure each one individually.",
         "tag": "v2.0.17"
       },
       "5": {
@@ -355,7 +355,7 @@
       },
       "2": {
         "title": "Plugin System",
-        "desc": "Plugin system released in v2.0.12. <span class=\"scenario-cmd\">/plugin install</span> with git branch/tag syntax support. Custom npm registries. Plugins can provide commands, agents, hooks, MCP servers, and output styles. v2.1.69 adds <span class=\"scenario-cmd\">/reload-plugins</span> hot reload, <span class=\"scenario-cmd\">git-subdir</span> plugin source type, and <span class=\"scenario-cmd\">pluginTrustMessage</span> for enterprise trust messaging.",
+        "desc": "Plugin system released in v2.0.12. <span class=\"scenario-cmd\">/plugin install</span> with git branch/tag syntax support. Custom npm registries. Plugins can provide commands, agents, hooks, MCP servers, and output styles. v2.1.69 adds <span class=\"scenario-cmd\">/reload-plugins</span> hot reload, <span class=\"scenario-cmd\">git-subdir</span> plugin source type, and <span class=\"scenario-cmd\">pluginTrustMessage</span> for enterprise trust messaging. v2.1.72 supports marketplace git URLs without <span class=\"scenario-cmd\">.git</span> suffix (Azure DevOps, AWS CodeCommit compatible), and fixes multiple plugin installation issues on Windows OneDrive, marketplace scope conflicts, etc.",
         "tag": "v2.0.12"
       },
       "3": {
@@ -411,15 +411,15 @@
         "tag": "v2.1.69 — v2.1.72"
       },
       "7": {
-        "title": "Bash Command Auto-Approval",
-        "desc": "Common tool commands (<span class=\"scenario-cmd\">fmt</span>, <span class=\"scenario-cmd\">seq</span>, <span class=\"scenario-cmd\">printf</span>, <span class=\"scenario-cmd\">test</span>, <span class=\"scenario-cmd\">expr</span>, etc.) have been added to the auto-approval allowlist — no more permission prompts every time. Daily operations are smoother with fewer interruptions.",
-        "tag": "v2.1.71 NEW"
+        "title": "Bash Command Auto-Approval — More Commands Go Visa-Free",
+        "desc": "v2.1.71 added <span class=\"scenario-cmd\">fmt</span>, <span class=\"scenario-cmd\">seq</span>, <span class=\"scenario-cmd\">printf</span>, <span class=\"scenario-cmd\">test</span>, <span class=\"scenario-cmd\">expr</span> to the allowlist; v2.1.72 continues expanding with <span class=\"scenario-cmd\">lsof</span>, <span class=\"scenario-cmd\">pgrep</span>, <span class=\"scenario-cmd\">tput</span>, <span class=\"scenario-cmd\">ss</span>, <span class=\"scenario-cmd\">fd</span>, and <span class=\"scenario-cmd\">fdfind</span>. High-frequency read-only operations like checking ports, finding processes, and searching files no longer prompt for confirmation — smoother daily development experience.",
+        "tag": "v2.1.71 — v2.1.72"
       }
     },
     "security": {
       "0": {
         "title": "Sandbox Mode — AI Writes Code, but Runs in a Cage",
-        "desc": "Linux & Mac sandbox mode released in v2.0.24. Blocks writes to .claude/skills directory. HTTP hooks enforce domain allowlists. Heredoc parsing prevents command injection. v2.1.69 adds <span class=\"scenario-cmd\">sandbox.enableWeakerNetworkIsolation</span> (macOS) to let Go programs like gh and gcloud verify TLS in proxy environments — balancing security with usability.",
+        "desc": "Linux & Mac sandbox mode released in v2.0.24. Blocks writes to .claude/skills directory. HTTP hooks enforce domain allowlists. Heredoc parsing prevents command injection. v2.1.69 adds <span class=\"scenario-cmd\">sandbox.enableWeakerNetworkIsolation</span> (macOS) to let Go programs like gh and gcloud verify TLS in proxy environments — balancing security with usability. v2.1.72: CLAUDE.md HTML comments (<span class=\"scenario-cmd\">&lt;!-- ... --&gt;</span>) are now hidden from Claude when auto-injected but remain visible via Read tool — handy for writing human-only notes in project rules.",
         "tag": "v2.0.24"
       },
       "1": {
@@ -472,8 +472,8 @@
     },
     "performance": {
       "0": {
-        "title": "Startup Optimization",
-        "desc": "Deferred SessionStart hook execution (-500ms). Headless mode defers Yoga WASM and UI imports. Cached MCP auth failures to avoid repeated connections. v2.1.70 defers Yoga WASM preload saving ~16MB base memory. v2.1.71 defers native image processor loading until first use, fixes voice mode CoreAudio 5–8 second blocking, and fixes UI freeze from multiple proxies refreshing OAuth simultaneously.",
+        "title": "Startup Optimization & Token Savings",
+        "desc": "Deferred SessionStart hook execution (-500ms). Headless mode defers Yoga WASM and UI imports. Cached MCP auth failures to avoid repeated connections. v2.1.70 defers Yoga WASM preload saving ~16MB base memory. v2.1.71 defers native image processor loading until first use, fixes voice mode CoreAudio 5–8 second blocking, and fixes UI freeze from multiple proxies refreshing OAuth simultaneously. v2.1.72 fixes prompt cache invalidation in SDK <span class=\"scenario-cmd\">query()</span> calls, reducing input token costs up to <strong>12x</strong>; bash command parsing switches to native module for faster init with no memory leak; bundle size reduced by ~510KB.",
         "tag": "v2.1.47+"
       },
       "1": {
@@ -551,9 +551,9 @@
         "tag": "v2.0.0"
       },
       "6": {
-        "title": "Stability Fixes",
-        "desc": "Fixed extension crashes on Windows, terminal scroll-to-top regression, duplicate sessions, OAuth token expiry 401 errors, sidebar view container startup race conditions, and Windows ARM64 compatibility. v2.1.70 fixes RTL text (Arabic, Hebrew, Persian) rendering reversed in the chat panel.",
-        "tag": "v2.1.52"
+        "title": "Stability Fixes & v2.1.72 Enhancements",
+        "desc": "Fixed extension crashes on Windows, terminal scroll-to-top regression, duplicate sessions, OAuth token expiry 401 errors, sidebar view container startup race conditions, and Windows ARM64 compatibility. v2.1.70 fixes RTL text (Arabic, Hebrew, Persian) rendering reversed in the chat panel. v2.1.72 adds effort level indicator on the input border (see current reasoning level at a glance) and <span class=\"scenario-cmd\">vscode://anthropic.claude-code/open</span> URI handler with optional <span class=\"scenario-cmd\">prompt</span> and <span class=\"scenario-cmd\">session</span> query parameters for programmatic tab opening.",
+        "tag": "v2.1.52 — v2.1.72"
       }
     },
     "shortcuts": {},
@@ -563,7 +563,7 @@
         "desc": "<span class=\"scenario-cmd\">claude auth login/status/logout</span> Auth management. <span class=\"scenario-cmd\">claude agents</span> List agents. <span class=\"scenario-cmd\">claude remote-control</span> Remote control. <span class=\"scenario-cmd\">claude doctor</span> Diagnostics. <span class=\"scenario-cmd\">claude mcp add/list/get/serve</span> MCP management. <span class=\"scenario-cmd\">claude plugin install/validate/browse</span> Plugin management. <span class=\"scenario-cmd\">claude install</span> Native install. <span class=\"scenario-cmd\">claude --teleport</span> Teleport from web."
       },
       "1": {
-        "desc": "<span class=\"scenario-cmd\">CLAUDE_CODE_SIMPLE</span> Minimal mode. <span class=\"scenario-cmd\">CLAUDE_CODE_TMPDIR</span> Custom temp dir. <span class=\"scenario-cmd\">CLAUDE_CODE_SHELL</span> Override shell detection. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> Disable background tasks. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> Disable 1M context. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS</span> Remove built-in Git instructions. <span class=\"scenario-cmd\">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> Disable claude.ai MCP servers. <span class=\"scenario-cmd\">CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS</span> Plugin git timeout. <span class=\"scenario-cmd\">CLAUDE_CODE_ACCOUNT_UUID</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_USER_EMAIL</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_ORGANIZATION_UUID</span> SDK account info. <span class=\"scenario-cmd\">BASH_DEFAULT_TIMEOUT_MS</span> Bash timeout. <span class=\"scenario-cmd\">ANTHROPIC_LOG=debug</span> Debug logging."
+        "desc": "<span class=\"scenario-cmd\">CLAUDE_CODE_SIMPLE</span> Minimal mode. <span class=\"scenario-cmd\">CLAUDE_CODE_TMPDIR</span> Custom temp dir. <span class=\"scenario-cmd\">CLAUDE_CODE_SHELL</span> Override shell detection. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> Disable background tasks. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> Disable 1M context. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS</span> Remove built-in Git instructions. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_CRON</span> Immediately stop scheduled cron jobs mid-session. <span class=\"scenario-cmd\">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> Disable claude.ai MCP servers. <span class=\"scenario-cmd\">CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS</span> Plugin git timeout. <span class=\"scenario-cmd\">CLAUDE_CODE_ACCOUNT_UUID</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_USER_EMAIL</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_ORGANIZATION_UUID</span> SDK account info. <span class=\"scenario-cmd\">BASH_DEFAULT_TIMEOUT_MS</span> Bash timeout. <span class=\"scenario-cmd\">ANTHROPIC_LOG=debug</span> Debug logging."
       },
       "2": {
         "desc": "Create markdown files in .claude/commands/ to define custom commands. Supports $ARGUMENTS parameters. <span class=\"scenario-cmd\">/keybindings</span> Custom keyboard shortcuts. <span class=\"scenario-cmd\">/statusline</span> Custom status line. settings.json changes take effect immediately without restart."
@@ -656,8 +656,8 @@
         "0": "The session you started in the morning is still going in the afternoon — internal caches are auto-cleared after compaction, and message history is auto-trimmed after agent tasks complete",
         "1": "A tool returned 80K characters of logs? Automatically persisted to disk — not eating up your precious context window",
         "2": "tree-sitter parsers periodically reset to prevent WASM memory leaks; React Compiler optimizes UI rendering — no lag even after hours",
-        "3": "Shell command produced massive output? RSS won't grow unbounded — memory management keeps things in check",
-        "4": "Typing responsiveness stays smooth — spinner animations are isolated in their own loop, not dragging down main thread rendering"
+        "3": "Running batch reviews via SDK? After the prompt cache fix, input token costs drop up to 12x — same work, less money",
+        "4": "Typing responsiveness stays smooth — spinner animations are isolated in their own loop; bash parsing switched to native module for faster and more stable performance"
       }
     },
     "platform": {
