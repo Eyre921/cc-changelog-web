@@ -283,6 +283,12 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
   .typing{animation:none;border-right-color:var(--accent1)}
   .hero-badge .dot{animation:none}
   .back-to-top{transition:none}
+  .timeline-item.major::before{animation:none}
+  .card::after{display:none}
+  .hero-particle{display:none}
+  .scroll-progress{display:none}
+  .card-highlight .tag,.card-highlight-secondary .tag{animation:none}
+  .scenario.fade-in{transform:none;opacity:1}
   html{scroll-behavior:auto}
   body{transition:none}
 }
@@ -291,3 +297,73 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
 .card-highlight{border-color:var(--accent1);box-shadow:0 4px 20px var(--card-hover-shadow)}
 .card-highlight-secondary{border-color:var(--accent2);box-shadow:0 4px 20px var(--card-hover-shadow)}
 .timeline-highlight{color:var(--accent1)}
+
+/* ---- Scroll Progress Bar ---- */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent4),var(--accent3));z-index:200;width:0;transition:width .1s linear;pointer-events:none}
+
+/* ---- Staggered card entrance ---- */
+.grid .fade-in:nth-child(1){transition-delay:.05s}
+.grid .fade-in:nth-child(2){transition-delay:.1s}
+.grid .fade-in:nth-child(3){transition-delay:.15s}
+.grid .fade-in:nth-child(4){transition-delay:.2s}
+.grid .fade-in:nth-child(5){transition-delay:.25s}
+.grid .fade-in:nth-child(6){transition-delay:.3s}
+.grid .fade-in:nth-child(7){transition-delay:.35s}
+.grid .fade-in:nth-child(8){transition-delay:.4s}
+.grid .fade-in:nth-child(9){transition-delay:.45s}
+.grid .fade-in:nth-child(10){transition-delay:.5s}
+.grid .fade-in:nth-child(11){transition-delay:.55s}
+.grid .fade-in:nth-child(12){transition-delay:.6s}
+
+/* ---- Card shimmer on hover ---- */
+.card::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);transition:left .6s ease;pointer-events:none}
+.card:hover::after{left:120%}
+[data-theme="dark"] .card::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
+
+/* ---- Stat number glow ---- */
+.stat .num{transition:all .6s ease}
+.stat:hover .num{text-shadow:0 0 20px rgba(139,115,85,.3);transform:scale(1.05)}
+[data-theme="dark"] .stat:hover .num{text-shadow:0 0 20px rgba(196,168,124,.4)}
+
+/* ---- Timeline dot pulse ---- */
+@keyframes timeline-pulse{0%,100%{box-shadow:0 0 0 0 rgba(139,115,85,.4)}50%{box-shadow:0 0 0 8px rgba(139,115,85,0)}}
+.timeline-item.major::before{animation:timeline-pulse 3s ease-in-out infinite}
+[data-theme="dark"] .timeline-item.major::before{animation:timeline-pulse 3s ease-in-out infinite}
+@keyframes timeline-pulse-dark{0%,100%{box-shadow:0 0 0 0 rgba(196,168,124,.4)}50%{box-shadow:0 0 0 8px rgba(196,168,124,0)}}
+[data-theme="dark"] .timeline-item.major::before{animation:timeline-pulse-dark 3s ease-in-out infinite}
+
+/* ---- Section heading animated underline ---- */
+.section h2{position:relative;display:inline-block}
+.section h2::after{content:'';position:absolute;bottom:-.2rem;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent4));border-radius:2px;transition:width .8s ease}
+.section h2.visible::after,.fade-in.visible+.fade-in .section h2::after{width:60px}
+
+/* ---- Hero floating particles ---- */
+@keyframes float-up{0%{transform:translateY(0) scale(1);opacity:0}10%{opacity:.6}90%{opacity:.6}100%{transform:translateY(-100vh) scale(.5);opacity:0}}
+.hero-particle{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--accent1);opacity:0;animation:float-up linear infinite;pointer-events:none}
+
+/* ---- Scenario entrance ---- */
+.scenario.fade-in{transform:translateX(-30px) translateY(20px);opacity:0}
+.scenario.fade-in.visible{transform:translateX(0) translateY(0);opacity:1}
+
+/* ---- Scenario item hover ---- */
+.scenario-body li{transition:transform .2s ease,color .2s ease}
+.scenario-body li:hover{transform:translateX(4px);color:var(--text)}
+
+/* ---- Nav link underline animation ---- */
+.nav a{position:relative}
+.nav a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:var(--accent1);transition:all .3s ease;border-radius:1px}
+.nav a:hover::after,.nav a.active::after{width:60%;left:20%}
+.nav-logo::after{display:none!important}
+
+/* ---- Back to top entrance ---- */
+@keyframes pop-in{0%{transform:scale(0) rotate(-180deg)}100%{transform:scale(1) rotate(0deg)}}
+.back-to-top.show{animation:pop-in .4s ease-out}
+
+/* ---- Tag badge animation ---- */
+.card-highlight .tag,.card-highlight-secondary .tag{animation:tag-glow 2s ease-in-out infinite alternate}
+@keyframes tag-glow{0%{opacity:.85}100%{opacity:1;transform:translateY(-1px)}}
+
+/* ---- Kbd press effect ---- */
+kbd{transition:all .15s ease}
+kbd:hover{transform:translateY(-1px);box-shadow:0 2px 0 var(--border);background:var(--surface3)}
+kbd:active{transform:translateY(1px);box-shadow:none}
