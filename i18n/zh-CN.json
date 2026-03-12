@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Claude Code 全特性速览 — 从用户视角出发",
-    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.72，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。",
+    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.74，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。",
     "keywords": "Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进",
     "ogDescription": "220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。"
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.72 全版本特性整理",
+    "badge": "v0.2.21 — v2.1.74 全版本特性整理",
     "title": "Claude Code<br>全特性速览",
     "subtitle": "从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>220+ 个版本迭代、1000+ 项更新，每一项能力都配有真实场景，看完就能上手。",
     "versions": "个版本",
@@ -16,8 +16,8 @@
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.72 (Opus 4.6)",
-    "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control",
+    "terminalOutput1": "  Claude Code v2.1.74 (Opus 4.6)",
+    "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control | /context",
     "terminalTyping": " 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试",
     "advancedCta": "🚀 探索 Claude Code 进阶用法 →"
   },
@@ -41,7 +41,7 @@
     "recent": {
       "label": "🔥 最近更新亮点",
       "title": "最近版本的新特性",
-      "subtitle": "v2.1.58 — v2.1.72：/plan 一句话起手、/copy 可直接落盘、effort 档位更直觉、tool search/worktree 继续补齐——最新一版更像给重度开发者打磨手感。"
+      "subtitle": "v2.1.58 — v2.1.74：/context 智能诊断上下文瓶颈、modelOverrides 模型映射自由度拉满、auto-memory 路径可配——最新两版一边堵漏一边加能力，重度用户最有感。"
     },
     "models": {
       "label": "◆ AI 模型与推理",
@@ -129,7 +129,7 @@
     "officialDocs": "官方文档",
     "download": "下载 Claude Code",
     "timestamp": "整理时间：2026-03-11",
-    "versionRange": "版本范围：v0.2.21 ~ v2.1.72",
+    "versionRange": "版本范围：v0.2.21 ~ v2.1.74",
     "totalVersions": "共 220+ 个版本",
     "totalUpdates": "1000+ 项更新",
     "builtWith": "Built with Claude Code",
@@ -144,61 +144,81 @@
   "cards": {
     "recent": {
       "0": {
+        "title": "/context 智能诊断——上下文吃紧时自动报警",
+        "desc": "v2.1.74 给 <span class=\"scenario-cmd\">/context</span> 加了“开处方”能力：哪些工具占上下文最凶、memory 是不是膨胀了、容量快撑爆了没——统统给出具体优化建议。以前只能看个数字干瞪眼，现在一条条告诉你怎么瘦身。",
+        "tag": "v2.1.74 NEW"
+      },
+      "1": {
+        "title": "modelOverrides——模型选择器想映射啥就映射啥",
+        "desc": "v2.1.73 新增 <span class=\"scenario-cmd\">modelOverrides</span> 设置：模型选择器里的条目可以映射到自定义提供商模型 ID，比如 Bedrock 推理配置 ARN。企业用户再也不用在多个模型别名间手忙脚乱了。",
+        "tag": "v2.1.73 NEW"
+      },
+      "2": {
+        "title": "auto-memory 存哪你说了算",
+        "desc": "新增 <span class=\"scenario-cmd\">autoMemoryDirectory</span> 设置，把自动记忆文件放到你指定的目录。多项目共用一台机器时，想把记忆文件集中管理或者放到同步盘，终于不用手动搬了。",
+        "tag": "v2.1.74 NEW"
+      },
+      "3": {
+        "title": "v2.1.73 — v2.1.74 稳定性大扫除",
+        "desc": "修复流式 API 响应缓冲区内存泄漏（RSS 无限增长）、权限提示导致 100% CPU 卡死、skill 文件批量变更触发死锁、多会话同目录 Bash 输出丢失、MCP OAuth 回调端口占用时挂起、RTL 文字（希伯来语/阿拉伯语）在 Windows 终端渲染错乱、LSP 服务器在 Windows 上因 URI 格式错误无法工作等。重度使用场景的毛刺又磨平一批。",
+        "tag": "v2.1.73 — v2.1.74"
+      },
+      "4": {
         "title": "/plan 一句话起手——想法刚冒头就能开工",
         "desc": "v2.1.72 给 <span class=\"scenario-cmd\">/plan</span> 加了可选描述参数。现在你可以直接来一句 <span class=\"scenario-cmd\">/plan 修 auth bug</span>，Claude 立刻进入 plan mode 开始拆方案。少一次来回确认，灵感还热乎的时候就把活铺开。",
         "tag": "v2.1.72 NEW"
       },
-      "1": {
+      "5": {
         "title": "/copy 新增 w 落盘——SSH 党狂喜",
         "desc": "在 <span class=\"scenario-cmd\">/copy</span> 交互选择器里新增 <span class=\"scenario-cmd\">w</span> 键，聚焦的代码块可直接写入文件，绕过剪贴板。远程连服务器、没有系统剪贴板、tmux 里来回切窗口？这下真能一把梭。",
         "tag": "v2.1.72 NEW"
       },
-      "2": {
+      "6": {
         "title": "Effort 档位瘦身——○ ◐ ● 一眼看懂",
         "desc": "effort 级别收敛为 low / medium / high，界面改成 <span class=\"scenario-cmd\">○ ◐ ●</span> 三档显示，还支持 <span class=\"scenario-cmd\">/effort auto</span> 回到默认。以前要琢磨当前是不是开太猛，现在看一眼就知道 Claude 在「随手答」还是「认真想」。",
         "tag": "v2.1.72 NEW"
       },
-      "3": {
+      "7": {
         "title": "Worktree 进出成闭环——分身干活也能优雅收队",
         "desc": "新增 <span class=\"scenario-cmd\">ExitWorktree</span> 工具，和 <span class=\"scenario-cmd\">EnterWorktree</span> 成对出现。做多分支实验、让 agent 去隔离环境里试错时，不再是「进去容易出来难」，收尾也干净。",
         "tag": "v2.1.72 NEW"
       },
-      "4": {
+      "8": {
         "title": "配置/语音都更懂你——少踩交互小坑",
         "desc": "<span class=\"scenario-cmd\">/config</span> 现在 Esc 取消、Enter 保存并关闭、Space 切换设置；语音转写对 repo 名、regex、OAuth、JSON 这些开发者黑话也更准。那些「本来能做成、却老被 UI 绊一下」的小刺，这版拔掉不少。",
         "tag": "v2.1.72 NEW"
       },
-      "5": {
+      "9": {
         "title": "v2.1.72 稳定性修复精选",
         "desc": "修复 tool search 在 <span class=\"scenario-cmd\">ANTHROPIC_BASE_URL</span> 场景下失效、后台任务导致退出变慢、Agent 进度卡在 Initializing、<span class=\"scenario-cmd\">/clear</span> 误杀后台任务、权限规则匹配不准等问题。不是花活堆料，而是把重度使用时最烦人的毛刺继续磨平。",
         "tag": "v2.1.72 NEW"
       },
-      "6": {
+      "10": {
         "title": "VS Code: 全面升级，在 IDE 里就够用了",
         "desc": "活动栏新增 spark 图标，所有会话一目了然。Plan 预览支持 Markdown 全文视图和评论。原生 MCP 服务器管理对话框，不用切到终端配置。prompt re-render 减少 74%。compaction 保留图片复用缓存——更快更省。",
         "tag": "v2.1.70"
       },
-      "7": {
+      "11": {
         "title": "/claude-api Skill & Effort 可视化",
         "desc": "全新内置 <span class=\"scenario-cmd\">/claude-api</span> skill 构建 API 应用。logo 和 spinner 显示 effort 级别。Opus 4.6 默认 medium effort，\"ultrathink\" 启用高 effort。",
         "tag": "v2.1.68 — v2.1.69"
       },
-      "8": {
+      "12": {
         "title": "InstructionsLoaded Hook & 热重载",
         "desc": "<span class=\"scenario-cmd\">InstructionsLoaded</span> hook 在 CLAUDE.md 加载时触发。<span class=\"scenario-cmd\">/reload-plugins</span> 热重载无需重启。hook 事件支持 <span class=\"scenario-cmd\">agent_id</span>/<span class=\"scenario-cmd\">agent_type</span> 字段。Voice STT 扩展到 20 种语言。",
         "tag": "v2.1.69"
       },
-      "9": {
+      "13": {
         "title": "HTTP Hooks & /simplify & /batch",
         "desc": "v2.1.63 新增 HTTP hooks，POST JSON 到 URL 并接收响应。新增 <span class=\"scenario-cmd\">/simplify</span>（简化代码）和 <span class=\"scenario-cmd\">/batch</span>（批量处理）内置 skill。项目配置和 auto-memory 跨 git worktree 共享。",
         "tag": "v2.1.63"
       },
-      "10": {
+      "14": {
         "title": "Remote Control & /copy 交互复制",
         "desc": "v2.1.58 Remote Control 扩展到更多用户。v2.1.69 支持自定义名称。<span class=\"scenario-cmd\">/copy</span> 交互式选择代码块，\"Always copy full response\" 一键复制。auto-memory 自动保存有用上下文。",
         "tag": "v2.1.58 — v2.1.69"
       },
-      "11": {
+      "15": {
         "title": "v2.1.70 关键修复精选",
         "desc": "修复 <span class=\"scenario-cmd\">ANTHROPIC_BASE_URL</span> 搭配第三方网关 API 400 错误。修复 Windows/WSL 剪贴板损坏 CJK/emoji 文本。修复慢速 SSH 下 Enter 插入换行。修复 <span class=\"scenario-cmd\">/color</span> 命令无法重置回默认色。",
         "tag": "v2.1.70"
@@ -831,6 +851,16 @@
       "date": "2026-03",
       "version": "v2.1.71 — v2.1.72",
       "desc": "新增 /loop 定时循环命令和 cron 调度工具；v2.1.72 又补上 /plan 可直接带描述、/copy 支持按 w 直接写文件、effort 简化为 ○ ◐ ●、ExitWorktree 收尾闭环、tool search 在 ANTHROPIC_BASE_URL 场景下恢复可用。再加上一批退出、权限、后台任务与语音体验修复，整套工作流更顺手。"
+    },
+    "20": {
+      "date": "2026-03",
+      "version": "v2.1.73",
+      "desc": "新增 modelOverrides 设置映射模型选择器条目到自定义提供商模型 ID（如 Bedrock 推理配置 ARN）。Bedrock/Vertex/Foundry 默认 Opus 模型升级为 Opus 4.6。修复权限提示 100% CPU 死循环、skill 文件批量变更死锁、多会话 Bash 输出丢失、子 agent 模型在云端被降级等问题。弃用 /output-style（改用 /config）。Up arrow 中断后一步恢复 prompt 并回退对话。/effort 可在 Claude 响应时使用。"
+    },
+    "21": {
+      "date": "2026-03",
+      "version": "v2.1.74",
+      "desc": "/context 命令新增可操作优化建议（上下文瓶颈诊断）。autoMemoryDirectory 自定义 auto-memory 存储路径。修复流式 API 内存泄漏（RSS 无限增长）、MCP OAuth 回调端口占用挂起、RTL 文字 Windows 终端渲染、LSP Windows URI 格式错误等。--plugin-dir 本地副本优先于 marketplace 同名插件。VS Code 修复 Untitled 会话删除、改进滚轮响应。"
     }
   }
 }

@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Claude Code Feature Overview — A User's Perspective",
-    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.72, 220+ versions and 1000+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
+    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.74, 220+ versions and 1000+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
     "keywords": "Claude Code, Anthropic, AI Programming, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code Feature Overview — Complete Evolution from v0.2 to v2.1",
     "ogDescription": "220+ versions, 1000+ updates. From terminal to IDE, from solo coding to multi-Agent collaboration — discover every capability of Claude Code."
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.72 Full Version Feature Summary",
+    "badge": "v0.2.21 — v2.1.74 Full Version Feature Summary",
     "title": "Claude Code<br>Feature Overview",
     "subtitle": "From terminal to IDE, from solo coding to a team of Agents doing the heavy lifting.<br>220+ version iterations, 1000+ updates — each feature comes with real-world scenarios so you can hit the ground running.",
     "versions": " versions",
@@ -16,8 +16,8 @@
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.72 (Opus 4.6)",
-    "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control",
+    "terminalOutput1": "  Claude Code v2.1.74 (Opus 4.6)",
+    "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control | /context",
     "terminalTyping": " Refactor this module with 3 agents: one for security, one for perf, one for tests",
     "advancedCta": "🚀 Explore Advanced Claude Code Usage →"
   },
@@ -41,7 +41,7 @@
     "recent": {
       "label": "🔥 Recent Highlights",
       "title": "Latest Features",
-      "subtitle": "v2.1.58 — v2.1.72: /plan jumps straight into planning, /copy can write directly to files, effort control is easier to read, and tool-search/worktree flows keep getting smoother."
+      "subtitle": "v2.1.58 — v2.1.74: /context diagnoses context bottlenecks, modelOverrides gives full model mapping freedom, auto-memory path is now configurable — the latest two releases patch holes and add capabilities power users will love."
     },
     "models": {
       "label": "◆ AI Models & Reasoning",
@@ -129,7 +129,7 @@
     "officialDocs": "Official Docs",
     "download": "Download Claude Code",
     "timestamp": "Updated: 2026-03-11",
-    "versionRange": "Version range: v0.2.21 ~ v2.1.72",
+    "versionRange": "Version range: v0.2.21 ~ v2.1.74",
     "totalVersions": "220+ versions",
     "totalUpdates": "1000+ updates",
     "builtWith": "Built with Claude Code",
@@ -144,61 +144,81 @@
   "cards": {
     "recent": {
       "0": {
+        "title": "/context Smart Diagnostics — Alerts When Context Gets Tight",
+        "desc": "v2.1.74 gives <span class=\"scenario-cmd\">/context</span> prescriptive powers: which tools hog the most context, whether memory is bloating, and if you're about to hit capacity — all with specific optimization tips. No more staring at numbers wondering what to do.",
+        "tag": "v2.1.74 NEW"
+      },
+      "1": {
+        "title": "modelOverrides — Map Model Picker to Any Provider ID",
+        "desc": "v2.1.73 adds the <span class=\"scenario-cmd\">modelOverrides</span> setting: map model picker entries to custom provider model IDs like Bedrock inference profile ARNs. Enterprise users no longer juggle multiple model aliases.",
+        "tag": "v2.1.73 NEW"
+      },
+      "2": {
+        "title": "auto-memory Goes Where You Want",
+        "desc": "New <span class=\"scenario-cmd\">autoMemoryDirectory</span> setting lets you choose where auto-memory files are stored. Running multiple projects on one machine? Put them all in a synced folder — no more manual moving.",
+        "tag": "v2.1.74 NEW"
+      },
+      "3": {
+        "title": "v2.1.73 — v2.1.74 Stability Sweep",
+        "desc": "Fixed streaming API response buffer memory leak (unbounded RSS growth), 100% CPU freeze from permission prompts, deadlock from bulk skill file changes, Bash output lost across multiple sessions, MCP OAuth hanging on port conflicts, Hebrew/Arabic/RTL text rendering in Windows Terminal, LSP servers failing on Windows due to malformed URIs, and more.",
+        "tag": "v2.1.73 — v2.1.74"
+      },
+      "4": {
         "title": "/plan Starts in One Line — Capture the Idea While It's Hot",
         "desc": "v2.1.72 adds an optional description argument to <span class=\"scenario-cmd\">/plan</span>. You can now type <span class=\"scenario-cmd\">/plan fix the auth bug</span> and Claude jumps straight into plan mode with a concrete task. One less round trip while the idea is still fresh.",
         "tag": "v2.1.72 NEW"
       },
-      "1": {
+      "5": {
         "title": "/copy Gets a Write Mode — Perfect Over SSH",
         "desc": "The <span class=\"scenario-cmd\">/copy</span> picker now supports the <span class=\"scenario-cmd\">w</span> key to write the focused selection directly to a file, bypassing the clipboard. On remote boxes, inside tmux, or anywhere clipboard integration is flaky, this feels instantly more usable.",
         "tag": "v2.1.72 NEW"
       },
-      "2": {
+      "6": {
         "title": "Effort Levels Get Simpler — ○ ◐ ● at a Glance",
         "desc": "Effort is now simplified to low / medium / high, shown as <span class=\"scenario-cmd\">○ ◐ ●</span>, with <span class=\"scenario-cmd\">/effort auto</span> to reset. Instead of guessing whether Claude is thinking hard or staying lightweight, you can tell at a glance.",
         "tag": "v2.1.72 NEW"
       },
-      "3": {
+      "7": {
         "title": "Worktree In, Worktree Out — Multi-branch Experiments Feel Cleaner",
         "desc": "New <span class=\"scenario-cmd\">ExitWorktree</span> pairs with <span class=\"scenario-cmd\">EnterWorktree</span>, making isolated worktree sessions easier to leave cleanly. When agents spin off into side branches, cleanup now feels like part of the workflow instead of an afterthought.",
         "tag": "v2.1.72 NEW"
       },
-      "4": {
+      "8": {
         "title": "Config & Voice Feel More Natural",
         "desc": "<span class=\"scenario-cmd\">/config</span> now uses Escape to cancel, Enter to save and close, and Space to toggle settings. Voice transcription also got better with repo names and dev terms like regex, OAuth, and JSON. Small interaction papercuts, gone.",
         "tag": "v2.1.72 NEW"
       },
-      "5": {
+      "9": {
         "title": "v2.1.72 Stability Fixes Highlights",
         "desc": "Fixes include tool search still working with <span class=\"scenario-cmd\">ANTHROPIC_BASE_URL</span> when <span class=\"scenario-cmd\">ENABLE_TOOL_SEARCH</span> is set, slower exits around background tasks, agent progress stuck on Initializing, <span class=\"scenario-cmd\">/clear</span> killing background tasks, and several permission rule edge cases. Less flash, more day-to-day polish.",
         "tag": "v2.1.72 NEW"
       },
-      "6": {
+      "10": {
         "title": "VS Code: Major Upgrade — Your IDE Is All You Need",
         "desc": "New spark icon in the activity bar shows all sessions at a glance. Plan preview supports full Markdown view with comments. Native MCP server management dialog — no need to switch to the terminal. Prompt re-render reduced by 74%. Compaction preserves images for prompt cache reuse — faster and cheaper.",
         "tag": "v2.1.70"
       },
-      "7": {
+      "11": {
         "title": "/claude-api Skill & Effort Visualization",
         "desc": "Brand new built-in <span class=\"scenario-cmd\">/claude-api</span> skill for building API applications. Logo and spinner display effort level. Opus 4.6 defaults to medium effort; \"ultrathink\" enables high effort.",
         "tag": "v2.1.68 — v2.1.69"
       },
-      "8": {
+      "12": {
         "title": "InstructionsLoaded Hook & Hot Reload",
         "desc": "<span class=\"scenario-cmd\">InstructionsLoaded</span> hook triggers when CLAUDE.md is loaded. <span class=\"scenario-cmd\">/reload-plugins</span> hot reloads without restart. Hook events support <span class=\"scenario-cmd\">agent_id</span>/<span class=\"scenario-cmd\">agent_type</span> fields. Voice STT expanded to 20 languages.",
         "tag": "v2.1.69"
       },
-      "9": {
+      "13": {
         "title": "HTTP Hooks & /simplify & /batch",
         "desc": "v2.1.63 adds HTTP hooks — POST JSON to a URL and receive responses. New <span class=\"scenario-cmd\">/simplify</span> (simplify code) and <span class=\"scenario-cmd\">/batch</span> (batch processing) built-in skills. Project config and auto-memory shared across git worktrees.",
         "tag": "v2.1.63"
       },
-      "10": {
+      "14": {
         "title": "Remote Control & /copy Interactive Copy",
         "desc": "v2.1.58 Remote Control expanded to more users. v2.1.69 supports custom names. <span class=\"scenario-cmd\">/copy</span> interactively selects code blocks; \"Always copy full response\" for one-click copying. Auto-memory automatically saves useful context.",
         "tag": "v2.1.58 — v2.1.69"
       },
-      "11": {
+      "15": {
         "title": "v2.1.70 Key Fixes Highlights",
         "desc": "Fixed <span class=\"scenario-cmd\">ANTHROPIC_BASE_URL</span> causing API 400 errors with third-party gateways. Fixed Windows/WSL clipboard corrupting CJK/emoji text. Fixed Enter inserting newlines on slow SSH connections. Fixed <span class=\"scenario-cmd\">/color</span> command unable to reset to default.",
         "tag": "v2.1.70"
@@ -831,6 +851,16 @@
       "date": "2026-03",
       "version": "v2.1.71 — v2.1.72",
       "desc": "v2.1.71 added /loop and cron scheduling tools; v2.1.72 followed with /plan taking a task description, /copy supporting w to write directly to files, effort simplified to ○ ◐ ●, ExitWorktree closing the loop on isolated sessions, and tool search restored for ANTHROPIC_BASE_URL setups. Add a big batch of exit, permissions, background-task, and voice fixes, and the whole workflow feels more polished."
+    },
+    "20": {
+      "date": "2026-03",
+      "version": "v2.1.73",
+      "desc": "Added modelOverrides setting to map model picker entries to custom provider model IDs (e.g. Bedrock inference profile ARNs). Default Opus model on Bedrock/Vertex/Foundry upgraded to Opus 4.6. Fixed 100% CPU loops from permission prompts, deadlocks from bulk skill file changes, multi-session Bash output loss, subagent model downgrades on cloud providers. Deprecated /output-style (use /config). Up arrow after interrupt now restores prompt and rewinds in one step."
+    },
+    "21": {
+      "date": "2026-03",
+      "version": "v2.1.74",
+      "desc": "/context command now shows actionable optimization suggestions (context bottleneck diagnostics). autoMemoryDirectory for custom auto-memory storage. Fixed streaming API memory leak (unbounded RSS growth), MCP OAuth callback port conflicts, RTL text on Windows Terminal, LSP Windows URI format errors. --plugin-dir local copies now override marketplace plugins. VS Code: fixed Untitled session delete, improved scroll wheel responsiveness."
     }
   }
 }
