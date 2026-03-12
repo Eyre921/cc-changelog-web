@@ -137,6 +137,84 @@ const App = (() => {
     floatingBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
   }
 
+  // ---- Scroll progress bar ----
+  function initScrollProgress() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    document.body.prepend(bar);
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      bar.style.width = progress + '%';
+    }, { passive: true });
+  }
+
+  // ---- Stats count-up animation ----
+  function initCountUp() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const stats = document.querySelectorAll('.stat .num');
+    if (!stats.length) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const text = el.textContent.trim();
+          const match = text.match(/^([\d.]+)(\D*)$/);
+          if (match) {
+            const target = parseFloat(match[1]);
+            const suffix = match[2];
+            const duration = 1200;
+            const start = performance.now();
+            const isInt = Number.isInteger(target);
+            function tick(now) {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = eased * target;
+              el.textContent = (isInt ? Math.round(current) : current.toFixed(1)) + suffix;
+              if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          }
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+    stats.forEach(el => observer.observe(el));
+  }
+
+  // ---- Section heading reveal ----
+  function initHeadingReveal() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const headings = document.querySelectorAll('.section h2');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    headings.forEach(el => observer.observe(el));
+  }
+
+  // ---- Hero floating particles ----
+  function initHeroParticles() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    for (let i = 0; i < 6; i++) {
+      const p = document.createElement('span');
+      p.className = 'hero-particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (8 + Math.random() * 12) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      p.style.width = p.style.height = (3 + Math.random() * 3) + 'px';
+      hero.appendChild(p);
+    }
+  }
+
   // ---- Init ----
   async function init() {
     // Apply theme immediately (before paint)
@@ -154,6 +232,10 @@ const App = (() => {
     initThemeToggle();
     initFloatingLang();
     syncFloatingTheme();
+    initScrollProgress();
+    initCountUp();
+    initHeadingReveal();
+    initHeroParticles();
   }
 
   return { init, toggleTheme, applyTheme };
