@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Claude Code 全特性速览 — 从用户视角出发",
-    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.74，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。",
+    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.76，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。",
     "keywords": "Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进",
     "ogDescription": "220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。"
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.74 全版本特性整理",
+    "badge": "v0.2.21 — v2.1.76 全版本特性整理",
     "title": "Claude Code<br>全特性速览",
     "subtitle": "从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>220+ 个版本迭代、1000+ 项更新，每一项能力都配有真实场景，看完就能上手。",
     "versions": "个版本",
@@ -16,8 +16,8 @@
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.74 (Opus 4.6)",
-    "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control | /context",
+    "terminalOutput1": "  Claude Code v2.1.76 (Opus 4.6)",
+    "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | /effort | elicitation | session naming",
     "terminalTyping": " 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试",
     "advancedCta": "🚀 探索 Claude Code 进阶用法 →"
   },
@@ -41,7 +41,7 @@
     "recent": {
       "label": "🔥 最近更新亮点",
       "title": "最近版本的新特性",
-      "subtitle": "v2.1.58 — v2.1.74：/context 智能诊断上下文瓶颈、modelOverrides 模型映射自由度拉满、auto-memory 路径可配——最新两版一边堵漏一边加能力，重度用户最有感。"
+      "subtitle": "v2.1.58 — v2.1.76：MCP elicitation 让服务器「主动提问」、/effort 斜杠命令调推理力度、-n 给会话起名、1M 上下文默认开放、/color 个性化——新版又加能力又打磨体验。"
     },
     "models": {
       "label": "◆ AI 模型与推理",
@@ -128,8 +128,8 @@
     "githubReleases": "GitHub Releases",
     "officialDocs": "官方文档",
     "download": "下载 Claude Code",
-    "timestamp": "整理时间：2026-03-11",
-    "versionRange": "版本范围：v0.2.21 ~ v2.1.74",
+    "timestamp": "整理时间：2026-03-14",
+    "versionRange": "版本范围：v0.2.21 ~ v2.1.76",
     "totalVersions": "共 220+ 个版本",
     "totalUpdates": "1000+ 项更新",
     "builtWith": "Built with Claude Code",
@@ -144,24 +144,24 @@
   "cards": {
     "recent": {
       "0": {
-        "title": "/context 智能诊断——上下文吃紧时自动报警",
-        "desc": "v2.1.74 给 <span class=\"scenario-cmd\">/context</span> 加了“开处方”能力：哪些工具占上下文最凶、memory 是不是膨胀了、容量快撑爆了没——统统给出具体优化建议。以前只能看个数字干瞪眼，现在一条条告诉你怎么瘦身。",
-        "tag": "v2.1.74 NEW"
+        "title": "MCP Elicitation——MCP 服务器也能「主动提问」了",
+        "desc": "v2.1.76 新增 MCP elicitation 支持：MCP 服务器可以在任务执行过程中弹出交互式对话框（表单字段或浏览器 URL），主动向你要信息。配套新增 <span class=\"scenario-cmd\">Elicitation</span> 和 <span class=\"scenario-cmd\">ElicitationResult</span> hooks，想拦截或自动填充响应都行。从此 MCP 不再是「你问它答」的单行道。",
+        "tag": "v2.1.76 NEW"
       },
       "1": {
-        "title": "modelOverrides——模型选择器想映射啥就映射啥",
-        "desc": "v2.1.73 新增 <span class=\"scenario-cmd\">modelOverrides</span> 设置：模型选择器里的条目可以映射到自定义提供商模型 ID，比如 Bedrock 推理配置 ARN。企业用户再也不用在多个模型别名间手忙脚乱了。",
-        "tag": "v2.1.73 NEW"
+        "title": "Session Naming——给会话起个名字，一眼认出来",
+        "desc": "启动时加 <span class=\"scenario-cmd\">-n \"重构 auth 模块\"</span> 直接给会话命名，prompt bar 上实时显示。同时开五六个窗口也不会分不清谁是谁。v2.1.75 起 <span class=\"scenario-cmd\">/rename</span> 后名字也在 prompt bar 上显示，不用再翻 <span class=\"scenario-cmd\">/resume</span> 列表找。",
+        "tag": "v2.1.75 — v2.1.76 NEW"
       },
       "2": {
-        "title": "auto-memory 存哪你说了算",
-        "desc": "新增 <span class=\"scenario-cmd\">autoMemoryDirectory</span> 设置，把自动记忆文件放到你指定的目录。多项目共用一台机器时，想把记忆文件集中管理或者放到同步盘，终于不用手动搬了。",
-        "tag": "v2.1.74 NEW"
+        "title": "/effort 一键调推理力度——想快就快、想深就深",
+        "desc": "v2.1.76 新增 <span class=\"scenario-cmd\">/effort</span> 斜杠命令，直接在对话中调整模型推理力度。low / medium / high 三档随意切。配合 <span class=\"scenario-cmd\">/effort auto</span> 回到默认，Claude 响应中也能用。再也不用退出对话去改配置了。",
+        "tag": "v2.1.76 NEW"
       },
       "3": {
-        "title": "v2.1.73 — v2.1.74 稳定性大扫除",
-        "desc": "修复流式 API 响应缓冲区内存泄漏（RSS 无限增长）、权限提示导致 100% CPU 卡死、skill 文件批量变更触发死锁、多会话同目录 Bash 输出丢失、MCP OAuth 回调端口占用时挂起、RTL 文字（希伯来语/阿拉伯语）在 Windows 终端渲染错乱、LSP 服务器在 Windows 上因 URI 格式错误无法工作等。重度使用场景的毛刺又磨平一批。",
-        "tag": "v2.1.73 — v2.1.74"
+        "title": "v2.1.75 — v2.1.76 稳定性大扫除",
+        "desc": "修复延迟加载工具在压缩后丢失 input schema（数组和数字参数报类型错误）、plan mode 已接受后还要重新审批、语音模式在权限弹窗或 plan 编辑器打开时吞按键、auto-compaction 连续失败无限重试（新增断路器机制 3 次后停止）、token 估算过度计数导致过早压缩等。后台 agent 被 kill 后保留部分结果、模型回退通知改为始终可见——稳定性和可观测性双提升。",
+        "tag": "v2.1.75 — v2.1.76"
       },
       "4": {
         "title": "/plan 一句话起手——想法刚冒头就能开工",
@@ -861,6 +861,16 @@
       "date": "2026-03",
       "version": "v2.1.74",
       "desc": "/context 命令新增可操作优化建议（上下文瓶颈诊断）。autoMemoryDirectory 自定义 auto-memory 存储路径。修复流式 API 内存泄漏（RSS 无限增长）、MCP OAuth 回调端口占用挂起、RTL 文字 Windows 终端渲染、LSP Windows URI 格式错误等。--plugin-dir 本地副本优先于 marketplace 同名插件。VS Code 修复 Untitled 会话删除、改进滚轮响应。"
+    },
+    "22": {
+      "date": "2026-03",
+      "version": "v2.1.75",
+      "desc": "Opus 4.6 的 1M 上下文窗口对 Max/Team/Enterprise 默认开放。新增 /color 命令设置 prompt bar 颜色。/rename 后 prompt bar 显示会话名。memory 文件新增最后修改时间戳。hook 来源在权限确认中显示。修复语音模式、token 估算过度计数等问题。"
+    },
+    "23": {
+      "date": "2026-03",
+      "version": "v2.1.76",
+      "desc": "MCP elicitation 支持——MCP 服务器可在任务中弹出交互对话框主动请求输入。新增 Elicitation/ElicitationResult/PostCompact hooks。-n/--name 启动参数给会话命名。worktree.sparsePaths 大 monorepo 稀疏检出。/effort 斜杠命令即时调推理力度。修复延迟工具 schema 丢失、plan mode 重复审批、auto-compaction 无限重试等。改进 worktree 启动性能和陈旧 worktree 自动清理。"
     }
   }
 }
