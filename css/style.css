@@ -367,3 +367,55 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
 kbd{transition:all .15s ease}
 kbd:hover{transform:translateY(-1px);box-shadow:0 2px 0 var(--border);background:var(--surface3)}
 kbd:active{transform:translateY(1px);box-shadow:none}
+
+/* ---- Card 3D tilt on hover ---- */
+.card{transform-style:preserve-3d;perspective:800px}
+.card:hover{transform:translateY(-2px) rotateX(1deg) rotateY(-1deg)}
+
+/* ---- Section divider gradient ---- */
+.section+.section{border-top:1px solid transparent;background-image:linear-gradient(var(--background),var(--background)),linear-gradient(90deg,transparent,var(--accent1),transparent);background-origin:border-box;background-clip:padding-box,border-box}
+
+/* ---- Glowing border for highlight cards ---- */
+@keyframes glow-border{0%,100%{border-color:var(--accent1);box-shadow:0 0 8px rgba(139,115,85,.15)}50%{border-color:var(--accent4);box-shadow:0 0 16px rgba(92,138,110,.2)}}
+.card-highlight{animation:glow-border 4s ease-in-out infinite}
+[data-theme="dark"] .card-highlight{animation:glow-border 4s ease-in-out infinite}
+
+/* ---- Scenario icon bounce ---- */
+.scenario-num{transition:transform .3s ease}
+.scenario:hover .scenario-num{transform:scale(1.15) rotate(-5deg)}
+
+/* ---- Timeline item hover glow ---- */
+.timeline-item{transition:all .3s ease}
+.timeline-item:hover{padding-left:2rem}
+.timeline-item:hover .timeline-desc{color:var(--text)}
+
+/* ---- Hero title gradient text ---- */
+.hero h1{background:linear-gradient(135deg,var(--primary) 0%,var(--accent1) 50%,var(--primary) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@keyframes gradient-shift{0%{background-position:0% center}100%{background-position:200% center}}
+.hero h1{animation:gradient-shift 6s linear infinite}
+
+/* ---- Card icon float ---- */
+.card-icon{transition:transform .4s ease}
+.card:hover .card-icon{transform:translateY(-3px) scale(1.1)}
+
+/* ---- Footer link hover ---- */
+.footer a{transition:all .3s ease;position:relative}
+.footer a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--accent1);transition:width .3s ease}
+.footer a:hover::after{width:100%}
+
+/* ---- Stats card hover lift ---- */
+.stat{transition:all .4s ease}
+.stat:hover{transform:translateY(-4px);border-color:var(--accent1);box-shadow:0 8px 30px var(--card-hover-shadow)}
+
+/* ---- Hero badge shimmer ---- */
+@keyframes badge-shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+.hero-badge{background-image:linear-gradient(90deg,var(--surface) 0%,var(--surface2) 40%,var(--surface) 60%,var(--surface) 100%);background-size:200% auto;animation:badge-shimmer 4s linear infinite}
+
+/* ---- Terminal demo glow ---- */
+.terminal-demo{transition:all .4s ease}
+.terminal-demo:hover{box-shadow:0 20px 80px rgba(139,115,85,.12);transform:translateY(-2px)}
+[data-theme="dark"] .terminal-demo:hover{box-shadow:0 20px 80px rgba(196,168,124,.15)}
+
+/* ---- Section label icon pulse ---- */
+.section-label span{transition:all .3s ease}
+.section-label:hover span{transform:scale(1.05);color:var(--accent4)}

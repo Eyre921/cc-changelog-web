@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Code 全特性速览 — 从用户视角出发</title>
-<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.74，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
+<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.76，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
 <meta name="keywords" content="Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK">
 <meta property="og:title" content="Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进">
 <meta property="og:description" content="220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。">
@@ -21,7 +21,7 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.74 全版本特性整理</span></div>
+  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.76 全版本特性整理</span></div>
   <h1 data-i18n="hero.title">Claude Code<br>全特性速览</h1>
   <p data-i18n="hero.subtitle">从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>220+ 个版本迭代、1000+ 项更新，每一项能力都配有真实场景，看完就能上手。</p>
   <div class="hero-meta">
@@ -35,8 +35,8 @@
     <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title" data-i18n="hero.terminalTitle">Claude Code — zsh</span></div>
     <div class="terminal-body">
       <div><span class="prompt">~ $</span> <span class="cmd">claude</span></div>
-      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.74 (Opus 4.6)</div>
-      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control | /context</span></div>
+      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.76 (Opus 4.6)</div>
+      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">1M context | agent teams | auto-memory | fast mode | voice | /loop | /effort | elicitation | session naming</span></div>
       <div class="output">&nbsp;</div>
       <div><span class="prompt">></span> <span class="cmd typing" data-i18n="hero.terminalTyping"> 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试</span></div>
     </div>
@@ -77,32 +77,38 @@
 <section class="section" id="recent">
   <div class="section-label"><span data-i18n="sections.recent.label">🔥 最近更新亮点</span></div>
   <h2 data-i18n="sections.recent.title">最近版本的新特性</h2>
-  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.74：/context 智能诊断上下文瓶颈、modelOverrides 模型映射自由度拉满、auto-memory 路径可配——最新两版一边堵漏一边加能力，重度用户最有感。</p>
+  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.76：MCP elicitation 让服务器「主动提问」、/effort 斜杠命令调推理力度、-n 给会话起名、1M 上下文默认开放、/color 个性化——新版又加能力又打磨体验。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in card-highlight">
-      <div class="card-icon c1">🔍</div>
-      <h3>/context 智能诊断——上下文吃紧时自动报警</h3>
-      <p>v2.1.74 给 <span class="scenario-cmd">/context</span> 加了"开处方"能力：哪些工具占上下文最凶、memory 是不是膨胀了、容量快撑爆了没——统统给出具体优化建议。以前只能看个数字干瞪眼，现在一条条告诉你怎么瘦身。</p>
-      <span class="tag c1">v2.1.74 NEW</span>
+      <div class="card-icon c1">💬</div>
+      <h3>MCP Elicitation——MCP 服务器也能「主动提问」了</h3>
+      <p>v2.1.76 新增 MCP elicitation 支持：MCP 服务器可以在任务执行过程中弹出交互式对话框（表单字段或浏览器 URL），主动向你要信息。配套新增 <span class="scenario-cmd">Elicitation</span> 和 <span class="scenario-cmd">ElicitationResult</span> hooks，想拦截或自动填充响应都行。从此 MCP 不再是「你问它答」的单行道。</p>
+      <span class="tag c1">v2.1.76 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
-      <div class="card-icon c3">🎛️</div>
-      <h3>modelOverrides——模型选择器想映射啥就映射啥</h3>
-      <p>v2.1.73 新增 <span class="scenario-cmd">modelOverrides</span> 设置：模型选择器里的条目可以映射到自定义提供商模型 ID，比如 Bedrock 推理配置 ARN。企业用户再也不用在多个模型别名间手忙脚乱了。</p>
-      <span class="tag c3">v2.1.73 NEW</span>
+      <div class="card-icon c2">🏷️</div>
+      <h3>Session Naming——给会话起个名字，一眼认出来</h3>
+      <p>启动时加 <span class="scenario-cmd">-n &quot;重构 auth 模块&quot;</span> 直接给会话命名，prompt bar 上实时显示。同时开五六个窗口也不会分不清谁是谁。v2.1.75 起 <span class="scenario-cmd">/rename</span> 后名字也在 prompt bar 上显示，不用再翻 <span class="scenario-cmd">/resume</span> 列表找。</p>
+      <span class="tag c2">v2.1.75 — v2.1.76 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
-      <div class="card-icon c4">📁</div>
-      <h3>auto-memory 存哪你说了算</h3>
-      <p>新增 <span class="scenario-cmd">autoMemoryDirectory</span> 设置，把自动记忆文件放到你指定的目录。多项目共用一台机器时，想把记忆文件集中管理或者放到同步盘，终于不用手动搬了。</p>
-      <span class="tag c4">v2.1.74 NEW</span>
+      <div class="card-icon c3">🎚️</div>
+      <h3>/effort 一键调推理力度——想快就快、想深就深</h3>
+      <p>v2.1.76 新增 <span class="scenario-cmd">/effort</span> 斜杠命令，直接在对话中调整模型推理力度。low / medium / high 三档随意切。配合 <span class="scenario-cmd">/effort auto</span> 回到默认，Claude 响应中也能用。再也不用退出对话去改配置了。</p>
+      <span class="tag c3">v2.1.76 NEW</span>
+    </div>
+    <div class="card fade-in card-highlight">
+      <div class="card-icon c4">🌈</div>
+      <h3>1M 上下文默认开放 & /color 个性化 prompt bar</h3>
+      <p>v2.1.75 起 Opus 4.6 的 100 万上下文窗口对 Max/Team/Enterprise 用户<strong>默认开放</strong>（以前需要额外配额）。同版还新增 <span class="scenario-cmd">/color</span> 命令，给你的 prompt bar 设个颜色——多窗口场景一眼分清哪个是哪个。</p>
+      <span class="tag c4">v2.1.75 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c6">🛡️</div>
-      <h3>v2.1.73 — v2.1.74 稳定性大扫除</h3>
-      <p>修复流式 API 响应缓冲区内存泄漏（RSS 无限增长）、权限提示导致 100% CPU 卡死、skill 文件批量变更触发死锁、多会话同目录 Bash 输出丢失、MCP OAuth 回调端口占用时挂起、RTL 文字（希伯来语/阿拉伯语）在 Windows 终端渲染错乱、LSP 服务器在 Windows 上因 URI 格式错误无法工作等。重度使用场景的毛刺又磨平一批。</p>
-      <span class="tag c6">v2.1.73 — v2.1.74</span>
+      <h3>v2.1.75 — v2.1.76 稳定性大扫除</h3>
+      <p>修复延迟加载工具在压缩后丢失 input schema（数组和数字参数报类型错误）、plan mode 已接受后还要重新审批、语音模式在权限弹窗或 plan 编辑器打开时吞按键、auto-compaction 连续失败无限重试（新增断路器机制 3 次后停止）、token 估算过度计数导致过早压缩等。后台 agent 被 kill 后保留部分结果、模型回退通知改为始终可见——稳定性和可观测性双提升。</p>
+      <span class="tag c6">v2.1.75 — v2.1.76</span>
     </div>
     <div class="card fade-in card-highlight-secondary">
       <div class="card-icon c2">🔄</div>
@@ -216,7 +222,7 @@
     <div class="card fade-in">
       <div class="card-icon c4">◎</div>
       <h3>1M 上下文窗口</h3>
-      <p>处理超大代码库不再捉襟见肘。Opus 4.6 和 Sonnet 4.6 均支持 100 万 token 上下文。可通过 <span class="scenario-cmd">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 按需关闭。</p>
+      <p>处理超大代码库不再捉襟见肘。Opus 4.6 和 Sonnet 4.6 均支持 100 万 token 上下文。v2.1.75 起 Max/Team/Enterprise 用户<strong>默认开放</strong>（以前需要额外配额）。可通过 <span class="scenario-cmd">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 按需关闭。</p>
       <span class="tag c4">v2.1.50</span>
     </div>
     <div class="card fade-in">
@@ -228,7 +234,7 @@
     <div class="card fade-in">
       <div class="card-icon c6">◇</div>
       <h3>Extended Thinking & Effort Control</h3>
-      <p>深度思考模式让模型在回答前充分推理。说 "think" 或 "ultrathink" 触发（v2.1.68 重新引入 ultrathink 关键词启用高 effort）。通过 <span class="scenario-cmd">alwaysThinkingEnabled</span> 设置默认开启。v2.1.72 起 effort 档位简化为 low / medium / high，并用 <span class="scenario-cmd">○ ◐ ●</span> 显示，还可用 <span class="scenario-cmd">/effort auto</span> 一键回默认。</p>
+      <p>深度思考模式让模型在回答前充分推理。说 "think" 或 "ultrathink" 触发（v2.1.68 重新引入 ultrathink 关键词启用高 effort）。通过 <span class="scenario-cmd">alwaysThinkingEnabled</span> 设置默认开启。v2.1.72 起 effort 档位简化为 low / medium / high，并用 <span class="scenario-cmd">○ ◐ ●</span> 显示。v2.1.76 新增 <span class="scenario-cmd">/effort</span> 斜杠命令，直接在对话中一键调整推理力度，还可用 <span class="scenario-cmd">/effort auto</span> 一键回默认。</p>
       <span class="tag c6">v0.2.44</span>
     </div>
     <div class="card fade-in">
@@ -280,7 +286,7 @@
     <div class="card fade-in">
       <div class="card-icon c3">⊟</div>
       <h3>Agent 隔离 — Worktree</h3>
-      <p>agent 定义中声明 <span class="scenario-cmd">isolation: worktree</span>，自动在隔离的 git worktree 中运行，互不干扰。<span class="scenario-cmd">--worktree</span> 标志启动隔离会话。支持 WorktreeCreate/WorktreeRemove hook 事件。v2.1.69 status line hook 命令新增 <span class="scenario-cmd">worktree</span> 字段（name、path、branch 和原始仓库目录）。</p>
+      <p>agent 定义中声明 <span class="scenario-cmd">isolation: worktree</span>，自动在隔离的 git worktree 中运行，互不干扰。<span class="scenario-cmd">--worktree</span> 标志启动隔离会话。支持 WorktreeCreate/WorktreeRemove hook 事件。v2.1.69 status line hook 命令新增 <span class="scenario-cmd">worktree</span> 字段（name、path、branch 和原始仓库目录）。v2.1.76 新增 <span class="scenario-cmd">worktree.sparsePaths</span> 设置，大 monorepo 使用 <span class="scenario-cmd">--worktree</span> 时可只检出你需要的目录（git sparse-checkout），启动更快。</p>
       <span class="tag c3">v2.1.49</span>
     </div>
     <div class="card fade-in">
@@ -333,7 +339,7 @@
     <div class="card fade-in">
       <div class="card-icon c6">◉</div>
       <h3>自动记忆 & /memory</h3>
-      <p>Claude 在工作中自动记住项目规范、代码风格、架构偏好——下次打开不用从头解释。用 <span class="scenario-cmd">/memory</span> 管理记忆内容。.claude/rules/ 存放项目规则。v2.1.63 起 auto-memory 跨 git worktree 共享，同一仓库的不同分支都能受益。v2.1.74 新增 <span class="scenario-cmd">autoMemoryDirectory</span> 设置，自动记忆文件存放路径可自定义。</p>
+      <p>Claude 在工作中自动记住项目规范、代码风格、架构偏好——下次打开不用从头解释。用 <span class="scenario-cmd">/memory</span> 管理记忆内容。.claude/rules/ 存放项目规则。v2.1.63 起 auto-memory 跨 git worktree 共享，同一仓库的不同分支都能受益。v2.1.74 新增 <span class="scenario-cmd">autoMemoryDirectory</span> 设置，自动记忆文件存放路径可自定义。v2.1.75 memory 文件新增最后修改时间戳，帮助 Claude 判断哪些记忆是新鲜的、哪些可能过时了。</p>
       <span class="tag c6">v2.1.59</span>
     </div>
     <div class="card fade-in">
@@ -462,7 +468,7 @@
     <div class="card fade-in">
       <div class="card-icon c3">⊕</div>
       <h3>MCP 协议全面支持</h3>
-      <p>v0.2.50 引入 project scope .mcp.json。v1.0.27 支持 Streamable HTTP 和 SSE + OAuth。v2.1.7 自动搜索模式（<span class="scenario-cmd">auto:N</span> 语法）。支持 resource_link、structuredContent、tool annotations。v2.1.69 MCP 工具返回 PDF/Office/音频等二进制内容时自动保存到磁盘，不再倒入 base64。v2.1.72 修复在设置 <span class="scenario-cmd">ANTHROPIC_BASE_URL</span> 时，只要开启 <span class="scenario-cmd">ENABLE_TOOL_SEARCH</span> 仍可正常启用工具搜索。</p>
+      <p>v0.2.50 引入 project scope .mcp.json。v1.0.27 支持 Streamable HTTP 和 SSE + OAuth。v2.1.7 自动搜索模式（<span class="scenario-cmd">auto:N</span> 语法）。支持 resource_link、structuredContent、tool annotations。v2.1.69 MCP 工具返回 PDF/Office/音频等二进制内容时自动保存到磁盘，不再倒入 base64。v2.1.72 修复在设置 <span class="scenario-cmd">ANTHROPIC_BASE_URL</span> 时，只要开启 <span class="scenario-cmd">ENABLE_TOOL_SEARCH</span> 仍可正常启用工具搜索。v2.1.76 新增 MCP elicitation 支持——MCP 服务器可在任务中弹出交互对话框（表单或浏览器 URL）主动请求用户输入。</p>
       <span class="tag c3">v0.2.50</span>
     </div>
     <div class="card fade-in">
@@ -486,7 +492,7 @@
     <div class="card fade-in">
       <div class="card-icon c2">⊛</div>
       <h3>Hooks 系统</h3>
-      <p>v1.0.38 发布 Hooks。PreToolUse / PostToolUse / Stop / SessionStart / SessionEnd / ConfigChange / WorktreeCreate / TeammateIdle / TaskCompleted / PermissionRequest / UserPromptSubmit / InstructionsLoaded / Setup — 完整生命周期钩子。v2.1.63 新增 HTTP hooks，支持 POST JSON 到 URL 并接收 JSON 响应。v2.1.69 新增 InstructionsLoaded hook 和 hook 事件中的 <span class="scenario-cmd">agent_id</span>/<span class="scenario-cmd">agent_type</span> 字段。</p>
+      <p>v1.0.38 发布 Hooks。PreToolUse / PostToolUse / Stop / SessionStart / SessionEnd / ConfigChange / WorktreeCreate / TeammateIdle / TaskCompleted / PermissionRequest / UserPromptSubmit / InstructionsLoaded / Setup — 完整生命周期钩子。v2.1.63 新增 HTTP hooks，支持 POST JSON 到 URL 并接收 JSON 响应。v2.1.69 新增 InstructionsLoaded hook 和 hook 事件中的 <span class="scenario-cmd">agent_id</span>/<span class="scenario-cmd">agent_type</span> 字段。v2.1.75 hook 来源（settings/plugin/skill）在权限确认中显示。v2.1.76 新增 <span class="scenario-cmd">Elicitation</span>、<span class="scenario-cmd">ElicitationResult</span>、<span class="scenario-cmd">PostCompact</span> hooks。</p>
       <span class="tag c2">v1.0.38</span>
     </div>
     <div class="card fade-in">
@@ -938,7 +944,7 @@
         <span class="scenario-cmd">/voice</span><span style="color:var(--text2)">语音输入</span>
         <span class="scenario-cmd">/cost</span><span style="color:var(--text2)">查看会话开销</span>
         <span class="scenario-cmd">/terminal-setup</span><span style="color:var(--text2)">终端兼容性设置</span>
-        <span class="scenario-cmd">/color</span><span style="color:var(--text2)">设置会话颜色（使用 default 或 reset 重置）</span>
+        <span class="scenario-cmd">/color</span><span style="color:var(--text2)">设置 prompt bar 颜色（所有用户可用，支持 default/reset 重置）</span>
         <span class="scenario-cmd">/security-review</span><span style="color:var(--text2)">安全审查</span>
       </div>
     </div>
@@ -948,12 +954,12 @@
     <div class="card">
       <div class="card-icon c4">⊞</div>
       <h3 data-i18n="shortcuts_section.cliTitle">CLI 子命令</h3>
-      <p><span class="scenario-cmd">claude auth login/status/logout</span> 认证管理。<span class="scenario-cmd">claude agents</span> 列出 agent。<span class="scenario-cmd">claude remote-control</span> 远程控制。<span class="scenario-cmd">claude doctor</span> 诊断。<span class="scenario-cmd">claude mcp add/list/get/serve</span> MCP 管理。<span class="scenario-cmd">claude plugin install/validate/browse</span> 插件管理。<span class="scenario-cmd">claude install</span> 原生安装。<span class="scenario-cmd">claude --teleport</span> 从 Web 传送。</p>
+      <p><span class="scenario-cmd">claude auth login/status/logout</span> 认证管理。<span class="scenario-cmd">-n/--name</span> 启动时给会话命名。<span class="scenario-cmd">claude agents</span> 列出 agent。<span class="scenario-cmd">claude remote-control</span> 远程控制。<span class="scenario-cmd">claude doctor</span> 诊断。<span class="scenario-cmd">claude mcp add/list/get/serve</span> MCP 管理。<span class="scenario-cmd">claude plugin install/validate/browse</span> 插件管理。<span class="scenario-cmd">claude install</span> 原生安装。<span class="scenario-cmd">claude --teleport</span> 从 Web 传送。</p>
     </div>
     <div class="card">
       <div class="card-icon c5">⊡</div>
       <h3 data-i18n="shortcuts_section.envTitle">环境变量</h3>
-      <p><span class="scenario-cmd">CLAUDE_CODE_SIMPLE</span> 极简模式。<span class="scenario-cmd">CLAUDE_CODE_TMPDIR</span> 自定义临时目录。<span class="scenario-cmd">CLAUDE_CODE_SHELL</span> 覆盖 shell 检测。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> 禁用后台任务。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 禁用 1M 上下文。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS</span> 移除内置 Git 指令。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_CRON</span> 立即停止会话中的定时 cron 任务。<span class="scenario-cmd">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> 关闭 claude.ai MCP 服务器。<span class="scenario-cmd">CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS</span> 插件 git 超时。<span class="scenario-cmd">CLAUDE_CODE_ACCOUNT_UUID</span>/<span class="scenario-cmd">CLAUDE_CODE_USER_EMAIL</span>/<span class="scenario-cmd">CLAUDE_CODE_ORGANIZATION_UUID</span> SDK 账户信息。<span class="scenario-cmd">BASH_DEFAULT_TIMEOUT_MS</span> bash 超时。<span class="scenario-cmd">ANTHROPIC_LOG=debug</span> 调试日志。</p>
+      <p><span class="scenario-cmd">CLAUDE_CODE_SIMPLE</span> 极简模式。<span class="scenario-cmd">CLAUDE_CODE_TMPDIR</span> 自定义临时目录。<span class="scenario-cmd">CLAUDE_CODE_SHELL</span> 覆盖 shell 检测。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> 禁用后台任务。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 禁用 1M 上下文。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS</span> 移除内置 Git 指令。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_CRON</span> 立即停止会话中的定时 cron 任务。<span class="scenario-cmd">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> 关闭 claude.ai MCP 服务器。<span class="scenario-cmd">CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS</span> 插件 git 超时。<span class="scenario-cmd">CLAUDE_CODE_ACCOUNT_UUID</span>/<span class="scenario-cmd">CLAUDE_CODE_USER_EMAIL</span>/<span class="scenario-cmd">CLAUDE_CODE_ORGANIZATION_UUID</span> SDK 账户信息。<span class="scenario-cmd">BASH_DEFAULT_TIMEOUT_MS</span> bash 超时。<span class="scenario-cmd">CLAUDE_CODE_SESSIONEND_HOOKS_TIMEOUT_MS</span> SessionEnd hooks 超时。<span class="scenario-cmd">ANTHROPIC_LOG=debug</span> 调试日志。</p>
     </div>
     <div class="card">
       <div class="card-icon c6">⊟</div>
@@ -1082,6 +1088,16 @@
       <div class="timeline-version">v2.1.74</div>
       <div class="timeline-desc" style="color:var(--accent1)">/context 命令新增可操作优化建议（上下文瓶颈诊断）。autoMemoryDirectory 自定义 auto-memory 存储路径。修复流式 API 内存泄漏（RSS 无限增长）、MCP OAuth 回调端口占用挂起、RTL 文字 Windows 终端渲染、LSP Windows URI 格式错误等。--plugin-dir 本地副本优先于 marketplace 同名插件。VS Code 修复 Untitled 会话删除、改进滚轮响应。</div>
     </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-03</div>
+      <div class="timeline-version">v2.1.75</div>
+      <div class="timeline-desc">Opus 4.6 的 1M 上下文窗口对 Max/Team/Enterprise 默认开放。新增 /color 命令设置 prompt bar 颜色。/rename 后 prompt bar 显示会话名。memory 文件新增最后修改时间戳。hook 来源在权限确认中显示。修复语音模式、token 估算过度计数等问题。</div>
+    </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-03</div>
+      <div class="timeline-version">v2.1.76</div>
+      <div class="timeline-desc" style="color:var(--accent1)">MCP elicitation 支持——MCP 服务器可在任务中弹出交互对话框主动请求输入。新增 Elicitation/ElicitationResult/PostCompact hooks。-n/--name 启动参数给会话命名。worktree.sparsePaths 大 monorepo 稀疏检出。/effort 斜杠命令即时调推理力度。修复延迟工具 schema 丢失、plan mode 重复审批、auto-compaction 无限重试等。改进 worktree 启动性能和陈旧 worktree 自动清理。</div>
+    </div>
   </div>
 </section>
 
@@ -1097,7 +1113,7 @@
 <!-- Footer -->
 <footer class="footer">
   <p><span data-i18n="footer.sources">数据来源：</span><a href="https://github.com/anthropics/claude-code/releases" target="_blank" data-i18n="footer.githubReleases">GitHub Releases</a> · <a href="https://code.claude.com/docs" target="_blank" data-i18n="footer.officialDocs">官方文档</a> · <a href="https://claude.com/download" target="_blank" data-i18n="footer.download">下载 Claude Code</a></p>
-  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-03-11</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.74</span> · <span data-i18n="footer.totalVersions">共 220+ 个版本</span> · <span data-i18n="footer.totalUpdates">1000+ 项更新</span></p>
+  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-03-14</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.76</span> · <span data-i18n="footer.totalVersions">共 220+ 个版本</span> · <span data-i18n="footer.totalUpdates">1000+ 项更新</span></p>
   <p style="margin-top:.8rem"><a href="https://www.vibevibe.cn/Advanced/" target="_blank" class="footer-cta" data-i18n="footer.advancedGuide">🚀 探索更多 Claude Code 进阶用法 →</a></p>
   <p style="margin-top:1rem;color:var(--text3)"><span data-i18n="footer.builtWith">Built with Claude Code</span> · <a href="#" style="color:var(--text3)" data-i18n="footer.backToTop">回到顶部 ↑</a></p>
 </footer>
