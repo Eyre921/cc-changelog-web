@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Claude Code Feature Overview — A User's Perspective",
-    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.74, 220+ versions and 1000+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
+    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.76, 220+ versions and 1000+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
     "keywords": "Claude Code, Anthropic, AI Programming, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code Feature Overview — Complete Evolution from v0.2 to v2.1",
     "ogDescription": "220+ versions, 1000+ updates. From terminal to IDE, from solo coding to multi-Agent collaboration — discover every capability of Claude Code."
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.74 Full Version Feature Summary",
+    "badge": "v0.2.21 — v2.1.76 Full Version Feature Summary",
     "title": "Claude Code<br>Feature Overview",
     "subtitle": "From terminal to IDE, from solo coding to a team of Agents doing the heavy lifting.<br>220+ version iterations, 1000+ updates — each feature comes with real-world scenarios so you can hit the ground running.",
     "versions": " versions",
@@ -16,8 +16,8 @@
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.74 (Opus 4.6)",
-    "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | effort control | /context",
+    "terminalOutput1": "  Claude Code v2.1.76 (Opus 4.6)",
+    "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | /effort | elicitation | session naming",
     "terminalTyping": " Refactor this module with 3 agents: one for security, one for perf, one for tests",
     "advancedCta": "🚀 Explore Advanced Claude Code Usage →"
   },
@@ -41,7 +41,7 @@
     "recent": {
       "label": "🔥 Recent Highlights",
       "title": "Latest Features",
-      "subtitle": "v2.1.58 — v2.1.74: /context diagnoses context bottlenecks, modelOverrides gives full model mapping freedom, auto-memory path is now configurable — the latest two releases patch holes and add capabilities power users will love."
+      "subtitle": "v2.1.58 — v2.1.76: MCP elicitation lets servers ask you questions mid-task, /effort adjusts reasoning intensity on the fly, -n names sessions at startup, 1M context now default for Max/Team/Enterprise, /color personalizes your prompt bar — more power and more polish."
     },
     "models": {
       "label": "◆ AI Models & Reasoning",
@@ -128,8 +128,8 @@
     "githubReleases": "GitHub Releases",
     "officialDocs": "Official Docs",
     "download": "Download Claude Code",
-    "timestamp": "Updated: 2026-03-11",
-    "versionRange": "Version range: v0.2.21 ~ v2.1.74",
+    "timestamp": "Updated: 2026-03-14",
+    "versionRange": "Version range: v0.2.21 ~ v2.1.76",
     "totalVersions": "220+ versions",
     "totalUpdates": "1000+ updates",
     "builtWith": "Built with Claude Code",
@@ -144,24 +144,24 @@
   "cards": {
     "recent": {
       "0": {
-        "title": "/context Smart Diagnostics — Alerts When Context Gets Tight",
-        "desc": "v2.1.74 gives <span class=\"scenario-cmd\">/context</span> prescriptive powers: which tools hog the most context, whether memory is bloating, and if you're about to hit capacity — all with specific optimization tips. No more staring at numbers wondering what to do.",
-        "tag": "v2.1.74 NEW"
+        "title": "MCP Elicitation — MCP Servers Can Now Ask You Questions",
+        "desc": "v2.1.76 adds MCP elicitation support: MCP servers can pop up an interactive dialog (form fields or browser URL) mid-task to request structured input. New <span class=\"scenario-cmd\">Elicitation</span> and <span class=\"scenario-cmd\">ElicitationResult</span> hooks let you intercept or auto-fill responses. MCP is no longer a one-way street.",
+        "tag": "v2.1.76 NEW"
       },
       "1": {
-        "title": "modelOverrides — Map Model Picker to Any Provider ID",
-        "desc": "v2.1.73 adds the <span class=\"scenario-cmd\">modelOverrides</span> setting: map model picker entries to custom provider model IDs like Bedrock inference profile ARNs. Enterprise users no longer juggle multiple model aliases.",
-        "tag": "v2.1.73 NEW"
+        "title": "Session Naming — Name Your Sessions, Spot Them Instantly",
+        "desc": "Add <span class=\"scenario-cmd\">-n \"refactor auth module\"</span> at startup to name your session — it shows live on the prompt bar. Running five windows at once? No more guessing which is which. Since v2.1.75, <span class=\"scenario-cmd\">/rename</span> also shows the name on the prompt bar.",
+        "tag": "v2.1.75 — v2.1.76 NEW"
       },
       "2": {
-        "title": "auto-memory Goes Where You Want",
-        "desc": "New <span class=\"scenario-cmd\">autoMemoryDirectory</span> setting lets you choose where auto-memory files are stored. Running multiple projects on one machine? Put them all in a synced folder — no more manual moving.",
-        "tag": "v2.1.74 NEW"
+        "title": "/effort — Dial Reasoning Intensity on the Fly",
+        "desc": "v2.1.76 adds the <span class=\"scenario-cmd\">/effort</span> slash command to adjust model reasoning intensity mid-conversation. Switch between low / medium / high freely. Use <span class=\"scenario-cmd\">/effort auto</span> to reset to default. No more leaving the chat to change configs.",
+        "tag": "v2.1.76 NEW"
       },
       "3": {
-        "title": "v2.1.73 — v2.1.74 Stability Sweep",
-        "desc": "Fixed streaming API response buffer memory leak (unbounded RSS growth), 100% CPU freeze from permission prompts, deadlock from bulk skill file changes, Bash output lost across multiple sessions, MCP OAuth hanging on port conflicts, Hebrew/Arabic/RTL text rendering in Windows Terminal, LSP servers failing on Windows due to malformed URIs, and more.",
-        "tag": "v2.1.73 — v2.1.74"
+        "title": "v2.1.75 — v2.1.76 Stability Sweep",
+        "desc": "Fixed deferred tools losing input schemas after compaction (array/number parameter type errors), plan mode re-asking for approval after already accepted, voice mode swallowing keypresses during permission dialogs, auto-compaction retrying indefinitely (circuit breaker after 3 attempts), token estimation over-counting causing premature compaction. Background agents now preserve partial results when killed. Model fallback notifications are always visible with human-friendly names.",
+        "tag": "v2.1.75 — v2.1.76"
       },
       "4": {
         "title": "/plan Starts in One Line — Capture the Idea While It's Hot",
@@ -861,6 +861,16 @@
       "date": "2026-03",
       "version": "v2.1.74",
       "desc": "/context command now shows actionable optimization suggestions (context bottleneck diagnostics). autoMemoryDirectory for custom auto-memory storage. Fixed streaming API memory leak (unbounded RSS growth), MCP OAuth callback port conflicts, RTL text on Windows Terminal, LSP Windows URI format errors. --plugin-dir local copies now override marketplace plugins. VS Code: fixed Untitled session delete, improved scroll wheel responsiveness."
+    },
+    "22": {
+      "date": "2026-03",
+      "version": "v2.1.75",
+      "desc": "1M context window for Opus 4.6 now default for Max/Team/Enterprise. New /color command to set prompt bar color. /rename shows session name on prompt bar. Memory files include last-modified timestamps. Hook source displayed in permission prompts. Fixed voice mode, token over-counting issues."
+    },
+    "23": {
+      "date": "2026-03",
+      "version": "v2.1.76",
+      "desc": "MCP elicitation support — MCP servers can pop up interactive dialogs mid-task. New Elicitation/ElicitationResult/PostCompact hooks. -n/--name flag names sessions at startup. worktree.sparsePaths for sparse checkout in large monorepos. /effort slash command adjusts reasoning intensity. Fixed deferred tool schema loss, plan mode re-approval, auto-compaction infinite retry. Improved worktree startup performance and stale worktree cleanup."
     }
   }
 }
