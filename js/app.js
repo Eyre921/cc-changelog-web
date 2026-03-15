@@ -215,6 +215,112 @@ const App = (() => {
     }
   }
 
+  // ---- Card 3D tilt on mouse move ----
+  function initCardTilt() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if ('ontouchstart' in window) return;
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(600px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-2px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // ---- Card click ripple ----
+  function initCardRipple() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.position = card.style.position || 'relative';
+      card.style.overflow = 'hidden';
+      card.addEventListener('click', (e) => {
+        const rect = card.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'card-ripple';
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        card.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+      });
+    });
+  }
+
+  // ---- Section label reveal on scroll ----
+  function initSectionLabelReveal() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const labels = document.querySelectorAll('.section-label');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+    labels.forEach(el => observer.observe(el));
+  }
+
+  // ---- Timeline scroll-reveal progress line ----
+  function initTimelineProgress() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const timeline = document.querySelector('.timeline');
+    if (!timeline) return;
+    const progressLine = document.createElement('div');
+    progressLine.className = 'timeline-progress';
+    timeline.style.position = 'relative';
+    timeline.prepend(progressLine);
+
+    function updateProgress() {
+      const rect = timeline.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      const timelineTop = rect.top;
+      const timelineH = rect.height;
+      if (timelineTop > windowH) {
+        progressLine.style.height = '0px';
+      } else if (timelineTop + timelineH < 0) {
+        progressLine.style.height = timelineH + 'px';
+      } else {
+        const visible = Math.min(windowH - timelineTop, timelineH);
+        progressLine.style.height = Math.max(0, visible) + 'px';
+      }
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  // ---- Nav scroll shadow ----
+  function initNavScrollShadow() {
+    const nav = document.querySelector('.nav');
+    if (!nav) return;
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', scrollY > 10);
+    }, { passive: true });
+  }
+
+  // ---- Magnetic floating buttons ----
+  function initMagneticButtons() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if ('ontouchstart' in window) return;
+    document.querySelectorAll('.floating-btn').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  }
+
   // ---- Init ----
   async function init() {
     // Apply theme immediately (before paint)
@@ -236,6 +342,12 @@ const App = (() => {
     initCountUp();
     initHeadingReveal();
     initHeroParticles();
+    initCardTilt();
+    initCardRipple();
+    initSectionLabelReveal();
+    initTimelineProgress();
+    initNavScrollShadow();
+    initMagneticButtons();
   }
 
   return { init, toggleTheme, applyTheme };

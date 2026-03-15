@@ -419,3 +419,77 @@ kbd:active{transform:translateY(1px);box-shadow:none}
 /* ---- Section label icon pulse ---- */
 .section-label span{transition:all .3s ease}
 .section-label:hover span{transform:scale(1.05);color:var(--accent4)}
+
+/* ---- Card gradient border on hover ---- */
+@keyframes gradient-rotate{0%{--angle:0deg}100%{--angle:360deg}}
+.card{background-clip:padding-box}
+.card:hover::before{opacity:1;background:linear-gradient(90deg,var(--accent1),var(--accent4),var(--accent2),var(--accent1));background-size:300% 100%;animation:gradient-slide 3s linear infinite}
+@keyframes gradient-slide{0%{background-position:0% 0}100%{background-position:300% 0}}
+
+/* ---- Card click ripple ---- */
+.card-ripple{position:absolute;border-radius:50%;background:var(--accent1);opacity:.15;transform:scale(0);animation:ripple-expand .6s ease-out forwards;pointer-events:none;z-index:1}
+@keyframes ripple-expand{to{transform:scale(4);opacity:0}}
+
+/* ---- Hero aurora effect ---- */
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:radial-gradient(ellipse 80% 60% at 20% 100%,rgba(107,142,123,.06),transparent 50%),radial-gradient(ellipse 60% 50% at 80% 100%,rgba(139,115,85,.05),transparent 50%);pointer-events:none;animation:aurora-shift 12s ease-in-out infinite alternate}
+@keyframes aurora-shift{0%{opacity:.6;transform:translateX(-5%)}100%{opacity:1;transform:translateX(5%)}}
+[data-theme="dark"] .hero::after{background:radial-gradient(ellipse 80% 60% at 20% 100%,rgba(139,184,160,.08),transparent 50%),radial-gradient(ellipse 60% 50% at 80% 100%,rgba(196,168,124,.06),transparent 50%)}
+
+/* ---- Timeline scroll-reveal line ---- */
+.timeline-progress{position:absolute;left:7px;top:0;width:2px;height:0;background:linear-gradient(180deg,var(--accent1),var(--accent4));z-index:1;transition:height .1s linear;border-radius:1px}
+
+/* ---- Floating button magnetic hover ---- */
+.floating-btn{will-change:transform}
+
+/* ---- Scenario card entrance stagger ---- */
+.scenario.fade-in{transition-duration:.8s}
+.section .grid + .scenario.fade-in{transition-delay:.2s}
+
+/* ---- Tag shimmer ---- */
+.tag{position:relative;overflow:hidden}
+.tag::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .5s ease;pointer-events:none}
+.card:hover .tag::after{left:150%}
+
+/* ---- Section number reveal ---- */
+.section-label{opacity:0;transform:translateX(-10px);transition:all .5s ease}
+.section-label.visible{opacity:1;transform:translateX(0)}
+
+/* ---- Hero CTA pulse ---- */
+@keyframes cta-pulse{0%,100%{box-shadow:0 0 0 0 rgba(139,115,85,.3)}50%{box-shadow:0 0 0 8px rgba(139,115,85,0)}}
+.hero-cta{animation:cta-pulse 3s ease-in-out infinite}
+[data-theme="dark"] .hero-cta{animation:cta-pulse 3s ease-in-out infinite}
+@keyframes cta-pulse-dark{0%,100%{box-shadow:0 0 0 0 rgba(196,168,124,.3)}50%{box-shadow:0 0 0 8px rgba(196,168,124,0)}}
+[data-theme="dark"] .hero-cta{animation:cta-pulse-dark 3s ease-in-out infinite}
+
+/* ---- Stats number animated underline ---- */
+.stat .num{position:relative;display:inline-block}
+.stat .num::after{content:'';position:absolute;bottom:-.2rem;left:10%;width:0;height:2px;background:linear-gradient(90deg,var(--accent1),var(--accent4));border-radius:1px;transition:width .8s ease}
+.stat:hover .num::after{width:80%}
+
+/* ---- Terminal command line glow ---- */
+.terminal-body .cmd{transition:text-shadow .3s ease}
+.terminal-demo:hover .terminal-body .cmd{text-shadow:0 0 8px rgba(139,115,85,.2)}
+[data-theme="dark"] .terminal-demo:hover .terminal-body .cmd{text-shadow:0 0 8px rgba(196,168,124,.3)}
+
+/* ---- Scenario body item stagger ---- */
+.scenario-body li{opacity:0;transform:translateX(-8px);transition:all .4s ease}
+.scenario.fade-in.visible .scenario-body li{opacity:1;transform:translateX(0)}
+.scenario.fade-in.visible .scenario-body li:nth-child(1){transition-delay:.1s}
+.scenario.fade-in.visible .scenario-body li:nth-child(2){transition-delay:.2s}
+.scenario.fade-in.visible .scenario-body li:nth-child(3){transition-delay:.3s}
+.scenario.fade-in.visible .scenario-body li:nth-child(4){transition-delay:.4s}
+.scenario.fade-in.visible .scenario-body li:nth-child(5){transition-delay:.5s}
+.scenario.fade-in.visible .scenario-body li:nth-child(6){transition-delay:.6s}
+
+/* ---- Card icon color shift on hover ---- */
+.card-icon{transition:transform .4s ease,filter .4s ease}
+.card:hover .card-icon{transform:translateY(-3px) scale(1.1);filter:brightness(1.15)}
+
+/* ---- Section title text gradient on hover ---- */
+.section h2{transition:all .5s ease}
+.section h2:hover{background:linear-gradient(135deg,var(--primary) 0%,var(--accent1) 40%,var(--accent4) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ---- Nav scroll shadow ---- */
+.nav{transition:box-shadow .3s ease}
+.nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
+[data-theme="dark"] .nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.2)}

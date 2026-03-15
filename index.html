@@ -107,7 +107,7 @@
     <div class="card fade-in card-highlight">
       <div class="card-icon c6">🛡️</div>
       <h3>v2.1.75 — v2.1.76 稳定性大扫除</h3>
-      <p>修复延迟加载工具在压缩后丢失 input schema（数组和数字参数报类型错误）、plan mode 已接受后还要重新审批、语音模式在权限弹窗或 plan 编辑器打开时吞按键、auto-compaction 连续失败无限重试（新增断路器机制 3 次后停止）、token 估算过度计数导致过早压缩等。后台 agent 被 kill 后保留部分结果、模型回退通知改为始终可见——稳定性和可观测性双提升。</p>
+      <p>修复延迟加载工具在压缩后丢失 input schema（数组和数字参数报类型错误）、plan mode 已接受后还要重新审批、语音模式在权限弹窗或 plan 编辑器打开时吞按键、auto-compaction 连续失败无限重试（新增断路器机制 3 次后停止）、token 估算过度计数导致过早压缩等。后台 agent 被 kill 后保留部分结果、模型回退通知改为始终可见、暗色主题下 blockquote 改为斜体+左竖线更易读——稳定性和可观测性双提升。企业管理员还可通过 <span class="scenario-cmd">feedbackSurveyRate</span> 配置会话质量调查采样率。</p>
       <span class="tag c6">v2.1.75 — v2.1.76</span>
     </div>
     <div class="card fade-in card-highlight-secondary">
@@ -498,7 +498,7 @@
     <div class="card fade-in">
       <div class="card-icon c6">⊚</div>
       <h3>Remote Control & Teleport</h3>
-      <p><span class="scenario-cmd">claude remote-control</span> 为所有用户启用本地环境服务。v2.1.69 支持可选名称参数（<span class="scenario-cmd">/remote-control My Project</span> 或 <span class="scenario-cmd">--name "My Project"</span>）在 claude.ai/code 中显示自定义标题。Teleport 从 Web 传送会话到本地。Claude in Chrome 集成浏览器控制。</p>
+      <p><span class="scenario-cmd">claude remote-control</span> 为所有用户启用本地环境服务。v2.1.69 支持可选名称参数（<span class="scenario-cmd">/remote-control My Project</span> 或 <span class="scenario-cmd">--name "My Project"</span>）在 claude.ai/code 中显示自定义标题。v2.1.76 改进会话标题——现在从你的第一条 prompt 生成，不再显示 "Interactive session"。Teleport 从 Web 传送会话到本地。Claude in Chrome 集成浏览器控制。</p>
       <span class="tag c6">v2.0.72</span>
     </div>
   </div>
@@ -568,7 +568,7 @@
     <div class="card fade-in">
       <div class="card-icon c2">🎙</div>
       <h3>Voice 语音输入</h3>
-      <p>长按空格键开始语音输入（v2.1.71 支持 <span class="scenario-cmd">voice:pushToTalk</span> 自定义按键绑定）。v2.1.69 支持 20 种语言（含中文）。v2.1.71 修复语音模式导致的 5–8 秒启动冻结（CoreAudio 阻塞主线程）。v2.1.72 进一步提升 repo 名、regex、OAuth、JSON 等开发者术语的转写准确率。不想打字的时候，说话就行。v2.1.73 改进语音模式在连接瞬断时自动重试。</p>
+      <p>长按空格键开始语音输入（v2.1.71 支持 <span class="scenario-cmd">voice:pushToTalk</span> 自定义按键绑定）。v2.1.69 支持 20 种语言（含中文）。v2.1.71 修复语音模式导致的 5–8 秒启动冻结（CoreAudio 阻塞主线程）。v2.1.72 进一步提升 repo 名、regex、OAuth、JSON 等开发者术语的转写准确率。不想打字的时候，说话就行。v2.1.73 改进语音模式在连接瞬断时自动重试。v2.1.76 启用 <span class="scenario-cmd">/voice</span> 时现在显示你的听写语言，并在 <span class="scenario-cmd">language</span> 设置不被语音支持时发出警告。</p>
       <span class="tag c2">v2.1.69 — v2.1.72</span>
     </div>
     <div class="card fade-in">
@@ -863,8 +863,8 @@
     </div>
     <div class="card fade-in">
       <div class="card-icon c6">⊛</div>
-      <h3>稳定性修复 & v2.1.72 — v2.1.74 增强</h3>
-      <p>修复 Windows 上扩展崩溃、终端 scroll-to-top 回归、重复会话、OAuth token 过期 401 错误、侧边栏视图容器启动竞态条件、Windows ARM64 兼容等问题。v2.1.70 修复 RTL 文本（阿拉伯语、希伯来语、波斯语）在聊天面板中反向渲染的回归问题。v2.1.72 新增输入框边框 effort 级别指示器（一眼看出当前推理档位）、新增 <span class="scenario-cmd">vscode://anthropic.claude-code/open</span> URI handler（支持 <span class="scenario-cmd">prompt</span> 和 <span class="scenario-cmd">session</span> 参数，方便脚本/自动化一键呼起 Claude Code 标签页）。v2.1.74 修复 Untitled 会话删除按钮失效，改进集成终端滚轮响应（终端感知加速）。v2.1.73 修复代理/Bedrock/Vertex + Claude 4.5 模型的 HTTP 400 错误。</p>
+      <h3>稳定性修复 & v2.1.72 — v2.1.76 增强</h3>
+      <p>修复 Windows 上扩展崩溃、终端 scroll-to-top 回归、重复会话、OAuth token 过期 401 错误、侧边栏视图容器启动竞态条件、Windows ARM64 兼容等问题。v2.1.70 修复 RTL 文本（阿拉伯语、希伯来语、波斯语）在聊天面板中反向渲染的回归问题。v2.1.72 新增输入框边框 effort 级别指示器（一眼看出当前推理档位）、新增 <span class="scenario-cmd">vscode://anthropic.claude-code/open</span> URI handler（支持 <span class="scenario-cmd">prompt</span> 和 <span class="scenario-cmd">session</span> 参数，方便脚本/自动化一键呼起 Claude Code 标签页）。v2.1.74 修复 Untitled 会话删除按钮失效，改进集成终端滚轮响应（终端感知加速）。v2.1.73 修复代理/Bedrock/Vertex + Claude 4.5 模型的 HTTP 400 错误。v2.1.76 修复 VS Code 中含逗号的 gitignore 模式错误地从 @-提及文件选择器中排除整个文件类型。</p>
       <span class="tag c6">v2.1.52 — v2.1.74</span>
     </div>
   </div>
@@ -1113,7 +1113,7 @@
 <!-- Footer -->
 <footer class="footer">
   <p><span data-i18n="footer.sources">数据来源：</span><a href="https://github.com/anthropics/claude-code/releases" target="_blank" data-i18n="footer.githubReleases">GitHub Releases</a> · <a href="https://code.claude.com/docs" target="_blank" data-i18n="footer.officialDocs">官方文档</a> · <a href="https://claude.com/download" target="_blank" data-i18n="footer.download">下载 Claude Code</a></p>
-  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-03-14</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.76</span> · <span data-i18n="footer.totalVersions">共 220+ 个版本</span> · <span data-i18n="footer.totalUpdates">1000+ 项更新</span></p>
+  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-03-15</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.76</span> · <span data-i18n="footer.totalVersions">共 220+ 个版本</span> · <span data-i18n="footer.totalUpdates">1000+ 项更新</span></p>
   <p style="margin-top:.8rem"><a href="https://www.vibevibe.cn/Advanced/" target="_blank" class="footer-cta" data-i18n="footer.advancedGuide">🚀 探索更多 Claude Code 进阶用法 →</a></p>
   <p style="margin-top:1rem;color:var(--text3)"><span data-i18n="footer.builtWith">Built with Claude Code</span> · <a href="#" style="color:var(--text3)" data-i18n="footer.backToTop">回到顶部 ↑</a></p>
 </footer>
