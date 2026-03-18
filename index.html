@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Code 全特性速览 — 从用户视角出发</title>
-<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.76，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
+<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.78，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
 <meta name="keywords" content="Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK">
 <meta property="og:title" content="Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进">
 <meta property="og:description" content="220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。">
@@ -21,7 +21,7 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.76 全版本特性整理</span></div>
+  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.78 全版本特性整理</span></div>
   <h1 data-i18n="hero.title">Claude Code<br>全特性速览</h1>
   <p data-i18n="hero.subtitle">从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>220+ 个版本迭代、1000+ 项更新，每一项能力都配有真实场景，看完就能上手。</p>
   <div class="hero-meta">
@@ -35,8 +35,8 @@
     <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title" data-i18n="hero.terminalTitle">Claude Code — zsh</span></div>
     <div class="terminal-body">
       <div><span class="prompt">~ $</span> <span class="cmd">claude</span></div>
-      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.76 (Opus 4.6)</div>
-      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">1M context | agent teams | auto-memory | fast mode | voice | /loop | /effort | elicitation | session naming</span></div>
+      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.78 (Opus 4.6)</div>
+      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">1M context | agent teams | /loop | /effort | plugin data | StopFailure | tmux notify | line streaming</span></div>
       <div class="output">&nbsp;</div>
       <div><span class="prompt">></span> <span class="cmd typing" data-i18n="hero.terminalTyping"> 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试</span></div>
     </div>
@@ -77,26 +77,26 @@
 <section class="section" id="recent">
   <div class="section-label"><span data-i18n="sections.recent.label">🔥 最近更新亮点</span></div>
   <h2 data-i18n="sections.recent.title">最近版本的新特性</h2>
-  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.76：MCP elicitation 让服务器「主动提问」、/effort 斜杠命令调推理力度、-n 给会话起名、1M 上下文默认开放、/color 个性化——新版又加能力又打磨体验。</p>
+  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.78：StopFailure hook 兜底、插件数据持久 + Agent 前言全配置、tmux 通知穿透、逐行流式输出——最新版本继续把可靠性、体验和个性化拉满。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in card-highlight">
       <div class="card-icon c1">💬</div>
-      <h3>MCP Elicitation——MCP 服务器也能「主动提问」了</h3>
-      <p>v2.1.76 新增 MCP elicitation 支持：MCP 服务器可以在任务执行过程中弹出交互式对话框（表单字段或浏览器 URL），主动向你要信息。配套新增 <span class="scenario-cmd">Elicitation</span> 和 <span class="scenario-cmd">ElicitationResult</span> hooks，想拦截或自动填充响应都行。从此 MCP 不再是「你问它答」的单行道。</p>
-      <span class="tag c1">v2.1.76 NEW</span>
+      <h3>StopFailure Hook + 沙箱护栏——崩了也有兜底</h3>
+      <p>v2.1.78 新增 StopFailure hook，API 报错或限流时也能触发收尾逻辑，不让错误悄悄漏掉。deny 列表现在会真正移除被禁止的 MCP 工具，sandbox allowWrite 绝对路径修复，.git/.claude 等敏感目录在 bypass 模式下也会拦截。沙箱依赖缺失不再静默关闭，而是显眼提醒，安全状态可感知。</p>
+      <span class="tag c1">v2.1.78 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c2">🏷️</div>
-      <h3>Session Naming——给会话起个名字，一眼认出来</h3>
-      <p>启动时加 <span class="scenario-cmd">-n &quot;重构 auth 模块&quot;</span> 直接给会话命名，prompt bar 上实时显示。同时开五六个窗口也不会分不清谁是谁。v2.1.75 起 <span class="scenario-cmd">/rename</span> 后名字也在 prompt bar 上显示，不用再翻 <span class="scenario-cmd">/resume</span> 列表找。</p>
-      <span class="tag c2">v2.1.75 — v2.1.76 NEW</span>
+      <h3>插件数据持久 + Agent 前言全配置</h3>
+      <p>插件现在有 <span class="scenario-cmd">${CLAUDE_PLUGIN_DATA}</span> 持久存储，升级不丢状态，卸载前也会确认是否删除数据。插件自带的 agent 前言支持 <span class="scenario-cmd">effort</span>、<span class="scenario-cmd">maxTurns</span>、<span class="scenario-cmd">disallowedTools</span>，团队预设直接打包好推理力度、对话轮次和禁用工具。</p>
+      <span class="tag c2">v2.1.78 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c3">🎚️</div>
-      <h3>/effort 一键调推理力度——想快就快、想深就深</h3>
-      <p>v2.1.76 新增 <span class="scenario-cmd">/effort</span> 斜杠命令，直接在对话中调整模型推理力度。low / medium / high 三档随意切。配合 <span class="scenario-cmd">/effort auto</span> 回到默认，Claude 响应中也能用。再也不用退出对话去改配置了。</p>
-      <span class="tag c3">v2.1.76 NEW</span>
+      <h3>终端体验再进化：tmux 通知穿透、逐行流式</h3>
+      <p>iTerm2/Kitty/Ghostty 的弹窗和进度条在 tmux + <span class="scenario-cmd">set -g allow-passthrough on</span> 下也能透到外层。响应文本逐行流式显示，排队消息不再黏成一行。默认输出上限拉到 64k（最高 128k），长回复不怕截断，<span class="scenario-cmd">/copy N</span> 还能直接复制第 N 条回复。</p>
+      <span class="tag c3">v2.1.77 — v2.1.78</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c4">🌈</div>
@@ -1098,6 +1098,16 @@
       <div class="timeline-version">v2.1.76</div>
       <div class="timeline-desc" style="color:var(--accent1)">MCP elicitation 支持——MCP 服务器可在任务中弹出交互对话框主动请求输入。新增 Elicitation/ElicitationResult/PostCompact hooks。-n/--name 启动参数给会话命名。worktree.sparsePaths 大 monorepo 稀疏检出。/effort 斜杠命令即时调推理力度。修复延迟工具 schema 丢失、plan mode 重复审批、auto-compaction 无限重试等。改进 worktree 启动性能和陈旧 worktree 自动清理。</div>
     </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-03</div>
+      <div class="timeline-version">v2.1.77</div>
+      <div class="timeline-desc">默认输出上限拉升：Opus 4.6 默认 64k，最高 128k tokens。新增 sandbox <span class="scenario-cmd">allowRead</span>，在 denyRead 区域内按需解封读取。<span class="scenario-cmd">/copy N</span> 可复制第 N 条回复。修复 auto-updater 重复下载、/resume 与 cc log 截断对话、PreToolUse 绕过 deny 规则、Write 工具行结尾等，长会话更稳。</div>
+    </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-03</div>
+      <div class="timeline-version">v2.1.78</div>
+      <div class="timeline-desc" style="color:var(--accent1)">StopFailure hook 在 API 错误时兜底，${CLAUDE_PLUGIN_DATA} 让插件数据持久化；插件随带 agent 前言支持 <span class="scenario-cmd">effort</span>/<span class="scenario-cmd">maxTurns</span>/<span class="scenario-cmd">disallowedTools</span>。tmux 下终端通知穿透外层，响应逐行流式。修复 sandbox allowWrite 绝对路径、bypass 模式写入敏感目录、deny MCP 工具未生效等，并在依赖缺失时醒目提示沙箱状态。</div>
+    </div>
   </div>
 </section>
 
@@ -1113,7 +1123,7 @@
 <!-- Footer -->
 <footer class="footer">
   <p><span data-i18n="footer.sources">数据来源：</span><a href="https://github.com/anthropics/claude-code/releases" target="_blank" data-i18n="footer.githubReleases">GitHub Releases</a> · <a href="https://code.claude.com/docs" target="_blank" data-i18n="footer.officialDocs">官方文档</a> · <a href="https://claude.com/download" target="_blank" data-i18n="footer.download">下载 Claude Code</a></p>
-  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-03-15</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.76</span> · <span data-i18n="footer.totalVersions">共 220+ 个版本</span> · <span data-i18n="footer.totalUpdates">1000+ 项更新</span></p>
+  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-03-18</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.78</span> · <span data-i18n="footer.totalVersions">共 220+ 个版本</span> · <span data-i18n="footer.totalUpdates">1000+ 项更新</span></p>
   <p style="margin-top:.8rem"><a href="https://www.vibevibe.cn/Advanced/" target="_blank" class="footer-cta" data-i18n="footer.advancedGuide">🚀 探索更多 Claude Code 进阶用法 →</a></p>
   <p style="margin-top:1rem;color:var(--text3)"><span data-i18n="footer.builtWith">Built with Claude Code</span> · <a href="#" style="color:var(--text3)" data-i18n="footer.backToTop">回到顶部 ↑</a></p>
 </footer>
