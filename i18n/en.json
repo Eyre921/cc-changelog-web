@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Claude Code Feature Overview — A User's Perspective",
-    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.76, 220+ versions and 1000+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
+    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.78, 220+ versions and 1000+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
     "keywords": "Claude Code, Anthropic, AI Programming, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code Feature Overview — Complete Evolution from v0.2 to v2.1",
     "ogDescription": "220+ versions, 1000+ updates. From terminal to IDE, from solo coding to multi-Agent collaboration — discover every capability of Claude Code."
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.76 Full Version Feature Summary",
+    "badge": "v0.2.21 — v2.1.78 Full Version Feature Summary",
     "title": "Claude Code<br>Feature Overview",
     "subtitle": "From terminal to IDE, from solo coding to a team of Agents doing the heavy lifting.<br>220+ version iterations, 1000+ updates — each feature comes with real-world scenarios so you can hit the ground running.",
     "versions": " versions",
@@ -16,8 +16,8 @@
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.76 (Opus 4.6)",
-    "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | /effort | elicitation | session naming",
+    "terminalOutput1": "  Claude Code v2.1.78 (Opus 4.6)",
+    "terminalOutput2": "  1M context | agent teams | /loop | /effort | plugin data | StopFailure | tmux notify | line streaming",
     "terminalTyping": " Refactor this module with 3 agents: one for security, one for perf, one for tests",
     "advancedCta": "🚀 Explore Advanced Claude Code Usage →"
   },
@@ -41,7 +41,7 @@
     "recent": {
       "label": "🔥 Recent Highlights",
       "title": "Latest Features",
-      "subtitle": "v2.1.58 — v2.1.76: MCP elicitation lets servers ask you questions mid-task, /effort adjusts reasoning intensity on the fly, -n names sessions at startup, 1M context now default for Max/Team/Enterprise, /color personalizes your prompt bar — more power and more polish."
+      "subtitle": "v2.1.58 — v2.1.78: StopFailure hook adds a safety net, plugin data persists with richer agent frontmatter, tmux notifications punch through, line-by-line streaming — the latest drops keep boosting reliability, UX, and personalization."
     },
     "models": {
       "label": "◆ AI Models & Reasoning",
@@ -128,8 +128,8 @@
     "githubReleases": "GitHub Releases",
     "officialDocs": "Official Docs",
     "download": "Download Claude Code",
-    "timestamp": "Updated: 2026-03-15",
-    "versionRange": "Version range: v0.2.21 ~ v2.1.76",
+    "timestamp": "Updated: 2026-03-18",
+    "versionRange": "Version range: v0.2.21 ~ v2.1.78",
     "totalVersions": "220+ versions",
     "totalUpdates": "1000+ updates",
     "builtWith": "Built with Claude Code",
@@ -144,19 +144,19 @@
   "cards": {
     "recent": {
       "0": {
-        "title": "MCP Elicitation — MCP Servers Can Now Ask You Questions",
-        "desc": "v2.1.76 adds MCP elicitation support: MCP servers can pop up an interactive dialog (form fields or browser URL) mid-task to request structured input. New <span class=\"scenario-cmd\">Elicitation</span> and <span class=\"scenario-cmd\">ElicitationResult</span> hooks let you intercept or auto-fill responses. MCP is no longer a one-way street.",
-        "tag": "v2.1.76 NEW"
+        "title": "StopFailure Hook + Sandbox Guardrails — Failures Get Caught",
+        "desc": "v2.1.78 adds a StopFailure hook so API errors or rate limits still trigger your cleanup instead of failing silently. Deny lists now actually strip blocked MCP tools, sandbox allowWrite with absolute paths is fixed, and protected folders like .git/.claude stay blocked even in bypass mode. Missing sandbox deps now surface a clear warning instead of silently disabling isolation.",
+        "tag": "v2.1.78 NEW"
       },
       "1": {
-        "title": "Session Naming — Name Your Sessions, Spot Them Instantly",
-        "desc": "Add <span class=\"scenario-cmd\">-n \"refactor auth module\"</span> at startup to name your session — it shows live on the prompt bar. Running five windows at once? No more guessing which is which. Since v2.1.75, <span class=\"scenario-cmd\">/rename</span> also shows the name on the prompt bar.",
-        "tag": "v2.1.75 — v2.1.76 NEW"
+        "title": "Plugin Data Persistence + Fully Tunable Agent Frontmatter",
+        "desc": "Plugins now get <span class=\"scenario-cmd\">${CLAUDE_PLUGIN_DATA}</span> for durable state that survives upgrades, and /plugin uninstall asks before deleting it. Plugin-shipped agents can set <span class=\"scenario-cmd\">effort</span>, <span class=\"scenario-cmd\">maxTurns</span>, and <span class=\"scenario-cmd\">disallowedTools</span> up front so team presets ship with the right intensity, turn budget, and tool guardrails.",
+        "tag": "v2.1.78 NEW"
       },
       "2": {
-        "title": "/effort — Dial Reasoning Intensity on the Fly",
-        "desc": "v2.1.76 adds the <span class=\"scenario-cmd\">/effort</span> slash command to adjust model reasoning intensity mid-conversation. Switch between low / medium / high freely. Use <span class=\"scenario-cmd\">/effort auto</span> to reset to default. No more leaving the chat to change configs.",
-        "tag": "v2.1.76 NEW"
+        "title": "Terminal Glow-Up: tmux Passthrough & Line-by-Line Streaming",
+        "desc": "iTerm2/Kitty/Ghostty notifications and progress bars now punch through tmux when <span class=\"scenario-cmd\">set -g allow-passthrough on</span> is set. Responses stream line by line so queued messages don't glue together. Default output cap climbs to 64k (up to 128k), and <span class=\"scenario-cmd\">/copy N</span> grabs the Nth reply directly.",
+        "tag": "v2.1.77 — v2.1.78"
       },
       "3": {
         "title": "v2.1.75 — v2.1.76 Stability Sweep",
@@ -252,7 +252,7 @@
       },
       "5": {
         "title": "/model Instant Switching",
-        "desc": "Model selector shows human-readable labels and prompts for upgrades when new versions are available. From v2.1.63, the active model is displayed in the slash command menu. Supports <kbd>Alt+P</kbd> to switch models while typing. Opus Plan Mode can be set to use Opus only during the planning phase.",
+        "desc": "Model selector shows human-readable labels and prompts for upgrades when new versions are available. From v2.1.63, the active model is displayed in the slash command menu. Supports <kbd>Alt+P</kbd> to switch models while typing. Opus Plan Mode can be set to use Opus only during the planning phase. v2.1.78 adds <span class=\"scenario-cmd\">ANTHROPIC_CUSTOM_MODEL_OPTION</span> to inject a custom entry into /model (with optional _NAME/_DESCRIPTION).",
         "tag": "v2.1.51"
       },
       "6": {
@@ -284,7 +284,7 @@
       },
       "3": {
         "title": "Custom Agents",
-        "desc": "Since v1.0.60, create custom sub-agents (<span class=\"scenario-cmd\">/agents</span>). Supports model field, memory frontmatter, tools restrictions (Task(agent_type) syntax), permissionMode, and disallowedTools. Use <span class=\"scenario-cmd\">claude agents</span> to list all configurations.",
+        "desc": "Since v1.0.60, create custom sub-agents (<span class=\"scenario-cmd\">/agents</span>). Supports model field, memory frontmatter, permissionMode, and Task(agent_type) tool limits. In v2.1.78, plugin-shipped agent frontmatter can set <span class=\"scenario-cmd\">effort</span>, <span class=\"scenario-cmd\">maxTurns</span>, and <span class=\"scenario-cmd\">disallowedTools</span> so presets ship with the right reasoning strength, turn budget, and tool guardrails. Use <span class=\"scenario-cmd\">claude agents</span> to list all configurations.",
         "tag": "v1.0.60"
       },
       "4": {
@@ -306,7 +306,7 @@
       },
       "1": {
         "title": "Session Resume /resume",
-        "desc": "Introduced in v0.2.93 with <span class=\"scenario-cmd\">--continue</span> and <span class=\"scenario-cmd\">--resume</span>. Search by session ID, custom title, or git branch. Initially shows 50 sessions. <span class=\"scenario-cmd\">--from-pr</span> resumes PR-associated sessions. Memory usage reduced by 68%. v2.1.69 <span class=\"scenario-cmd\">/resume</span> selector shows the most recent prompt (instead of the first), fixing some titles displaying as \"(session)\".",
+        "desc": "Introduced in v0.2.93 with <span class=\"scenario-cmd\">--continue</span> and <span class=\"scenario-cmd\">--resume</span>. Search by session ID, custom title, or git branch. Initially shows 50 sessions. <span class=\"scenario-cmd\">--from-pr</span> resumes PR-associated sessions. Memory usage reduced by 68%. v2.1.69 <span class=\"scenario-cmd\">/resume</span> selector shows the most recent prompt (instead of the first), fixing some titles displaying as \"(session)\". v2.1.77 fixes /resume and cc log truncating long conversations.",
         "tag": "v0.2.93"
       },
       "2": {
@@ -375,7 +375,7 @@
       },
       "2": {
         "title": "Plugin System",
-        "desc": "Plugin system released in v2.0.12. <span class=\"scenario-cmd\">/plugin install</span> with git branch/tag syntax support. Custom npm registries. Plugins can provide commands, agents, hooks, MCP servers, and output styles. v2.1.69 adds <span class=\"scenario-cmd\">/reload-plugins</span> hot reload, <span class=\"scenario-cmd\">git-subdir</span> plugin source type, and <span class=\"scenario-cmd\">pluginTrustMessage</span> for enterprise trust messaging. v2.1.72 supports marketplace git URLs without <span class=\"scenario-cmd\">.git</span> suffix (Azure DevOps, AWS CodeCommit compatible), and fixes multiple plugin installation issues on Windows OneDrive, marketplace scope conflicts, etc.",
+        "desc": "Plugin system released in v2.0.12. <span class=\"scenario-cmd\">/plugin install</span> with git branch/tag syntax support. Custom npm registries. Plugins can provide commands, agents, hooks, MCP servers, and output styles. v2.1.69 adds <span class=\"scenario-cmd\">/reload-plugins</span> hot reload, <span class=\"scenario-cmd\">git-subdir</span> plugin source type, and <span class=\"scenario-cmd\">pluginTrustMessage</span> for enterprise trust messaging. v2.1.72 supports marketplace git URLs without <span class=\"scenario-cmd\">.git</span> suffix (Azure DevOps, AWS CodeCommit compatible), and fixes multiple plugin installation issues on Windows OneDrive, marketplace scope conflicts, etc. v2.1.78 introduces <span class=\"scenario-cmd\">${CLAUDE_PLUGIN_DATA}</span> durable storage with uninstall confirmation, plus plugin-shipped agents can set effort/maxTurns/disallowedTools in frontmatter.",
         "tag": "v2.0.12"
       },
       "3": {
@@ -385,7 +385,7 @@
       },
       "4": {
         "title": "Hooks System",
-        "desc": "Hooks released in v1.0.38. PreToolUse / PostToolUse / Stop / SessionStart / SessionEnd / ConfigChange / WorktreeCreate / TeammateIdle / TaskCompleted / PermissionRequest / UserPromptSubmit / InstructionsLoaded / Setup — complete lifecycle hooks. v2.1.63 adds HTTP hooks with POST JSON to URL and JSON response support. v2.1.69 adds InstructionsLoaded hook and <span class=\"scenario-cmd\">agent_id</span>/<span class=\"scenario-cmd\">agent_type</span> fields in hook events.",
+        "desc": "Hooks released in v1.0.38. PreToolUse / PostToolUse / Stop / SessionStart / SessionEnd / ConfigChange / WorktreeCreate / TeammateIdle / TaskCompleted / PermissionRequest / UserPromptSubmit / InstructionsLoaded / Setup — complete lifecycle hooks. v2.1.63 adds HTTP hooks with POST JSON to URL and JSON response support. v2.1.69 adds InstructionsLoaded hook and <span class=\"scenario-cmd\">agent_id</span>/<span class=\"scenario-cmd\">agent_type</span> fields in hook events. v2.1.76 adds <span class=\"scenario-cmd\">Elicitation</span>/<span class=\"scenario-cmd\">ElicitationResult</span>/<span class=\"scenario-cmd\">PostCompact</span>; v2.1.78 adds <span class=\"scenario-cmd\">StopFailure</span> to catch API-error terminations.",
         "tag": "v1.0.38"
       },
       "5": {
@@ -417,18 +417,18 @@
       },
       "4": {
         "title": "Terminal Compatibility",
-        "desc": "/terminal-setup supports Kitty, Alacritty, Zed, Warp, WezTerm, iTerm2, and Ghostty. Full Kitty keyboard protocol support. OSC 8 hyperlinks clickable across lines. OSC 9;4 progress bar configurable. v2.1.69 adds numpad digit support. v2.1.70 fixes Enter inserting newlines instead of submitting on slow SSH, and fixes Shift+Enter issues in Ghostty over SSH.",
+        "desc": "/terminal-setup supports Kitty, Alacritty, Zed, Warp, WezTerm, iTerm2, and Ghostty. Full Kitty keyboard protocol support. OSC 8 hyperlinks clickable across lines. OSC 9;4 progress bar configurable. v2.1.69 adds numpad digit support. v2.1.70 fixes Enter inserting newlines instead of submitting on slow SSH, and fixes Shift+Enter issues in Ghostty over SSH. v2.1.78 lets iTerm2/Kitty/Ghostty notifications and progress bars punch through tmux when <span class=\"scenario-cmd\">set -g allow-passthrough on</span> is enabled.",
         "tag": "v1.0.110"
       },
       "5": {
         "title": "Real-Time Interaction",
-        "desc": "Real-time steering arrived in v0.2.108 so you can guide Claude while it is working. Message queuing landed in v0.2.75 so Enter can line up follow-up prompts. <span class=\"scenario-cmd\">/copy</span> interactively selects code blocks, and from v2.1.72 you can press <span class=\"scenario-cmd\">w</span> to write the focused selection straight to a file — especially handy over SSH or inside tmux. Prompt suggestions keep the next move obvious.",
+        "desc": "Real-time steering arrived in v0.2.108 so you can guide Claude while it is working. Message queuing landed in v0.2.75 so Enter can line up follow-up prompts. <span class=\"scenario-cmd\">/copy</span> interactively selects code blocks; v2.1.72 adds <span class=\"scenario-cmd\">w</span> to write the focused selection straight to a file (great for SSH/tmux), v2.1.77 adds <span class=\"scenario-cmd\">/copy N</span> to grab the Nth reply. v2.1.78 streams responses line by line so queued messages stay separated. Prompt suggestions keep the next move obvious.",
         "tag": "v0.2.108"
       },
       "6": {
         "title": "Voice Input",
-        "desc": "Hold spacebar to start voice input (v2.1.71 added the <span class=\"scenario-cmd\">voice:pushToTalk</span> custom key binding). v2.1.69 supports 20 languages, including Chinese. v2.1.71 fixed the 5–8 second startup freeze caused by voice mode. v2.1.72 further improves transcription accuracy for repo names and dev terms like regex, OAuth, and JSON. When you do not feel like typing, just talk.",
-        "tag": "v2.1.69 — v2.1.72"
+        "desc": "Hold spacebar to start voice input (v2.1.71 added the <span class=\"scenario-cmd\">voice:pushToTalk</span> custom key binding). v2.1.69 supports 20 languages, including Chinese. v2.1.71 fixed the 5–8 second startup freeze caused by voice mode. v2.1.72 further improves transcription accuracy for repo names and dev terms like regex, OAuth, and JSON. v2.1.78 fixes voice mode on WSL2 with WSLg and now shows a clear error on WSL1/Win10. When you do not feel like typing, just talk.",
+        "tag": "v2.1.69 — v2.1.78"
       },
       "7": {
         "title": "Bash Command Auto-Approval — More Commands Go Visa-Free",
@@ -439,7 +439,7 @@
     "security": {
       "0": {
         "title": "Sandbox Mode — AI Writes Code, but Runs in a Cage",
-        "desc": "Linux & Mac sandbox mode released in v2.0.24. Blocks writes to .claude/skills directory. HTTP hooks enforce domain allowlists. Heredoc parsing prevents command injection. v2.1.69 adds <span class=\"scenario-cmd\">sandbox.enableWeakerNetworkIsolation</span> (macOS) to let Go programs like gh and gcloud verify TLS in proxy environments — balancing security with usability. v2.1.72: CLAUDE.md HTML comments (<span class=\"scenario-cmd\">&lt;!-- ... --&gt;</span>) are now hidden from Claude when auto-injected but remain visible via Read tool — handy for writing human-only notes in project rules.",
+        "desc": "Linux & Mac sandbox mode released in v2.0.24. Blocks writes to .claude/skills directory. HTTP hooks enforce domain allowlists. Heredoc parsing prevents command injection. v2.1.69 adds <span class=\"scenario-cmd\">sandbox.enableWeakerNetworkIsolation</span> (macOS) to let Go programs like gh and gcloud verify TLS in proxy environments — balancing security with usability. v2.1.72: CLAUDE.md HTML comments (<span class=\"scenario-cmd\">&lt;!-- ... --&gt;</span>) are now hidden from Claude when auto-injected but remain visible via Read tool — handy for writing human-only notes in project rules. v2.1.77 introduces <span class=\"scenario-cmd\">sandbox.allowRead</span> to selectively re-allow reads inside denyRead zones; v2.1.78 fixes allowWrite absolute paths and bypass-mode writes to protected folders, and surfaces a clear warning instead of silently disabling the sandbox when dependencies are missing.",
         "tag": "v2.0.24"
       },
       "1": {
@@ -871,6 +871,16 @@
       "date": "2026-03",
       "version": "v2.1.76",
       "desc": "MCP elicitation support — MCP servers can pop up interactive dialogs mid-task. New Elicitation/ElicitationResult/PostCompact hooks. -n/--name flag names sessions at startup. worktree.sparsePaths for sparse checkout in large monorepos. /effort slash command adjusts reasoning intensity. Fixed deferred tool schema loss, plan mode re-approval, auto-compaction infinite retry. Improved worktree startup performance and stale worktree cleanup."
+    },
+    "24": {
+      "date": "2026-03",
+      "version": "v2.1.77",
+      "desc": "Default output cap bumped: Opus 4.6 default 64k, upper bound 128k tokens. New sandbox allowRead to selectively reopen reads inside denyRead zones. <span class=\"scenario-cmd\">/copy N</span> copies the Nth latest reply. Fixed overlapping auto-updater downloads, /resume and cc log truncating history, PreToolUse bypassing deny rules, Write tool newline handling — long sessions feel steadier."
+    },
+    "25": {
+      "date": "2026-03",
+      "version": "v2.1.78",
+      "desc": "StopFailure hook catches API-error endings; ${CLAUDE_PLUGIN_DATA} keeps plugin data with uninstall confirmation. Plugin-shipped agent frontmatter can set effort/maxTurns/disallowedTools. Terminal notifications reach the outer terminal in tmux, responses stream line by line. Fixed sandbox allowWrite absolute paths, protected dirs writable in bypass mode, deny MCP tools not removed, and now surface sandbox warnings when dependencies are missing."
     }
   }
 }

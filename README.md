@@ -4,7 +4,7 @@
 
 > [在线预览](https://cclog.vibevibe.cn/) · [进阶用法](https://www.vibevibe.cn/Advanced/)
 
-一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.76** 共 **220+ 个版本**、**1000+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
+一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.78** 共 **220+ 个版本**、**1000+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
 
 🔗 **数据来源**：[GitHub Releases](https://github.com/anthropics/claude-code/releases) · [官方文档](https://code.claude.com/docs) · [下载 Claude Code](https://claude.com/download)
 
@@ -17,7 +17,7 @@
 - **场景化叙事** — 每个功能附带真实使用场景和故事化描述，用中国开发者社区熟悉的词句，看完就知道怎么用
 - **终端打字动画** — Hero 区域模拟终端输入效果
 - **滚动淡入动画** — 基于 Intersection Observer 的滚动渐显效果
-- **丰富微交互** — 滚动进度条、卡片入场交错、hover 光波、统计数字滚动计数、时间线脉冲、hero 浮动粒子、卡片 3D 鼠标追踪倾斜、高亮卡片呼吸灯、hero 标题渐变流动、徽章微光扫过、卡片点击水波纹、渐变边框动画、时间线滚动渐显进度线、浮动按钮磁性吸附、section 标题悬浮渐变、场景列表交错入场、CTA 脉冲光晕、标签微光扫过、导航栏滚动阴影
+- **丰富微交互** — 滚动进度条、卡片入场交错、hover 光波、统计数字滚动计数、时间线脉冲、hero 浮动粒子、卡片 3D 鼠标追踪倾斜、高亮卡片呼吸灯、hero 标题渐变流动、徽章微光扫过、卡片点击水波纹、渐变边框动画、时间线滚动渐显进度线、浮动按钮磁性吸附 + 描边环、section 标题悬浮渐变、场景列表交错入场、CTA 脉冲光晕、标签微光扫过、导航栏滚动阴影、hero 光斑跟随、时间线滚动高亮
 - **导航高亮** — 粘性导航栏随滚动自动高亮当前章节
 - **暗色主题** — 开发者友好的暗色 UI，暖色调点缀，导航栏支持亮暗主题切换按钮
 - **中英文切换** — 导航栏支持中文/英文语言切换按钮
@@ -25,17 +25,14 @@
 - **无障碍支持** — 尊重 `prefers-reduced-motion`，使用语义化 HTML
 - **零依赖** — 纯 HTML + CSS + JavaScript，无需构建工具
 
-## 🔄 本次同步结论（v2.1.76）
+## 🔄 本次同步结论（v2.1.78）
 
-- **新增 3 个能力亮点** —— MCP elicitation 让服务器「主动提问」（弹出交互对话框请求结构化输入）、`/effort` 斜杠命令直接在对话中调推理力度、`-n/--name` 给会话起名 prompt bar 实时显示
-- **1M 上下文默认开放** —— v2.1.75 起 Opus 4.6 的 100 万上下文窗口对 Max/Team/Enterprise 用户默认开放（以前需要额外配额）
-- **个性化和可辨识性提升** —— `/color` 命令给 prompt bar 设颜色（所有用户可用）、`/rename` 后 prompt bar 显示会话名、memory 文件新增最后修改时间戳
-- **MCP/Hooks 持续扩展** —— 新增 `Elicitation`/`ElicitationResult`/`PostCompact` hooks、hook 来源在权限确认中显示、`worktree.sparsePaths` 支持大 monorepo 稀疏检出
-- **稳定性修复** —— 延迟工具 schema 丢失、plan mode 重复审批、auto-compaction 无限重试（断路器 3 次停止）、语音模式吞按键、token 估算过度计数等
-- **企业特性** —— `feedbackSurveyRate` 会话质量调查采样率配置、Remote Control 会话标题自动从首条 prompt 生成
-- **暂时不需要新增模块** —— 现有 13 大板块已经能完整承接 v2.1.75 — v2.1.76 的所有更新
-- **文案继续往「更生动、更场景化」靠拢** —— 新卡片采用"MCP 不再是你问它答的单行道""想快就快想深就深""一眼认出来"等社区化表达
-- **动效大升级** —— 新增卡片 3D 鼠标追踪倾斜、卡片点击水波纹、时间线滚动渐显进度线、浮动按钮磁性吸附、section 标题悬浮渐变、卡片渐变边框动画、标签微光扫过、场景列表交错入场、Hero CTA 脉冲光晕、stats 数字悬浮下划线、导航栏滚动阴影等微交互
+- **可靠性兜底** —— 新增 StopFailure hook，API 错误/限流触发收尾逻辑；deny 列表真删除被禁的 MCP 工具；sandbox allowWrite 绝对路径、bypass 敏感目录修复，缺依赖时不再静默关闭而是显眼提示。
+- **插件/Agent 预设进阶** —— <span class="scenario-cmd">${CLAUDE_PLUGIN_DATA}</span> 持久存插件数据，/plugin uninstall 先确认；插件随带 agent 前言可直接写入 <span class="scenario-cmd">effort</span>/<span class="scenario-cmd">maxTurns</span>/<span class="scenario-cmd">disallowedTools</span>，团队预设自带推理力度、轮次和禁用工具。
+- **终端输出更顺滑** —— tmux + <span class="scenario-cmd">set -g allow-passthrough on</span> 时 iTerm2/Kitty/Ghostty 通知能透到外层终端，响应逐行流式；Opus 4.6 默认输出 64k（上限 128k），<span class="scenario-cmd">/copy N</span> 复制第 N 条回复，排队消息不再黏成一段。
+- **会话与日志修复** —— /resume 与 cc log 长会话截断修正，git log HEAD 在沙箱不再 ambiguous，StopFailure 防止错误吞掉 hook，queued prompts 自动换行。
+- **MCP/Hooks 持续扩展** —— Elicitation/PostCompact/StopFailure 全部纳入 Hooks 卡片，sandbox.allowRead 精细放行读取，deny 规则与插件数据都补齐。
+- **动效再加码** —— Hero 光斑跟随鼠标、时间线滚动高亮、浮动按钮描边环，新动效依旧尊重 `prefers-reduced-motion`。
 
 ## 🛠 技术栈
 
@@ -135,6 +132,6 @@ cc-changelog-web/
 
 ## 📝 说明
 
-- 整理时间：2026-03-15
-- 版本范围：v0.2.21 ~ v2.1.76
+- 整理时间：2026-03-18
+- 版本范围：v0.2.21 ~ v2.1.78
 - 本站使用 Claude Code 构建

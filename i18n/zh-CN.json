@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Claude Code 全特性速览 — 从用户视角出发",
-    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.76，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。",
+    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.78，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。",
     "keywords": "Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进",
     "ogDescription": "220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。"
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.76 全版本特性整理",
+    "badge": "v0.2.21 — v2.1.78 全版本特性整理",
     "title": "Claude Code<br>全特性速览",
     "subtitle": "从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>220+ 个版本迭代、1000+ 项更新，每一项能力都配有真实场景，看完就能上手。",
     "versions": "个版本",
@@ -16,8 +16,8 @@
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.76 (Opus 4.6)",
-    "terminalOutput2": "  1M context | agent teams | auto-memory | fast mode | voice | /loop | /effort | elicitation | session naming",
+    "terminalOutput1": "  Claude Code v2.1.78 (Opus 4.6)",
+    "terminalOutput2": "  1M context | agent teams | /loop | /effort | plugin data | StopFailure | tmux notify | line streaming",
     "terminalTyping": " 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试",
     "advancedCta": "🚀 探索 Claude Code 进阶用法 →"
   },
@@ -41,7 +41,7 @@
     "recent": {
       "label": "🔥 最近更新亮点",
       "title": "最近版本的新特性",
-      "subtitle": "v2.1.58 — v2.1.76：MCP elicitation 让服务器「主动提问」、/effort 斜杠命令调推理力度、-n 给会话起名、1M 上下文默认开放、/color 个性化——新版又加能力又打磨体验。"
+      "subtitle": "v2.1.58 — v2.1.78：StopFailure hook 兜底、插件数据持久 + Agent 前言全配置、tmux 通知穿透、逐行流式输出——最新版本继续把可靠性、体验和个性化拉满。"
     },
     "models": {
       "label": "◆ AI 模型与推理",
@@ -128,8 +128,8 @@
     "githubReleases": "GitHub Releases",
     "officialDocs": "官方文档",
     "download": "下载 Claude Code",
-    "timestamp": "整理时间：2026-03-15",
-    "versionRange": "版本范围：v0.2.21 ~ v2.1.76",
+    "timestamp": "整理时间：2026-03-18",
+    "versionRange": "版本范围：v0.2.21 ~ v2.1.78",
     "totalVersions": "共 220+ 个版本",
     "totalUpdates": "1000+ 项更新",
     "builtWith": "Built with Claude Code",
@@ -144,19 +144,19 @@
   "cards": {
     "recent": {
       "0": {
-        "title": "MCP Elicitation——MCP 服务器也能「主动提问」了",
-        "desc": "v2.1.76 新增 MCP elicitation 支持：MCP 服务器可以在任务执行过程中弹出交互式对话框（表单字段或浏览器 URL），主动向你要信息。配套新增 <span class=\"scenario-cmd\">Elicitation</span> 和 <span class=\"scenario-cmd\">ElicitationResult</span> hooks，想拦截或自动填充响应都行。从此 MCP 不再是「你问它答」的单行道。",
-        "tag": "v2.1.76 NEW"
+        "title": "StopFailure Hook + 沙箱护栏——崩了也有兜底",
+        "desc": "v2.1.78 新增 StopFailure hook，API 报错或限流时也能触发收尾逻辑，不让错误悄悄漏掉。deny 列表现在会真正移除被禁止的 MCP 工具，sandbox allowWrite 绝对路径修复，.git/.claude 等敏感目录在 bypass 模式下也会拦截。沙箱依赖缺失不再静默关闭，而是显眼提醒，安全状态可感知。",
+        "tag": "v2.1.78 NEW"
       },
       "1": {
-        "title": "Session Naming——给会话起个名字，一眼认出来",
-        "desc": "启动时加 <span class=\"scenario-cmd\">-n \"重构 auth 模块\"</span> 直接给会话命名，prompt bar 上实时显示。同时开五六个窗口也不会分不清谁是谁。v2.1.75 起 <span class=\"scenario-cmd\">/rename</span> 后名字也在 prompt bar 上显示，不用再翻 <span class=\"scenario-cmd\">/resume</span> 列表找。",
-        "tag": "v2.1.75 — v2.1.76 NEW"
+        "title": "插件数据持久 + Agent 前言全配置",
+        "desc": "插件现在有 <span class=\"scenario-cmd\">${CLAUDE_PLUGIN_DATA}</span> 持久存储，升级不丢状态，卸载前也会确认是否删除数据。插件自带的 agent 前言支持 <span class=\"scenario-cmd\">effort</span>、<span class=\"scenario-cmd\">maxTurns</span>、<span class=\"scenario-cmd\">disallowedTools</span>，团队预设直接打包好推理力度、对话轮次和禁用工具。",
+        "tag": "v2.1.78 NEW"
       },
       "2": {
-        "title": "/effort 一键调推理力度——想快就快、想深就深",
-        "desc": "v2.1.76 新增 <span class=\"scenario-cmd\">/effort</span> 斜杠命令，直接在对话中调整模型推理力度。low / medium / high 三档随意切。配合 <span class=\"scenario-cmd\">/effort auto</span> 回到默认，Claude 响应中也能用。再也不用退出对话去改配置了。",
-        "tag": "v2.1.76 NEW"
+        "title": "终端体验再进化：tmux 通知穿透、逐行流式",
+        "desc": "iTerm2/Kitty/Ghostty 的弹窗和进度条在 tmux + <span class=\"scenario-cmd\">set -g allow-passthrough on</span> 下也能透到外层。响应文本逐行流式显示，排队消息不再黏成一行。默认输出上限拉到 64k（最高 128k），长回复不怕截断，<span class=\"scenario-cmd\">/copy N</span> 还能直接复制第 N 条回复。",
+        "tag": "v2.1.77 — v2.1.78"
       },
       "3": {
         "title": "v2.1.75 — v2.1.76 稳定性大扫除",
@@ -252,7 +252,7 @@
       },
       "5": {
         "title": "/model 即时切换",
-        "desc": "模型选择器显示人类可读标签，有新版本时提示升级。v2.1.63 起在斜杠命令菜单中显示当前活跃模型。支持 <kbd>Alt+P</kbd> 在输入时切换模型。Opus Plan Mode 可设置仅在 plan 阶段使用 Opus。",
+        "desc": "模型选择器显示人类可读标签，有新版本时提示升级。v2.1.63 起在斜杠命令菜单中显示当前活跃模型。支持 <kbd>Alt+P</kbd> 在输入时切换模型。Opus Plan Mode 可设置仅在 plan 阶段使用 Opus。v2.1.78 可用 <span class=\"scenario-cmd\">ANTHROPIC_CUSTOM_MODEL_OPTION</span> 为 /model 选择器增加自定义条目（可配 _NAME/_DESCRIPTION 显示文案）。",
         "tag": "v2.1.51"
       },
       "6": {
@@ -284,7 +284,7 @@
       },
       "3": {
         "title": "自定义 Agent",
-        "desc": "v1.0.60 起可创建自定义子 agent（<span class=\"scenario-cmd\">/agents</span>）。支持 model 字段、memory frontmatter、tools 限制（Task(agent_type) 语法）、permissionMode、disallowedTools。用 <span class=\"scenario-cmd\">claude agents</span> 列出所有配置。",
+        "desc": "v1.0.60 起可创建自定义子 agent（<span class=\"scenario-cmd\">/agents</span>）。支持 model 字段、memory frontmatter、permissionMode、Task(agent_type) 工具限制。v2.1.78 插件随带 agent 前言新增 <span class=\"scenario-cmd\">effort</span>、<span class=\"scenario-cmd\">maxTurns</span>、<span class=\"scenario-cmd\">disallowedTools</span>，打包好推理力度、对话轮次和禁用工具。用 <span class=\"scenario-cmd\">claude agents</span> 列出所有配置。",
         "tag": "v1.0.60"
       },
       "4": {
@@ -306,7 +306,7 @@
       },
       "1": {
         "title": "会话恢复 /resume",
-        "desc": "v0.2.93 引入 <span class=\"scenario-cmd\">--continue</span> 和 <span class=\"scenario-cmd\">--resume</span>。支持按会话 ID、自定义标题、git 分支搜索。初始显示 50 个会话。<span class=\"scenario-cmd\">--from-pr</span> 恢复 PR 关联会话。内存使用减少 68%。v2.1.69 <span class=\"scenario-cmd\">/resume</span> 选择器显示最近的 prompt（而非第一条），解决部分标题显示为 \"(session)\" 的问题。",
+        "desc": "v0.2.93 引入 <span class=\"scenario-cmd\">--continue</span> 和 <span class=\"scenario-cmd\">--resume</span>。支持按会话 ID、自定义标题、git 分支搜索。初始显示 50 个会话。<span class=\"scenario-cmd\">--from-pr</span> 恢复 PR 关联会话。内存使用减少 68%。v2.1.69 <span class=\"scenario-cmd\">/resume</span> 选择器显示最近的 prompt（而非第一条），解决部分标题显示为 \"(session)\" 的问题。v2.1.77 修复 /resume 与 cc log 在长会话下截断历史的 bug。",
         "tag": "v0.2.93"
       },
       "2": {
@@ -375,7 +375,7 @@
       },
       "2": {
         "title": "插件系统",
-        "desc": "v2.0.12 发布插件系统。<span class=\"scenario-cmd\">/plugin install</span> 安装，支持 git 分支/tag 语法。自定义 npm 注册表。插件可提供 commands、agents、hooks、MCP servers、output styles。v2.1.69 新增 <span class=\"scenario-cmd\">/reload-plugins</span> 热重载、<span class=\"scenario-cmd\">git-subdir</span> 插件源类型、<span class=\"scenario-cmd\">pluginTrustMessage</span> 企业信任消息。v2.1.72 支持不带 <span class=\"scenario-cmd\">.git</span> 后缀的 marketplace git URL（兼容 Azure DevOps、AWS CodeCommit），并修复 Windows OneDrive、marketplace scope 冲突等多项插件安装问题。",
+        "desc": "v2.0.12 发布插件系统。<span class=\"scenario-cmd\">/plugin install</span> 安装，支持 git 分支/tag 语法。自定义 npm 注册表。插件可提供 commands、agents、hooks、MCP servers、output styles。v2.1.69 新增 <span class=\"scenario-cmd\">/reload-plugins</span> 热重载、<span class=\"scenario-cmd\">git-subdir</span> 插件源类型、<span class=\"scenario-cmd\">pluginTrustMessage</span> 企业信任消息。v2.1.72 支持不带 <span class=\"scenario-cmd\">.git</span> 后缀的 marketplace git URL（兼容 Azure DevOps、AWS CodeCommit），并修复 Windows OneDrive、marketplace scope 冲突等多项插件安装问题。v2.1.78 提供 <span class=\"scenario-cmd\">${CLAUDE_PLUGIN_DATA}</span> 持久存储，卸载前确认是否删除数据，插件随带 agent 前言可配置 effort/maxTurns/disallowedTools。",
         "tag": "v2.0.12"
       },
       "3": {
@@ -385,7 +385,7 @@
       },
       "4": {
         "title": "Hooks 系统",
-        "desc": "v1.0.38 发布 Hooks。PreToolUse / PostToolUse / Stop / SessionStart / SessionEnd / ConfigChange / WorktreeCreate / TeammateIdle / TaskCompleted / PermissionRequest / UserPromptSubmit / InstructionsLoaded / Setup — 完整生命周期钩子。v2.1.63 新增 HTTP hooks，支持 POST JSON 到 URL 并接收 JSON 响应。v2.1.69 新增 InstructionsLoaded hook 和 hook 事件中的 <span class=\"scenario-cmd\">agent_id</span>/<span class=\"scenario-cmd\">agent_type</span> 字段。",
+        "desc": "v1.0.38 发布 Hooks。PreToolUse / PostToolUse / Stop / SessionStart / SessionEnd / ConfigChange / WorktreeCreate / TeammateIdle / TaskCompleted / PermissionRequest / UserPromptSubmit / InstructionsLoaded / Setup — 完整生命周期钩子。v2.1.63 新增 HTTP hooks，支持 POST JSON 到 URL 并接收 JSON 响应。v2.1.69 新增 InstructionsLoaded hook 和 hook 事件中的 <span class=\"scenario-cmd\">agent_id</span>/<span class=\"scenario-cmd\">agent_type</span> 字段。v2.1.76 增补 <span class=\"scenario-cmd\">Elicitation</span>/<span class=\"scenario-cmd\">ElicitationResult</span>/<span class=\"scenario-cmd\">PostCompact</span> hooks，v2.1.78 新增 <span class=\"scenario-cmd\">StopFailure</span> hook 捕获 API 错误导致的终止。",
         "tag": "v1.0.38"
       },
       "5": {
@@ -417,18 +417,18 @@
       },
       "4": {
         "title": "终端兼容性",
-        "desc": "/terminal-setup 支持 Kitty、Alacritty、Zed、Warp、WezTerm、iTerm2、Ghostty。Kitty 键盘协议完整支持。OSC 8 超链接跨行可点击。OSC 9;4 进度条可配置。v2.1.69 新增小键盘数字支持。v2.1.70 修复慢速 SSH 连接下 Enter 插入换行而非提交的问题，修复 Ghostty SSH 下 Shift+Enter 异常。",
+        "desc": "/terminal-setup 支持 Kitty、Alacritty、Zed、Warp、WezTerm、iTerm2、Ghostty。Kitty 键盘协议完整支持。OSC 8 超链接跨行可点击。OSC 9;4 进度条可配置。v2.1.69 新增小键盘数字支持。v2.1.70 修复慢速 SSH 连接下 Enter 插入换行而非提交的问题，修复 Ghostty SSH 下 Shift+Enter 异常。v2.1.78 在 tmux + <span class=\"scenario-cmd\">set -g allow-passthrough on</span> 下，iTerm2/Kitty/Ghostty 的通知和进度条也能透传到外层终端。",
         "tag": "v1.0.110"
       },
       "5": {
         "title": "实时交互",
-        "desc": "v0.2.108 引入实时 steering（Claude 工作时发消息引导方向）。v0.2.75 消息排队（Enter 排队后续消息）。<span class=\"scenario-cmd\">/copy</span> 交互式选择代码块复制，v2.1.72 起支持按 <span class=\"scenario-cmd\">w</span> 直接把聚焦代码块写入文件；远程 SSH、tmux、多层跳板场景下尤其省事。Prompt suggestions 智能建议。",
+        "desc": "v0.2.108 引入实时 steering（Claude 工作时发消息引导方向）。v0.2.75 消息排队（Enter 排队后续消息）。<span class=\"scenario-cmd\">/copy</span> 交互式选择代码块复制，v2.1.72 起支持按 <span class=\"scenario-cmd\">w</span> 直接把聚焦代码块写入文件，v2.1.77 加了 <span class=\"scenario-cmd\">/copy N</span> 复制第 N 条回复。v2.1.78 响应文本逐行流式显示，排队消息自动换行，不再挤成一段。Prompt suggestions 智能建议。",
         "tag": "v0.2.108"
       },
       "6": {
         "title": "Voice 语音输入",
-        "desc": "长按空格键开始语音输入（v2.1.71 支持 <span class=\"scenario-cmd\">voice:pushToTalk</span> 自定义按键绑定）。v2.1.69 支持 20 种语言（含中文）。v2.1.71 修复语音模式导致的 5–8 秒启动冻结（CoreAudio 阻塞主线程）。v2.1.72 进一步提升 repo 名、regex、OAuth、JSON 等开发者术语的转写准确率。不想打字的时候，说话就行。",
-        "tag": "v2.1.69 — v2.1.72"
+        "desc": "长按空格键开始语音输入（v2.1.71 支持 <span class=\"scenario-cmd\">voice:pushToTalk</span> 自定义按键绑定）。v2.1.69 支持 20 种语言（含中文）。v2.1.71 修复语音模式导致的 5–8 秒启动冻结（CoreAudio 阻塞主线程）。v2.1.72 进一步提升 repo 名、regex、OAuth、JSON 等开发者术语的转写准确率。v2.1.78 修复 WSL2 + WSLg 语音模式无法工作，对 WSL1/Win10 会给出清晰错误提示。不想打字的时候，说话就行。",
+        "tag": "v2.1.69 — v2.1.78"
       },
       "7": {
         "title": "Bash 命令自动放行——越来越多命令「免签」",
@@ -439,7 +439,7 @@
     "security": {
       "0": {
         "title": "沙箱模式 — AI 写代码，但跑在笼子里",
-        "desc": "v2.0.24 发布 Linux & Mac 沙箱模式。阻止写入 .claude/skills 目录。HTTP hooks 强制走域名白名单。heredoc 解析防命令注入。v2.1.69 新增 <span class=\"scenario-cmd\">sandbox.enableWeakerNetworkIsolation</span>（macOS），让 gh、gcloud 等 Go 程序在代理环境下正常验证 TLS——安全和可用性两手抓。v2.1.72 起 CLAUDE.md 中的 HTML 注释（<span class=\"scenario-cmd\">&lt;!-- ... --&gt;</span>）在自动注入时对 Claude 隐藏，用 Read 工具手动读取时仍可见——方便你在项目规则里写「人看 Claude 不看」的备注。",
+        "desc": "v2.0.24 发布 Linux & Mac 沙箱模式。阻止写入 .claude/skills 目录。HTTP hooks 强制走域名白名单。heredoc 解析防命令注入。v2.1.69 新增 <span class=\"scenario-cmd\">sandbox.enableWeakerNetworkIsolation</span>（macOS），让 gh、gcloud 等 Go 程序在代理环境下正常验证 TLS——安全和可用性两手抓。v2.1.72 起 CLAUDE.md 中的 HTML 注释（<span class=\"scenario-cmd\">&lt;!-- ... --&gt;</span>）在自动注入时对 Claude 隐藏，用 Read 工具手动读取时仍可见——方便你在项目规则里写「人看 Claude 不看」的备注。v2.1.77 新增 <span class=\"scenario-cmd\">sandbox.allowRead</span> 让 denyRead 区域内可按需解封读取；v2.1.78 修复 allowWrite 绝对路径与 bypass 模式写入敏感目录的问题，缺依赖时沙箱不再静默关闭而是显眼提示。",
         "tag": "v2.0.24"
       },
       "1": {
@@ -871,6 +871,16 @@
       "date": "2026-03",
       "version": "v2.1.76",
       "desc": "MCP elicitation 支持——MCP 服务器可在任务中弹出交互对话框主动请求输入。新增 Elicitation/ElicitationResult/PostCompact hooks。-n/--name 启动参数给会话命名。worktree.sparsePaths 大 monorepo 稀疏检出。/effort 斜杠命令即时调推理力度。修复延迟工具 schema 丢失、plan mode 重复审批、auto-compaction 无限重试等。改进 worktree 启动性能和陈旧 worktree 自动清理。"
+    },
+    "24": {
+      "date": "2026-03",
+      "version": "v2.1.77",
+      "desc": "默认输出上限提升：Opus 4.6 默认 64k，最高 128k tokens。新增 sandbox allowRead 在 denyRead 区域内按需解封读取。/copy N 可复制第 N 条回复。修复 auto-updater 重复下载、/resume 与 cc log 截断对话、PreToolUse 绕过 deny 规则、Write 工具行结尾等，长会话更稳。"
+    },
+    "25": {
+      "date": "2026-03",
+      "version": "v2.1.78",
+      "desc": "StopFailure hook 捕获 API 错误导致的终止，${CLAUDE_PLUGIN_DATA} 让插件数据持久化，卸载前提醒是否删除。插件 agent 前言可带 effort/maxTurns/disallowedTools。tmux 下终端通知穿透外层，响应逐行流式显示。修复 sandbox allowWrite 绝对路径、bypass 模式写入敏感目录、deny MCP 工具未生效，并在依赖缺失时清晰提示沙箱状态。"
     }
   }
 }

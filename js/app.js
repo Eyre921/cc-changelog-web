@@ -215,6 +215,29 @@ const App = (() => {
     }
   }
 
+  // ---- Hero spotlight following cursor ----
+  function initHeroSpotlight() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    const spotlight = document.createElement('div');
+    spotlight.className = 'hero-spotlight';
+    spotlight.style.setProperty('--spot-x', '50%');
+    spotlight.style.setProperty('--spot-y', '45%');
+    hero.appendChild(spotlight);
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      spotlight.style.setProperty('--spot-x', `${x.toFixed(1)}%`);
+      spotlight.style.setProperty('--spot-y', `${y.toFixed(1)}%`);
+    });
+    hero.addEventListener('mouseleave', () => {
+      spotlight.style.setProperty('--spot-x', '50%');
+      spotlight.style.setProperty('--spot-y', '45%');
+    });
+  }
+
   // ---- Card 3D tilt on mouse move ----
   function initCardTilt() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -295,6 +318,19 @@ const App = (() => {
     updateProgress();
   }
 
+  // ---- Timeline active highlight ----
+  function initTimelineActive() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const items = document.querySelectorAll('.timeline-item');
+    if (!items.length) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle('active', entry.isIntersecting);
+      });
+    }, { threshold: 0.35, rootMargin: '0px 0px -10% 0px' });
+    items.forEach(item => observer.observe(item));
+  }
+
   // ---- Nav scroll shadow ----
   function initNavScrollShadow() {
     const nav = document.querySelector('.nav');
@@ -342,10 +378,12 @@ const App = (() => {
     initCountUp();
     initHeadingReveal();
     initHeroParticles();
+    initHeroSpotlight();
     initCardTilt();
     initCardRipple();
     initSectionLabelReveal();
     initTimelineProgress();
+    initTimelineActive();
     initNavScrollShadow();
     initMagneticButtons();
   }
