@@ -503,3 +503,73 @@ kbd:active{transform:translateY(1px);box-shadow:none}
 .nav{transition:box-shadow .3s ease}
 .nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
 [data-theme="dark"] .nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.2)}
+
+/* ---- Card parallax tilt effect ---- */
+.card{transition:all .3s ease,transform .1s ease;will-change:transform}
+.card:hover{transform:translateY(-2px) rotateX(var(--card-rotate-x,0deg)) rotateY(var(--card-rotate-y,0deg)) scale(1.02)}
+
+/* ---- Floating button magnetic effect ---- */
+.floating-btn{transition:all .25s cubic-bezier(.34,1.56,.64,1)}
+.floating-btn:hover{transform:scale(1.15) translateX(-3px)}
+
+/* ---- Hero particle rain ---- */
+@keyframes particle-fall{0%{transform:translateY(-10vh) translateX(0) scale(1);opacity:0}10%{opacity:.7}50%{opacity:.5}90%{opacity:.3}100%{transform:translateY(110vh) translateX(calc(var(--drift,0) * 20px)) scale(.3);opacity:0}}
+.hero-particle{position:absolute;width:6px;height:6px;border-radius:50%;background:radial-gradient(circle,var(--accent1),transparent);opacity:0;animation:particle-fall linear infinite;pointer-events:none;filter:blur(1px)}
+.hero-particle:nth-child(2){left:15%;animation-duration:8s;animation-delay:1s;--drift:1}
+.hero-particle:nth-child(3){left:35%;animation-duration:10s;animation-delay:2s;--drift:-1;background:radial-gradient(circle,var(--accent2),transparent)}
+.hero-particle:nth-child(4){left:55%;animation-duration:12s;animation-delay:0.5s;--drift:2}
+.hero-particle:nth-child(5){left:75%;animation-duration:9s;animation-delay:3s;--drift:-2;background:radial-gradient(circle,var(--accent4),transparent)}
+.hero-particle:nth-child(6){left:90%;animation-duration:11s;animation-delay:1.5s;--drift:1.5}
+
+/* ---- Section entrance wave ---- */
+@keyframes wave-entrance{0%{transform:translateX(-100%) skewX(-15deg);opacity:0}60%{opacity:.8}100%{transform:translateX(0) skewX(0);opacity:1}}
+.section.visible::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,transparent,var(--accent1),var(--accent4),transparent);animation:wave-entrance 1.2s cubic-bezier(.23,1,.32,1)}
+
+/* ---- Card hover glow trail ---- */
+.card::after{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,var(--accent1),var(--accent4),var(--accent2));border-radius:12px;opacity:0;z-index:-1;filter:blur(15px);transition:opacity .4s ease}
+.card:hover::after{opacity:.25}
+
+/* ---- Timeline progress bar animation ---- */
+@keyframes timeline-grow{from{height:0}to{height:100%}}
+.timeline::after{content:'';position:absolute;left:7px;top:0;width:2px;height:0;background:linear-gradient(180deg,var(--accent1),var(--accent4),transparent);z-index:1;animation:timeline-grow 1.5s ease-out forwards;animation-delay:.5s}
+
+/* ---- Kbd key press animation ---- */
+@keyframes key-press{0%{transform:translateY(0) scale(1);box-shadow:0 2px 0 var(--border)}50%{transform:translateY(2px) scale(.98);box-shadow:0 0 0 var(--border)}100%{transform:translateY(0) scale(1);box-shadow:0 2px 0 var(--border)}}
+kbd:active{animation:key-press .15s ease}
+
+/* ---- Stats counter rolling effect ---- */
+@keyframes counter-roll{0%{transform:translateY(100%);opacity:0}100%{transform:translateY(0);opacity:1}}
+.stat.visible .num{animation:counter-roll .6s cubic-bezier(.34,1.56,.64,1)}
+
+/* ---- Tag badge wave shimmer ---- */
+@keyframes tag-wave{0%{background-position:-200% center}100%{background-position:200% center}}
+.tag{background:linear-gradient(90deg,currentColor 0%,currentColor 45%,rgba(255,255,255,.3) 50%,currentColor 55%,currentColor 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;animation:tag-wave 3s linear infinite}
+
+/* ---- Hero CTA breathing pulse ---- */
+@keyframes cta-breathe{0%,100%{transform:scale(1);box-shadow:0 6px 20px rgba(139,115,85,.25)}50%{transform:scale(1.03);box-shadow:0 8px 30px rgba(139,115,85,.35)}}
+.hero-cta:hover{animation:cta-breathe 2s ease-in-out infinite}
+
+/* ---- Terminal typing cursor blink ---- */
+@keyframes cursor-blink{0%,49%{border-right-color:var(--accent1)}50%,100%{border-right-color:transparent}}
+.typing{animation:cursor-blink .9s step-end infinite}
+
+/* ---- Scenario icon rotation on hover ---- */
+.scenario:hover .scenario-num{animation:icon-spin .6s ease-in-out}
+@keyframes icon-spin{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.2)}100%{transform:rotate(360deg) scale(1)}}
+
+/* ---- Floating control ripple effect ---- */
+@keyframes ripple-out{from{transform:scale(1);opacity:.5}to{transform:scale(1.8);opacity:0}}
+.floating-btn::before{content:'';position:absolute;inset:0;border:2px solid var(--accent1);border-radius:50%;opacity:0;pointer-events:none}
+.floating-btn:active::before{animation:ripple-out .6s ease-out}
+
+/* ---- Section divider animated gradient ---- */
+.section+.section::before{content:'';position:absolute;top:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,var(--accent1),var(--accent4),var(--accent2),transparent);background-size:200% 100%;animation:gradient-flow 4s linear infinite}
+@keyframes gradient-flow{to{background-position:200% center}}
+
+/* ---- Back to top bounce entrance ---- */
+@keyframes bounce-in{0%{transform:scale(0) translateY(20px);opacity:0}50%{transform:scale(1.1) translateY(-5px)}100%{transform:scale(1) translateY(0);opacity:1}}
+.back-to-top.show{animation:bounce-in .5s cubic-bezier(.68,-.55,.265,1.55)}
+
+/* ---- Card icon bounce on hover ---- */
+@keyframes icon-bounce{0%,100%{transform:translateY(-3px) scale(1.1)}25%{transform:translateY(-6px) scale(1.15)}75%{transform:translateY(-1px) scale(1.08)}}
+.card:hover .card-icon{animation:icon-bounce .8s ease-in-out infinite}

@@ -1,23 +1,23 @@
 {
   "meta": {
     "title": "Claude Code 全特性速览 — 从用户视角出发",
-    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.78，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。",
+    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.83，230+ 个版本、1100+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。",
     "keywords": "Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进",
-    "ogDescription": "220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。"
+    "ogDescription": "230+ 个版本、1100+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。"
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.78 全版本特性整理",
+    "badge": "v0.2.21 — v2.1.83 全版本特性整理",
     "title": "Claude Code<br>全特性速览",
-    "subtitle": "从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>220+ 个版本迭代、1000+ 项更新，每一项能力都配有真实场景，看完就能上手。",
+    "subtitle": "从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>230+ 个版本迭代、1100+ 项更新，每一项能力都配有真实场景，看完就能上手。",
     "versions": "个版本",
     "updates": "项更新",
     "majors": "个大版本",
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.78 (Opus 4.6)",
-    "terminalOutput2": "  1M context | agent teams | /loop | /effort | plugin data | StopFailure | tmux notify | line streaming",
+    "terminalOutput1": "  Claude Code v2.1.83 (Opus 4.6)",
+    "terminalOutput2": "  1M context | transcript search | hook events | managed-settings.d | image chips | --bare | --channels",
     "terminalTyping": " 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试",
     "advancedCta": "🚀 探索 Claude Code 进阶用法 →"
   },
@@ -41,7 +41,7 @@
     "recent": {
       "label": "🔥 最近更新亮点",
       "title": "最近版本的新特性",
-      "subtitle": "v2.1.58 — v2.1.78：StopFailure hook 兜底、插件数据持久 + Agent 前言全配置、tmux 通知穿透、逐行流式输出——最新版本继续把可靠性、体验和个性化拉满。"
+      "subtitle": "v2.1.58 — v2.1.83：transcript 搜索、Hook 事件扩展、managed-settings.d 目录、--bare 脚本模式、--channels 权限中继——功能持续扩展，开发体验再升级。"
     },
     "models": {
       "label": "◆ AI 模型与推理",
@@ -128,10 +128,10 @@
     "githubReleases": "GitHub Releases",
     "officialDocs": "官方文档",
     "download": "下载 Claude Code",
-    "timestamp": "整理时间：2026-03-18",
-    "versionRange": "版本范围：v0.2.21 ~ v2.1.78",
-    "totalVersions": "共 220+ 个版本",
-    "totalUpdates": "1000+ 项更新",
+    "timestamp": "整理时间：2026-03-25",
+    "versionRange": "版本范围：v0.2.21 ~ v2.1.83",
+    "totalVersions": "共 230+ 个版本",
+    "totalUpdates": "1100+ 项更新",
     "builtWith": "Built with Claude Code",
     "backToTop": "回到顶部 ↑",
     "advancedGuide": "🚀 探索更多 Claude Code 进阶用法 →"
@@ -144,19 +144,19 @@
   "cards": {
     "recent": {
       "0": {
-        "title": "StopFailure Hook + 沙箱护栏——崩了也有兜底",
-        "desc": "v2.1.78 新增 StopFailure hook，API 报错或限流时也能触发收尾逻辑，不让错误悄悄漏掉。deny 列表现在会真正移除被禁止的 MCP 工具，sandbox allowWrite 绝对路径修复，.git/.claude 等敏感目录在 bypass 模式下也会拦截。沙箱依赖缺失不再静默关闭，而是显眼提醒，安全状态可感知。",
-        "tag": "v2.1.78 NEW"
+        "title": "Transcript 搜索——会话历史秒速检索",
+        "desc": "v2.1.83 新增 transcript 搜索功能，在 transcript 模式（<span class=\"scenario-cmd\">Ctrl+O</span>）下按 <span class=\"scenario-cmd\">/</span> 即可搜索，<span class=\"scenario-cmd\">n</span>/<span class=\"scenario-cmd\">N</span> 在匹配项间跳转。粘贴的图片会插入 <span class=\"scenario-cmd\">[Image #N]</span> 标记，方便在提示中按位置引用。Agent 现在支持 <span class=\"scenario-cmd\">initialPrompt</span> 前言自动提交首轮对话。",
+        "tag": "v2.1.83 NEW"
       },
       "1": {
-        "title": "插件数据持久 + Agent 前言全配置",
-        "desc": "插件现在有 <span class=\"scenario-cmd\">${CLAUDE_PLUGIN_DATA}</span> 持久存储，升级不丢状态，卸载前也会确认是否删除数据。插件自带的 agent 前言支持 <span class=\"scenario-cmd\">effort</span>、<span class=\"scenario-cmd\">maxTurns</span>、<span class=\"scenario-cmd\">disallowedTools</span>，团队预设直接打包好推理力度、对话轮次和禁用工具。",
-        "tag": "v2.1.78 NEW"
+        "title": "Hook 事件扩展——环境响应式管理",
+        "desc": "v2.1.83 新增 <span class=\"scenario-cmd\">CwdChanged</span> 和 <span class=\"scenario-cmd\">FileChanged</span> hook 事件，实现响应式环境管理（如 direnv）。<span class=\"scenario-cmd\">managed-settings.d/</span> 目录让团队独立部署策略片段，按字母顺序合并。环境变量支持 <span class=\"scenario-cmd\">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</span> 清除子进程凭据。",
+        "tag": "v2.1.83 NEW"
       },
       "2": {
-        "title": "终端体验再进化：tmux 通知穿透、逐行流式",
-        "desc": "iTerm2/Kitty/Ghostty 的弹窗和进度条在 tmux + <span class=\"scenario-cmd\">set -g allow-passthrough on</span> 下也能透到外层。响应文本逐行流式显示，排队消息不再黏成一行。默认输出上限拉到 64k（最高 128k），长回复不怕截断，<span class=\"scenario-cmd\">/copy N</span> 还能直接复制第 N 条回复。",
-        "tag": "v2.1.77 — v2.1.78"
+        "title": "--bare 和 --channels——脚本化与远程控制",
+        "desc": "v2.1.81 引入 <span class=\"scenario-cmd\">--bare</span> 标志用于脚本化 <span class=\"scenario-cmd\">-p</span> 调用，跳过 hooks、LSP、插件同步。<span class=\"scenario-cmd\">--channels</span> 权限中继支持 channel 服务器转发工具审批提示到手机。v2.1.80 新增 <span class=\"scenario-cmd\">rate_limits</span> 字段显示限流状态，<span class=\"scenario-cmd\">effort</span> 前言覆盖模型推理级别。",
+        "tag": "v2.1.81 — v2.1.83"
       },
       "3": {
         "title": "v2.1.75 — v2.1.76 稳定性大扫除",
