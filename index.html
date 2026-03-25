@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Code 全特性速览 — 从用户视角出发</title>
-<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.78，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
+<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.83，220+ 个版本、1000+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
 <meta name="keywords" content="Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK">
 <meta property="og:title" content="Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进">
 <meta property="og:description" content="220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。">
@@ -21,7 +21,7 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.78 全版本特性整理</span></div>
+  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.83 全版本特性整理</span></div>
   <h1 data-i18n="hero.title">Claude Code<br>全特性速览</h1>
   <p data-i18n="hero.subtitle">从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>220+ 个版本迭代、1000+ 项更新，每一项能力都配有真实场景，看完就能上手。</p>
   <div class="hero-meta">
@@ -35,8 +35,8 @@
     <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title" data-i18n="hero.terminalTitle">Claude Code — zsh</span></div>
     <div class="terminal-body">
       <div><span class="prompt">~ $</span> <span class="cmd">claude</span></div>
-      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.78 (Opus 4.6)</div>
-      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">1M context | agent teams | /loop | /effort | plugin data | StopFailure | tmux notify | line streaming</span></div>
+      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.83 (Opus 4.6)</div>
+      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">managed-settings.d | / transcript search | env scrub | Cwd/File hooks | image chips | /status 实时</span></div>
       <div class="output">&nbsp;</div>
       <div><span class="prompt">></span> <span class="cmd typing" data-i18n="hero.terminalTyping"> 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试</span></div>
     </div>
@@ -77,38 +77,38 @@
 <section class="section" id="recent">
   <div class="section-label"><span data-i18n="sections.recent.label">🔥 最近更新亮点</span></div>
   <h2 data-i18n="sections.recent.title">最近版本的新特性</h2>
-  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.78：StopFailure hook 兜底、插件数据持久 + Agent 前言全配置、tmux 通知穿透、逐行流式输出——最新版本继续把可靠性、体验和个性化拉满。</p>
+  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.79 — v2.1.83：managed-settings.d 分片策略、Cwd/File Hooks、/ transcript 搜索、环境变量自动脱敏、图片编号芯片、Agent 初始 prompt 自动提交——最新一轮把企业管控、协作体验和可靠性又推了一档。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in card-highlight">
       <div class="card-icon c1">💬</div>
-      <h3>StopFailure Hook + 沙箱护栏——崩了也有兜底</h3>
-      <p>v2.1.78 新增 StopFailure hook，API 报错或限流时也能触发收尾逻辑，不让错误悄悄漏掉。deny 列表现在会真正移除被禁止的 MCP 工具，sandbox allowWrite 绝对路径修复，.git/.claude 等敏感目录在 bypass 模式下也会拦截。沙箱依赖缺失不再静默关闭，而是显眼提醒，安全状态可感知。</p>
-      <span class="tag c1">v2.1.78 NEW</span>
+      <h3>策略分片 + 沙箱 fail fast：团队管控更稳</h3>
+      <p>v2.1.83 加了 <span class="scenario-cmd">managed-settings.d/</span>，不同团队把策略拆成多个 JSON 碎片按字典序合并，互不打架。<span class="scenario-cmd">sandbox.failIfUnavailable</span> 缺依赖直接退出，不再偷偷裸奔；<span class="scenario-cmd">disableDeepLinkRegistration</span> 禁止注册 <span class="scenario-cmd">claude-cli://</span> 协议。再配合 <span class="scenario-cmd">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</span>，子进程里云厂商密钥和 Anthropic 令牌统统剥离，安全兜底到位。</p>
+      <span class="tag c1">v2.1.83 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c2">🏷️</div>
-      <h3>插件数据持久 + Agent 前言全配置</h3>
-      <p>插件现在有 <span class="scenario-cmd">${CLAUDE_PLUGIN_DATA}</span> 持久存储，升级不丢状态，卸载前也会确认是否删除数据。插件自带的 agent 前言支持 <span class="scenario-cmd">effort</span>、<span class="scenario-cmd">maxTurns</span>、<span class="scenario-cmd">disallowedTools</span>，团队预设直接打包好推理力度、对话轮次和禁用工具。</p>
-      <span class="tag c2">v2.1.78 NEW</span>
+      <h3>CwdChanged / FileChanged Hooks：环境变化立刻响应</h3>
+      <p>新增 <span class="scenario-cmd">CwdChanged</span>、<span class="scenario-cmd">FileChanged</span> hook 事件，目录切换、文件更新都能触发自动化（比如 direnv 重新注入、代码生成后秒跑 formatter）。日志里还能看到 sandbox 启动失败的显性报错，运维排障不再靠猜。</p>
+      <span class="tag c2">v2.1.83 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c3">🎚️</div>
-      <h3>终端体验再进化：tmux 通知穿透、逐行流式</h3>
-      <p>iTerm2/Kitty/Ghostty 的弹窗和进度条在 tmux + <span class="scenario-cmd">set -g allow-passthrough on</span> 下也能透到外层。响应文本逐行流式显示，排队消息不再黏成一行。默认输出上限拉到 64k（最高 128k），长回复不怕截断，<span class="scenario-cmd">/copy N</span> 还能直接复制第 N 条回复。</p>
-      <span class="tag c3">v2.1.77 — v2.1.78</span>
+      <h3>会话搜索 & 新键位：长聊天也能秒定位</h3>
+      <p>在 transcript 模式下按 <span class="scenario-cmd">/</span> 搜索历史，用 <span class="scenario-cmd">n/N</span> 快速跳转；<span class="scenario-cmd">Ctrl+X Ctrl+E</span> 成为外部编辑器的原生别名。<span class="scenario-cmd">/status</span> 现在回复进行中也能用，<span class="scenario-cmd">chat:killAgents</span>/<span class="scenario-cmd">chat:fastMode</span> 支持自定义绑定，键盘流更顺。</p>
+      <span class="tag c3">v2.1.83 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c4">🌈</div>
-      <h3>1M 上下文默认开放 & /color 个性化 prompt bar</h3>
-      <p>v2.1.75 起 Opus 4.6 的 100 万上下文窗口对 Max/Team/Enterprise 用户<strong>默认开放</strong>（以前需要额外配额）。同版还新增 <span class="scenario-cmd">/color</span> 命令，给你的 prompt bar 设个颜色——多窗口场景一眼分清哪个是哪个。</p>
-      <span class="tag c4">v2.1.75 NEW</span>
+      <h3>粘贴图片自动编号 + Agent 初始 prompt 自动提交</h3>
+      <p>粘贴图片会在光标处插入 <span class="scenario-cmd">[Image #N]</span> 芯片，后续描述直接引用，不再靠截图位置猜。Agent frontmatter 支持 <span class="scenario-cmd">initialPrompt</span>，加载即自动发送第一轮指令，团队预设一步到位。插件 options 的敏感配置加了 <span class="scenario-cmd">sensitive: true</span>，保存在系统钥匙串/安全凭据里。</p>
+      <span class="tag c4">v2.1.83 NEW</span>
     </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c6">🛡️</div>
-      <h3>v2.1.75 — v2.1.76 稳定性大扫除</h3>
-      <p>修复延迟加载工具在压缩后丢失 input schema（数组和数字参数报类型错误）、plan mode 已接受后还要重新审批、语音模式在权限弹窗或 plan 编辑器打开时吞按键、auto-compaction 连续失败无限重试（新增断路器机制 3 次后停止）、token 估算过度计数导致过早压缩等。后台 agent 被 kill 后保留部分结果、模型回退通知改为始终可见、暗色主题下 blockquote 改为斜体+左竖线更易读——稳定性和可观测性双提升。企业管理员还可通过 <span class="scenario-cmd">feedbackSurveyRate</span> 配置会话质量调查采样率。</p>
-      <span class="tag c6">v2.1.75 — v2.1.76</span>
+      <h3>稳态优化：大文件 diff、启动/退出、Remote 统统更顺</h3>
+      <p>大文件 diff 超 5s 自动降级，避免卡死；macOS 退出不再挂起，启动时不再因语音模块加载闪屏；Remote Control/Web 会话标题几秒内自动生成，状态列表实时刷新。插件从磁盘缓存启动更快，非流式回退超时加大到 300s，长回复不轻易截断。</p>
+      <span class="tag c6">v2.1.79 — v2.1.83</span>
     </div>
     <div class="card fade-in card-highlight-secondary">
       <div class="card-icon c2">🔄</div>
@@ -550,7 +550,7 @@
     <div class="card fade-in">
       <div class="card-icon c3">@</div>
       <h3>@ 文件提及 & 图片</h3>
-      <p>v0.2.75 引入 @ 文件提及和图片拖拽/粘贴。支持 MCP 资源 @ 提及。文件夹点击导航。锚点片段（@README.md#installation）。启动时预热索引。</p>
+      <p>v0.2.75 引入 @ 文件提及和图片拖拽/粘贴。支持 MCP 资源 @ 提及。文件夹点击导航。锚点片段（@README.md#installation）。启动时预热索引。v2.1.83 粘贴图片自动在光标处插入 <span class="scenario-cmd">[Image #N]</span> 编号芯片，后面描述直接引用，协作不怕搞混多张图。</p>
       <span class="tag c3">v0.2.75</span>
     </div>
     <div class="card fade-in">
@@ -562,7 +562,7 @@
     <div class="card fade-in">
       <div class="card-icon c6">⊡</div>
       <h3>实时交互</h3>
-      <p>v0.2.108 引入实时 steering（Claude 工作时发消息引导方向）。v0.2.75 消息排队（Enter 排队后续消息）。<span class="scenario-cmd">/copy</span> 交互式选择代码块复制，v2.1.72 起支持按 <span class="scenario-cmd">w</span> 直接把聚焦代码块写入文件；远程 SSH、tmux、多层跳板场景下尤其省事。Prompt suggestions 智能建议。</p>
+      <p>v0.2.108 引入实时 steering（Claude 工作时发消息引导方向）。v0.2.75 消息排队（Enter 排队后续消息）。<span class="scenario-cmd">/copy</span> 交互式选择代码块复制，v2.1.72 起支持按 <span class="scenario-cmd">w</span> 直接把聚焦代码块写入文件；远程 SSH、tmux、多层跳板场景下尤其省事。transcript 模式按 <span class="scenario-cmd">/</span> 搜索，<span class="scenario-cmd">n/N</span> 跳下一个/上一个。<span class="scenario-cmd">/status</span> 现在 Claude 回答时也能查当前进度，Prompt suggestions 智能建议。</p>
       <span class="tag c6">v0.2.108</span>
     </div>
     <div class="card fade-in">
@@ -609,7 +609,7 @@
     <div class="card fade-in">
       <div class="card-icon c5">⊘</div>
       <h3>沙箱模式 — AI 写代码，但跑在笼子里</h3>
-      <p>v2.0.24 发布 Linux & Mac 沙箱模式。阻止写入 .claude/skills 目录。HTTP hooks 强制走域名白名单。heredoc 解析防命令注入。v2.1.69 新增 <span class="scenario-cmd">sandbox.enableWeakerNetworkIsolation</span>（macOS），让 gh、gcloud 等 Go 程序在代理环境下正常验证 TLS——安全和可用性两手抓。v2.1.72 起 CLAUDE.md 中的 HTML 注释（<span class="scenario-cmd">&lt;!-- ... --&gt;</span>）在自动注入时对 Claude 隐藏，用 Read 工具手动读取时仍可见——方便你在项目规则里写"人看 Claude 不看"的备注。</p>
+      <p>v2.0.24 发布 Linux & Mac 沙箱模式。阻止写入 .claude/skills 目录。HTTP hooks 强制走域名白名单。heredoc 解析防命令注入。v2.1.69 新增 <span class="scenario-cmd">sandbox.enableWeakerNetworkIsolation</span>（macOS），让 gh、gcloud 等 Go 程序在代理环境下正常验证 TLS——安全和可用性两手抓。v2.1.83 起 <span class="scenario-cmd">sandbox.failIfUnavailable</span> 缺依赖就报错退出，拒绝裸奔；<span class="scenario-cmd">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</span> 子进程自动剥离云厂商与 Anthropic 凭证，<span class="scenario-cmd">disableDeepLinkRegistration</span> 禁止注册 <span class="scenario-cmd">claude-cli://</span> 协议。CLAUDE.md 中的 HTML 注释（<span class="scenario-cmd">&lt;!-- ... --&gt;</span>）自动对 Claude 隐藏，用 Read 工具手动读取时仍可见。</p>
       <span class="tag c5">v2.0.24</span>
     </div>
     <div class="card fade-in">
@@ -627,7 +627,7 @@
     <div class="card fade-in">
       <div class="card-icon c4">⊛</div>
       <h3>企业安全</h3>
-      <p>v0.2.67 引入共享项目权限规则（.claude/settings.json）。v2.0.68 企业管理设置。ConfigChange hook 审计。管理设置支持 macOS plist 和 Windows Registry。MCP 允许/拒绝列表。v2.1.69 新增 <span class="scenario-cmd">pluginTrustMessage</span> 管理设置、<span class="scenario-cmd">pathPattern</span> 正则匹配文件/目录 marketplace 来源、Team 计划 OAuth 用户获得策略限制。</p>
+      <p>v0.2.67 引入共享项目权限规则（.claude/settings.json）。v2.0.68 企业管理设置。ConfigChange hook 审计。管理设置支持 macOS plist 和 Windows Registry。MCP 允许/拒绝列表。v2.1.69 新增 <span class="scenario-cmd">pluginTrustMessage</span> 管理设置、<span class="scenario-cmd">pathPattern</span> 正则匹配文件/目录 marketplace 来源。v2.1.83 引入 <span class="scenario-cmd">managed-settings.d/</span> 策略分片，团队按职能拆成多个 JSON 片段按字典序合并，跨小组协作也不怕踩配置。</p>
       <span class="tag c4">v0.2.67</span>
     </div>
   </div>
@@ -652,7 +652,7 @@
     <div class="card fade-in">
       <div class="card-icon c2">⊡</div>
       <h3>非交互模式 (-p)</h3>
-      <p><span class="scenario-cmd">-p</span> 模式支持流式 JSON 输出。<span class="scenario-cmd">--max-budget-usd</span> 控制预算。<span class="scenario-cmd">--system-prompt</span> / <span class="scenario-cmd">--system-prompt-file</span> 自定义系统提示（支持交互模式和 print 模式）。<span class="scenario-cmd">--append-system-prompt</span> 追加提示。子任务消息包含 parent_tool_use_id。v2.1.69 改进文档明确说明 <span class="scenario-cmd">--append-system-prompt-file</span> 和 <span class="scenario-cmd">--system-prompt-file</span> 同时适用于交互模式。</p>
+      <p><span class="scenario-cmd">-p</span> 模式支持流式 JSON 输出。<span class="scenario-cmd">--max-budget-usd</span> 控制预算。<span class="scenario-cmd">--system-prompt</span> / <span class="scenario-cmd">--system-prompt-file</span> 自定义系统提示（支持交互模式和 print 模式）。<span class="scenario-cmd">--append-system-prompt</span> 追加提示。子任务消息包含 parent_tool_use_id。v2.1.69 改进文档明确说明 <span class="scenario-cmd">--append-system-prompt-file</span> 和 <span class="scenario-cmd">--system-prompt-file</span> 同时适用于交互模式。v2.1.81 新增 <span class="scenario-cmd">--bare -p</span> 一键跳过 hooks / LSP / 插件，CI 脚本冷启动更快。</p>
       <span class="tag c2">v0.2.66</span>
     </div>
     <div class="card fade-in">
@@ -885,9 +885,10 @@
       </div>
       <div style="padding:1rem 1.5rem;font-size:.82rem;display:grid;grid-template-columns:auto 1fr;gap:.4rem 1.5rem;align-items:center">
         <kbd>Ctrl+B</kbd><span style="color:var(--text2)">将当前任务放到后台</span>
-        <kbd>Ctrl+F</kbd><span style="color:var(--text2)">杀死所有后台 agent</span>
-        <kbd>Ctrl+G</kbd><span style="color:var(--text2)">打开外部编辑器</span>
+        <kbd>Ctrl+X Ctrl+K</kbd><span style="color:var(--text2)">结束所有后台 agent（不再占用 Ctrl+F）</span>
+        <kbd>Ctrl+G / Ctrl+X Ctrl+E</kbd><span style="color:var(--text2)">打开外部编辑器（两个快捷键都好使）</span>
         <kbd>Ctrl+R</kbd><span style="color:var(--text2)">搜索命令历史</span>
+        <kbd>Ctrl+O</kbd><span style="color:var(--text2)">进入 transcript 模式，/ 搜索，n/N 跳结果</span>
         <kbd>Ctrl+S</kbd><span style="color:var(--text2)">Prompt stash（暂存输入）</span>
         <kbd>Ctrl+U</kbd><span style="color:var(--text2)">退出 bash 模式 / 清除输入行</span>
         <kbd>Ctrl+Y</kbd><span style="color:var(--text2)">Yank（粘贴 kill ring）</span>
@@ -951,15 +952,15 @@
   </div>
 
   <div class="grid grid-3 fade-in" style="margin-top:1.2rem">
-    <div class="card">
+      <div class="card">
       <div class="card-icon c4">⊞</div>
       <h3 data-i18n="shortcuts_section.cliTitle">CLI 子命令</h3>
-      <p><span class="scenario-cmd">claude auth login/status/logout</span> 认证管理。<span class="scenario-cmd">-n/--name</span> 启动时给会话命名。<span class="scenario-cmd">claude agents</span> 列出 agent。<span class="scenario-cmd">claude remote-control</span> 远程控制。<span class="scenario-cmd">claude doctor</span> 诊断。<span class="scenario-cmd">claude mcp add/list/get/serve</span> MCP 管理。<span class="scenario-cmd">claude plugin install/validate/browse</span> 插件管理。<span class="scenario-cmd">claude install</span> 原生安装。<span class="scenario-cmd">claude --teleport</span> 从 Web 传送。</p>
+      <p><span class="scenario-cmd">claude auth login/status/logout</span> 认证管理。<span class="scenario-cmd">-n/--name</span> 启动时给会话命名。<span class="scenario-cmd">claude agents</span> 列出 agent。<span class="scenario-cmd">claude remote-control</span> 远程控制。<span class="scenario-cmd">claude doctor</span> 诊断。<span class="scenario-cmd">claude mcp add/list/get/serve</span> MCP 管理。<span class="scenario-cmd">claude plugin install/validate/browse</span> 插件管理。<span class="scenario-cmd">claude --channels</span> 权限中继（研究预览）。<span class="scenario-cmd">claude -p --bare</span> 跳过 hooks/LSP/plugin 快速跑脚本。<span class="scenario-cmd">claude install</span> 原生安装。<span class="scenario-cmd">claude --teleport</span> 从 Web 传送。</p>
     </div>
     <div class="card">
       <div class="card-icon c5">⊡</div>
       <h3 data-i18n="shortcuts_section.envTitle">环境变量</h3>
-      <p><span class="scenario-cmd">CLAUDE_CODE_SIMPLE</span> 极简模式。<span class="scenario-cmd">CLAUDE_CODE_TMPDIR</span> 自定义临时目录。<span class="scenario-cmd">CLAUDE_CODE_SHELL</span> 覆盖 shell 检测。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> 禁用后台任务。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 禁用 1M 上下文。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS</span> 移除内置 Git 指令。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_CRON</span> 立即停止会话中的定时 cron 任务。<span class="scenario-cmd">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> 关闭 claude.ai MCP 服务器。<span class="scenario-cmd">CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS</span> 插件 git 超时。<span class="scenario-cmd">CLAUDE_CODE_ACCOUNT_UUID</span>/<span class="scenario-cmd">CLAUDE_CODE_USER_EMAIL</span>/<span class="scenario-cmd">CLAUDE_CODE_ORGANIZATION_UUID</span> SDK 账户信息。<span class="scenario-cmd">BASH_DEFAULT_TIMEOUT_MS</span> bash 超时。<span class="scenario-cmd">CLAUDE_CODE_SESSIONEND_HOOKS_TIMEOUT_MS</span> SessionEnd hooks 超时。<span class="scenario-cmd">ANTHROPIC_LOG=debug</span> 调试日志。</p>
+      <p><span class="scenario-cmd">CLAUDE_CODE_SIMPLE</span> 极简模式。<span class="scenario-cmd">CLAUDE_CODE_TMPDIR</span> 自定义临时目录。<span class="scenario-cmd">CLAUDE_CODE_SHELL</span> 覆盖 shell 检测。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> 禁用后台任务。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> 禁用 1M 上下文。<span class="scenario-cmd">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</span> 子进程自动剥离云厂商与 Anthropic 凭证。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK</span> 禁用非流式回退。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS</span> 移除内置 Git 指令。<span class="scenario-cmd">CLAUDE_CODE_DISABLE_CRON</span> 立即停止会话中的定时 cron 任务。<span class="scenario-cmd">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> 关闭 claude.ai MCP 服务器。<span class="scenario-cmd">CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS</span> 插件 git 超时。<span class="scenario-cmd">CLAUDE_CODE_ACCOUNT_UUID</span>/<span class="scenario-cmd">CLAUDE_CODE_USER_EMAIL</span>/<span class="scenario-cmd">CLAUDE_CODE_ORGANIZATION_UUID</span> SDK 账户信息。<span class="scenario-cmd">BASH_DEFAULT_TIMEOUT_MS</span> bash 超时。<span class="scenario-cmd">CLAUDE_CODE_SESSIONEND_HOOKS_TIMEOUT_MS</span> SessionEnd hooks 超时。<span class="scenario-cmd">ANTHROPIC_LOG=debug</span> 调试日志。</p>
     </div>
     <div class="card">
       <div class="card-icon c6">⊟</div>
@@ -1108,6 +1109,16 @@
       <div class="timeline-version">v2.1.78</div>
       <div class="timeline-desc" style="color:var(--accent1)">StopFailure hook 在 API 错误时兜底，${CLAUDE_PLUGIN_DATA} 让插件数据持久化；插件随带 agent 前言支持 <span class="scenario-cmd">effort</span>/<span class="scenario-cmd">maxTurns</span>/<span class="scenario-cmd">disallowedTools</span>。tmux 下终端通知穿透外层，响应逐行流式。修复 sandbox allowWrite 绝对路径、bypass 模式写入敏感目录、deny MCP 工具未生效等，并在依赖缺失时醒目提示沙箱状态。</div>
     </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-03</div>
+      <div class="timeline-version">v2.1.79 — v2.1.81</div>
+      <div class="timeline-desc">statusline 脚本新增 <span class="scenario-cmd">rate_limits</span> 字段实时看 5h/7d 配额；plugin marketplace 可在 settings.json 直接写 source，skill/agent 前言支持 <span class="scenario-cmd">effort</span> 覆盖。<span class="scenario-cmd">--channels</span> 研究预览把审批推到手机，非流式回退超时放宽；<span class="scenario-cmd">--bare -p</span> 跳过 hooks/LSP/plugin，同步脚本快约 14%。</div>
+    </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-03</div>
+      <div class="timeline-version">v2.1.83</div>
+      <div class="timeline-desc" style="color:var(--accent1)">managed-settings.d 策略分片合并，<span class="scenario-cmd">sandbox.failIfUnavailable</span> 缺依赖立即退出；<span class="scenario-cmd">CwdChanged/FileChanged</span> hook 让目录和文件变更可触发自动化；transcript 模式 <span class="scenario-cmd">/</span> 搜索配 <span class="scenario-cmd">n/N</span> 跳转，粘贴图片自动生成 <span class="scenario-cmd">[Image #N]</span> 芯片，Agent <span class="scenario-cmd">initialPrompt</span> 自动首轮对话，子进程环境自动剥离敏感变量。</div>
+    </div>
   </div>
 </section>
 
@@ -1123,7 +1134,7 @@
 <!-- Footer -->
 <footer class="footer">
   <p><span data-i18n="footer.sources">数据来源：</span><a href="https://github.com/anthropics/claude-code/releases" target="_blank" data-i18n="footer.githubReleases">GitHub Releases</a> · <a href="https://code.claude.com/docs" target="_blank" data-i18n="footer.officialDocs">官方文档</a> · <a href="https://claude.com/download" target="_blank" data-i18n="footer.download">下载 Claude Code</a></p>
-  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-03-18</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.78</span> · <span data-i18n="footer.totalVersions">共 220+ 个版本</span> · <span data-i18n="footer.totalUpdates">1000+ 项更新</span></p>
+  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-03-25</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.83</span> · <span data-i18n="footer.totalVersions">共 220+ 个版本</span> · <span data-i18n="footer.totalUpdates">1000+ 项更新</span></p>
   <p style="margin-top:.8rem"><a href="https://www.vibevibe.cn/Advanced/" target="_blank" class="footer-cta" data-i18n="footer.advancedGuide">🚀 探索更多 Claude Code 进阶用法 →</a></p>
   <p style="margin-top:1rem;color:var(--text3)"><span data-i18n="footer.builtWith">Built with Claude Code</span> · <a href="#" style="color:var(--text3)" data-i18n="footer.backToTop">回到顶部 ↑</a></p>
 </footer>

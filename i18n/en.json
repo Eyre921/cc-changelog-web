@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Claude Code Feature Overview — A User's Perspective",
-    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.78, 220+ versions and 1000+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
+    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.83, 220+ versions and 1000+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
     "keywords": "Claude Code, Anthropic, AI Programming, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code Feature Overview — Complete Evolution from v0.2 to v2.1",
     "ogDescription": "220+ versions, 1000+ updates. From terminal to IDE, from solo coding to multi-Agent collaboration — discover every capability of Claude Code."
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.78 Full Version Feature Summary",
+    "badge": "v0.2.21 — v2.1.83 Full Version Feature Summary",
     "title": "Claude Code<br>Feature Overview",
     "subtitle": "From terminal to IDE, from solo coding to a team of Agents doing the heavy lifting.<br>220+ version iterations, 1000+ updates — each feature comes with real-world scenarios so you can hit the ground running.",
     "versions": " versions",
@@ -16,8 +16,8 @@
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.78 (Opus 4.6)",
-    "terminalOutput2": "  1M context | agent teams | /loop | /effort | plugin data | StopFailure | tmux notify | line streaming",
+    "terminalOutput1": "  Claude Code v2.1.83 (Opus 4.6)",
+    "terminalOutput2": "  managed-settings.d | / transcript search | env scrub | Cwd/File hooks | image chips | live /status",
     "terminalTyping": " Refactor this module with 3 agents: one for security, one for perf, one for tests",
     "advancedCta": "🚀 Explore Advanced Claude Code Usage →"
   },
@@ -41,7 +41,7 @@
     "recent": {
       "label": "🔥 Recent Highlights",
       "title": "Latest Features",
-      "subtitle": "v2.1.58 — v2.1.78: StopFailure hook adds a safety net, plugin data persists with richer agent frontmatter, tmux notifications punch through, line-by-line streaming — the latest drops keep boosting reliability, UX, and personalization."
+      "subtitle": "v2.1.79 — v2.1.83: managed-settings.d policy fragments, Cwd/File hooks, transcript search, auto-scrubbed env vars, image chips, agent initial prompts — the latest drops boost enterprise control, collaboration, and reliability."
     },
     "models": {
       "label": "◆ AI Models & Reasoning",
@@ -128,8 +128,8 @@
     "githubReleases": "GitHub Releases",
     "officialDocs": "Official Docs",
     "download": "Download Claude Code",
-    "timestamp": "Updated: 2026-03-18",
-    "versionRange": "Version range: v0.2.21 ~ v2.1.78",
+    "timestamp": "Updated: 2026-03-25",
+    "versionRange": "Version range: v0.2.21 ~ v2.1.83",
     "totalVersions": "220+ versions",
     "totalUpdates": "1000+ updates",
     "builtWith": "Built with Claude Code",
@@ -144,29 +144,29 @@
   "cards": {
     "recent": {
       "0": {
-        "title": "StopFailure Hook + Sandbox Guardrails — Failures Get Caught",
-        "desc": "v2.1.78 adds a StopFailure hook so API errors or rate limits still trigger your cleanup instead of failing silently. Deny lists now actually strip blocked MCP tools, sandbox allowWrite with absolute paths is fixed, and protected folders like .git/.claude stay blocked even in bypass mode. Missing sandbox deps now surface a clear warning instead of silently disabling isolation.",
-        "tag": "v2.1.78 NEW"
+        "title": "Policy Fragments + Sandbox Fail-Fast — Enterprise Guardrails",
+        "desc": "v2.1.83 adds <span class=\"scenario-cmd\">managed-settings.d/</span> so teams can ship separate JSON policy fragments merged alphabetically. <span class=\"scenario-cmd\">sandbox.failIfUnavailable</span> exits instead of running unsandboxed, <span class=\"scenario-cmd\">disableDeepLinkRegistration</span> blocks the <span class=\"scenario-cmd\">claude-cli://</span> handler, and <span class=\"scenario-cmd\">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</span> strips cloud and Anthropic creds from subprocess envs. Safety nets everywhere.",
+        "tag": "v2.1.83 NEW"
       },
       "1": {
-        "title": "Plugin Data Persistence + Fully Tunable Agent Frontmatter",
-        "desc": "Plugins now get <span class=\"scenario-cmd\">${CLAUDE_PLUGIN_DATA}</span> for durable state that survives upgrades, and /plugin uninstall asks before deleting it. Plugin-shipped agents can set <span class=\"scenario-cmd\">effort</span>, <span class=\"scenario-cmd\">maxTurns</span>, and <span class=\"scenario-cmd\">disallowedTools</span> up front so team presets ship with the right intensity, turn budget, and tool guardrails.",
-        "tag": "v2.1.78 NEW"
+        "title": "CwdChanged / FileChanged Hooks — React Instantly to Environment Shifts",
+        "desc": "New <span class=\"scenario-cmd\">CwdChanged</span> and <span class=\"scenario-cmd\">FileChanged</span> hook events fire on directory switches and file updates, perfect for direnv reloads or auto-formatting generated code. Sandbox startup failures now show explicit errors instead of hiding in logs.",
+        "tag": "v2.1.83 NEW"
       },
       "2": {
-        "title": "Terminal Glow-Up: tmux Passthrough & Line-by-Line Streaming",
-        "desc": "iTerm2/Kitty/Ghostty notifications and progress bars now punch through tmux when <span class=\"scenario-cmd\">set -g allow-passthrough on</span> is set. Responses stream line by line so queued messages don't glue together. Default output cap climbs to 64k (up to 128k), and <span class=\"scenario-cmd\">/copy N</span> grabs the Nth reply directly.",
-        "tag": "v2.1.77 — v2.1.78"
+        "title": "Transcript Search & New Bindings — Long Chats, Zero Hunting",
+        "desc": "In transcript mode, press <span class=\"scenario-cmd\">/</span> to search and <span class=\"scenario-cmd\">n/N</span> to jump. <span class=\"scenario-cmd\">Ctrl+X Ctrl+E</span> joins <span class=\"scenario-cmd\">Ctrl+G</span> as an external editor shortcut. <span class=\"scenario-cmd\">/status</span> now works mid-response, and <span class=\"scenario-cmd\">chat:killAgents</span>/<span class=\"scenario-cmd\">chat:fastMode</span> are rebindable.",
+        "tag": "v2.1.83 NEW"
       },
       "3": {
-        "title": "v2.1.75 — v2.1.76 Stability Sweep",
-        "desc": "Fixed deferred tools losing input schemas after compaction (array/number parameter type errors), plan mode re-asking for approval after already accepted, voice mode swallowing keypresses during permission dialogs, auto-compaction retrying indefinitely (circuit breaker after 3 attempts), token estimation over-counting causing premature compaction. Background agents now preserve partial results when killed. Model fallback notifications are always visible with human-friendly names.",
-        "tag": "v2.1.75 — v2.1.76"
+        "title": "Pasted Image Chips + Auto-Submitted Agent Initial Prompts",
+        "desc": "Pasting images now drops an <span class=\"scenario-cmd\">[Image #N]</span> chip at the cursor so you can reference visuals precisely. Agent frontmatter can declare <span class=\"scenario-cmd\">initialPrompt</span> to auto-send the first turn. Plugin options support <span class=\"scenario-cmd\">sensitive: true</span>, storing secrets in the keychain/secure creds store.",
+        "tag": "v2.1.83 NEW"
       },
       "4": {
-        "title": "/plan Starts in One Line — Capture the Idea While It's Hot",
-        "desc": "v2.1.72 adds an optional description argument to <span class=\"scenario-cmd\">/plan</span>. You can now type <span class=\"scenario-cmd\">/plan fix the auth bug</span> and Claude jumps straight into plan mode with a concrete task. One less round trip while the idea is still fresh.",
-        "tag": "v2.1.72 NEW"
+        "title": "Stability & Perf: Big Diff Fallbacks, Faster Startup/Exit",
+        "desc": "Huge diffs fall back after 5s to avoid freezes; macOS shutdown no longer hangs; startup stops flashing while loading voice modules. Remote Control/web sessions auto-title within seconds. Plugin startup prefers disk cache, and non-streaming fallbacks get longer timeouts so long replies finish.",
+        "tag": "v2.1.79 — v2.1.83"
       },
       "5": {
         "title": "/copy Gets a Write Mode — Perfect Over SSH",
@@ -412,7 +412,7 @@
       },
       "3": {
         "title": "@ File Mentions & Images",
-        "desc": "@ file mentions and image drag-and-drop/paste introduced in v0.2.75. MCP resource @ mentions supported. Folder click navigation. Anchor fragments (@README.md#installation). Index pre-warming at startup.",
+        "desc": "@ file mentions and image drag-and-drop/paste introduced in v0.2.75. MCP resource @ mentions supported. Folder click navigation. Anchor fragments (@README.md#installation). Index pre-warming at startup. v2.1.83 inserts an <span class=\"scenario-cmd\">[Image #N]</span> chip at the cursor when pasting so multi-image prompts stay unambiguous.",
         "tag": "v0.2.75"
       },
       "4": {
@@ -422,7 +422,7 @@
       },
       "5": {
         "title": "Real-Time Interaction",
-        "desc": "Real-time steering arrived in v0.2.108 so you can guide Claude while it is working. Message queuing landed in v0.2.75 so Enter can line up follow-up prompts. <span class=\"scenario-cmd\">/copy</span> interactively selects code blocks; v2.1.72 adds <span class=\"scenario-cmd\">w</span> to write the focused selection straight to a file (great for SSH/tmux), v2.1.77 adds <span class=\"scenario-cmd\">/copy N</span> to grab the Nth reply. v2.1.78 streams responses line by line so queued messages stay separated. Prompt suggestions keep the next move obvious.",
+        "desc": "Real-time steering arrived in v0.2.108 so you can guide Claude while it is working. Message queuing landed in v0.2.75 so Enter can line up follow-up prompts. <span class=\"scenario-cmd\">/copy</span> interactively selects code blocks; v2.1.72 adds <span class=\"scenario-cmd\">w</span> to write the focused selection straight to a file (great for SSH/tmux), v2.1.77 adds <span class=\"scenario-cmd\">/copy N</span> to grab the Nth reply. Transcript mode now supports <span class=\"scenario-cmd\">/</span> search with <span class=\"scenario-cmd\">n/N</span> jumping, and <span class=\"scenario-cmd\">/status</span> works while Claude is responding. Responses stream line by line so queued messages stay separated. Prompt suggestions keep the next move obvious.",
         "tag": "v0.2.108"
       },
       "6": {
@@ -439,7 +439,7 @@
     "security": {
       "0": {
         "title": "Sandbox Mode — AI Writes Code, but Runs in a Cage",
-        "desc": "Linux & Mac sandbox mode released in v2.0.24. Blocks writes to .claude/skills directory. HTTP hooks enforce domain allowlists. Heredoc parsing prevents command injection. v2.1.69 adds <span class=\"scenario-cmd\">sandbox.enableWeakerNetworkIsolation</span> (macOS) to let Go programs like gh and gcloud verify TLS in proxy environments — balancing security with usability. v2.1.72: CLAUDE.md HTML comments (<span class=\"scenario-cmd\">&lt;!-- ... --&gt;</span>) are now hidden from Claude when auto-injected but remain visible via Read tool — handy for writing human-only notes in project rules. v2.1.77 introduces <span class=\"scenario-cmd\">sandbox.allowRead</span> to selectively re-allow reads inside denyRead zones; v2.1.78 fixes allowWrite absolute paths and bypass-mode writes to protected folders, and surfaces a clear warning instead of silently disabling the sandbox when dependencies are missing.",
+        "desc": "Linux & Mac sandbox mode released in v2.0.24. Blocks writes to .claude/skills directory. HTTP hooks enforce domain allowlists. Heredoc parsing prevents command injection. v2.1.69 adds <span class=\"scenario-cmd\">sandbox.enableWeakerNetworkIsolation</span> (macOS) so gh/gcloud can verify TLS behind proxies. From v2.1.83, <span class=\"scenario-cmd\">sandbox.failIfUnavailable</span> exits instead of running bare, <span class=\"scenario-cmd\">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</span> scrubs cloud/Anthropic creds from subprocess envs, and <span class=\"scenario-cmd\">disableDeepLinkRegistration</span> blocks the <span class=\"scenario-cmd\">claude-cli://</span> handler. CLAUDE.md HTML comments (<span class=\"scenario-cmd\">&lt;!-- ... --&gt;</span>) stay hidden from Claude on auto-injection but visible via Read.",
         "tag": "v2.0.24"
       },
       "1": {
@@ -454,7 +454,7 @@
       },
       "3": {
         "title": "Enterprise Security",
-        "desc": "Shared project permission rules (.claude/settings.json) introduced in v0.2.67. Enterprise managed settings in v2.0.68. ConfigChange hook for auditing. Managed settings support macOS plist and Windows Registry. MCP allow/deny lists. v2.1.69 adds <span class=\"scenario-cmd\">pluginTrustMessage</span> managed setting, <span class=\"scenario-cmd\">pathPattern</span> regex matching for file/directory marketplace sources, and policy restrictions for Team plan OAuth users.",
+        "desc": "Shared project permission rules (.claude/settings.json) introduced in v0.2.67. Enterprise managed settings in v2.0.68. ConfigChange hook for auditing. Managed settings support macOS plist and Windows Registry. MCP allow/deny lists. v2.1.69 adds <span class=\"scenario-cmd\">pluginTrustMessage</span> managed setting and <span class=\"scenario-cmd\">pathPattern</span> regex matching for marketplace sources. v2.1.83 introduces <span class=\"scenario-cmd\">managed-settings.d/</span> policy fragments, letting teams split JSON policies by function and merge them alphabetically without collisions.",
         "tag": "v0.2.67"
       }
     },
@@ -466,7 +466,7 @@
       },
       "1": {
         "title": "Non-Interactive Mode (-p)",
-        "desc": "<span class=\"scenario-cmd\">-p</span> mode supports streaming JSON output. <span class=\"scenario-cmd\">--max-budget-usd</span> for budget control. <span class=\"scenario-cmd\">--system-prompt</span> / <span class=\"scenario-cmd\">--system-prompt-file</span> for custom system prompts (supports both interactive and print modes). <span class=\"scenario-cmd\">--append-system-prompt</span> for appending prompts. Subtask messages include parent_tool_use_id. v2.1.69 improves documentation to clarify that <span class=\"scenario-cmd\">--append-system-prompt-file</span> and <span class=\"scenario-cmd\">--system-prompt-file</span> both work in interactive mode.",
+        "desc": "<span class=\"scenario-cmd\">-p</span> mode supports streaming JSON output. <span class=\"scenario-cmd\">--max-budget-usd</span> for budget control. <span class=\"scenario-cmd\">--system-prompt</span> / <span class=\"scenario-cmd\">--system-prompt-file</span> for custom system prompts (supports both interactive and print modes). <span class=\"scenario-cmd\">--append-system-prompt</span> for appending prompts. Subtask messages include parent_tool_use_id. v2.1.69 clarifies <span class=\"scenario-cmd\">--append-system-prompt-file</span> and <span class=\"scenario-cmd\">--system-prompt-file</span> both work in interactive mode. v2.1.81 adds <span class=\"scenario-cmd\">--bare -p</span> to skip hooks / LSP / plugins for faster CI scripts.",
         "tag": "v0.2.66"
       },
       "2": {
@@ -580,10 +580,10 @@
     "timeline": {},
     "shortcuts_cards": {
       "0": {
-        "desc": "<span class=\"scenario-cmd\">claude auth login/status/logout</span> Auth management. <span class=\"scenario-cmd\">claude agents</span> List agents. <span class=\"scenario-cmd\">claude remote-control</span> Remote control. <span class=\"scenario-cmd\">claude doctor</span> Diagnostics. <span class=\"scenario-cmd\">claude mcp add/list/get/serve</span> MCP management. <span class=\"scenario-cmd\">claude plugin install/validate/browse</span> Plugin management. <span class=\"scenario-cmd\">claude install</span> Native install. <span class=\"scenario-cmd\">claude --teleport</span> Teleport from web."
+        "desc": "<span class=\"scenario-cmd\">claude auth login/status/logout</span> Auth management. <span class=\"scenario-cmd\">claude agents</span> List agents. <span class=\"scenario-cmd\">claude remote-control</span> Remote control. <span class=\"scenario-cmd\">claude doctor</span> Diagnostics. <span class=\"scenario-cmd\">claude mcp add/list/get/serve</span> MCP management. <span class=\"scenario-cmd\">claude plugin install/validate/browse</span> Plugin management. <span class=\"scenario-cmd\">claude --channels</span> Permission relay (preview). <span class=\"scenario-cmd\">claude -p --bare</span> Skip hooks/LSP/plugins for faster scripted runs. <span class=\"scenario-cmd\">claude install</span> Native install. <span class=\"scenario-cmd\">claude --teleport</span> Teleport from web."
       },
       "1": {
-        "desc": "<span class=\"scenario-cmd\">CLAUDE_CODE_SIMPLE</span> Minimal mode. <span class=\"scenario-cmd\">CLAUDE_CODE_TMPDIR</span> Custom temp dir. <span class=\"scenario-cmd\">CLAUDE_CODE_SHELL</span> Override shell detection. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> Disable background tasks. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> Disable 1M context. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS</span> Remove built-in Git instructions. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_CRON</span> Immediately stop scheduled cron jobs mid-session. <span class=\"scenario-cmd\">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> Disable claude.ai MCP servers. <span class=\"scenario-cmd\">CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS</span> Plugin git timeout. <span class=\"scenario-cmd\">CLAUDE_CODE_ACCOUNT_UUID</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_USER_EMAIL</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_ORGANIZATION_UUID</span> SDK account info. <span class=\"scenario-cmd\">BASH_DEFAULT_TIMEOUT_MS</span> Bash timeout. <span class=\"scenario-cmd\">ANTHROPIC_LOG=debug</span> Debug logging."
+        "desc": "<span class=\"scenario-cmd\">CLAUDE_CODE_SIMPLE</span> Minimal mode. <span class=\"scenario-cmd\">CLAUDE_CODE_TMPDIR</span> Custom temp dir. <span class=\"scenario-cmd\">CLAUDE_CODE_SHELL</span> Override shell detection. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span> Disable background tasks. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_1M_CONTEXT</span> Disable 1M context. <span class=\"scenario-cmd\">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</span> Scrub cloud/Anthropic creds from subprocess envs. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK</span> Disable non-streaming fallback. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS</span> Remove built-in Git instructions. <span class=\"scenario-cmd\">CLAUDE_CODE_DISABLE_CRON</span> Immediately stop scheduled cron jobs mid-session. <span class=\"scenario-cmd\">ENABLE_CLAUDEAI_MCP_SERVERS=false</span> Disable claude.ai MCP servers. <span class=\"scenario-cmd\">CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS</span> Plugin git timeout. <span class=\"scenario-cmd\">CLAUDE_CODE_ACCOUNT_UUID</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_USER_EMAIL</span>/<span class=\"scenario-cmd\">CLAUDE_CODE_ORGANIZATION_UUID</span> SDK account info. <span class=\"scenario-cmd\">BASH_DEFAULT_TIMEOUT_MS</span> Bash timeout. <span class=\"scenario-cmd\">ANTHROPIC_LOG=debug</span> Debug logging."
       },
       "2": {
         "desc": "Create markdown files in .claude/commands/ to define custom commands. Supports $ARGUMENTS parameters. <span class=\"scenario-cmd\">/keybindings</span> Custom keyboard shortcuts. <span class=\"scenario-cmd\">/statusline</span> Custom status line. settings.json changes take effect immediately without restart."
@@ -694,20 +694,21 @@
   },
   "keyboard_descs": {
     "0": "Send current task to background",
-    "1": "Kill all background agents",
-    "2": "Open external editor",
+    "1": "End all background agents (no longer on Ctrl+F)",
+    "2": "Open external editor (both shortcuts work)",
     "3": "Search command history",
-    "4": "Prompt stash (save input temporarily)",
-    "5": "Exit bash mode / Clear input line",
-    "6": "Yank (paste from kill ring)",
-    "7": "Suspend (fg to resume)",
-    "8": "Switch model while typing",
-    "9": "Toggle thinking mode",
-    "10": "Navigate between teammates",
-    "11": "Toggle auto-accept / mode switch",
-    "12": "Filename completion / Bash history completion",
-    "13": "Cancel main thread (background agents continue)",
-    "14": "Send / Queue follow-up messages"
+    "4": "Enter transcript mode, search with /, jump with n/N",
+    "5": "Prompt stash (save input temporarily)",
+    "6": "Exit bash mode / Clear input line",
+    "7": "Yank (paste from kill ring)",
+    "8": "Suspend (fg to resume)",
+    "9": "Switch model while typing",
+    "10": "Toggle thinking mode",
+    "11": "Navigate between teammates",
+    "12": "Toggle auto-accept / mode switch",
+    "13": "Filename completion / Bash history completion",
+    "14": "Cancel main thread (background agents continue)",
+    "15": "Send / Queue follow-up messages"
   },
   "slash_descs": {
     "0": "Switch AI model (takes effect immediately)",
@@ -881,6 +882,16 @@
       "date": "2026-03",
       "version": "v2.1.78",
       "desc": "StopFailure hook catches API-error endings; ${CLAUDE_PLUGIN_DATA} keeps plugin data with uninstall confirmation. Plugin-shipped agent frontmatter can set effort/maxTurns/disallowedTools. Terminal notifications reach the outer terminal in tmux, responses stream line by line. Fixed sandbox allowWrite absolute paths, protected dirs writable in bypass mode, deny MCP tools not removed, and now surface sandbox warnings when dependencies are missing."
+    },
+    "26": {
+      "date": "2026-03",
+      "version": "v2.1.79 — v2.1.81",
+      "desc": "statusline scripts get a rate_limits field for 5h/7d quotas; plugin marketplace entries can live inline in settings.json, and skill/agent frontmatter can override effort. --channels (preview) relays approvals to your phone with longer non-streaming fallbacks; --bare -p skips hooks/LSP/plugins for ~14% faster scripted runs."
+    },
+    "27": {
+      "date": "2026-03",
+      "version": "v2.1.83",
+      "desc": "managed-settings.d merges policy fragments, sandbox.failIfUnavailable exits when isolation can’t start; CwdChanged/FileChanged hooks react to directory/file changes; transcript mode search with / and n/N jumping; pasted images get [Image #N] chips, agent initialPrompt auto-submits the first turn, and subprocess envs scrub sensitive variables."
     }
   }
 }

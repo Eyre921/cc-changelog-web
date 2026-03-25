@@ -215,6 +215,45 @@ const App = (() => {
     }
   }
 
+  // ---- Hero floating orbs (parallax) ----
+  function initHeroOrbs() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    const configs = [
+      { bg: 'radial-gradient(circle at 30% 30%, rgba(139,115,85,.5), transparent 65%)', left: 18, top: 62, scale: 1.05, drift: 0.55 },
+      { bg: 'radial-gradient(circle at 70% 40%, rgba(107,142,123,.45), transparent 60%)', left: 64, top: 38, scale: 0.95, drift: 0.4 },
+      { bg: 'radial-gradient(circle at 50% 50%, rgba(123,142,166,.4), transparent 60%)', left: 42, top: 74, scale: 0.85, drift: 0.35 }
+    ];
+    const orbs = configs.map(cfg => {
+      const orb = document.createElement('span');
+      orb.className = 'hero-orb';
+      orb.style.background = cfg.bg;
+      orb.style.left = cfg.left + '%';
+      orb.style.top = cfg.top + '%';
+      orb.style.transform = `translate3d(0,0,0) scale(${cfg.scale})`;
+      hero.appendChild(orb);
+      return { el: orb, cfg };
+    });
+
+    function move(x = 50, y = 45) {
+      orbs.forEach(({ el, cfg }) => {
+        const dx = (x - 50) * cfg.drift;
+        const dy = (y - 45) * cfg.drift * 0.6;
+        el.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${cfg.scale})`;
+      });
+    }
+
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      move(x, y);
+    });
+    hero.addEventListener('mouseleave', () => move());
+    move();
+  }
+
   // ---- Hero spotlight following cursor ----
   function initHeroSpotlight() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -251,6 +290,30 @@ const App = (() => {
       });
       card.addEventListener('mouseleave', () => {
         card.style.transform = '';
+      });
+    });
+  }
+
+  // ---- Card spotlight following cursor ----
+  function initCardSpotlight() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if ('ontouchstart' in window) return;
+    document.querySelectorAll('.card').forEach(card => {
+      const spot = document.createElement('span');
+      spot.className = 'card-spotlight';
+      spot.style.setProperty('--spot-x', '50%');
+      spot.style.setProperty('--spot-y', '50%');
+      card.appendChild(spot);
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        spot.style.setProperty('--spot-x', `${x}%`);
+        spot.style.setProperty('--spot-y', `${y}%`);
+      });
+      card.addEventListener('mouseleave', () => {
+        spot.style.setProperty('--spot-x', '50%');
+        spot.style.setProperty('--spot-y', '50%');
       });
     });
   }
@@ -378,8 +441,10 @@ const App = (() => {
     initCountUp();
     initHeadingReveal();
     initHeroParticles();
+    initHeroOrbs();
     initHeroSpotlight();
     initCardTilt();
+    initCardSpotlight();
     initCardRipple();
     initSectionLabelReveal();
     initTimelineProgress();

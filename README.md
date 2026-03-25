@@ -4,7 +4,7 @@
 
 > [在线预览](https://cclog.vibevibe.cn/) · [进阶用法](https://www.vibevibe.cn/Advanced/)
 
-一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.78** 共 **220+ 个版本**、**1000+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
+一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.83** 共 **220+ 个版本**、**1000+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
 
 🔗 **数据来源**：[GitHub Releases](https://github.com/anthropics/claude-code/releases) · [官方文档](https://code.claude.com/docs) · [下载 Claude Code](https://claude.com/download)
 
@@ -17,7 +17,7 @@
 - **场景化叙事** — 每个功能附带真实使用场景和故事化描述，用中国开发者社区熟悉的词句，看完就知道怎么用
 - **终端打字动画** — Hero 区域模拟终端输入效果
 - **滚动淡入动画** — 基于 Intersection Observer 的滚动渐显效果
-- **丰富微交互** — 滚动进度条、卡片入场交错、hover 光波、统计数字滚动计数、时间线脉冲、hero 浮动粒子、卡片 3D 鼠标追踪倾斜、高亮卡片呼吸灯、hero 标题渐变流动、徽章微光扫过、卡片点击水波纹、渐变边框动画、时间线滚动渐显进度线、浮动按钮磁性吸附 + 描边环、section 标题悬浮渐变、场景列表交错入场、CTA 脉冲光晕、标签微光扫过、导航栏滚动阴影、hero 光斑跟随、时间线滚动高亮
+- **丰富微交互** — 滚动进度条、卡片入场交错、hover 光波、统计数字滚动计数、时间线脉冲、hero 浮动粒子、卡片 3D 鼠标追踪倾斜、高亮卡片呼吸灯、hero 标题渐变流动、徽章微光扫过、卡片点击水波纹、渐变边框动画、时间线滚动渐显进度线、浮动按钮磁性吸附 + 描边环、section 标题悬浮渐变、场景列表交错入场、CTA 脉冲光晕、标签微光扫过、导航栏滚动阴影、hero 光斑跟随、时间线滚动高亮、hero 渐层光球视差、卡片聚光跟随鼠标
 - **导航高亮** — 粘性导航栏随滚动自动高亮当前章节
 - **暗色主题** — 开发者友好的暗色 UI，暖色调点缀，导航栏支持亮暗主题切换按钮
 - **中英文切换** — 导航栏支持中文/英文语言切换按钮
@@ -25,14 +25,11 @@
 - **无障碍支持** — 尊重 `prefers-reduced-motion`，使用语义化 HTML
 - **零依赖** — 纯 HTML + CSS + JavaScript，无需构建工具
 
-## 🔄 本次同步结论（v2.1.78）
+## 🔄 本次同步结论（v2.1.83）
 
-- **可靠性兜底** —— 新增 StopFailure hook，API 错误/限流触发收尾逻辑；deny 列表真删除被禁的 MCP 工具；sandbox allowWrite 绝对路径、bypass 敏感目录修复，缺依赖时不再静默关闭而是显眼提示。
-- **插件/Agent 预设进阶** —— <span class="scenario-cmd">${CLAUDE_PLUGIN_DATA}</span> 持久存插件数据，/plugin uninstall 先确认；插件随带 agent 前言可直接写入 <span class="scenario-cmd">effort</span>/<span class="scenario-cmd">maxTurns</span>/<span class="scenario-cmd">disallowedTools</span>，团队预设自带推理力度、轮次和禁用工具。
-- **终端输出更顺滑** —— tmux + <span class="scenario-cmd">set -g allow-passthrough on</span> 时 iTerm2/Kitty/Ghostty 通知能透到外层终端，响应逐行流式；Opus 4.6 默认输出 64k（上限 128k），<span class="scenario-cmd">/copy N</span> 复制第 N 条回复，排队消息不再黏成一段。
-- **会话与日志修复** —— /resume 与 cc log 长会话截断修正，git log HEAD 在沙箱不再 ambiguous，StopFailure 防止错误吞掉 hook，queued prompts 自动换行。
-- **MCP/Hooks 持续扩展** —— Elicitation/PostCompact/StopFailure 全部纳入 Hooks 卡片，sandbox.allowRead 精细放行读取，deny 规则与插件数据都补齐。
-- **动效再加码** —— Hero 光斑跟随鼠标、时间线滚动高亮、浮动按钮描边环，新动效依旧尊重 `prefers-reduced-motion`。
+- **策略分片 + 沙箱 fail fast** —— 新增 <span class="scenario-cmd">managed-settings.d/</span> 分片策略，团队可以按职能拆成多个 JSON 片段按字典序合并；<span class="scenario-cmd">sandbox.failIfUnavailable</span> 缺依赖直接退出，不再裸奔；<span class="scenario-cmd">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</span> 自动剥离云厂商/Anthropic 凭证，<span class="scenario-cmd">disableDeepLinkRegistration</span> 禁止注册 <span class="scenario-cmd">claude-cli://</span> 协议。
+- **自动化触发更灵敏** —— 新增 <span class="scenario-cmd">CwdChanged</span>/<span class="scenario-cmd">FileChanged</span> hook 事件，目录切换、文件更新都能挂上自定义动作；transcript 模式支持 <span class="scenario-cmd">/</span> 搜索 + <span class="scenario-cmd">n/N</span> 跳转，<span class="scenario-cmd">Ctrl+X Ctrl+E</span> 成为外部编辑器原生别名，<span class="scenario-cmd">/status</span> 回答中也能查进度。
+- **场景化体验补完** —— 粘贴图片自动插入 <span class="scenario-cmd">[Image #N]</span> 编号芯片，长对话引用更准；Agent frontmatter 支持 <span class="scenario-cmd">initialPrompt</span> 自动提交首轮指令，插件 options 加 <span class="scenario-cmd">sensitive: true</span> 存入系统钥匙串；大文件 diff 超 5s 自动降级，macOS 退出/启动闪屏修复，非流式回退超时放宽，Remote 会话标题秒级生成。
 
 ## 🛠 技术栈
 
@@ -115,7 +112,7 @@ cc-changelog-web/
 | 10 | 跨平台 | macOS、Linux、Windows、WSL2、ARM64 |
 | 11 | VS Code 集成 | Spark 图标、Plan Markdown 视图、MCP 管理对话框 |
 | 12 | 快捷键与命令 | 快捷键速查、斜杠命令、`/effort`、CLI 子命令、环境变量、自定义配置 |
-| 13 | 版本时间线 | v0.2.21 ~ v2.1.76 完整历程 |
+| 13 | 版本时间线 | v0.2.21 ~ v2.1.83 完整历程 |
 
 ## 🎨 内容风格
 
@@ -132,6 +129,6 @@ cc-changelog-web/
 
 ## 📝 说明
 
-- 整理时间：2026-03-18
-- 版本范围：v0.2.21 ~ v2.1.78
+- 整理时间：2026-03-25
+- 版本范围：v0.2.21 ~ v2.1.83
 - 本站使用 Claude Code 构建
