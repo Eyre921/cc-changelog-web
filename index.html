@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Code 全特性速览 — 从用户视角出发</title>
-<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.83，230+ 个版本、1100+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
+<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.91，240+ 个版本、1150+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
 <meta name="keywords" content="Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK">
 <meta property="og:title" content="Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进">
 <meta property="og:description" content="220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。">
@@ -21,22 +21,22 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.83 全版本特性整理</span></div>
+  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.91 全版本特性整理</span></div>
   <h1 data-i18n="hero.title">Claude Code<br>全特性速览</h1>
-  <p data-i18n="hero.subtitle">从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>230+ 个版本迭代、1100+ 项更新，每一项能力都配有真实场景，看完就能上手。</p>
+  <p data-i18n="hero.subtitle">从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>240+ 个版本迭代、1150+ 项更新，每一项能力都配有真实场景，看完就能上手。</p>
   <div class="hero-meta">
-    <span><span class="num">230+</span> <span data-i18n="hero.versions">个版本</span></span>
-    <span><span class="num">1100+</span> <span data-i18n="hero.updates">项更新</span></span>
+    <span><span class="num">240+</span> <span data-i18n="hero.versions">个版本</span></span>
+    <span><span class="num">1150+</span> <span data-i18n="hero.updates">项更新</span></span>
     <span><span class="num">3</span> <span data-i18n="hero.majors">个大版本</span></span>
-    <span><span class="num">2025.04 — 2026.03</span></span>
+    <span><span class="num">2025.04 — 2026.04</span></span>
   </div>
   <a href="https://www.vibevibe.cn/Advanced/" target="_blank" class="hero-cta" data-i18n="hero.advancedCta">🚀 探索 Claude Code 进阶用法 →</a>
   <div class="terminal-demo">
     <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title" data-i18n="hero.terminalTitle">Claude Code — zsh</span></div>
     <div class="terminal-body">
       <div><span class="prompt">~ $</span> <span class="cmd">claude</span></div>
-      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.83 (Opus 4.6)</div>
-      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">1M context | transcript search | hook events | managed-settings.d | image chips | --bare | --channels</span></div>
+      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.91 (Opus 4.6)</div>
+      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">1M context | /powerup lessons | PowerShell tool | MCP 500K results | plugin bin/ | --bare | defer hooks</span></div>
       <div class="output">&nbsp;</div>
       <div><span class="prompt">></span> <span class="cmd typing" data-i18n="hero.terminalTyping"> 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试</span></div>
     </div>
@@ -77,34 +77,64 @@
 <section class="section" id="recent">
   <div class="section-label"><span data-i18n="sections.recent.label">🔥 最近更新亮点</span></div>
   <h2 data-i18n="sections.recent.title">最近版本的新特性</h2>
-  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.83：transcript 搜索、Hook 事件扩展、managed-settings.d 目录、--bare 脚本模式、--channels 权限中继——功能持续扩展，开发体验再升级。</p>
+  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.91：/powerup 互动教学、PowerShell 工具、MCP 结果突破 500K、插件 bin/ 目录、defer 权限决策——功能持续扩展，开发体验再升级。</p>
 
   <div class="grid grid-3">
     <div class="card fade-in card-highlight">
-      <div class="card-icon c1">🔍</div>
-      <h3>Transcript 搜索——会话历史秒速检索</h3>
+      <div class="card-icon c1">🎓</div>
+      <h3>/powerup 互动教学——新手福音，老鸟进阶</h3>
+      <p>v2.1.90 新增 <span class="scenario-cmd">/powerup</span> 命令，带动画演示的互动课程，手把手教你玩转 Claude Code 各项功能。不用翻文档、不用看视频，边学边练，一路闯关。从「Claude 能干啥」到「我能让 Claude 怎么干」，这一个命令就够了。</p>
+      <span class="tag c1">v2.1.90 NEW</span>
+    </div>
+    <div class="card fade-in card-highlight">
+      <div class="card-icon c2">⚡</div>
+      <h3>PowerShell 工具——Windows 党终于不用绕路</h3>
+      <p>v2.1.84 起支持 PowerShell 工具（Windows 预览）。以前 Windows 开发者要么绕道 WSL，要么只能用 Bash 兼容模式。现在 Claude 可以直接调 PowerShell，模块管理、.NET 调用、Active Directory、Windows 系统管理命令一把梭，不用再翻译语法。权限检测强化修复了后台任务绕过、debugger 挂起、存档解压 TOCTOU 等安全问题。</p>
+      <span class="tag c2">v2.1.84 NEW</span>
+    </div>
+    <div class="card fade-in card-highlight">
+      <div class="card-icon c3">📊</div>
+      <h3>MCP 结果突破 500K——数据库 schema 不再截断</h3>
+      <p>v2.1.91 支持通过 <span class="scenario-cmd">_meta["anthropic/maxResultSizeChars"]</span> 注解突破 MCP 工具结果大小限制，单次最高 500K。数据库 schema、大型配置文件、API spec 文档，以前动辄被截断一半，现在可以完整传给 Claude。插件现在还能在 <span class="scenario-cmd">bin/</span> 目录下打包可执行文件，从 Bash 工具直接以裸命令调用。</p>
+      <span class="tag c3">v2.1.91 NEW</span>
+    </div>
+    <div class="card fade-in card-highlight">
+      <div class="card-icon c4">🪝</div>
+      <h3>Defer 权限决策——无头会话也能暂停审批</h3>
+      <p>v2.1.89 新增 <span class="scenario-cmd">"defer"</span> 权限决策给 PreToolUse hooks。无头会话（如 CI/CD）可以在工具调用时暂停，用 <span class="scenario-cmd">-p --resume</span> 恢复后让 hook 重新评估。还新增 <span class="scenario-cmd">PermissionDenied</span> hook，拒绝后可返回 <span class="scenario-cmd">{retry: true}</span> 告诉模型重试。自动化流程再也不会因为单次权限拒绝就整个卡死。</p>
+      <span class="tag c4">v2.1.89 NEW</span>
+    </div>
+    <div class="card fade-in card-highlight">
+      <div class="card-icon c5">🎨</div>
+      <h3>无闪烁渲染 & 性能狂飙</h3>
+      <p>v2.1.89-90 环境变量 <span class="scenario-cmd">CLAUDE_CODE_NO_FLICKER=1</span> 启用无闪烁 alt-screen 渲染与虚拟化滚动回溯。SSE 传输大帧处理从二次降为线性时间；SDK 会话长对话不再二次减速；MCP 工具 schema 缓存查找不再每轮 JSON.stringify；Bun 环境 <span class="scenario-cmd">stripAnsi</span> 性能暴涨。Edit 工具使用更短的 <span class="scenario-cmd">old_string</span> 锚点，减少输出 token。</p>
+      <span class="tag c5">v2.1.89-91</span>
+    </div>
+    <div class="card fade-in card-highlight">
+      <div class="card-icon c6">🔧</div>
+      <h3>Transcript 搜索 & 图片引用标记</h3>
       <p>v2.1.83 新增 transcript 搜索功能，在 transcript 模式（<span class="scenario-cmd">Ctrl+O</span>）下按 <span class="scenario-cmd">/</span> 即可搜索，<span class="scenario-cmd">n</span>/<span class="scenario-cmd">N</span> 在匹配项间跳转。粘贴的图片会插入 <span class="scenario-cmd">[Image #N]</span> 标记，方便在提示中按位置引用。Agent 现在支持 <span class="scenario-cmd">initialPrompt</span> 前言自动提交首轮对话。</p>
-      <span class="tag c1">v2.1.83 NEW</span>
+      <span class="tag c6">v2.1.83</span>
     </div>
-    <div class="card fade-in card-highlight">
-      <div class="card-icon c2">⚙️</div>
-      <h3>Hook 事件扩展——环境响应式管理</h3>
-      <p>v2.1.83 新增 <span class="scenario-cmd">CwdChanged</span> 和 <span class="scenario-cmd">FileChanged</span> hook 事件，实现响应式环境管理（如 direnv）。<span class="scenario-cmd">managed-settings.d/</span> 目录让团队独立部署策略片段，按字母顺序合并。环境变量支持 <span class="scenario-cmd">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</span> 清除子进程凭据。</p>
-      <span class="tag c2">v2.1.83 NEW</span>
+    <div class="card fade-in">
+      <div class="card-icon c1">📁</div>
+      <h3>managed-settings.d/ & Hook 条件过滤</h3>
+      <p>v2.1.83-85 新增 <span class="scenario-cmd">managed-settings.d/</span> 目录，让不同团队独立部署策略片段，按字母顺序合并。Hook 增加条件 <span class="scenario-cmd">if</span> 字段（如 <span class="scenario-cmd">Bash(git *)</span>）精准过滤触发时机，减少进程生成开销。新增 <span class="scenario-cmd">CwdChanged</span>/<span class="scenario-cmd">FileChanged</span> hook 响应式环境管理（direnv 场景）。</p>
+      <span class="tag c1">v2.1.83-85</span>
     </div>
-    <div class="card fade-in card-highlight">
-      <div class="card-icon c3">🚀</div>
-      <h3>--bare 和 --channels——脚本化与远程控制</h3>
-      <p>v2.1.81 引入 <span class="scenario-cmd">--bare</span> 标志用于脚本化 <span class="scenario-cmd">-p</span> 调用，跳过 hooks、LSP、插件同步。<span class="scenario-cmd">--channels</span> 权限中继支持 channel 服务器转发工具审批提示到手机。v2.1.80 新增 <span class="scenario-cmd">rate_limits</span> 字段显示限流状态，<span class="scenario-cmd">effort</span> 前言覆盖模型推理级别。</p>
-      <span class="tag c3">v2.1.81 — v2.1.83</span>
+    <div class="card fade-in">
+      <div class="card-icon c2">🔐</div>
+      <h3>--bare 脚本模式 & 安全增强</h3>
+      <p>v2.1.81 引入 <span class="scenario-cmd">--bare</span> 标志用于脚本化 <span class="scenario-cmd">-p</span> 调用，跳过 hooks/LSP/插件同步，需 <span class="scenario-cmd">ANTHROPIC_API_KEY</span> 或 <span class="scenario-cmd">apiKeyHelper</span>。<span class="scenario-cmd">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</span> 清除子进程凭据。<span class="scenario-cmd">sandbox.failIfUnavailable</span> 设置让沙箱不可用时退出而非无沙箱运行。</p>
+      <span class="tag c2">v2.1.81-83</span>
     </div>
-    <div class="card fade-in card-highlight">
-      <div class="card-icon c4">🌈</div>
+    <div class="card fade-in card-highlight-secondary">
+      <div class="card-icon c7">🌈</div>
       <h3>1M 上下文默认开放 & /color 个性化 prompt bar</h3>
       <p>v2.1.75 起 Opus 4.6 的 100 万上下文窗口对 Max/Team/Enterprise 用户<strong>默认开放</strong>（以前需要额外配额）。同版还新增 <span class="scenario-cmd">/color</span> 命令，给你的 prompt bar 设个颜色——多窗口场景一眼分清哪个是哪个。</p>
-      <span class="tag c4">v2.1.75 NEW</span>
+      <span class="tag c7">v2.1.75 NEW</span>
     </div>
-    <div class="card fade-in card-highlight">
+    <div class="card fade-in card-highlight-secondary">
       <div class="card-icon c6">🛡️</div>
       <h3>v2.1.75 — v2.1.76 稳定性大扫除</h3>
       <p>修复延迟加载工具在压缩后丢失 input schema（数组和数字参数报类型错误）、plan mode 已接受后还要重新审批、语音模式在权限弹窗或 plan 编辑器打开时吞按键、auto-compaction 连续失败无限重试（新增断路器机制 3 次后停止）、token 估算过度计数导致过早压缩等。后台 agent 被 kill 后保留部分结果、模型回退通知改为始终可见、暗色主题下 blockquote 改为斜体+左竖线更易读——稳定性和可观测性双提升。企业管理员还可通过 <span class="scenario-cmd">feedbackSurveyRate</span> 配置会话质量调查采样率。</p>

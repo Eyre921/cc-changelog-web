@@ -4,7 +4,7 @@
 
 > [在线预览](https://cclog.vibevibe.cn/) · [进阶用法](https://www.vibevibe.cn/Advanced/)
 
-一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.83** 共 **230+ 个版本**、**1100+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
+一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.91** 共 **240+ 个版本**、**1150+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
 
 🔗 **数据来源**：[GitHub Releases](https://github.com/anthropics/claude-code/releases) · [官方文档](https://code.claude.com/docs) · [下载 Claude Code](https://claude.com/download)
 
@@ -25,14 +25,15 @@
 - **无障碍支持** — 尊重 `prefers-reduced-motion`，使用语义化 HTML
 - **零依赖** — 纯 HTML + CSS + JavaScript，无需构建工具
 
-## 🔄 本次同步结论（v2.1.83）
+## 🔄 本次同步结论（v2.1.91）
 
-- **Transcript 搜索** —— 在 transcript 模式（Ctrl+O）按 / 即可搜索，n/N 跳转匹配项；粘贴图片插入 [Image #N] 标记方便引用。
-- **Hook 事件扩展** —— 新增 CwdChanged/FileChanged hook 响应式环境管理；managed-settings.d/ 目录支持团队策略片段按字母顺序合并；CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1 清除子进程凭据。
-- **--bare 脚本模式** —— 脚本化 -p 调用跳过 hooks/LSP/插件同步，需 ANTHROPIC_API_KEY；auto-memory 完全禁用。
-- **--channels 权限中继** —— channel 服务器可转发工具审批提示到手机（研究预览）。
-- **更多优化** —— Agent initialPrompt 前言自动提交首轮；chat:killAgents/chat:fastMode 可重绑定；修复 macOS 退出挂起、屏幕空闲闪烁、大文件 diff 挂起等 50+ 个 bug。
-- **动效全面升级** —— 新增卡片 3D 倾斜、悬浮发光、粒子雨、统计数字跳入、键盘按键动画、场景图标旋转等精致效果，全部尊重 prefers-reduced-motion。
+- **/powerup 交互式教学** —— v2.1.90 新增 `/powerup` 命令，带动画演示的互动课程，手把手教你玩转 Claude Code 各项功能，新手福音。
+- **PowerShell 工具正式上线** —— v2.1.84 起支持 PowerShell 工具（Windows 预览），Windows 开发者终于不用绕道 WSL，直接用 PowerShell 一把梭。
+- **MCP 工具结果增强** —— v2.1.91 支持通过 `_meta["anthropic/maxResultSizeChars"]` 注解突破结果大小限制（最高 500K），数据库 schema、大型配置文件再也不怕被截断。
+- **插件生态强化** —— 插件现在可以在 `bin/` 下打包可执行文件，直接从 Bash 工具以裸命令调用；`disableSkillShellExecution` 设置可禁用 skills/命令的内联 shell 执行。
+- **深度链接多行支持** —— `claude-cli://open?q=` 深度链接支持多行提示（`%0A` 编码换行符），自动化工作流更丝滑。
+- **性能与稳定性狂飙** —— 修复了 transcript 链断裂、plan mode 文件丢失、无限循环崩溃、内存泄漏等 60+ 个关键 bug；Edit 工具使用更短的锚点减少输出 token；Bun 环境下 `stripAnsi` 性能暴涨。
+- **Hook 与自动化全面进化** —— v2.1.89 新增 `PermissionDenied` hook（拒绝后可重试）、`defer` 权限决策（无头会话暂停后恢复）；v2.1.85 增加条件 `if` 字段精准过滤 hook 触发时机。
 
 ## 🛠 技术栈
 
@@ -132,6 +133,6 @@ cc-changelog-web/
 
 ## 📝 说明
 
-- 整理时间：2026-03-25
-- 版本范围：v0.2.21 ~ v2.1.83
+- 整理时间：2026-04-03
+- 版本范围：v0.2.21 ~ v2.1.91
 - 本站使用 Claude Code 构建
