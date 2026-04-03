@@ -4,7 +4,7 @@
 
 > [在线预览](https://cclog.vibevibe.cn/) · [进阶用法](https://www.vibevibe.cn/Advanced/)
 
-一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.83** 共 **230+ 个版本**、**1100+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
+一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.91** 共 **230+ 个版本**、**1100+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
 
 🔗 **数据来源**：[GitHub Releases](https://github.com/anthropics/claude-code/releases) · [官方文档](https://code.claude.com/docs) · [下载 Claude Code](https://claude.com/download)
 
@@ -25,14 +25,13 @@
 - **无障碍支持** — 尊重 `prefers-reduced-motion`，使用语义化 HTML
 - **零依赖** — 纯 HTML + CSS + JavaScript，无需构建工具
 
-## 🔄 本次同步结论（v2.1.83）
+## 🔄 本次同步结论（v2.1.91）
 
-- **Transcript 搜索** —— 在 transcript 模式（Ctrl+O）按 / 即可搜索，n/N 跳转匹配项；粘贴图片插入 [Image #N] 标记方便引用。
-- **Hook 事件扩展** —— 新增 CwdChanged/FileChanged hook 响应式环境管理；managed-settings.d/ 目录支持团队策略片段按字母顺序合并；CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1 清除子进程凭据。
-- **--bare 脚本模式** —— 脚本化 -p 调用跳过 hooks/LSP/插件同步，需 ANTHROPIC_API_KEY；auto-memory 完全禁用。
-- **--channels 权限中继** —— channel 服务器可转发工具审批提示到手机（研究预览）。
-- **更多优化** —— Agent initialPrompt 前言自动提交首轮；chat:killAgents/chat:fastMode 可重绑定；修复 macOS 退出挂起、屏幕空闲闪烁、大文件 diff 挂起等 50+ 个 bug。
-- **动效全面升级** —— 新增卡片 3D 倾斜、悬浮发光、粒子雨、统计数字跳入、键盘按键动画、场景图标旋转等精致效果，全部尊重 prefers-reduced-motion。
+- **MCP 结果不再「动不动被截断」** —— 新增 `_meta["anthropic/maxResultSizeChars"]` 可把工具结果上限提升到 500K；像数据库 schema、长诊断输出这类“大块信息”也能一把带进上下文。
+- **插件能力更像「团队脚手架」** —— 插件可自带 `bin/` 可执行文件并直接从 Bash 调用；同时支持 `disableSkillShellExecution`，可按团队策略关掉 Skills/命令里的内联 shell 执行。
+- **实战学习模块补齐** —— 新增 `/powerup` 交互课程，边看演示边上手；适合团队新人快速入场，把常见工作流“开箱即用”地跑通。
+- **远程与恢复链路更稳** —— 修复 `--resume` 会话链断裂、远程 Plan 文件丢失、配置校验和多端终端快捷键等问题，减少“写到一半掉链子”的中断感。
+- **性能与安全继续打磨** —— 优化大流式帧处理、长会话 transcript 写入、缓存与权限校验路径；补齐多处 PowerShell 权限绕过和危险参数边界，企业场景更放心。
 
 ## 🛠 技术栈
 
@@ -107,15 +106,15 @@ cc-changelog-web/
 | 2 | 多 Agent 协作 | Agent 团队、后台 Agent、多任务并行、Worktree 隔离 |
 | 3 | 会话与上下文管理 | 自动记忆、会话分叉/恢复、PR 关联、智能压缩 |
 | 4 | 开发工作流 | Git/PR 集成、Plan Mode、`/plan` 直接起手、Web 搜索、PDF 阅读、LSP |
-| 5 | MCP 生态与扩展 | OAuth、插件、Skills、Hooks、远程控制、二进制内容处理、tool search 补强 |
-| 6 | 终端体验 | 主题、Vim 模式、CJK 支持、快捷键、`/copy` 直写文件、语音输入、Bash 命令自动放行 |
+| 5 | MCP 生态与扩展 | OAuth、插件、Skills、Hooks、远程控制、二进制内容处理、tool search 补强、结果大小上限控制 |
+| 6 | 终端体验 | 主题、Vim 模式、CJK 支持、快捷键、`/copy` 直写文件、语音输入、Bash 命令自动放行、`/powerup` 交互课程 |
 | 7 | 安全与信任 | 沙箱环境、权限控制、企业合规 |
 | 8 | SDK 与集成 | TypeScript/Python SDK、Desktop 应用、OTel 可观测性 |
 | 9 | 性能与效率 | 渲染优化 74%、30+ 内存泄漏修复、启动冻结修复 |
 | 10 | 跨平台 | macOS、Linux、Windows、WSL2、ARM64 |
 | 11 | VS Code 集成 | Spark 图标、Plan Markdown 视图、MCP 管理对话框 |
 | 12 | 快捷键与命令 | 快捷键速查、斜杠命令、`/effort`、CLI 子命令、环境变量、自定义配置 |
-| 13 | 版本时间线 | v0.2.21 ~ v2.1.76 完整历程 |
+| 13 | 版本时间线 | v0.2.21 ~ v2.1.91 完整历程 |
 
 ## 🎨 内容风格
 
@@ -132,6 +131,6 @@ cc-changelog-web/
 
 ## 📝 说明
 
-- 整理时间：2026-03-25
-- 版本范围：v0.2.21 ~ v2.1.83
+- 整理时间：2026-04-03
+- 版本范围：v0.2.21 ~ v2.1.91
 - 本站使用 Claude Code 构建
