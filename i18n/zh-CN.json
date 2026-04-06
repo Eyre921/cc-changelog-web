@@ -1,23 +1,23 @@
 {
   "meta": {
     "title": "Claude Code 全特性速览 — 从用户视角出发",
-    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.91，240+ 个版本、1150+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。",
+    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.92，240+ 个版本、1160+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。",
     "keywords": "Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进",
-    "ogDescription": "240+ 个版本、1150+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。"
+    "ogDescription": "240+ 个版本、1160+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。"
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.91 全版本特性整理",
+    "badge": "v0.2.21 — v2.1.92 全版本特性整理",
     "title": "Claude Code<br>全特性速览",
-    "subtitle": "从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>240+ 个版本迭代、1150+ 项更新，每一项能力都配有真实场景，看完就能上手。",
+    "subtitle": "从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>240+ 个版本迭代、1160+ 项更新，每一项能力都配有真实场景，看完就能上手。",
     "versions": "个版本",
     "updates": "项更新",
     "majors": "个大版本",
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.91 (Opus 4.6)",
-    "terminalOutput2": "  1M context | /powerup lessons | PowerShell tool | MCP 500K results | plugin bin/ | --bare | defer hooks",
+    "terminalOutput1": "  Claude Code v2.1.92 (Opus 4.6)",
+    "terminalOutput2": "  Bedrock wizard | /release-notes picker | /cost breakdown | forceRemoteSettingsRefresh | hostname session prefix",
     "terminalTyping": " 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试",
     "advancedCta": "🚀 探索 Claude Code 进阶用法 →"
   },
@@ -41,7 +41,7 @@
     "recent": {
       "label": "🔥 最近更新亮点",
       "title": "最近版本的新特性",
-      "subtitle": "v2.1.58 — v2.1.91：/powerup 互动教学、PowerShell 工具、MCP 结果突破 500K、插件 bin/ 目录、defer 权限决策——功能持续扩展，开发体验再升级。"
+      "subtitle": "v2.1.58 — v2.1.92：Bedrock 交互式向导、/release-notes 版本选择器、/cost 详细拆分、远程会话主机名前缀、强制远程设置刷新——功能持续扩展，开发体验再升级。"
     },
     "models": {
       "label": "◆ AI 模型与推理",
