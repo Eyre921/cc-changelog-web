@@ -326,9 +326,7 @@ kbd{display:inline-block;padding:.1rem .4rem;font-size:.75rem;background:var(--s
 .grid .fade-in:nth-child(12){transition-delay:.6s}
 
 /* ---- Card shimmer on hover ---- */
-.card::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);transition:left .6s ease;pointer-events:none}
-.card:hover::after{left:120%}
-[data-theme="dark"] .card::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
+/* Removed: conflicts with glow trail effect below */
 
 /* ---- Stat number glow ---- */
 .stat .num{transition:all .6s ease}

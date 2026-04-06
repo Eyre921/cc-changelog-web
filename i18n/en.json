@@ -1,23 +1,23 @@
 {
   "meta": {
     "title": "Claude Code Feature Overview — A User's Perspective",
-    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.91, 240+ versions and 1150+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
+    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.92, 240+ versions and 1160+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
     "keywords": "Claude Code, Anthropic, AI Programming, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code Feature Overview — Complete Evolution from v0.2 to v2.1",
-    "ogDescription": "240+ versions, 1150+ updates. From terminal to IDE, from solo coding to multi-Agent collaboration — discover every capability of Claude Code."
+    "ogDescription": "240+ versions, 1160+ updates. From terminal to IDE, from solo coding to multi-Agent collaboration — discover every capability of Claude Code."
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.91 Full Version Feature Summary",
+    "badge": "v0.2.21 — v2.1.92 Full Version Feature Summary",
     "title": "Claude Code<br>Feature Overview",
-    "subtitle": "From terminal to IDE, from solo coding to a team of Agents doing the heavy lifting.<br>240+ version iterations, 1150+ updates — each feature comes with real-world scenarios so you can hit the ground running.",
+    "subtitle": "From terminal to IDE, from solo coding to a team of Agents doing the heavy lifting.<br>240+ version iterations, 1160+ updates — each feature comes with real-world scenarios so you can hit the ground running.",
     "versions": " versions",
     "updates": " updates",
     "majors": " major releases",
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.91 (Opus 4.6)",
-    "terminalOutput2": "  1M context | /powerup lessons | PowerShell tool | MCP 500K results | plugin bin/ | --bare | defer hooks",
+    "terminalOutput1": "  Claude Code v2.1.92 (Opus 4.6)",
+    "terminalOutput2": "  Bedrock wizard | /release-notes picker | /cost breakdown | forceRemoteSettingsRefresh | hostname session prefix",
     "terminalTyping": " Refactor this module with 3 agents: one for security, one for perf, one for tests",
     "advancedCta": "🚀 Explore Advanced Claude Code Usage →"
   },
@@ -41,7 +41,7 @@
     "recent": {
       "label": "🔥 Recent Highlights",
       "title": "Latest Features",
-      "subtitle": "v2.1.58 — v2.1.91: /powerup interactive lessons, PowerShell tool for Windows, MCP results up to 500K, plugin bin/ executables, defer permission decisions — continuous expansion, enhanced developer experience."
+      "subtitle": "v2.1.58 — v2.1.92: Bedrock interactive wizard, /release-notes version picker, /cost detailed breakdown, remote session hostname prefix, force remote settings refresh — continuous expansion, enhanced developer experience."
     },
     "models": {
       "label": "◆ AI Models & Reasoning",

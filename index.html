@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Code 全特性速览 — 从用户视角出发</title>
-<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.91，240+ 个版本、1150+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
+<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.92，240+ 个版本、1160+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
 <meta name="keywords" content="Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK">
 <meta property="og:title" content="Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进">
 <meta property="og:description" content="220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。">
@@ -21,12 +21,12 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.91 全版本特性整理</span></div>
+  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.92 全版本特性整理</span></div>
   <h1 data-i18n="hero.title">Claude Code<br>全特性速览</h1>
-  <p data-i18n="hero.subtitle">从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>240+ 个版本迭代、1150+ 项更新，每一项能力都配有真实场景，看完就能上手。</p>
+  <p data-i18n="hero.subtitle">从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>240+ 个版本迭代、1160+ 项更新，每一项能力都配有真实场景，看完就能上手。</p>
   <div class="hero-meta">
     <span><span class="num">240+</span> <span data-i18n="hero.versions">个版本</span></span>
-    <span><span class="num">1150+</span> <span data-i18n="hero.updates">项更新</span></span>
+    <span><span class="num">1160+</span> <span data-i18n="hero.updates">项更新</span></span>
     <span><span class="num">3</span> <span data-i18n="hero.majors">个大版本</span></span>
     <span><span class="num">2025.04 — 2026.04</span></span>
   </div>
@@ -35,8 +35,8 @@
     <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title" data-i18n="hero.terminalTitle">Claude Code — zsh</span></div>
     <div class="terminal-body">
       <div><span class="prompt">~ $</span> <span class="cmd">claude</span></div>
-      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.91 (Opus 4.6)</div>
-      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">1M context | /powerup lessons | PowerShell tool | MCP 500K results | plugin bin/ | --bare | defer hooks</span></div>
+      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.92 (Opus 4.6)</div>
+      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">Bedrock wizard | /release-notes picker | /cost breakdown | forceRemoteSettingsRefresh | hostname session prefix</span></div>
       <div class="output">&nbsp;</div>
       <div><span class="prompt">></span> <span class="cmd typing" data-i18n="hero.terminalTyping"> 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试</span></div>
     </div>
@@ -77,9 +77,27 @@
 <section class="section" id="recent">
   <div class="section-label"><span data-i18n="sections.recent.label">🔥 最近更新亮点</span></div>
   <h2 data-i18n="sections.recent.title">最近版本的新特性</h2>
-  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.91：/powerup 互动教学、PowerShell 工具、MCP 结果突破 500K、插件 bin/ 目录、defer 权限决策——功能持续扩展，开发体验再升级。</p>
+  <p class="subtitle" data-i18n="sections.recent.subtitle">v2.1.58 — v2.1.92：Bedrock 交互式向导、/release-notes 版本选择器、/cost 详细拆分、远程会话主机名前缀、强制远程设置刷新——功能持续扩展，开发体验再升级。</p>
 
   <div class="grid grid-3">
+    <div class="card fade-in card-highlight">
+      <div class="card-icon c1">🧙</div>
+      <h3>Bedrock 交互式向导——AWS 配置一键到位</h3>
+      <p>v2.1.92 新增交互式 Bedrock 设置向导，登录界面选「3rd-party platform」即可启动。从 AWS 认证、区域配置、凭证验证到模型固定，全程手把手引导，再也不用在 CLI 和 AWS 控制台之间来回跳。配置完成立刻可用，新手也能 5 分钟搞定 Bedrock 接入。</p>
+      <span class="tag c1">v2.1.92 NEW</span>
+    </div>
+    <div class="card fade-in card-highlight">
+      <div class="card-icon c2">📋</div>
+      <h3>/release-notes 版本选择器——想看哪版点哪版</h3>
+      <p>v2.1.92 起 <span class="scenario-cmd">/release-notes</span> 命令升级为交互式版本选择器，不再是一股脑儿刷屏的长列表。想看某个版本的更新日志？直接选就行，优雅回溯历史版本。配合 <span class="scenario-cmd">/cost</span> 新增的按模型和缓存命中拆分（订阅用户专享），追踪成本和版本演进都更清晰了。</p>
+      <span class="tag c2">v2.1.92 NEW</span>
+    </div>
+    <div class="card fade-in card-highlight">
+      <div class="card-icon c3">🖥️</div>
+      <h3>远程会话主机名前缀——多机协作不迷路</h3>
+      <p>v2.1.92 Remote Control 会话名默认使用你的主机名作前缀（如 <span class="scenario-cmd">myhost-graceful-unicorn</span>），可通过 <span class="scenario-cmd">--remote-control-session-name-prefix</span> 自定义。多台机器同时开远程会话时，一眼就知道哪个是哪个。同版本还新增 <span class="scenario-cmd">forceRemoteSettingsRefresh</span> 策略设置，CLI 启动时强制刷新远程托管设置，获取失败直接退出（fail-closed），企业合规更稳。</p>
+      <span class="tag c3">v2.1.92 NEW</span>
+    </div>
     <div class="card fade-in card-highlight">
       <div class="card-icon c1">🎓</div>
       <h3>/powerup 互动教学——新手福音，老鸟进阶</h3>

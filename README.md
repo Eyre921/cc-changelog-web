@@ -4,7 +4,7 @@
 
 > [在线预览](https://cclog.vibevibe.cn/) · [进阶用法](https://www.vibevibe.cn/Advanced/)
 
-一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.91** 共 **240+ 个版本**、**1150+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
+一个交互式的 Claude Code 功能速览网站，梳理了从 **v0.2.21 到 v2.1.92** 共 **240+ 个版本**、**1160+ 项更新**的完整功能演进。每项功能都配有真实使用场景，用中国开发者熟悉的语言讲述，看完就能上手。
 
 🔗 **数据来源**：[GitHub Releases](https://github.com/anthropics/claude-code/releases) · [官方文档](https://code.claude.com/docs) · [下载 Claude Code](https://claude.com/download)
 
@@ -25,8 +25,14 @@
 - **无障碍支持** — 尊重 `prefers-reduced-motion`，使用语义化 HTML
 - **零依赖** — 纯 HTML + CSS + JavaScript，无需构建工具
 
-## 🔄 本次同步结论（v2.1.91）
+## 🔄 本次同步结论（v2.1.92）
 
+- **Bedrock 交互式向导** —— v2.1.92 新增交互式 Bedrock 设置向导，登录界面选「3rd-party platform」即可启动。从 AWS 认证、区域配置、凭证验证到模型固定，全程手把手引导，新手也能 5 分钟搞定 Bedrock 接入。
+- **/release-notes 版本选择器** —— v2.1.92 起 `/release-notes` 命令升级为交互式版本选择器，想看某个版本的更新日志直接选就行，优雅回溯历史版本。
+- **/cost 详细拆分** —— v2.1.92 为订阅用户新增按模型和缓存命中的成本拆分，追踪成本更清晰。
+- **远程会话主机名前缀** —— v2.1.92 Remote Control 会话名默认使用主机名作前缀（如 `myhost-graceful-unicorn`），可通过 `--remote-control-session-name-prefix` 自定义。多台机器同时开远程会话时一眼就知道哪个是哪个。
+- **强制远程设置刷新** —— v2.1.92 新增 `forceRemoteSettingsRefresh` 策略设置，CLI 启动时强制刷新远程托管设置，获取失败直接退出（fail-closed），企业合规更稳。
+- **Pro 用户缓存提示** —— Pro 用户返回会话时如果 prompt cache 已过期，会看到页脚提示，显示下一轮大约会发送多少未缓存 token。
 - **/powerup 交互式教学** —— v2.1.90 新增 `/powerup` 命令，带动画演示的互动课程，手把手教你玩转 Claude Code 各项功能，新手福音。
 - **PowerShell 工具正式上线** —— v2.1.84 起支持 PowerShell 工具（Windows 预览），Windows 开发者终于不用绕道 WSL，直接用 PowerShell 一把梭。
 - **MCP 工具结果增强** —— v2.1.91 支持通过 `_meta["anthropic/maxResultSizeChars"]` 注解突破结果大小限制（最高 500K），数据库 schema、大型配置文件再也不怕被截断。
@@ -133,6 +139,6 @@ cc-changelog-web/
 
 ## 📝 说明
 
-- 整理时间：2026-04-03
-- 版本范围：v0.2.21 ~ v2.1.91
+- 整理时间：2026-04-06
+- 版本范围：v0.2.21 ~ v2.1.92
 - 本站使用 Claude Code 构建
