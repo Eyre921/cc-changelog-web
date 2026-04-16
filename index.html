@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Code 全特性速览 — 从用户视角出发</title>
-<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.92，240+ 个版本、1160+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。">
+<meta name="description" content="Claude Code 全特性速览：从 v0.2.21 到 v2.1.111，258+ 个版本、1300+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱、企业工程化与可观测等全部能力。">
 <meta name="keywords" content="Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK">
 <meta property="og:title" content="Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进">
 <meta property="og:description" content="220+ 个版本、1000+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。">
@@ -21,12 +21,12 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.92 全版本特性整理</span></div>
+  <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">v0.2.21 — v2.1.111 全版本特性整理</span></div>
   <h1 data-i18n="hero.title">Claude Code<br>全特性速览</h1>
-  <p data-i18n="hero.subtitle">从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>240+ 个版本迭代、1160+ 项更新，每一项能力都配有真实场景，看完就能上手。</p>
+  <p data-i18n="hero.subtitle">从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>258+ 个版本迭代、1300+ 项更新，每一项能力都配有真实场景，看完就能上手。</p>
   <div class="hero-meta">
-    <span><span class="num">240+</span> <span data-i18n="hero.versions">个版本</span></span>
-    <span><span class="num">1160+</span> <span data-i18n="hero.updates">项更新</span></span>
+    <span><span class="num">258+</span> <span data-i18n="hero.versions">个版本</span></span>
+    <span><span class="num">1300+</span> <span data-i18n="hero.updates">项更新</span></span>
     <span><span class="num">3</span> <span data-i18n="hero.majors">个大版本</span></span>
     <span><span class="num">2025.04 — 2026.04</span></span>
   </div>
@@ -35,8 +35,8 @@
     <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title" data-i18n="hero.terminalTitle">Claude Code — zsh</span></div>
     <div class="terminal-body">
       <div><span class="prompt">~ $</span> <span class="cmd">claude</span></div>
-      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.92 (Opus 4.6)</div>
-      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">Bedrock wizard | /release-notes picker | /cost breakdown | forceRemoteSettingsRefresh | hostname session prefix</span></div>
+      <div class="output" data-i18n="hero.terminalOutput1">  Claude Code v2.1.111 (Opus 4.7 xhigh)</div>
+      <div class="output">  <span class="highlight" data-i18n="hero.terminalOutput2">Auto Mode | /effort slider | /ultrareview | /less-permission-prompts | /tui fullscreen</span></div>
       <div class="output">&nbsp;</div>
       <div><span class="prompt">></span> <span class="cmd typing" data-i18n="hero.terminalTyping"> 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试</span></div>
     </div>
@@ -56,6 +56,7 @@
     <a href="#terminal" data-i18n="nav.terminal">终端体验</a>
     <a href="#security" data-i18n="nav.security">安全沙箱</a>
     <a href="#sdk" data-i18n="nav.sdk">SDK & 集成</a>
+    <a href="#enterprise" data-i18n="nav.enterprise">企业工程化</a>
     <a href="#performance" data-i18n="nav.performance">性能优化</a>
     <a href="#platform" data-i18n="nav.platform">跨平台</a>
     <a href="#vscode" data-i18n="nav.vscode">VS Code</a>
@@ -747,6 +748,52 @@
 </section>
 
 <!-- ============================================ -->
+<!-- Section: Enterprise Engineering & Observability -->
+<!-- ============================================ -->
+<section class="section" id="enterprise">
+  <div class="section-label"><span data-i18n="sections.enterprise.label">◆ 企业工程化与可观测</span></div>
+  <h2 data-i18n="sections.enterprise.title">把 AI 写代码纳入企业生产线：可审计、可回放、可治理</h2>
+  <p class="subtitle" data-i18n="sections.enterprise.subtitle">从 Perforce 到 OTel，再到 Monitor 流式观测，Claude Code 已经从“好用”走到“可落地”。</p>
+
+  <div class="grid grid-3">
+    <div class="card fade-in">
+      <div class="card-icon c1">🏭</div>
+      <h3>Perforce 模式——只读文件不再“误改”</h3>
+      <p><span class="scenario-cmd">CLAUDE_CODE_PERFORCE_MODE</span> 打开后，遇到只读文件不会偷偷失败，而是明确提示 <span class="scenario-cmd">p4 edit</span>。在重审计、重审批的企业流程里，这种“显式失败 + 显式修复建议”才是生产级体验。</p>
+      <span class="tag c1">v2.1.98</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c2">📡</div>
+      <h3>Monitor + OTel——后台任务从黑盒变透明</h3>
+      <p>Monitor 工具让你流式看到脚本和任务事件；OTel 侧补齐跨进程链路（含 <span class="scenario-cmd">TRACEPARENT</span>）与原始请求日志开关。线上排障从“猜哪里慢”变成“看哪里慢”。</p>
+      <span class="tag c2">v2.1.98 — v2.1.111</span>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon c3">🛡️</div>
+      <h3>权限治理升级——更少弹窗，更稳边界</h3>
+      <p><span class="scenario-cmd">/less-permission-prompts</span> 能基于会话自动建议 allowlist；只读 Bash 命令与安全 glob 场景减少不必要确认；同时权限绕过相关漏洞持续修复，做到“该放就放、该拦就拦”。</p>
+      <span class="tag c3">v2.1.105 — v2.1.111</span>
+    </div>
+  </div>
+
+  <div class="scenario fade-in" style="margin-top:2rem">
+    <div class="scenario-header">
+      <div class="scenario-num c2">!</div>
+      <h3>场景：把 Claude Code 接进企业交付链路<span>从开发提效升级到工程治理</span></h3>
+    </div>
+    <div class="scenario-body">
+      <ul>
+        <li>研发同学在受管仓库里改代码，遇到只读文件时 Claude 明确提醒先 <span class="scenario-cmd">p4 edit</span>，避免“改了但没提交成功”的隐性故障</li>
+        <li>CI 上的后台任务全接入 Monitor，值班同学不进机器也能实时看执行状态和错误片段</li>
+        <li>安全团队通过 <span class="scenario-cmd">/less-permission-prompts</span> 生成 allowlist，把高频安全读操作自动放行，减少重复确认打断</li>
+        <li>平台团队将 OTel 指标与日志接入统一观测系统，跨终端、跨子进程调用链可追踪</li>
+        <li>出现权限争议时，hook 和策略日志可回放，审计证据链完整</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
 <!-- Section 8: Performance -->
 <!-- ============================================ -->
 <section class="section" id="performance">
@@ -1023,7 +1070,7 @@
 <section class="section" id="timeline">
   <div class="section-label"><span data-i18n="sections.timeline.label">◆ 版本时间线</span></div>
   <h2 data-i18n="sections.timeline.title">从 v0.2 到 v2.1——一年干了别人三年的活</h2>
-  <p class="subtitle" data-i18n="sections.timeline.subtitle">220+ 个版本，从"能用"到"好用"到"离不开"的完整进化史。</p>
+  <p class="subtitle" data-i18n="sections.timeline.subtitle">258+ 个版本，从"能用"到"好用"到"离不开"的完整进化史。</p>
 
   <div class="timeline fade-in">
     <div class="timeline-item major">
@@ -1166,6 +1213,16 @@
       <div class="timeline-version">v2.1.81 — v2.1.83</div>
       <div class="timeline-desc" style="color:var(--accent1)">--bare 脚本化 -p 调用跳过 hooks/LSP。--channels 权限中继转发审批到手机。transcript 搜索（/ 搜索、n/N 跳转）。粘贴图片插入 [Image #N] 标记。CwdChanged/FileChanged hook 响应式环境管理。managed-settings.d/ 目录团队策略片段按字母顺序合并。Agent initialPrompt 前言自动提交首轮。chat:killAgents/chat:fastMode 可重绑定。CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1 清除子进程凭据。</div>
     </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-04</div>
+      <div class="timeline-version">v2.1.84 — v2.1.98</div>
+      <div class="timeline-desc">PowerShell 工具逐步开放、/powerup 互动教学、/release-notes 交互式版本选择器、Bedrock/Vertex 向导持续补强、Monitor 流式观测上线、Perforce 模式与子进程沙箱治理落地，企业级交付链路能力显著增强。</div>
+    </div>
+    <div class="timeline-item major">
+      <div class="timeline-date">2026-04</div>
+      <div class="timeline-version">v2.1.101 — v2.1.111</div>
+      <div class="timeline-desc" style="color:var(--accent1)">Opus 4.7 xhigh 与 Auto Mode 上线，<span class="scenario-cmd">/effort</span> 支持交互滑块，新增 <span class="scenario-cmd">/ultrareview</span> 和 <span class="scenario-cmd">/less-permission-prompts</span>，<span class="scenario-cmd">/tui</span> + <span class="scenario-cmd">/focus</span> 改善长会话阅读体验，并持续修复权限、稳定性与跨平台细节问题。</div>
+    </div>
   </div>
 </section>
 
@@ -1181,7 +1238,7 @@
 <!-- Footer -->
 <footer class="footer">
   <p><span data-i18n="footer.sources">数据来源：</span><a href="https://github.com/anthropics/claude-code/releases" target="_blank" data-i18n="footer.githubReleases">GitHub Releases</a> · <a href="https://code.claude.com/docs" target="_blank" data-i18n="footer.officialDocs">官方文档</a> · <a href="https://claude.com/download" target="_blank" data-i18n="footer.download">下载 Claude Code</a></p>
-  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-03-25</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.83</span> · <span data-i18n="footer.totalVersions">共 230+ 个版本</span> · <span data-i18n="footer.totalUpdates">1100+ 项更新</span></p>
+  <p style="margin-top:.5rem"><span data-i18n="footer.timestamp">整理时间：2026-04-16</span> · <span data-i18n="footer.versionRange">版本范围：v0.2.21 ~ v2.1.111</span> · <span data-i18n="footer.totalVersions">共 258+ 个版本</span> · <span data-i18n="footer.totalUpdates">1300+ 项更新</span></p>
   <p style="margin-top:.8rem"><a href="https://www.vibevibe.cn/Advanced/" target="_blank" class="footer-cta" data-i18n="footer.advancedGuide">🚀 探索更多 Claude Code 进阶用法 →</a></p>
   <p style="margin-top:1rem;color:var(--text3)"><span data-i18n="footer.builtWith">Built with Claude Code</span> · <a href="#" style="color:var(--text3)" data-i18n="footer.backToTop">回到顶部 ↑</a></p>
 </footer>

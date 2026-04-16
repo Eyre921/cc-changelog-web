@@ -571,3 +571,47 @@ kbd:active{animation:key-press .15s ease}
 /* ---- Card icon bounce on hover ---- */
 @keyframes icon-bounce{0%,100%{transform:translateY(-3px) scale(1.1)}25%{transform:translateY(-6px) scale(1.15)}75%{transform:translateY(-1px) scale(1.08)}}
 .card:hover .card-icon{animation:icon-bounce .8s ease-in-out infinite}
+
+/* ---- New: card spotlight interaction ---- */
+.card{--spot-x:50%;--spot-y:50%}
+.card::selection{background:transparent}
+.card::after{
+  background:
+    radial-gradient(180px circle at var(--spot-x) var(--spot-y),rgba(255,255,255,.12),transparent 60%),
+    linear-gradient(135deg,var(--accent1),var(--accent4),var(--accent2));
+}
+[data-theme="dark"] .card::after{
+  background:
+    radial-gradient(180px circle at var(--spot-x) var(--spot-y),rgba(255,255,255,.16),transparent 60%),
+    linear-gradient(135deg,var(--accent1),var(--accent4),var(--accent2));
+}
+
+/* ---- New: scenario list shimmer interaction ---- */
+.scenario-body li{--line-x:0%;overflow:hidden}
+.scenario-body li::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent1),transparent);
+  transform:translateX(calc(var(--line-x) - 50%));
+  opacity:.18;
+  transition:transform .15s ease,opacity .15s ease;
+  pointer-events:none;
+}
+.scenario-body li:hover::after{opacity:.55}
+
+/* ---- New: timeline click focus pulse ---- */
+.timeline-item.focus-pulse{animation:timeline-focus .7s ease}
+@keyframes timeline-focus{
+  0%{transform:translateX(0)}
+  35%{transform:translateX(8px)}
+  100%{transform:translateX(0)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .timeline-item.focus-pulse{animation:none}
+  .scenario-body li::after{transition:none}
+}

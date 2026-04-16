@@ -1,23 +1,23 @@
 {
   "meta": {
     "title": "Claude Code 全特性速览 — 从用户视角出发",
-    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.92，240+ 个版本、1160+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱等全部能力。",
+    "description": "Claude Code 全特性速览：从 v0.2.21 到 v2.1.111，258+ 个版本、1300+ 项更新的完整功能梳理。涵盖 AI 模型、多 Agent 协作、MCP 生态、终端体验、安全沙箱、企业工程化与可观测等全部能力。",
     "keywords": "Claude Code, Anthropic, AI 编程, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code 全特性速览 — 从 v0.2 到 v2.1 的完整演进",
-    "ogDescription": "240+ 个版本、1160+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。"
+    "ogDescription": "258+ 个版本、1300+ 项更新。从终端到 IDE，从单人编码到多 Agent 协作，带你看懂 Claude Code 的每一项能力。"
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.92 全版本特性整理",
+    "badge": "v0.2.21 — v2.1.111 全版本特性整理",
     "title": "Claude Code<br>全特性速览",
-    "subtitle": "从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>240+ 个版本迭代、1160+ 项更新，每一项能力都配有真实场景，看完就能上手。",
+    "subtitle": "从终端到 IDE，从一个人写代码到一群 Agent 帮你干活。<br>258+ 个版本迭代、1300+ 项更新，每一项能力都配有真实场景，看完就能上手。",
     "versions": "个版本",
     "updates": "项更新",
     "majors": "个大版本",
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.92 (Opus 4.6)",
-    "terminalOutput2": "  Bedrock wizard | /release-notes picker | /cost breakdown | forceRemoteSettingsRefresh | hostname session prefix",
+    "terminalOutput1": "  Claude Code v2.1.111 (Opus 4.7 xhigh)",
+    "terminalOutput2": "  Auto Mode | /effort slider | /ultrareview | /less-permission-prompts | /tui fullscreen",
     "terminalTyping": " 帮我重构这个模块，三个 agent 分头跑：一个查安全、一个优化性能、一个补测试",
     "advancedCta": "🚀 探索 Claude Code 进阶用法 →"
   },
@@ -35,13 +35,14 @@
     "platform": "跨平台",
     "vscode": "VS Code",
     "shortcuts": "快捷键",
-    "timeline": "版本线"
+    "timeline": "版本线",
+    "enterprise": "企业工程化"
   },
   "sections": {
     "recent": {
       "label": "🔥 最近更新亮点",
       "title": "最近版本的新特性",
-      "subtitle": "v2.1.58 — v2.1.92：Bedrock 交互式向导、/release-notes 版本选择器、/cost 详细拆分、远程会话主机名前缀、强制远程设置刷新——功能持续扩展，开发体验再升级。"
+      "subtitle": "v2.1.101 — v2.1.111：Opus 4.7 xhigh、Auto Mode、/effort 交互滑块、/ultrareview 云端审查、/less-permission-prompts 权限减负、/tui 全屏体验持续进化。"
     },
     "models": {
       "label": "◆ AI 模型与推理",
@@ -106,7 +107,12 @@
     "timeline": {
       "label": "◆ 版本时间线",
       "title": "从 v0.2 到 v2.1——一年干了别人三年的活",
-      "subtitle": "220+ 个版本，从「能用」到「好用」到「离不开」的完整进化史。"
+      "subtitle": "258+ 个版本，从「能用」到「好用」到「离不开」的完整进化史。"
+    },
+    "enterprise": {
+      "label": "◆ 企业工程化与可观测",
+      "title": "把 AI 写代码纳入企业生产线：可审计、可回放、可治理",
+      "subtitle": "从 Perforce 到 OTel，再到 Monitor 流式观测，Claude Code 已经从“好用”走到“可落地”。"
     }
   },
   "stats": {
@@ -128,10 +134,10 @@
     "githubReleases": "GitHub Releases",
     "officialDocs": "官方文档",
     "download": "下载 Claude Code",
-    "timestamp": "整理时间：2026-03-25",
-    "versionRange": "版本范围：v0.2.21 ~ v2.1.83",
-    "totalVersions": "共 230+ 个版本",
-    "totalUpdates": "1100+ 项更新",
+    "timestamp": "整理时间：2026-04-16",
+    "versionRange": "版本范围：v0.2.21 ~ v2.1.111",
+    "totalVersions": "共 258+ 个版本",
+    "totalUpdates": "1300+ 项更新",
     "builtWith": "Built with Claude Code",
     "backToTop": "回到顶部 ↑",
     "advancedGuide": "🚀 探索更多 Claude Code 进阶用法 →"
@@ -144,34 +150,34 @@
   "cards": {
     "recent": {
       "0": {
-        "title": "Transcript 搜索——会话历史秒速检索",
-        "desc": "v2.1.83 新增 transcript 搜索功能，在 transcript 模式（<span class=\"scenario-cmd\">Ctrl+O</span>）下按 <span class=\"scenario-cmd\">/</span> 即可搜索，<span class=\"scenario-cmd\">n</span>/<span class=\"scenario-cmd\">N</span> 在匹配项间跳转。粘贴的图片会插入 <span class=\"scenario-cmd\">[Image #N]</span> 标记，方便在提示中按位置引用。Agent 现在支持 <span class=\"scenario-cmd\">initialPrompt</span> 前言自动提交首轮对话。",
-        "tag": "v2.1.83 NEW"
+        "title": "Opus 4.7 xhigh + Auto Mode——重活更稳，轻活更快",
+        "desc": "v2.1.111 上线 Opus 4.7 xhigh 档位，推理强度位于 high 与 max 之间，复杂重构和架构审查更稳。Max 用户还能直接开 Auto Mode，让 Claude 按任务复杂度动态取舍速度和深度。",
+        "tag": "v2.1.111 NEW"
       },
       "1": {
-        "title": "Hook 事件扩展——环境响应式管理",
-        "desc": "v2.1.83 新增 <span class=\"scenario-cmd\">CwdChanged</span> 和 <span class=\"scenario-cmd\">FileChanged</span> hook 事件，实现响应式环境管理（如 direnv）。<span class=\"scenario-cmd\">managed-settings.d/</span> 目录让团队独立部署策略片段，按字母顺序合并。环境变量支持 <span class=\"scenario-cmd\">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1</span> 清除子进程凭据。",
-        "tag": "v2.1.83 NEW"
+        "title": "/ultrareview——云端并行深度 Code Review",
+        "desc": "新增 <span class=\"scenario-cmd\">/ultrareview</span>，可对当前分支或指定 PR 进行并行多 agent 深度审查。适合合并前做“最后一道质量闸门”，把风险点、可维护性和潜在回归集中拉出来。",
+        "tag": "v2.1.111 NEW"
       },
       "2": {
-        "title": "--bare 和 --channels——脚本化与远程控制",
-        "desc": "v2.1.81 引入 <span class=\"scenario-cmd\">--bare</span> 标志用于脚本化 <span class=\"scenario-cmd\">-p</span> 调用，跳过 hooks、LSP、插件同步。<span class=\"scenario-cmd\">--channels</span> 权限中继支持 channel 服务器转发工具审批提示到手机。v2.1.80 新增 <span class=\"scenario-cmd\">rate_limits</span> 字段显示限流状态，<span class=\"scenario-cmd\">effort</span> 前言覆盖模型推理级别。",
-        "tag": "v2.1.81 — v2.1.83"
+        "title": "/less-permission-prompts——权限弹窗减负",
+        "desc": "<span class=\"scenario-cmd\">/less-permission-prompts</span> 会扫描会话并生成优先级 allowlist 建议，专门覆盖高频只读 Bash/MCP 调用。再配合只读 glob 命令免打扰策略，既不牺牲安全边界，也显著降低“点确认”成本。",
+        "tag": "v2.1.111 NEW"
       },
       "3": {
-        "title": "v2.1.75 — v2.1.76 稳定性大扫除",
-        "desc": "修复延迟加载工具在压缩后丢失 input schema（数组和数字参数报类型错误）、plan mode 已接受后还要重新审批、语音模式在权限弹窗或 plan 编辑器打开时吞按键、auto-compaction 连续失败无限重试（新增断路器机制 3 次后停止）、token 估算过度计数导致过早压缩等。后台 agent 被 kill 后保留部分结果、模型回退通知改为始终可见——稳定性和可观测性双提升。",
-        "tag": "v2.1.75 — v2.1.76"
+        "title": "/effort 交互滑块 + xhigh 档位",
+        "desc": "<span class=\"scenario-cmd\">/effort</span> 无参调用可直接打开交互滑块，方向键切档、回车确认；Opus 4.7 新增 xhigh 档位，精准覆盖“high 不够、max 太贵”的中间地带。",
+        "tag": "v2.1.111 NEW"
       },
       "4": {
-        "title": "/plan 一句话起手——想法刚冒头就能开工",
-        "desc": "v2.1.72 给 <span class=\"scenario-cmd\">/plan</span> 加了可选描述参数。现在你可以直接来一句 <span class=\"scenario-cmd\">/plan 修 auth bug</span>，Claude 立刻进入 plan mode 开始拆方案。少一次来回确认，灵感还热乎的时候就把活铺开。",
-        "tag": "v2.1.72 NEW"
+        "title": "/tui + /focus——长会话阅读体验重构",
+        "desc": "v2.1.110 新增 <span class=\"scenario-cmd\">/tui fullscreen</span> 与独立 <span class=\"scenario-cmd\">/focus</span> 切换，配合 autoScrollEnabled 与编辑器上下文回填，长时对话阅读、滚动定位与审查体验更沉浸。",
+        "tag": "v2.1.110 NEW"
       },
       "5": {
-        "title": "/copy 新增 w 落盘——SSH 党狂喜",
-        "desc": "在 <span class=\"scenario-cmd\">/copy</span> 交互选择器里新增 <span class=\"scenario-cmd\">w</span> 键，聚焦的代码块可直接写入文件，绕过剪贴板。远程连服务器、没有系统剪贴板、tmux 里来回切窗口？这下真能一把梭。",
-        "tag": "v2.1.72 NEW"
+        "title": "Session Recap + 内置命令可发现",
+        "desc": "v2.1.108 起会话回归可自动 recap（支持配置开关），并允许模型通过 Skill tool 发现并调用内置斜杠命令。回到老会话不再“重新找感觉”，自动化流程也更连续。",
+        "tag": "v2.1.108 NEW"
       },
       "6": {
         "title": "Effort 档位瘦身——○ ◐ ● 一眼看懂",
@@ -588,6 +594,23 @@
       "2": {
         "desc": "在 .claude/commands/ 中创建 markdown 文件定义自定义命令。支持 $ARGUMENTS 参数。<span class=\"scenario-cmd\">/keybindings</span> 自定义键盘快捷键。<span class=\"scenario-cmd\">/statusline</span> 自定义状态行。settings.json 变更即时生效无需重启。"
       }
+    },
+    "enterprise": {
+      "0": {
+        "title": "Perforce 模式——受管代码库的安全编辑体验",
+        "desc": "开启 <span class=\"scenario-cmd\">CLAUDE_CODE_PERFORCE_MODE</span> 后，只读文件编辑失败会直接提示 <span class=\"scenario-cmd\">p4 edit</span>。在严格审批流程下，Claude 不会“悄悄失败”，而是给出可执行下一步。",
+        "tag": "v2.1.98"
+      },
+      "1": {
+        "title": "Monitor + OTel 可观测——后台执行全链路可追踪",
+        "desc": "Monitor 工具支持流式观察后台脚本事件；OTel 继续补强原始请求日志与链路上下文传递。你可以在统一观测平台里把“谁调用了谁、哪里慢、哪里报错”一次串起来。",
+        "tag": "v2.1.98 — v2.1.111"
+      },
+      "2": {
+        "title": "权限治理自动化——减少确认噪音",
+        "desc": "通过 <span class=\"scenario-cmd\">/less-permission-prompts</span> 自动生成 allowlist 建议，结合只读命令免打扰规则，把重复审批从流程里拿掉。开发效率提升的同时，审计边界仍然清晰可控。",
+        "tag": "v2.1.105 — v2.1.111"
+      }
     }
   },
   "scenarios": {
@@ -689,6 +712,17 @@
         "2": "运维同事在 RHEL 8 服务器上跑（glibc < 2.30）？没问题，Alpine/musl 也支持",
         "3": "WSL2 用户从 Windows 复制图片粘贴到终端？BMP 格式兼容已修复，直接能贴",
         "4": "大家 <span class=\"scenario-cmd\">/doctor</span> 一键自检，mise/asdf 管理的安装也能正确识别，不用手动排查路径问题"
+      }
+    },
+    "enterprise": {
+      "title": "场景：把 Claude Code 接进企业交付链路",
+      "subtitle": "从开发提效升级到工程治理",
+      "items": {
+        "0": "研发在受管仓库改代码，遇到只读文件时 Claude 直接提醒 <span class=\"scenario-cmd\">p4 edit</span>，避免隐性失败",
+        "1": "CI 与值班平台接入 Monitor，后台任务状态和异常片段可以实时追踪",
+        "2": "安全团队先跑 <span class=\"scenario-cmd\">/less-permission-prompts</span> 生成 allowlist，再由管理员审批落库",
+        "3": "平台团队把 OTel 指标和日志接进统一看板，跨进程调用链一眼可见",
+        "4": "权限争议发生时可回放 hook 与策略决策链，审计证据完整"
       }
     }
   },
@@ -881,6 +915,16 @@
       "date": "2026-03",
       "version": "v2.1.78",
       "desc": "StopFailure hook 捕获 API 错误导致的终止，${CLAUDE_PLUGIN_DATA} 让插件数据持久化，卸载前提醒是否删除。插件 agent 前言可带 effort/maxTurns/disallowedTools。tmux 下终端通知穿透外层，响应逐行流式显示。修复 sandbox allowWrite 绝对路径、bypass 模式写入敏感目录、deny MCP 工具未生效，并在依赖缺失时清晰提示沙箱状态。"
+    },
+    "26": {
+      "date": "2026-04",
+      "version": "v2.1.84 — v2.1.98",
+      "desc": "PowerShell 工具逐步开放、/powerup 互动教学、/release-notes 交互式版本选择器、Bedrock/Vertex 向导持续补强、Monitor 流式观测上线、Perforce 模式与子进程沙箱治理落地，企业级交付链路能力显著增强。"
+    },
+    "27": {
+      "date": "2026-04",
+      "version": "v2.1.101 — v2.1.111",
+      "desc": "Opus 4.7 xhigh 与 Auto Mode 上线，/effort 支持交互滑块，新增 /ultrareview 与 /less-permission-prompts，/tui + /focus 重构长会话阅读体验，并持续修复稳定性、安全与跨平台细节。"
     }
   }
 }

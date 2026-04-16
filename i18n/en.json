@@ -1,23 +1,23 @@
 {
   "meta": {
     "title": "Claude Code Feature Overview — A User's Perspective",
-    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.92, 240+ versions and 1160+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, and more.",
+    "description": "Claude Code Feature Overview: From v0.2.21 to v2.1.111, 258+ versions and 1300+ updates fully documented. Covering AI models, multi-Agent collaboration, MCP ecosystem, terminal experience, security sandbox, enterprise engineering, observability, and more.",
     "keywords": "Claude Code, Anthropic, AI Programming, Agent, MCP, CLI, VS Code, SDK",
     "ogTitle": "Claude Code Feature Overview — Complete Evolution from v0.2 to v2.1",
-    "ogDescription": "240+ versions, 1160+ updates. From terminal to IDE, from solo coding to multi-Agent collaboration — discover every capability of Claude Code."
+    "ogDescription": "258+ versions, 1300+ updates. From terminal to IDE, from solo coding to multi-Agent collaboration — discover every capability of Claude Code."
   },
   "hero": {
-    "badge": "v0.2.21 — v2.1.92 Full Version Feature Summary",
+    "badge": "v0.2.21 — v2.1.111 Full Version Feature Summary",
     "title": "Claude Code<br>Feature Overview",
-    "subtitle": "From terminal to IDE, from solo coding to a team of Agents doing the heavy lifting.<br>240+ version iterations, 1160+ updates — each feature comes with real-world scenarios so you can hit the ground running.",
+    "subtitle": "From terminal to IDE, from solo coding to a team of Agents doing the heavy lifting.<br>258+ version iterations, 1300+ updates — each feature comes with real-world scenarios so you can hit the ground running.",
     "versions": " versions",
     "updates": " updates",
     "majors": " major releases",
     "terminalTitle": "Claude Code — zsh",
     "terminalPrompt": "~ $",
     "terminalCmd": "claude",
-    "terminalOutput1": "  Claude Code v2.1.92 (Opus 4.6)",
-    "terminalOutput2": "  Bedrock wizard | /release-notes picker | /cost breakdown | forceRemoteSettingsRefresh | hostname session prefix",
+    "terminalOutput1": "  Claude Code v2.1.111 (Opus 4.7 xhigh)",
+    "terminalOutput2": "  Auto Mode | /effort slider | /ultrareview | /less-permission-prompts | /tui fullscreen",
     "terminalTyping": " Refactor this module with 3 agents: one for security, one for perf, one for tests",
     "advancedCta": "🚀 Explore Advanced Claude Code Usage →"
   },
@@ -35,13 +35,14 @@
     "platform": "Cross-Platform",
     "vscode": "VS Code",
     "shortcuts": "Shortcuts",
-    "timeline": "Timeline"
+    "timeline": "Timeline",
+    "enterprise": "Enterprise"
   },
   "sections": {
     "recent": {
       "label": "🔥 Recent Highlights",
       "title": "Latest Features",
-      "subtitle": "v2.1.58 — v2.1.92: Bedrock interactive wizard, /release-notes version picker, /cost detailed breakdown, remote session hostname prefix, force remote settings refresh — continuous expansion, enhanced developer experience."
+      "subtitle": "v2.1.101 — v2.1.111: Opus 4.7 xhigh, Auto Mode, interactive /effort slider, /ultrareview cloud review, /less-permission-prompts, and /tui fullscreen all sharpen daily workflows."
     },
     "models": {
       "label": "◆ AI Models & Reasoning",
@@ -106,7 +107,12 @@
     "timeline": {
       "label": "◆ Version Timeline",
       "title": "From v0.2 to v2.1 — One Year's Work That Others Take Three",
-      "subtitle": "220+ versions, from 'it works' to 'it's great' to 'can't live without it' — the complete evolution story."
+      "subtitle": "258+ versions — from 'it works' to 'it's great' to 'can't live without it' — the complete evolution story."
+    },
+    "enterprise": {
+      "label": "◆ Enterprise Engineering & Observability",
+      "title": "Bring AI Coding into Enterprise Production: Auditable, Replayable, Governable",
+      "subtitle": "From Perforce to OTel to Monitor streaming events, Claude Code is now not just useful — it is deployable at enterprise scale."
     }
   },
   "stats": {
@@ -128,10 +134,10 @@
     "githubReleases": "GitHub Releases",
     "officialDocs": "Official Docs",
     "download": "Download Claude Code",
-    "timestamp": "Updated: 2026-03-18",
-    "versionRange": "Version range: v0.2.21 ~ v2.1.78",
-    "totalVersions": "220+ versions",
-    "totalUpdates": "1000+ updates",
+    "timestamp": "Updated: 2026-04-16",
+    "versionRange": "Version range: v0.2.21 ~ v2.1.111",
+    "totalVersions": "258+ versions",
+    "totalUpdates": "1300+ updates",
     "builtWith": "Built with Claude Code",
     "backToTop": "Back to top ↑",
     "advancedGuide": "🚀 Explore More Advanced Claude Code Usage →"
@@ -144,34 +150,34 @@
   "cards": {
     "recent": {
       "0": {
-        "title": "StopFailure Hook + Sandbox Guardrails — Failures Get Caught",
-        "desc": "v2.1.78 adds a StopFailure hook so API errors or rate limits still trigger your cleanup instead of failing silently. Deny lists now actually strip blocked MCP tools, sandbox allowWrite with absolute paths is fixed, and protected folders like .git/.claude stay blocked even in bypass mode. Missing sandbox deps now surface a clear warning instead of silently disabling isolation.",
-        "tag": "v2.1.78 NEW"
+        "title": "Opus 4.7 xhigh + Auto Mode — Smarter Heavy Work, Faster Routine Work",
+        "desc": "v2.1.111 introduces Opus 4.7 xhigh, a reasoning tier between high and max for tougher architecture and refactor tasks. Max users also get Auto Mode, letting Claude balance speed and depth per task automatically.",
+        "tag": "v2.1.111 NEW"
       },
       "1": {
-        "title": "Plugin Data Persistence + Fully Tunable Agent Frontmatter",
-        "desc": "Plugins now get <span class=\"scenario-cmd\">${CLAUDE_PLUGIN_DATA}</span> for durable state that survives upgrades, and /plugin uninstall asks before deleting it. Plugin-shipped agents can set <span class=\"scenario-cmd\">effort</span>, <span class=\"scenario-cmd\">maxTurns</span>, and <span class=\"scenario-cmd\">disallowedTools</span> up front so team presets ship with the right intensity, turn budget, and tool guardrails.",
-        "tag": "v2.1.78 NEW"
+        "title": "/ultrareview — Parallel Deep Cloud Code Review",
+        "desc": "New <span class=\"scenario-cmd\">/ultrareview</span> runs comprehensive parallel multi-agent review on your current branch or a target PR. It works well as a final quality gate before merge, surfacing risk, maintainability issues, and likely regressions together.",
+        "tag": "v2.1.111 NEW"
       },
       "2": {
-        "title": "Terminal Glow-Up: tmux Passthrough & Line-by-Line Streaming",
-        "desc": "iTerm2/Kitty/Ghostty notifications and progress bars now punch through tmux when <span class=\"scenario-cmd\">set -g allow-passthrough on</span> is set. Responses stream line by line so queued messages don't glue together. Default output cap climbs to 64k (up to 128k), and <span class=\"scenario-cmd\">/copy N</span> grabs the Nth reply directly.",
-        "tag": "v2.1.77 — v2.1.78"
+        "title": "/less-permission-prompts — Fewer Friction Prompts, Same Guardrails",
+        "desc": "<span class=\"scenario-cmd\">/less-permission-prompts</span> scans transcripts and proposes a prioritized allowlist for common read-only Bash/MCP actions. Combined with safer read-only glob exemptions, it cuts repetitive approval clicks without loosening policy boundaries.",
+        "tag": "v2.1.111 NEW"
       },
       "3": {
-        "title": "v2.1.75 — v2.1.76 Stability Sweep",
-        "desc": "Fixed deferred tools losing input schemas after compaction (array/number parameter type errors), plan mode re-asking for approval after already accepted, voice mode swallowing keypresses during permission dialogs, auto-compaction retrying indefinitely (circuit breaker after 3 attempts), token estimation over-counting causing premature compaction. Background agents now preserve partial results when killed. Model fallback notifications are always visible with human-friendly names.",
-        "tag": "v2.1.75 — v2.1.76"
+        "title": "Interactive /effort Slider + xhigh Tier",
+        "desc": "Calling <span class=\"scenario-cmd\">/effort</span> without arguments now opens an interactive slider (arrow keys + Enter). Opus 4.7 adds xhigh, covering the practical middle ground when high is not enough and max is overkill.",
+        "tag": "v2.1.111 NEW"
       },
       "4": {
-        "title": "/plan Starts in One Line — Capture the Idea While It's Hot",
-        "desc": "v2.1.72 adds an optional description argument to <span class=\"scenario-cmd\">/plan</span>. You can now type <span class=\"scenario-cmd\">/plan fix the auth bug</span> and Claude jumps straight into plan mode with a concrete task. One less round trip while the idea is still fresh.",
-        "tag": "v2.1.72 NEW"
+        "title": "/tui + /focus — Reworked Long-Session Reading Flow",
+        "desc": "v2.1.110 adds <span class=\"scenario-cmd\">/tui fullscreen</span> and a separate <span class=\"scenario-cmd\">/focus</span> toggle. Together with autoScrollEnabled and external-editor context options, long transcript reading and review loops feel much cleaner.",
+        "tag": "v2.1.110 NEW"
       },
       "5": {
-        "title": "/copy Gets a Write Mode — Perfect Over SSH",
-        "desc": "The <span class=\"scenario-cmd\">/copy</span> picker now supports the <span class=\"scenario-cmd\">w</span> key to write the focused selection directly to a file, bypassing the clipboard. On remote boxes, inside tmux, or anywhere clipboard integration is flaky, this feels instantly more usable.",
-        "tag": "v2.1.72 NEW"
+        "title": "Session Recap + Discoverable Built-in Commands",
+        "desc": "From v2.1.108, returning to a session can auto-recap prior context (configurable), and models can discover/invoke built-in slash commands via the Skill tool. Old sessions become easier to resume without re-priming everything manually.",
+        "tag": "v2.1.108 NEW"
       },
       "6": {
         "title": "Effort Levels Get Simpler — ○ ◐ ● at a Glance",
@@ -588,6 +594,23 @@
       "2": {
         "desc": "Create markdown files in .claude/commands/ to define custom commands. Supports $ARGUMENTS parameters. <span class=\"scenario-cmd\">/keybindings</span> Custom keyboard shortcuts. <span class=\"scenario-cmd\">/statusline</span> Custom status line. settings.json changes take effect immediately without restart."
       }
+    },
+    "enterprise": {
+      "0": {
+        "title": "Perforce Mode — Safer Edits in Managed Repositories",
+        "desc": "With <span class=\"scenario-cmd\">CLAUDE_CODE_PERFORCE_MODE</span>, read-only edit failures now surface explicit <span class=\"scenario-cmd\">p4 edit</span> guidance. In strict enterprise workflows, Claude fails loudly and usefully instead of silently stalling.",
+        "tag": "v2.1.98"
+      },
+      "1": {
+        "title": "Monitor + OTel Observability — Full Background Traceability",
+        "desc": "The Monitor tool streams background task events, while OTel keeps improving raw API/debug logging and context propagation. This makes end-to-end diagnosis much easier in shared observability stacks.",
+        "tag": "v2.1.98 — v2.1.111"
+      },
+      "2": {
+        "title": "Automated Permission Governance — Less Approval Noise",
+        "desc": "Use <span class=\"scenario-cmd\">/less-permission-prompts</span> to generate allowlist suggestions from real transcripts, then combine with read-only prompt exemptions. You reduce interruption overhead while keeping policy and audit boundaries intact.",
+        "tag": "v2.1.105 — v2.1.111"
+      }
     }
   },
   "scenarios": {
@@ -689,6 +712,17 @@
         "2": "The ops teammate running RHEL 8 (glibc < 2.30)? No problem — Alpine/musl is supported too",
         "3": "WSL2 user pasting images copied from Windows? BMP format compatibility is fixed — just paste",
         "4": "Everyone runs <span class=\"scenario-cmd\">/doctor</span> for a one-click health check — mise/asdf-managed installations are correctly detected, no manual path troubleshooting needed"
+      }
+    },
+    "enterprise": {
+      "title": "Scenario: Plug Claude Code into an Enterprise Delivery Pipeline",
+      "subtitle": "Move from coding acceleration to engineering governance",
+      "items": {
+        "0": "In managed repos, read-only edits now point directly to <span class=\"scenario-cmd\">p4 edit</span>, preventing silent workflow failures",
+        "1": "Monitor streams CI/background task events so on-call engineers can inspect progress and failures in real time",
+        "2": "Security teams run <span class=\"scenario-cmd\">/less-permission-prompts</span> to draft allowlists, then approve and enforce them centrally",
+        "3": "Platform teams feed OTel metrics/logs into shared dashboards for cross-process trace visibility",
+        "4": "When permission disputes happen, hook and policy decision trails can be replayed for audit evidence"
       }
     }
   },
@@ -881,6 +915,16 @@
       "date": "2026-03",
       "version": "v2.1.78",
       "desc": "StopFailure hook catches API-error endings; ${CLAUDE_PLUGIN_DATA} keeps plugin data with uninstall confirmation. Plugin-shipped agent frontmatter can set effort/maxTurns/disallowedTools. Terminal notifications reach the outer terminal in tmux, responses stream line by line. Fixed sandbox allowWrite absolute paths, protected dirs writable in bypass mode, deny MCP tools not removed, and now surface sandbox warnings when dependencies are missing."
+    },
+    "26": {
+      "date": "2026-04",
+      "version": "v2.1.84 — v2.1.98",
+      "desc": "PowerShell tooling rollout, /powerup onboarding, interactive /release-notes picker, stronger Bedrock/Vertex setup flows, Monitor streaming visibility, and Perforce/subprocess sandbox hardening significantly improved enterprise delivery readiness."
+    },
+    "27": {
+      "date": "2026-04",
+      "version": "v2.1.101 — v2.1.111",
+      "desc": "Opus 4.7 xhigh and Auto Mode landed, /effort gained an interactive slider, /ultrareview and /less-permission-prompts were added, /tui + /focus refined long-session reading, and stability/security/platform fixes continued at high pace."
     }
   }
 }

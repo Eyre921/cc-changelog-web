@@ -357,6 +357,54 @@ const App = (() => {
     });
   }
 
+  // ---- Card spotlight follow cursor ----
+  function initCardSpotlight() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if ('ontouchstart' in window) return;
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--spot-x', `${x.toFixed(1)}%`);
+        card.style.setProperty('--spot-y', `${y.toFixed(1)}%`);
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.setProperty('--spot-x', '50%');
+        card.style.setProperty('--spot-y', '50%');
+      });
+    });
+  }
+
+  // ---- Scenario list hover shimmer ----
+  function initScenarioShimmer() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if ('ontouchstart' in window) return;
+    document.querySelectorAll('.scenario-body li').forEach(item => {
+      item.addEventListener('mousemove', (e) => {
+        const rect = item.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        item.style.setProperty('--line-x', `${x.toFixed(1)}%`);
+      });
+      item.addEventListener('mouseleave', () => {
+        item.style.setProperty('--line-x', '0%');
+      });
+    });
+  }
+
+  // ---- Timeline click focus pulse ----
+  function initTimelineClickFocus() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const items = document.querySelectorAll('.timeline-item');
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.remove('focus-pulse');
+        void item.offsetWidth;
+        item.classList.add('focus-pulse');
+      });
+    });
+  }
+
   // ---- Init ----
   async function init() {
     // Apply theme immediately (before paint)
@@ -386,6 +434,9 @@ const App = (() => {
     initTimelineActive();
     initNavScrollShadow();
     initMagneticButtons();
+    initCardSpotlight();
+    initScenarioShimmer();
+    initTimelineClickFocus();
   }
 
   return { init, toggleTheme, applyTheme };

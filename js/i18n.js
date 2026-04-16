@@ -85,7 +85,7 @@ const I18n = (() => {
     // 1. Card sections
     const cardSections = [
       'recent', 'models', 'agents', 'sessions', 'devflow',
-      'mcp', 'terminal', 'security', 'sdk', 'performance',
+      'mcp', 'terminal', 'security', 'sdk', 'enterprise', 'performance',
       'platform', 'vscode'
     ];
 
@@ -120,7 +120,7 @@ const I18n = (() => {
     // 2. Scenario sections
     var scenarioSections = [
       'models', 'agents', 'sessions', 'devflow', 'mcp',
-      'terminal', 'sdk', 'performance', 'platform'
+      'terminal', 'sdk', 'enterprise', 'performance', 'platform'
     ];
 
     scenarioSections.forEach(function(sectionId) {
